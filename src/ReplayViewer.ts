@@ -5,6 +5,7 @@ import WebGame = Facepunch.WebGame;
 
 class ReplayViewer extends SourceUtils.MapViewer {
     protected onInitialize(): void {
+        super.onInitialize();
         this.useDefaultCameraControl = false;
     }
 }
