@@ -1,2 +1,2 @@
-# GOKZReplayViewer
-Prototype of a WebGL GOKZ recording player.
+# BotMimic Replay Viewer
+Prototype of a WebGL BotMimic recording player.
