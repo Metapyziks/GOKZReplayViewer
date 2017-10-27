@@ -1,53 +1,53 @@
 {
   "name": "kz_reach_v2",
-  "lightmapUrl": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/lightmap.json?v=196d-10c35",
+  "lightmapUrl": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/lightmap.json?v=196d-10cb3",
   "visPages": [
     {
       "first": 0,
       "count": 319,
-      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/vispage0.json?v=196d-10c35"
+      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/vispage0.json?v=196d-10cb3"
     }
   ],
   "leafPages": [
     {
       "first": 0,
       "count": 2770,
-      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/leafpage0.json?v=196d-10c35"
+      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/leafpage0.json?v=196d-10cb3"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 13,
-      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/disppage0.json?v=196d-10c35"
+      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/disppage0.json?v=196d-10cb3"
     }
   ],
   "materialPages": [
     {
       "first": 0,
       "count": 46,
-      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/materials/matpage0.json?v=196d-10c35"
+      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/materials/matpage0.json?v=196d-10cb3"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 173,
-      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/bsppage0.json?v=196d-10c35"
+      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/bsppage0.json?v=196d-10cb3"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 8,
-      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/mdlpage0.json?v=196d-10c35"
+      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/mdlpage0.json?v=196d-10cb3"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 50,
-      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/vhvpage0.json?v=196d-10c35"
+      "url": "https://metapyziks.github.io/BotMimicReplayViewer/maps/kz_reach_v2/geom/vhvpage0.json?v=196d-10cb3"
     }
   ],
   "entities": [
@@ -63,32 +63,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrrt.vtf.json?v=196d-10c35"
+            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrrt.vtf.json?v=196d-10cb3"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrlf.vtf.json?v=196d-10c35"
+            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrlf.vtf.json?v=196d-10cb3"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrbk.vtf.json?v=196d-10c35"
+            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrbk.vtf.json?v=196d-10cb3"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrft.vtf.json?v=196d-10c35"
+            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrft.vtf.json?v=196d-10cb3"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrup.vtf.json?v=196d-10c35"
+            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrup.vtf.json?v=196d-10cb3"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf.json?v=196d-10c35"
+            "value": "https://metapyziks.github.io/BotMimicReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf.json?v=196d-10cb3"
           },
           {
             "name": "hdrCompressed",
