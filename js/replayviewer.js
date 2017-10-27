@@ -13,6 +13,7 @@ var ReplayViewer = (function (_super) {
     }
     ReplayViewer.prototype.onInitialize = function () {
         _super.prototype.onInitialize.call(this);
+        this.canLockPointer = false;
         this.useDefaultCameraControl = false;
     };
     return ReplayViewer;
