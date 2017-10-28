@@ -27,20 +27,16 @@ class ReplayViewer extends SourceUtils.MapViewer {
         req.send(null);
     }
 
+    private pauseTime = 1.0;
+    private pauseTicks: number;
     private tickData = new TickData();
     private tick = -1;
     private spareTime = 0;
 
     setReplay(replay: ReplayFile): void {
         this.replay = replay;
-        this.setTick(0);
-    }
-
-    setTick(tick: number): void {
-        if (tick >= this.replay.tickCount) tick = 0;
-
-        this.tick = tick;
-        this.replay.getTickData(tick, this.tickData);
+        this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
+        this.tick = -this.pauseTicks;
     }
 
     protected onKeyDown(key: WebGame.Key): boolean {
@@ -63,13 +59,25 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.spareTime += dt;
         while (this.spareTime >= tickPeriod) {
             this.spareTime -= tickPeriod;
-            this.setTick(this.tick + 1);
+            this.tick += 1;
+
+            if (this.tick >= this.replay.tickCount + this.pauseTicks * 2) {
+                this.tick = -this.pauseTicks;
+            }
         }
+        
+        const clampedTick = this.tick < 0
+            ? 0 : this.tick >= this.replay.tickCount
+            ? this.replay.tickCount - 1 : this.tick;
+
+        this.replay.getTickData(clampedTick, this.tickData);
+
+        const eyeHeight = (this.tickData.flags & EntityFlag.Ducking) != 0 ? 28 : 64;
 
         this.mainCamera.setPosition(
             this.tickData.position.x,
             this.tickData.position.y,
-            this.tickData.position.z + 64);
+            this.tickData.position.z + eyeHeight);
 
         this.setCameraAngles(
             (this.tickData.angles.y - 90) * Math.PI / 180,
