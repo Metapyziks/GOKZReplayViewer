@@ -160,6 +160,14 @@ var ReplayViewer = (function (_super) {
         this.tick = tick;
         this.replay.getTickData(tick, this.tickData);
     };
+    ReplayViewer.prototype.onKeyDown = function (key) {
+        switch (key) {
+            case WebGame.Key.F:
+                this.toggleFullscreen();
+                break;
+        }
+        return _super.prototype.onKeyDown.call(this, key);
+    };
     ReplayViewer.prototype.onUpdateFrame = function (dt) {
         _super.prototype.onUpdateFrame.call(this, dt);
         if (this.replay == null)
