@@ -401,7 +401,7 @@ declare namespace SourceUtils {
         setCameraAngles(yaw: number, pitch: number): void;
         private updateCameraAngles();
         protected onMouseLook(delta: Facepunch.Vector2): void;
-        private toggleFullscreen();
+        toggleFullscreen(): void;
         protected onKeyDown(key: WebGame.Key): boolean;
         private readonly move;
         protected onUpdateFrame(dt: number): void;

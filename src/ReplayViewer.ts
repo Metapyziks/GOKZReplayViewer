@@ -43,6 +43,16 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.replay.getTickData(tick, this.tickData);
     }
 
+    protected onKeyDown(key: WebGame.Key): boolean {
+        switch (key) {
+            case WebGame.Key.F:
+                this.toggleFullscreen();
+                break;
+        }
+
+        return super.onKeyDown(key);
+    }
+
     protected onUpdateFrame(dt: number): void {
         super.onUpdateFrame(dt);
 
