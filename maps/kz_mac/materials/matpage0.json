@@ -1,0 +1,1471 @@
+{
+  "textures": [
+    {
+      "path": "materials/concrete/cinderwall04.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.5803922,
+            "g": 0.572549045,
+            "b": 0.545098066,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall04.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/mytextures/shoutouts_mac1/shoutouts.vtf",
+      "target": 3553,
+      "width": 1024,
+      "height": 1024,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 10,
+          "color": {
+            "r": 0.9882353,
+            "g": 0.992156863,
+            "b": 0.9882353,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 9,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip9.png"
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/maps/kz_mac/materials/mytextures/shoutouts_mac1/shoutouts.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/tile/concrete_tile_over_color.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.7411765,
+            "g": 0.6745098,
+            "b": 0.6431373,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/tile/concrete_tile_over_color.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/de_train/train_metalceiling_02.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.145098045,
+            "g": 0.13333334,
+            "b": 0.1254902,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/de_train/train_metalceiling_02.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/concrete/concretewall_handling01b_blue.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.3529412,
+            "g": 0.4,
+            "b": 0.4392157,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/concrete/concretewall_handling01b_blue.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/detail/detailconcrete001a.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.5058824,
+            "g": 0.5019608,
+            "b": 0.5058824,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/detail/detailconcrete001a.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/tools/toolsnodraw.vtf",
+      "target": 3553,
+      "width": 64,
+      "height": 64,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 6,
+          "color": {
+            "r": 0.956862748,
+            "g": 0.831372559,
+            "b": 0.129411772,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/tools/toolsnodraw.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/tools/toolsnodraw.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/tools/toolsnodraw.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/tools/toolsnodraw.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/tools/toolsnodraw.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/tools/toolsnodraw.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/cs_italy/black.vtf",
+      "target": 3553,
+      "width": 32,
+      "height": 32,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 5,
+          "color": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/cs_italy/black.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/cs_italy/black.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/cs_italy/black.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/cs_italy/black.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/cs_italy/black.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/dev/dev_measuregeneric01b.vtf",
+      "target": 3553,
+      "width": 128,
+      "height": 128,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 7,
+          "color": {
+            "r": 0.368627459,
+            "g": 0.3647059,
+            "b": 0.368627459,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01b.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01b.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01b.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01b.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01b.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01b.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01b.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/dev/dev_measuregeneric01.vtf",
+      "target": 3553,
+      "width": 128,
+      "height": 128,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 7,
+          "color": {
+            "r": 0.8862745,
+            "g": 0.498039216,
+            "b": 0.0627451,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measuregeneric01.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/cs_italy/hpe_plaster_blue_wall.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.482352942,
+            "g": 0.5176471,
+            "b": 0.549019635,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_plaster_blue_wall.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/tools/toolsskybox.vtf",
+      "target": 3553,
+      "width": 128,
+      "height": 128,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 7,
+          "color": {
+            "r": 0.6862745,
+            "g": 0.8745098,
+            "b": 0.9882353,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/tools/toolsskybox.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/tools/toolsskybox.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/tools/toolsskybox.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/tools/toolsskybox.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/tools/toolsskybox.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/tools/toolsskybox.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/tools/toolsskybox.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/concrete/cinderwall02_dirty.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.4509804,
+            "g": 0.443137258,
+            "b": 0.41568628,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/concrete/cinderwall02_dirty.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/cs_italy/hpe_italy_stone01_bottom.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.5137255,
+            "g": 0.494117647,
+            "b": 0.482352942,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/cs_italy/hpe_italy_stone01_bottom.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/concrete/concretefloor001a.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.5372549,
+            "g": 0.545098066,
+            "b": 0.5137255,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/concrete/concretefloor001a.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/detail/noise_detail_01.vtf",
+      "target": 3553,
+      "width": 256,
+      "height": 256,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 8,
+          "color": {
+            "r": 0.7294118,
+            "g": 0.7294118,
+            "b": 0.7294118,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/detail/noise_detail_01.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/metal/prodventa.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 256,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.498039216,
+            "g": 0.5137255,
+            "b": 0.5294118,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/metal/prodventa.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/cs_italy/cobble04.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.435294122,
+            "g": 0.403921574,
+            "b": 0.384313732,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/cs_italy/cobble04.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/de_mirage/marble/de_mirage_marble_01.vtf",
+      "target": 3553,
+      "width": 1024,
+      "height": 1024,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 10,
+          "color": {
+            "r": 0.698039234,
+            "g": 0.670588255,
+            "b": 0.6117647,
+            "a": 0.3882353
+          }
+        },
+        {
+          "level": 9,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip9.png"
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/de_mirage/marble/de_mirage_marble_01.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/detail/dt_stone1.vtf",
+      "target": 3553,
+      "width": 128,
+      "height": 128,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 7,
+          "color": {
+            "r": 0.545098066,
+            "g": 0.545098066,
+            "b": 0.545098066,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/detail/dt_stone1.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/detail/dt_stone1.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/detail/dt_stone1.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/detail/dt_stone1.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/detail/dt_stone1.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/detail/dt_stone1.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/detail/dt_stone1.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/dev/dev_measurecrate01.vtf",
+      "target": 3553,
+      "width": 256,
+      "height": 256,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 8,
+          "color": {
+            "r": 0.894117653,
+            "g": 0.5254902,
+            "b": 0.235294119,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/dev/dev_measurecrate01.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/models/props_junk/trashclusters01.vtf",
+      "target": 3553,
+      "width": 512,
+      "height": 512,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 9,
+          "color": {
+            "r": 0.192156866,
+            "g": 0.1882353,
+            "b": 0.180392161,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 8,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip8.png"
+        },
+        {
+          "level": 7,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip7.png"
+        },
+        {
+          "level": 6,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip6.png"
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/materials/models/props_junk/trashclusters01.vtf/mip0.png"
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 1
+        },
+        {
+          "name": "translucent",
+          "type": 1,
+          "value": true
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 3
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 4
+        },
+        {
+          "name": "detail",
+          "type": 5,
+          "value": 5
+        },
+        {
+          "name": "detailScale",
+          "type": 2,
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 6
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 7
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 8
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 9
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 10
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 11
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 12
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 13
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 14
+        },
+        {
+          "name": "detail",
+          "type": 5,
+          "value": 15
+        },
+        {
+          "name": "detailScale",
+          "type": 2,
+          "value": 7.345
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 16
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 17
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 18
+        },
+        {
+          "name": "detail",
+          "type": 5,
+          "value": 19
+        },
+        {
+          "name": "detailScale",
+          "type": 2,
+          "value": 0.0
+        }
+      ]
+    },
+    null,
+    null,
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 20
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.VertexLitGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 21
+        }
+      ]
+    }
+  ]
+}
