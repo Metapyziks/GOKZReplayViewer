@@ -3,14 +3,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
-        <title>Map Viewer - kz_reach_v2</title>
+        <title>GOKZ Replay Viewer Demo - kz_mac - 0_SKZ_NRM_NUB</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js"></script>
-        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=03b0a42"></script>
-        <script src="/GOKZReplayViewer/js/sourceutils.js?v=03b0a42"></script>
-        <script src="/GOKZReplayViewer/js/replayviewer.js?v=03b0a42"></script>
-        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=03b0a42" />
+        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=96e3831"></script>
+        <script src="/GOKZReplayViewer/js/sourceutils.js?v=96e3831"></script>
+        <script src="/GOKZReplayViewer/js/replayviewer.js?v=96e3831"></script>
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=96e3831" />
     </head>
     <body>
     <h2>GOKZ Replay Viewer Demo - kz_mac - 0_SKZ_NRM_NUB</h2>
@@ -19,7 +19,7 @@
             var viewer;
             window.onload = function() {
                 viewer = new ReplayViewer($("#map-view")[0]);
-                viewer.loadMap("/GOKZReplayViewer/maps/kz_mac/index.json?v=03b0a42");
+                viewer.loadMap("/GOKZReplayViewer/maps/kz_mac/index.json?v=96e3831");
                 viewer.loadReplay("/GOKZReplayViewer/replays/kz_mac/0_SKZ_NRM_NUB.replay");
                 viewer.animate();
             }
