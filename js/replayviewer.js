@@ -232,6 +232,11 @@ var ReplayViewer = (function (_super) {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
         this.tick = -this.pauseTicks;
+        this.spareTime = 0;
+        if (this.currentMapName !== replay.mapName) {
+            this.currentMapName = replay.mapName;
+            this.loadMap("/GOKZReplayViewer/maps/" + replay.mapName + "/index.json");
+        }
     };
     ReplayViewer.prototype.onKeyDown = function (key) {
         switch (key) {
@@ -271,13 +276,18 @@ var ReplayViewer = (function (_super) {
         if (this.replay == null)
             return;
         var tickPeriod = 1.0 / this.replay.tickRate;
-        this.spareTime += dt * this.playbackRate;
-        while (this.spareTime >= tickPeriod) {
-            this.spareTime -= tickPeriod;
-            this.tick += 1;
-            if (this.tick >= this.replay.tickCount + this.pauseTicks * 2) {
-                this.tick = -this.pauseTicks;
+        if (this.map.isReady()) {
+            this.spareTime += dt * this.playbackRate;
+            while (this.spareTime >= tickPeriod) {
+                this.spareTime -= tickPeriod;
+                this.tick += 1;
+                if (this.tick >= this.replay.tickCount + this.pauseTicks * 2) {
+                    this.tick = -this.pauseTicks;
+                }
             }
+        }
+        else {
+            this.spareTime = 0;
         }
         this.replay.getTickData(this.clampTick(this.tick), this.tickData);
         var eyeHeight = this.tickData.getEyeHeight();

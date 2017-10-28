@@ -1,0 +1,63 @@
+{
+  "path": "materials/skybox/sky_harvest_night_01ft.vtf",
+  "target": 3553,
+  "width": 1024,
+  "height": 512,
+  "params": {
+    "wrapS": 33071,
+    "wrapT": 33071,
+    "filter": 9729,
+    "mipmap": false
+  },
+  "elements": [
+    {
+      "level": 10,
+      "color": {
+        "r": 0.321568638,
+        "g": 0.203921571,
+        "b": 0.294117659,
+        "a": 1.0
+      }
+    },
+    {
+      "level": 9,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip9.png"
+    },
+    {
+      "level": 8,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip8.png"
+    },
+    {
+      "level": 7,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip7.png"
+    },
+    {
+      "level": 6,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip6.png"
+    },
+    {
+      "level": 5,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip5.png"
+    },
+    {
+      "level": 4,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip4.png"
+    },
+    {
+      "level": 3,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip3.png"
+    },
+    {
+      "level": 2,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip2.png"
+    },
+    {
+      "level": 1,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip1.png"
+    },
+    {
+      "level": 0,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf/mip0.png"
+    }
+  ]
+}

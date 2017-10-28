@@ -1,0 +1,17 @@
+{
+  "target": 3553,
+  "width": 2048,
+  "height": 2048,
+  "params": {
+    "wrapS": 33071,
+    "wrapT": 33071,
+    "filter": 9728,
+    "mipmap": false
+  },
+  "elements": [
+    {
+      "level": 0,
+      "url": "/GOKZReplayViewer/maps/kz_exps_cursedjourney/lightmap.png"
+    }
+  ]
+}

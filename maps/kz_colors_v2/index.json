@@ -1,0 +1,3894 @@
+{
+  "name": "kz_colors_v2",
+  "lightmapUrl": "/GOKZReplayViewer/maps/kz_colors_v2/lightmap.json?v=196e-10b7c",
+  "visPages": [
+    {
+      "first": 0,
+      "count": 756,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/geom/vispage0.json?v=196e-10b7c"
+    }
+  ],
+  "leafPages": [
+    {
+      "first": 0,
+      "count": 2332,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/geom/leafpage0.json?v=196e-10b7c"
+    }
+  ],
+  "dispPages": [
+    {
+      "first": 0,
+      "count": 0,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/geom/disppage0.json?v=196e-10b7c"
+    }
+  ],
+  "materialPages": [
+    {
+      "first": 0,
+      "count": 180,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/materials/matpage0.json?v=196e-10b7c"
+    }
+  ],
+  "brushModelPages": [
+    {
+      "first": 0,
+      "count": 1,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/geom/bsppage0.json?v=196e-10b7c"
+    },
+    {
+      "first": 1,
+      "count": 16,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/geom/bsppage1.json?v=196e-10b7c"
+    }
+  ],
+  "studioModelPages": [
+    {
+      "first": 0,
+      "count": 0,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/geom/mdlpage0.json?v=196e-10b7c"
+    }
+  ],
+  "vertLightingPages": [
+    {
+      "first": 0,
+      "count": 0,
+      "url": "/GOKZReplayViewer/maps/kz_colors_v2/geom/vhvpage0.json?v=196e-10b7c"
+    }
+  ],
+  "entities": [
+    {
+      "skyMaterial": {
+        "shader": "SourceUtils.Shaders.Sky",
+        "properties": [
+          {
+            "name": "cullFace",
+            "type": 1,
+            "value": false
+          },
+          {
+            "name": "facePosX",
+            "type": 4,
+            "value": "/GOKZReplayViewer/materials/skybox/italyrt.vtf.json?v=196e-10b7c"
+          },
+          {
+            "name": "faceNegX",
+            "type": 4,
+            "value": "/GOKZReplayViewer/materials/skybox/italylf.vtf.json?v=196e-10b7c"
+          },
+          {
+            "name": "facePosY",
+            "type": 4,
+            "value": "/GOKZReplayViewer/materials/skybox/italybk.vtf.json?v=196e-10b7c"
+          },
+          {
+            "name": "faceNegY",
+            "type": 4,
+            "value": "/GOKZReplayViewer/materials/skybox/italyft.vtf.json?v=196e-10b7c"
+          },
+          {
+            "name": "facePosZ",
+            "type": 4,
+            "value": "/GOKZReplayViewer/materials/skybox/italyup.vtf.json?v=196e-10b7c"
+          },
+          {
+            "name": "faceNegZ",
+            "type": 4,
+            "value": "/GOKZReplayViewer/materials/skybox/italydn.vtf.json?v=196e-10b7c"
+          }
+        ]
+      },
+      "model": 0,
+      "classname": "worldspawn"
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 5580.0,
+        "y": 2240.0,
+        "z": 10852.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 5152.0,
+        "y": 2628.48,
+        "z": 10753.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 1344.0,
+        "y": 712.0,
+        "z": 4856.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 1464.0,
+        "y": 536.0,
+        "z": 4864.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 1296.0,
+        "y": 512.0,
+        "z": 5232.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 3648.0,
+        "y": 1336.0,
+        "z": 8016.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 3648.0,
+        "y": 1320.0,
+        "z": 8016.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4544.0,
+        "y": 1520.0,
+        "z": 8480.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4544.0,
+        "y": 1520.0,
+        "z": 8448.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 3648.0,
+        "y": 2024.0,
+        "z": 8224.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4240.0,
+        "y": 1968.0,
+        "z": 8624.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 5376.0,
+        "y": -768.0,
+        "z": 6560.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 5376.0,
+        "y": -768.0,
+        "z": 6464.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 5376.0,
+        "y": -768.0,
+        "z": 6368.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4880.0,
+        "y": 688.0,
+        "z": 6080.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4880.0,
+        "y": 688.0,
+        "z": 6068.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4256.0,
+        "y": 242.0,
+        "z": 5920.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 6160.0,
+        "y": -1152.0,
+        "z": 7360.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 6160.0,
+        "y": -1136.0,
+        "z": 7360.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4256.0,
+        "y": 1968.0,
+        "z": 8624.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 3944.0,
+        "y": 2078.0,
+        "z": 8456.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 3944.0,
+        "y": 2078.0,
+        "z": 8472.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4592.0,
+        "y": 3052.0,
+        "z": 10184.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 4592.0,
+        "y": 3052.0,
+        "z": 10176.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 1464.0,
+        "y": 520.0,
+        "z": 5000.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 1536.0,
+        "y": 912.0,
+        "z": 3568.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 1696.0,
+        "y": 520.0,
+        "z": 5200.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 1960.0,
+        "y": 520.0,
+        "z": 5160.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 2560.0,
+        "y": 520.0,
+        "z": 5160.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 2560.0,
+        "y": 104.0,
+        "z": 4824.0
+      }
+    },
+    {
+      "classname": "func_illusionary",
+      "origin": {
+        "x": 3456.0,
+        "y": 980.5,
+        "z": 12608.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 5584.0,
+        "y": -1216.0,
+        "z": 6588.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 5584.0,
+        "y": -1492.0,
+        "z": 6272.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 6048.0,
+        "y": -1120.0,
+        "z": 6592.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -192.0,
+        "y": -768.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -192.0,
+        "y": -832.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -256.0,
+        "y": -832.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -256.0,
+        "y": -896.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -192.0,
+        "y": -896.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -128.0,
+        "y": -896.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -128.0,
+        "y": -832.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -128.0,
+        "y": -768.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 0.0,
+        "y": -768.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 0.0,
+        "y": -832.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 0.0,
+        "y": -896.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 64.0,
+        "y": -896.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 64.0,
+        "y": -832.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 64.0,
+        "y": -768.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 128.0,
+        "y": -768.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 128.0,
+        "y": -832.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 128.0,
+        "y": -896.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 0.0,
+        "y": -1344.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 0.0,
+        "y": -1408.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 0.0,
+        "y": -1472.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 0.0,
+        "y": -1536.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 64.0,
+        "y": -1536.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 128.0,
+        "y": -1536.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 128.0,
+        "y": -1472.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 64.0,
+        "y": -1472.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 64.0,
+        "y": -1408.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 128.0,
+        "y": -1408.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 128.0,
+        "y": -1344.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": 64.0,
+        "y": -1344.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": -64.0,
+        "y": -1344.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": -64.0,
+        "y": -1408.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": -64.0,
+        "y": -1472.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_counterterrorist",
+      "origin": {
+        "x": -64.0,
+        "y": -1536.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -128.0,
+        "y": -1536.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -192.0,
+        "y": -1536.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -256.0,
+        "y": -1536.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -256.0,
+        "y": -1472.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -192.0,
+        "y": -1472.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -128.0,
+        "y": -1472.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -128.0,
+        "y": -1408.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -192.0,
+        "y": -1408.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -256.0,
+        "y": -1408.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -256.0,
+        "y": -1344.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -192.0,
+        "y": -1344.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -128.0,
+        "y": -1344.0,
+        "z": 104.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -64.0,
+        "y": -896.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -64.0,
+        "y": -832.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -64.0,
+        "y": -768.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "func_illusionary",
+      "origin": {
+        "x": 3480.0,
+        "y": 2955.0,
+        "z": 12676.0
+      }
+    },
+    {
+      "classname": "func_illusionary",
+      "origin": {
+        "x": 1032.0,
+        "y": 546.5,
+        "z": 3252.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 210.0,
+        "y": 248.0,
+        "z": 688.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 210.0,
+        "y": 648.0,
+        "z": 688.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 68.0,
+        "y": 1356.0,
+        "z": 1200.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 228.0,
+        "y": 1356.0,
+        "z": 1456.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 228.0,
+        "y": 1572.0,
+        "z": 1456.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 68.0,
+        "y": 1572.0,
+        "z": 1200.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 240.0,
+        "y": 1356.0,
+        "z": 2320.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": -10.0,
+        "y": 1328.0,
+        "z": 1824.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 268.0,
+        "y": 1148.0,
+        "z": 2208.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 360.0,
+        "y": 1406.0,
+        "z": 3324.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 240.0,
+        "y": 1572.0,
+        "z": 2320.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": -228.0,
+        "y": 1328.0,
+        "z": 1824.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 484.0,
+        "y": 1148.0,
+        "z": 2208.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 760.0,
+        "y": 1406.0,
+        "z": 3324.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1152.0,
+        "y": 1880.0,
+        "z": 3340.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2336.0,
+        "y": 1880.0,
+        "z": 4032.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1152.0,
+        "y": 1664.0,
+        "z": 3468.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1536.0,
+        "y": 312.0,
+        "z": 3392.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2408.0,
+        "y": 1216.0,
+        "z": 3776.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1120.0,
+        "y": 392.0,
+        "z": 3660.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2264.0,
+        "y": 1216.0,
+        "z": 3776.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2080.0,
+        "y": 1592.0,
+        "z": 3648.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1320.0,
+        "y": 992.0,
+        "z": 4928.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1320.0,
+        "y": 512.0,
+        "z": 5296.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1176.0,
+        "y": 512.0,
+        "z": 5296.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1176.0,
+        "y": 992.0,
+        "z": 4928.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1800.0,
+        "y": -660.0,
+        "z": 6088.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 1592.0,
+        "y": -624.0,
+        "z": 6096.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2768.0,
+        "y": 848.0,
+        "z": 6680.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2776.0,
+        "y": 728.0,
+        "z": 6696.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2748.0,
+        "y": -984.0,
+        "z": 6424.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2864.0,
+        "y": -1160.0,
+        "z": 6424.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3020.0,
+        "y": -1040.0,
+        "z": 6968.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3020.0,
+        "y": -984.0,
+        "z": 6968.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3172.0,
+        "y": 160.0,
+        "z": 7112.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3296.0,
+        "y": 160.0,
+        "z": 7112.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3616.0,
+        "y": -414.0,
+        "z": 7680.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4764.0,
+        "y": 860.0,
+        "z": 6008.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4980.0,
+        "y": 860.0,
+        "z": 6008.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4604.0,
+        "y": -56.0,
+        "z": 5320.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4604.0,
+        "y": -56.0,
+        "z": 5816.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4560.0,
+        "y": -56.0,
+        "z": 5984.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4604.0,
+        "y": -56.0,
+        "z": 6392.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4520.0,
+        "y": 576.0,
+        "z": 5960.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4288.0,
+        "y": 216.0,
+        "z": 6000.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4336.0,
+        "y": 416.0,
+        "z": 5976.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4656.0,
+        "y": -144.0,
+        "z": 5344.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4656.0,
+        "y": -144.0,
+        "z": 5840.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4560.0,
+        "y": -136.0,
+        "z": 5984.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4584.0,
+        "y": -144.0,
+        "z": 6416.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5372.0,
+        "y": -712.0,
+        "z": 5696.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5372.0,
+        "y": -792.0,
+        "z": 5696.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5664.0,
+        "y": -976.0,
+        "z": 6520.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5696.0,
+        "y": -976.0,
+        "z": 6520.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5624.0,
+        "y": -1492.0,
+        "z": 6328.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5624.0,
+        "y": -1492.0,
+        "z": 6776.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5656.0,
+        "y": -1492.0,
+        "z": 6776.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5656.0,
+        "y": -1492.0,
+        "z": 6328.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5176.0,
+        "y": -1136.0,
+        "z": 7008.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4736.0,
+        "y": -1288.0,
+        "z": 6768.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5176.0,
+        "y": -1340.0,
+        "z": 6552.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 6152.0,
+        "y": -1248.0,
+        "z": 7720.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5144.0,
+        "y": -1136.0,
+        "z": 7008.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4736.0,
+        "y": -1256.0,
+        "z": 6768.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5208.0,
+        "y": -1340.0,
+        "z": 6552.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 6120.0,
+        "y": -1248.0,
+        "z": 7720.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3648.0,
+        "y": -856.0,
+        "z": 7680.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3616.0,
+        "y": 52.0,
+        "z": 7672.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3616.0,
+        "y": 1192.0,
+        "z": 8072.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3616.0,
+        "y": 1352.0,
+        "z": 8072.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4144.0,
+        "y": 1320.0,
+        "z": 7952.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4144.0,
+        "y": 1456.0,
+        "z": 7952.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3992.0,
+        "y": 1896.0,
+        "z": 8472.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4272.0,
+        "y": 2160.0,
+        "z": 8624.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4272.0,
+        "y": 2712.0,
+        "z": 8252.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3992.0,
+        "y": 2040.0,
+        "z": 8472.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4272.0,
+        "y": 2040.0,
+        "z": 8624.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4272.0,
+        "y": 2848.0,
+        "z": 8252.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4020.0,
+        "y": -824.0,
+        "z": 7128.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4020.0,
+        "y": -712.0,
+        "z": 7128.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4024.0,
+        "y": 1084.0,
+        "z": 9136.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3896.0,
+        "y": 1084.0,
+        "z": 9136.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3368.0,
+        "y": 3248.0,
+        "z": 9816.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3720.0,
+        "y": 3248.0,
+        "z": 9816.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4328.0,
+        "y": 3524.0,
+        "z": 10248.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4464.0,
+        "y": 3524.0,
+        "z": 10248.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 3720.0,
+        "y": 2192.0,
+        "z": 12672.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5520.0,
+        "y": -172.0,
+        "z": 6704.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 5536.0,
+        "y": 96.0,
+        "z": 6344.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4764.0,
+        "y": -208.0,
+        "z": 7144.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 4792.0,
+        "y": 264.0,
+        "z": 5880.0
+      }
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": -48.0,
+        "y": -1136.0,
+        "z": 176.0
+      }
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "env_lightglow",
+      "origin": {
+        "x": 744.0,
+        "y": 1406.0,
+        "z": 3324.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "env_soundscape",
+      "origin": {
+        "x": 2912.0,
+        "y": 2192.0,
+        "z": 12704.0
+      }
+    },
+    {
+      "classname": "env_lightglow",
+      "origin": {
+        "x": 3272.0,
+        "y": 2192.0,
+        "z": 12696.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "env_lightglow",
+      "origin": {
+        "x": 210.0,
+        "y": 632.0,
+        "z": 688.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 270.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "classname": "func_areaportal"
+    },
+    {
+      "Brightness": {
+        "R": 235,
+        "G": 224,
+        "B": 203,
+        "A": 250
+      },
+      "Ambient": {
+        "R": 169,
+        "G": 193,
+        "B": 205,
+        "A": 70
+      },
+      "BrightnessHdr": {
+        "R": 255,
+        "G": 255,
+        "B": 255,
+        "A": 1
+      },
+      "AmbientHdr": {
+        "R": 255,
+        "G": 255,
+        "B": 255,
+        "A": 1
+      },
+      "BrightnessScaleHdr": 1.0,
+      "AmbientScaleHdr": 1.0,
+      "Pitch": -55.0,
+      "classname": "light_environment",
+      "origin": {
+        "x": -168.0,
+        "y": -616.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": -165.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "logic_auto",
+      "origin": {
+        "x": -136.0,
+        "y": -616.0,
+        "z": 9.0
+      }
+    },
+    {
+      "classname": "env_tonemap_controller",
+      "origin": {
+        "x": -104.0,
+        "y": -616.0,
+        "z": 9.0
+      }
+    },
+    {
+      "scale": 16,
+      "fogEnabled": false,
+      "fogStart": 500.0,
+      "fogEnd": 2000.0,
+      "fogMaxDensity": 1.0,
+      "farZ": 0.0,
+      "fogColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "classname": "sky_camera",
+      "origin": {
+        "x": 4528.0,
+        "y": 272.0,
+        "z": 13648.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "func_illusionary",
+      "origin": {
+        "x": -128.0,
+        "y": -512.5,
+        "z": 64.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -48.0,
+        "y": -1136.0,
+        "z": 240.0
+      }
+    },
+    {
+      "classname": "info_player_terrorist",
+      "origin": {
+        "x": -256.0,
+        "y": -768.0,
+        "z": 8.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": -232.0,
+        "y": -504.0,
+        "z": 52.0
+      }
+    },
+    {
+      "classname": "func_button",
+      "origin": {
+        "x": -232.0,
+        "y": -504.0,
+        "z": 68.0
+      }
+    },
+    {
+      "classname": "env_sprite",
+      "origin": {
+        "x": 3104.0,
+        "y": 2192.0,
+        "z": 12644.0
+      }
+    },
+    {
+      "classname": "func_button",
+      "origin": {
+        "x": 3640.0,
+        "y": 2192.0,
+        "z": 12660.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 4544.0,
+        "y": 576.0,
+        "z": 5908.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 4200.0,
+        "y": 456.0,
+        "z": 5360.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5372.0,
+        "y": -512.0,
+        "z": 5808.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3904.0,
+        "y": -416.0,
+        "z": 7360.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3904.0,
+        "y": -856.0,
+        "z": 7488.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3616.0,
+        "y": -856.0,
+        "z": 7728.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3616.0,
+        "y": 320.0,
+        "z": 7968.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3616.0,
+        "y": 1120.0,
+        "z": 8128.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2944.0,
+        "y": -576.0,
+        "z": 6880.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3616.0,
+        "y": -416.0,
+        "z": 7776.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 4592.0,
+        "y": 2192.0,
+        "z": 11416.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5056.0,
+        "y": 1728.0,
+        "z": 11808.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 4592.0,
+        "y": 2192.0,
+        "z": 6736.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 3616.0,
+        "y": 1344.0,
+        "z": 8020.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 4592.0,
+        "y": 2192.0,
+        "z": 9912.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 4496.0,
+        "y": 3200.0,
+        "z": 10116.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 270.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 5340.0,
+        "y": 2880.0,
+        "z": 11580.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 270.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4256.0,
+        "y": 2096.0,
+        "z": 11728.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4592.0,
+        "y": 2192.0,
+        "z": 12672.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5152.0,
+        "y": 3024.0,
+        "z": 11504.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4512.0,
+        "y": 2624.0,
+        "z": 11504.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3616.0,
+        "y": 1568.0,
+        "z": 8288.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3648.0,
+        "y": 2288.0,
+        "z": 8544.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4112.0,
+        "y": 2976.0,
+        "z": 8576.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4848.0,
+        "y": 2368.0,
+        "z": 8896.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4848.0,
+        "y": 1392.0,
+        "z": 8896.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5312.0,
+        "y": 1840.0,
+        "z": 8896.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3984.0,
+        "y": 1328.0,
+        "z": 8192.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5152.0,
+        "y": 2808.0,
+        "z": 11344.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5152.0,
+        "y": 2112.0,
+        "z": 11200.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5280.0,
+        "y": 2496.0,
+        "z": 11744.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4496.0,
+        "y": 3416.0,
+        "z": 10368.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4848.0,
+        "y": 3408.0,
+        "z": 10560.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5272.0,
+        "y": 3408.0,
+        "z": 10720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4016.0,
+        "y": 2528.0,
+        "z": 9120.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4944.0,
+        "y": 1936.0,
+        "z": 9280.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3904.0,
+        "y": 1600.0,
+        "z": 8960.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3544.0,
+        "y": 3248.0,
+        "z": 9856.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4024.0,
+        "y": 3472.0,
+        "z": 10112.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5296.0,
+        "y": 1120.0,
+        "z": 8928.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4520.0,
+        "y": 1120.0,
+        "z": 9404.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3608.0,
+        "y": 1084.0,
+        "z": 9292.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3344.0,
+        "y": 1584.0,
+        "z": 9792.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3344.0,
+        "y": 2320.0,
+        "z": 9792.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4288.0,
+        "y": 2592.0,
+        "z": 8208.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4288.0,
+        "y": 2512.0,
+        "z": 8480.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3968.0,
+        "y": 2624.0,
+        "z": 8160.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3872.0,
+        "y": 2624.0,
+        "z": 8480.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3888.0,
+        "y": 2224.0,
+        "z": 8272.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3808.0,
+        "y": 2304.0,
+        "z": 8560.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4288.0,
+        "y": 2176.0,
+        "z": 8416.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3984.0,
+        "y": 1672.0,
+        "z": 8224.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 6208.0,
+        "y": -656.0,
+        "z": 7104.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 6240.0,
+        "y": -1088.0,
+        "z": 7520.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5584.0,
+        "y": -1416.0,
+        "z": 6464.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4608.0,
+        "y": 128.0,
+        "z": 6944.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4704.0,
+        "y": -416.0,
+        "z": 7232.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5728.0,
+        "y": -1056.0,
+        "z": 7520.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 5120.0,
+        "y": -1152.0,
+        "z": 6724.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 4920.0,
+        "y": -1024.0,
+        "z": 5808.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4916.0,
+        "y": -1340.0,
+        "z": 6752.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 6368.0,
+        "y": -880.0,
+        "z": 5424.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 5520.0,
+        "y": -172.0,
+        "z": 6628.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 270.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5360.0,
+        "y": -1400.0,
+        "z": 7104.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5360.0,
+        "y": -1400.0,
+        "z": 6720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5360.0,
+        "y": -1400.0,
+        "z": 7488.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5824.0,
+        "y": -1400.0,
+        "z": 7584.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4920.0,
+        "y": -1016.0,
+        "z": 6752.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4920.0,
+        "y": -1016.0,
+        "z": 7392.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5984.0,
+        "y": -352.0,
+        "z": 7132.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 7168.0,
+        "y": -928.0,
+        "z": 7232.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5436.0,
+        "y": -976.0,
+        "z": 6880.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5436.0,
+        "y": -976.0,
+        "z": 7328.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5840.0,
+        "y": -1304.0,
+        "z": 7136.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5056.0,
+        "y": 160.0,
+        "z": 7104.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5800.0,
+        "y": -1408.0,
+        "z": 6584.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 6104.0,
+        "y": -1408.0,
+        "z": 6584.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 6464.0,
+        "y": -1424.0,
+        "z": 6704.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5436.0,
+        "y": -976.0,
+        "z": 5920.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5436.0,
+        "y": -976.0,
+        "z": 6304.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4648.0,
+        "y": 80.0,
+        "z": 5600.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4064.0,
+        "y": 456.0,
+        "z": 5976.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4784.0,
+        "y": -360.0,
+        "z": 6552.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4784.0,
+        "y": -360.0,
+        "z": 6176.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4336.0,
+        "y": 456.0,
+        "z": 5976.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5096.0,
+        "y": 608.0,
+        "z": 5504.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5096.0,
+        "y": 608.0,
+        "z": 6272.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5096.0,
+        "y": 608.0,
+        "z": 5888.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4696.0,
+        "y": 400.0,
+        "z": 6032.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4696.0,
+        "y": 400.0,
+        "z": 5536.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5088.0,
+        "y": 96.0,
+        "z": 6112.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5088.0,
+        "y": 96.0,
+        "z": 6624.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5536.0,
+        "y": 96.0,
+        "z": 7104.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 5536.0,
+        "y": 96.0,
+        "z": 6624.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4856.0,
+        "y": -360.0,
+        "z": 5320.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4856.0,
+        "y": -360.0,
+        "z": 5816.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4176.0,
+        "y": 728.0,
+        "z": 6176.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4176.0,
+        "y": 640.0,
+        "z": 6888.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 4352.0,
+        "y": 860.0,
+        "z": 6084.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 4600.0,
+        "y": 928.0,
+        "z": 5200.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4596.0,
+        "y": 928.0,
+        "z": 6136.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 4216.0,
+        "y": 640.0,
+        "z": 6504.5
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 4176.0,
+        "y": 480.0,
+        "z": 6996.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3388.0,
+        "y": 272.0,
+        "z": 7192.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4096.0,
+        "y": 272.0,
+        "z": 7160.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4176.0,
+        "y": 640.0,
+        "z": 6688.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 4176.0,
+        "y": 640.0,
+        "z": 6432.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2064.0,
+        "y": -448.0,
+        "z": 6488.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2064.0,
+        "y": -448.0,
+        "z": 6096.0
+      }
+    },
+    {
+      "classname": "info_target",
+      "origin": {
+        "x": 3376.0,
+        "y": 272.0,
+        "z": 7060.0
+      },
+      "angles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    {
+      "classname": "trigger_teleport",
+      "origin": {
+        "x": 3769.58,
+        "y": 272.0,
+        "z": 6852.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3264.0,
+        "y": -1312.0,
+        "z": 7264.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2336.0,
+        "y": -1312.0,
+        "z": 7264.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2192.0,
+        "y": -1312.0,
+        "z": 6352.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2864.0,
+        "y": -1160.0,
+        "z": 6432.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2336.0,
+        "y": -1312.0,
+        "z": 6688.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 3264.0,
+        "y": -1312.0,
+        "z": 6688.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 184.0,
+        "z": 6488.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 184.0,
+        "z": 6096.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2512.0,
+        "y": 256.0,
+        "z": 6488.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2512.0,
+        "y": 256.0,
+        "z": 6096.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2768.0,
+        "y": 848.0,
+        "z": 6680.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1592.0,
+        "y": -624.0,
+        "z": 6104.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2864.0,
+        "y": 1056.0,
+        "z": 6720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1488.0,
+        "y": -192.0,
+        "z": 6240.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1488.0,
+        "y": 288.0,
+        "z": 6240.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1520.0,
+        "y": 960.0,
+        "z": 6720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2144.0,
+        "y": 960.0,
+        "z": 6720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 184.0,
+        "z": 5704.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 184.0,
+        "z": 5704.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2512.0,
+        "y": 256.0,
+        "z": 5704.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 680.0,
+        "z": 5720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 680.0,
+        "z": 5720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1904.0,
+        "y": 1344.0,
+        "z": 5440.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 896.0,
+        "y": 608.0,
+        "z": 5056.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 896.0,
+        "y": 960.0,
+        "z": 5424.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 680.0,
+        "z": 4544.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 680.0,
+        "z": 5328.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 680.0,
+        "z": 4936.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 680.0,
+        "z": 5328.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 680.0,
+        "z": 4936.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 184.0,
+        "z": 4920.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 184.0,
+        "z": 4920.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 184.0,
+        "z": 5312.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2512.0,
+        "y": 256.0,
+        "z": 5312.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2512.0,
+        "y": 256.0,
+        "z": 4920.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 184.0,
+        "z": 5312.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2416.0,
+        "y": 1536.0,
+        "z": 4544.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2752.0,
+        "y": 1280.0,
+        "z": 4544.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1536.0,
+        "y": 1248.0,
+        "z": 4136.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1536.0,
+        "y": 1248.0,
+        "z": 4480.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1032.0,
+        "y": 1248.0,
+        "z": 4136.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1032.0,
+        "y": 1248.0,
+        "z": 3792.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1032.0,
+        "y": 640.0,
+        "z": 4136.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2016.0,
+        "y": 1248.0,
+        "z": 4136.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2016.0,
+        "y": 1248.0,
+        "z": 4480.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 680.0,
+        "z": 4152.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1552.0,
+        "y": 680.0,
+        "z": 4152.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2032.0,
+        "y": 680.0,
+        "z": 4544.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2536.0,
+        "y": 864.0,
+        "z": 4544.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2624.0,
+        "y": 1088.0,
+        "z": 3622.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2624.0,
+        "y": 576.0,
+        "z": 3622.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1856.0,
+        "y": 576.0,
+        "z": 3622.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1536.0,
+        "y": 1248.0,
+        "z": 3448.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2016.0,
+        "y": 1248.0,
+        "z": 3792.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2208.0,
+        "y": 1728.0,
+        "z": 3904.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1312.0,
+        "y": 312.0,
+        "z": 3532.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1536.0,
+        "y": 1248.0,
+        "z": 3792.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1032.0,
+        "y": 1248.0,
+        "z": 3448.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1032.0,
+        "y": 640.0,
+        "z": 3448.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1032.0,
+        "y": 640.0,
+        "z": 3792.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1176.0,
+        "y": 2064.0,
+        "z": 3552.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1176.0,
+        "y": 2064.0,
+        "z": 3948.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1736.0,
+        "y": 2064.0,
+        "z": 3552.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1736.0,
+        "y": 2064.0,
+        "z": 3948.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2240.0,
+        "y": 2064.0,
+        "z": 4028.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2240.0,
+        "y": 2064.0,
+        "z": 3636.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2688.0,
+        "y": 2064.0,
+        "z": 3636.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 2688.0,
+        "y": 2064.0,
+        "z": 4028.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1728.0,
+        "y": 2400.0,
+        "z": 3920.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 1488.0,
+        "y": 2400.0,
+        "z": 4016.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 2432.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 2672.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 3152.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 2912.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 480.0,
+        "y": 1232.0,
+        "z": 1764.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 480.0,
+        "y": 1232.0,
+        "z": 2056.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 208.0,
+        "y": 1632.0,
+        "z": 2012.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 208.0,
+        "y": 1632.0,
+        "z": 1720.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 1952.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 2192.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 208.0,
+        "y": 1632.0,
+        "z": 1428.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 224.0,
+        "y": 64.0,
+        "z": 672.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 226.0,
+        "y": -320.0,
+        "z": 448.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -266.0,
+        "y": -320.0,
+        "z": 448.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 226.0,
+        "y": -320.0,
+        "z": 752.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -266.0,
+        "y": -320.0,
+        "z": 752.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -288.0,
+        "y": 1296.0,
+        "z": 1684.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -160.0,
+        "y": 1632.0,
+        "z": 1684.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -160.0,
+        "y": 1632.0,
+        "z": 1392.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -288.0,
+        "y": 1296.0,
+        "z": 1100.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -288.0,
+        "y": 1296.0,
+        "z": 1392.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -160.0,
+        "y": 1632.0,
+        "z": 1100.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 960.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 1200.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 128.0,
+        "y": 1232.0,
+        "z": 1440.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -192.0,
+        "y": 816.0,
+        "z": 1136.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -192.0,
+        "y": 816.0,
+        "z": 1428.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 320.0,
+        "y": 816.0,
+        "z": 1428.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 320.0,
+        "y": 816.0,
+        "z": 1136.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 480.0,
+        "y": 1232.0,
+        "z": 1472.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -384.0,
+        "y": 152.0,
+        "z": 408.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -384.0,
+        "y": 152.0,
+        "z": 672.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -192.0,
+        "y": 816.0,
+        "z": 844.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 320.0,
+        "y": 816.0,
+        "z": 844.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 224.0,
+        "y": 64.0,
+        "z": 408.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": -266.0,
+        "y": -320.0,
+        "z": 144.0
+      }
+    },
+    {
+      "classname": "light",
+      "origin": {
+        "x": 226.0,
+        "y": -320.0,
+        "z": 144.0
+      }
+    }
+  ]
+}
