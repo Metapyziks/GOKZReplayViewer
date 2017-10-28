@@ -228,6 +228,9 @@ var ReplayViewer = (function (_super) {
         };
         req.send(null);
     };
+    ReplayViewer.prototype.setMapBaseUrl = function (url) {
+        this.mapBaseUrl = url;
+    };
     ReplayViewer.prototype.setReplay = function (replay) {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
@@ -240,7 +243,7 @@ var ReplayViewer = (function (_super) {
         document.title = title;
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
-            this.loadMap("/GOKZReplayViewer/maps/" + replay.mapName + "/index.json");
+            this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json");
         }
     };
     ReplayViewer.prototype.onKeyDown = function (key) {

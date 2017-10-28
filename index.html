@@ -7,10 +7,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js"></script>
-        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=38f0f1e"></script>
-        <script src="/GOKZReplayViewer/js/sourceutils.js?v=38f0f1e"></script>
-        <script src="/GOKZReplayViewer/js/replayviewer.js?v=38f0f1e"></script>
-        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=38f0f1e" />
+        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=183468b"></script>
+        <script src="/GOKZReplayViewer/js/sourceutils.js?v=183468b"></script>
+        <script src="/GOKZReplayViewer/js/replayviewer.js?v=183468b"></script>
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=183468b" />
     </head>
     <body>
     <h2 id="title">GOKZ Replay Viewer Demo</h2>
@@ -50,6 +50,7 @@
                         .css("color", "#fff");
 
                     viewer = new ReplayViewer($("#map-view")[0]);
+                    viewer.setMapBaseUrl("/GOKZReplayViewer/maps");
                     viewer.loadReplay(decodeURIComponent(replayUrl));
                     viewer.animate();
                 }

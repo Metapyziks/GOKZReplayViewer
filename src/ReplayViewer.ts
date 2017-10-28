@@ -6,6 +6,7 @@ import WebGame = Facepunch.WebGame;
 class ReplayViewer extends SourceUtils.MapViewer {
     private replay: ReplayFile;
     private currentMapName: string;
+    private mapBaseUrl: string;
 
     playbackRate = 1;
 
@@ -49,6 +50,10 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private tempTickData1 = new TickData();
     private tempTickData2 = new TickData();
 
+    setMapBaseUrl(url: string): void {
+        this.mapBaseUrl = url;
+    }
+
     setReplay(replay: ReplayFile): void {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
@@ -65,7 +70,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
-            this.loadMap(`/GOKZReplayViewer/maps/${replay.mapName}/index.json`);
+            this.loadMap(`${this.mapBaseUrl}/${replay.mapName}/index.json`);
         }
     }
 
