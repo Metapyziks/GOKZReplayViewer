@@ -233,6 +233,11 @@ var ReplayViewer = (function (_super) {
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
         this.tick = -this.pauseTicks;
         this.spareTime = 0;
+        var mins = Math.floor(replay.time / 60);
+        var secs = replay.time - (mins * 60);
+        var title = replay.playerName + " - " + replay.mapName + " - " + mins + ":" + (secs < 10 ? '0' : '') + secs.toFixed(3);
+        $("#title").text(title);
+        document.title = title;
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
             this.loadMap("/GOKZReplayViewer/maps/" + replay.mapName + "/index.json");

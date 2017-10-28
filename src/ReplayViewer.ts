@@ -55,6 +55,14 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.tick = -this.pauseTicks;
         this.spareTime = 0;
 
+        const mins = Math.floor(replay.time / 60);
+        const secs = replay.time - (mins * 60);
+
+        const title = `${replay.playerName} - ${replay.mapName} - ${mins}:${secs < 10 ? '0' : ''}${secs.toFixed(3)}`;
+
+        $("#title").text(title);
+        document.title = title;
+
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
             this.loadMap(`/GOKZReplayViewer/maps/${replay.mapName}/index.json`);
