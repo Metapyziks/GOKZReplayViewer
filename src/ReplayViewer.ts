@@ -42,8 +42,11 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private tick = -1;
     private spareTime = 0;
 
-    private prevTick = new TickData();
-    private nextTick = new TickData();
+    private tickData = new TickData();
+
+    private tempTickData0 = new TickData();
+    private tempTickData1 = new TickData();
+    private tempTickData2 = new TickData();
 
     setReplay(replay: ReplayFile): void {
         this.replay = replay;
@@ -67,12 +70,40 @@ class ReplayViewer extends SourceUtils.MapViewer {
             ? this.replay.tickCount - 1 : index;
     }
 
-    private subAngles(a: Facepunch.Vector2, b: Facepunch.Vector2): void {
-        a.x -= b.x;
-        a.y -= b.y;
+    private deltaAngle(a: number, b: number): number {
+        return (b - a) - Math.floor((b - a + 180) / 360) * 360;
+    }
 
-        a.x -= Math.floor((a.x + 180) / 360) * 360;
-        a.y -= Math.floor((a.y + 180) / 360) * 360;
+    private hermiteValue(p0: number, p1: number, p2: number, p3: number, t: number): number {
+        const m0 = (p2 - p0) * 0.5;
+        const m1 = (p3 - p1) * 0.5;
+
+        const t2 = t * t;
+        const t3 = t * t * t;
+
+        return (2 * t3 - 3 * t2 + 1) * p1 + (t3 - 2 * t2 + t) * m0
+            + (-2 * t3 + 3 * t2) * p2 + (t3 - t2) * m1;
+    }
+
+    private hermitePosition(p0: Facepunch.Vector3, p1: Facepunch.Vector3,
+        p2: Facepunch.Vector3, p3: Facepunch.Vector3, t: number, out: Facepunch.Vector3) {
+        out.x = this.hermiteValue(p0.x, p1.x, p2.x, p3.x, t);
+        out.y = this.hermiteValue(p0.y, p1.y, p2.y, p3.y, t);
+        out.z = this.hermiteValue(p0.z, p1.z, p2.z, p3.z, t);
+    }
+
+    private hermiteAngles(a0: Facepunch.Vector2, a1: Facepunch.Vector2,
+        a2: Facepunch.Vector2, a3: Facepunch.Vector2, t: number, out: Facepunch.Vector2) {
+        out.x = this.hermiteValue(
+            a1.x + this.deltaAngle(a1.x, a0.x),
+            a1.x,
+            a1.x + this.deltaAngle(a1.x, a2.x),
+            a1.x + this.deltaAngle(a1.x, a3.x), t);
+        out.y = this.hermiteValue(
+            a1.y + this.deltaAngle(a1.y, a0.y),
+            a1.y,
+            a1.y + this.deltaAngle(a1.y, a2.y),
+            a1.y + this.deltaAngle(a1.y, a3.y), t);
     }
 
     protected onUpdateFrame(dt: number): void {
@@ -92,34 +123,34 @@ class ReplayViewer extends SourceUtils.MapViewer {
             }
         }
 
-        const prevTickIndex = this.clampTick(this.tick + 0);
-        const nextTickIndex = this.clampTick(this.tick + 1);
+        this.replay.getTickData(this.clampTick(this.tick), this.tickData);
+        let eyeHeight = this.tickData.getEyeHeight();
 
-        this.replay.getTickData(prevTickIndex, this.prevTick);
-        let eyeHeight = this.prevTick.getEyeHeight();
-
-        if (prevTickIndex !== nextTickIndex && this.spareTime >= 0 && this.spareTime <= tickPeriod) {
+        if (this.spareTime >= 0 && this.spareTime <= tickPeriod) {
             const t = this.spareTime / tickPeriod;
-            this.replay.getTickData(nextTickIndex, this.nextTick);
 
-            this.nextTick.position.sub(this.prevTick.position);
-            this.nextTick.position.multiplyScalar(t);
-            this.prevTick.position.add(this.nextTick.position);
+            const d0 = this.replay.getTickData(this.clampTick(this.tick - 1), this.tempTickData0);
+            const d1 = this.tickData;
+            const d2 = this.replay.getTickData(this.clampTick(this.tick + 1), this.tempTickData1);
+            const d3 = this.replay.getTickData(this.clampTick(this.tick + 2), this.tempTickData2);
 
-            this.subAngles(this.nextTick.angles, this.prevTick.angles);
-            this.nextTick.angles.multiplyScalar(t);
-            this.prevTick.angles.add(this.nextTick.angles);
+            this.hermitePosition(d0.position, d1.position,
+                d2.position, d3.position, t, this.tickData.position);
+            this.hermiteAngles(d0.angles, d1.angles,
+                d2.angles, d3.angles, t, this.tickData.angles);
 
-            eyeHeight += (this.nextTick.getEyeHeight() - eyeHeight) * t;
+            eyeHeight = this.hermiteValue(
+                d0.getEyeHeight(), d1.getEyeHeight(),
+                d2.getEyeHeight(), d3.getEyeHeight(), t);
         }
 
         this.mainCamera.setPosition(
-            this.prevTick.position.x,
-            this.prevTick.position.y,
-            this.prevTick.position.z + eyeHeight);
+            this.tickData.position.x,
+            this.tickData.position.y,
+            this.tickData.position.z + eyeHeight);
 
         this.setCameraAngles(
-            (this.prevTick.angles.y - 90) * Math.PI / 180,
-            -this.prevTick.angles.x * Math.PI / 180);
+            (this.tickData.angles.y - 90) * Math.PI / 180,
+            -this.tickData.angles.x * Math.PI / 180);
     }
 }

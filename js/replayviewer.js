@@ -196,8 +196,10 @@ var ReplayViewer = (function (_super) {
         _this.pauseTime = 1.0;
         _this.tick = -1;
         _this.spareTime = 0;
-        _this.prevTick = new TickData();
-        _this.nextTick = new TickData();
+        _this.tickData = new TickData();
+        _this.tempTickData0 = new TickData();
+        _this.tempTickData1 = new TickData();
+        _this.tempTickData2 = new TickData();
         return _this;
     }
     ReplayViewer.prototype.onInitialize = function () {
@@ -244,11 +246,25 @@ var ReplayViewer = (function (_super) {
             ? 0 : index >= this.replay.tickCount
             ? this.replay.tickCount - 1 : index;
     };
-    ReplayViewer.prototype.subAngles = function (a, b) {
-        a.x -= b.x;
-        a.y -= b.y;
-        a.x -= Math.floor((a.x + 180) / 360) * 360;
-        a.y -= Math.floor((a.y + 180) / 360) * 360;
+    ReplayViewer.prototype.deltaAngle = function (a, b) {
+        return (b - a) - Math.floor((b - a + 180) / 360) * 360;
+    };
+    ReplayViewer.prototype.hermiteValue = function (p0, p1, p2, p3, t) {
+        var m0 = (p2 - p0) * 0.5;
+        var m1 = (p3 - p1) * 0.5;
+        var t2 = t * t;
+        var t3 = t * t * t;
+        return (2 * t3 - 3 * t2 + 1) * p1 + (t3 - 2 * t2 + t) * m0
+            + (-2 * t3 + 3 * t2) * p2 + (t3 - t2) * m1;
+    };
+    ReplayViewer.prototype.hermitePosition = function (p0, p1, p2, p3, t, out) {
+        out.x = this.hermiteValue(p0.x, p1.x, p2.x, p3.x, t);
+        out.y = this.hermiteValue(p0.y, p1.y, p2.y, p3.y, t);
+        out.z = this.hermiteValue(p0.z, p1.z, p2.z, p3.z, t);
+    };
+    ReplayViewer.prototype.hermiteAngles = function (a0, a1, a2, a3, t, out) {
+        out.x = this.hermiteValue(a1.x + this.deltaAngle(a1.x, a0.x), a1.x, a1.x + this.deltaAngle(a1.x, a2.x), a1.x + this.deltaAngle(a1.x, a3.x), t);
+        out.y = this.hermiteValue(a1.y + this.deltaAngle(a1.y, a0.y), a1.y, a1.y + this.deltaAngle(a1.y, a2.y), a1.y + this.deltaAngle(a1.y, a3.y), t);
     };
     ReplayViewer.prototype.onUpdateFrame = function (dt) {
         _super.prototype.onUpdateFrame.call(this, dt);
@@ -263,23 +279,20 @@ var ReplayViewer = (function (_super) {
                 this.tick = -this.pauseTicks;
             }
         }
-        var prevTickIndex = this.clampTick(this.tick + 0);
-        var nextTickIndex = this.clampTick(this.tick + 1);
-        this.replay.getTickData(prevTickIndex, this.prevTick);
-        var eyeHeight = this.prevTick.getEyeHeight();
-        if (prevTickIndex !== nextTickIndex && this.spareTime >= 0 && this.spareTime <= tickPeriod) {
+        this.replay.getTickData(this.clampTick(this.tick), this.tickData);
+        var eyeHeight = this.tickData.getEyeHeight();
+        if (this.spareTime >= 0 && this.spareTime <= tickPeriod) {
             var t = this.spareTime / tickPeriod;
-            this.replay.getTickData(nextTickIndex, this.nextTick);
-            this.nextTick.position.sub(this.prevTick.position);
-            this.nextTick.position.multiplyScalar(t);
-            this.prevTick.position.add(this.nextTick.position);
-            this.subAngles(this.nextTick.angles, this.prevTick.angles);
-            this.nextTick.angles.multiplyScalar(t);
-            this.prevTick.angles.add(this.nextTick.angles);
-            eyeHeight += (this.nextTick.getEyeHeight() - eyeHeight) * t;
+            var d0 = this.replay.getTickData(this.clampTick(this.tick - 1), this.tempTickData0);
+            var d1 = this.tickData;
+            var d2 = this.replay.getTickData(this.clampTick(this.tick + 1), this.tempTickData1);
+            var d3 = this.replay.getTickData(this.clampTick(this.tick + 2), this.tempTickData2);
+            this.hermitePosition(d0.position, d1.position, d2.position, d3.position, t, this.tickData.position);
+            this.hermiteAngles(d0.angles, d1.angles, d2.angles, d3.angles, t, this.tickData.angles);
+            eyeHeight = this.hermiteValue(d0.getEyeHeight(), d1.getEyeHeight(), d2.getEyeHeight(), d3.getEyeHeight(), t);
         }
-        this.mainCamera.setPosition(this.prevTick.position.x, this.prevTick.position.y, this.prevTick.position.z + eyeHeight);
-        this.setCameraAngles((this.prevTick.angles.y - 90) * Math.PI / 180, -this.prevTick.angles.x * Math.PI / 180);
+        this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
+        this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
     };
     return ReplayViewer;
 }(SourceUtils.MapViewer));
