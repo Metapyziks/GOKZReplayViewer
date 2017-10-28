@@ -90,7 +90,6 @@ class ReplayFile {
     readonly teleportsUsed: number;
     readonly steamId: number;
     readonly steamId2: string;
-    readonly playerIp: string;
     readonly playerName: string;
     readonly tickCount: number;
     readonly tickRate: number;
@@ -114,7 +113,7 @@ class ReplayFile {
         this.teleportsUsed = reader.readInt32();
         this.steamId = reader.readInt32();
         this.steamId2 = reader.readAsciiString();
-        this.playerIp = reader.readAsciiString();
+        reader.readAsciiString();
         this.playerName = reader.readAsciiString();
         this.tickCount = reader.readInt32();
         this.tickRate = Math.round(this.tickCount / this.time); // todo

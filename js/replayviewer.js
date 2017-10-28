@@ -164,7 +164,7 @@ var ReplayFile = (function () {
         this.teleportsUsed = reader.readInt32();
         this.steamId = reader.readInt32();
         this.steamId2 = reader.readAsciiString();
-        this.playerIp = reader.readAsciiString();
+        reader.readAsciiString();
         this.playerName = reader.readAsciiString();
         this.tickCount = reader.readInt32();
         this.tickRate = Math.round(this.tickCount / this.time); // todo
