@@ -7530,7 +7530,7 @@
       ]
     },
     {
-      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "shader": "SourceUtils.Shaders.Lightmapped2WayBlend",
       "properties": [
         {
           "name": "basetexture",
