@@ -18,9 +18,9 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         $("#playback-speed").on("input", ev => {
             const val = $("#playback-speed").val();
-            const rate = Math.pow(2, val);
+            const rate = val * Math.abs(val);
             this.playbackRate = rate;
-            $("#control-playbackrate").text(Math.round(rate * 100).toString());
+            $("#control-playbackrate").text(rate.toPrecision(2));
         });
     }
 
@@ -88,7 +88,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.isPaused = false;
     }
 
-    goToTick(tick: number): void {
+    gotoTick(tick: number): void {
         this.tick = tick;
     }
 
@@ -156,12 +156,24 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         if (this.map.isReady() && !this.isPaused) {
             this.spareTime += dt * this.playbackRate;
-            while (this.spareTime >= tickPeriod) {
+
+            // Forward playback
+            while (this.spareTime > tickPeriod) {
                 this.spareTime -= tickPeriod;
                 this.tick += 1;
 
-                if (this.tick >= this.replay.tickCount + this.pauseTicks * 2) {
+                if (this.tick > this.replay.tickCount + this.pauseTicks * 2) {
                     this.tick = -this.pauseTicks;
+                }
+            }
+
+            // Rewinding
+            while (this.spareTime < 0) {
+                this.spareTime += tickPeriod;
+                this.tick -= 1;
+
+                if (this.tick < -this.pauseTicks * 2) {
+                    this.tick = this.replay.tickCount + this.pauseTicks;
                 }
             }
         } else {

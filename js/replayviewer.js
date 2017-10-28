@@ -210,9 +210,9 @@ var ReplayViewer = (function (_super) {
         this.useDefaultCameraControl = false;
         $("#playback-speed").on("input", function (ev) {
             var val = $("#playback-speed").val();
-            var rate = Math.pow(2, val);
+            var rate = val * Math.abs(val);
             _this.playbackRate = rate;
-            $("#control-playbackrate").text(Math.round(rate * 100).toString());
+            $("#control-playbackrate").text(rate.toPrecision(2));
         });
     };
     ReplayViewer.prototype.loadReplay = function (url) {
@@ -256,7 +256,7 @@ var ReplayViewer = (function (_super) {
     ReplayViewer.prototype.resume = function () {
         this.isPaused = false;
     };
-    ReplayViewer.prototype.goToTick = function (tick) {
+    ReplayViewer.prototype.gotoTick = function (tick) {
         this.tick = tick;
     };
     ReplayViewer.prototype.onKeyDown = function (key) {
@@ -302,11 +302,20 @@ var ReplayViewer = (function (_super) {
         var tickPeriod = 1.0 / this.replay.tickRate;
         if (this.map.isReady() && !this.isPaused) {
             this.spareTime += dt * this.playbackRate;
-            while (this.spareTime >= tickPeriod) {
+            // Forward playback
+            while (this.spareTime > tickPeriod) {
                 this.spareTime -= tickPeriod;
                 this.tick += 1;
-                if (this.tick >= this.replay.tickCount + this.pauseTicks * 2) {
+                if (this.tick > this.replay.tickCount + this.pauseTicks * 2) {
                     this.tick = -this.pauseTicks;
+                }
+            }
+            // Rewinding
+            while (this.spareTime < 0) {
+                this.spareTime += tickPeriod;
+                this.tick -= 1;
+                if (this.tick < -this.pauseTicks * 2) {
+                    this.tick = this.replay.tickCount + this.pauseTicks;
                 }
             }
         }
