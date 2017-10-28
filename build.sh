@@ -2,7 +2,7 @@
 
 tsc -p tsconfig.json
 
-VERSION=$(git rev-parse --short HEAD)
+HASH=$(git rev-parse --short HEAD)
 
-SED_ARGS=( 's/${VERSION}/'${VERSION}'/g' )
-sed "${SED_ARGS[@]}" index.template.html >index.html
+SED_ARGS=( '-i' '-E' 's/\?v=[0-9a-f-]+/\?v='${HASH}'/' )
+sed "${SED_ARGS[@]}" index.html

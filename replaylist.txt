@@ -1,6 +1,0 @@
-http://wiki.houseofclimb.com/maps/gokz-replays/kz_exps_cursedjourney/0_KZT_NRM_NUB.replay
-http://wiki.houseofclimb.com/maps/gokz-replays/kz_exps_cursedjourney/0_SKZ_NRM_NUB.replay
-http://wiki.houseofclimb.com/maps/gokz-replays/kz_colors_v2/0_SKZ_NRM_PRO.replay
-https://metapyziks.github.io/GOKZReplayViewer/replays/kz_reach_v2/0_KZT_NRM_PRO.replay
-https://metapyziks.github.io/GOKZReplayViewer/replays/kz_reach_v2/0_SKZ_NRM_PRO.replay
-https://metapyziks.github.io/GOKZReplayViewer/replays/kz_reach_v2/0_SKZ_NRM_NUB.replay
