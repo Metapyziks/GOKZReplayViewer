@@ -142,6 +142,9 @@ var TickData = (function () {
         this.buttons = 0;
         this.flags = 0;
     }
+    TickData.prototype.getEyeHeight = function () {
+        return (this.flags & EntityFlag.Ducking) != 0 ? 28 : 64;
+    };
     return TickData;
 }());
 var ReplayFile = (function () {
@@ -189,10 +192,12 @@ var ReplayViewer = (function (_super) {
     __extends(ReplayViewer, _super);
     function ReplayViewer() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.playbackRate = 1;
         _this.pauseTime = 1.0;
-        _this.tickData = new TickData();
         _this.tick = -1;
         _this.spareTime = 0;
+        _this.prevTick = new TickData();
+        _this.nextTick = new TickData();
         return _this;
     }
     ReplayViewer.prototype.onInitialize = function () {
@@ -227,12 +232,23 @@ var ReplayViewer = (function (_super) {
         }
         return _super.prototype.onKeyDown.call(this, key);
     };
+    ReplayViewer.prototype.clampTick = function (index) {
+        return index < 0
+            ? 0 : index >= this.replay.tickCount
+            ? this.replay.tickCount - 1 : index;
+    };
+    ReplayViewer.prototype.subAngles = function (a, b) {
+        a.x -= b.x;
+        a.y -= b.y;
+        a.x -= Math.floor((a.x + 180) / 360) * 360;
+        a.y -= Math.floor((a.y + 180) / 360) * 360;
+    };
     ReplayViewer.prototype.onUpdateFrame = function (dt) {
         _super.prototype.onUpdateFrame.call(this, dt);
         if (this.replay == null)
             return;
         var tickPeriod = 1.0 / this.replay.tickRate;
-        this.spareTime += dt;
+        this.spareTime += dt * this.playbackRate;
         while (this.spareTime >= tickPeriod) {
             this.spareTime -= tickPeriod;
             this.tick += 1;
@@ -240,13 +256,23 @@ var ReplayViewer = (function (_super) {
                 this.tick = -this.pauseTicks;
             }
         }
-        var clampedTick = this.tick < 0
-            ? 0 : this.tick >= this.replay.tickCount
-            ? this.replay.tickCount - 1 : this.tick;
-        this.replay.getTickData(clampedTick, this.tickData);
-        var eyeHeight = (this.tickData.flags & EntityFlag.Ducking) != 0 ? 28 : 64;
-        this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
-        this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
+        var prevTickIndex = this.clampTick(this.tick + 0);
+        var nextTickIndex = this.clampTick(this.tick + 1);
+        this.replay.getTickData(prevTickIndex, this.prevTick);
+        var eyeHeight = this.prevTick.getEyeHeight();
+        if (prevTickIndex !== nextTickIndex && this.spareTime >= 0 && this.spareTime <= tickPeriod) {
+            var t = this.spareTime / tickPeriod;
+            this.replay.getTickData(nextTickIndex, this.nextTick);
+            this.nextTick.position.sub(this.prevTick.position);
+            this.nextTick.position.multiplyScalar(t);
+            this.prevTick.position.add(this.nextTick.position);
+            this.subAngles(this.nextTick.angles, this.prevTick.angles);
+            this.nextTick.angles.multiplyScalar(t);
+            this.prevTick.angles.add(this.nextTick.angles);
+            eyeHeight += (this.nextTick.getEyeHeight() - eyeHeight) * t;
+        }
+        this.mainCamera.setPosition(this.prevTick.position.x, this.prevTick.position.y, this.prevTick.position.z + eyeHeight);
+        this.setCameraAngles((this.prevTick.angles.y - 90) * Math.PI / 180, -this.prevTick.angles.x * Math.PI / 180);
     };
     return ReplayViewer;
 }(SourceUtils.MapViewer));

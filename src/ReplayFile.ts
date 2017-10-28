@@ -66,6 +66,10 @@ class TickData {
     readonly angles = new Facepunch.Vector2();
     buttons: Button = 0;
     flags: EntityFlag = 0;
+
+    getEyeHeight(): number {
+        return (this.flags & EntityFlag.Ducking) != 0 ? 28 : 64;
+    }
 }
 
 class ReplayFile {

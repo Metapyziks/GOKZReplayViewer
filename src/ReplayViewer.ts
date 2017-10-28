@@ -6,6 +6,8 @@ import WebGame = Facepunch.WebGame;
 class ReplayViewer extends SourceUtils.MapViewer {
     private replay: ReplayFile;
 
+    playbackRate = 1;
+
     protected onInitialize(): void {
         super.onInitialize();
         this.canLockPointer = false;
@@ -29,9 +31,11 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     private pauseTime = 1.0;
     private pauseTicks: number;
-    private tickData = new TickData();
     private tick = -1;
     private spareTime = 0;
+
+    private prevTick = new TickData();
+    private nextTick = new TickData();
 
     setReplay(replay: ReplayFile): void {
         this.replay = replay;
@@ -49,6 +53,20 @@ class ReplayViewer extends SourceUtils.MapViewer {
         return super.onKeyDown(key);
     }
 
+    private clampTick(index: number): number {
+        return index < 0
+            ? 0 : index >= this.replay.tickCount
+            ? this.replay.tickCount - 1 : index;
+    }
+
+    private subAngles(a: Facepunch.Vector2, b: Facepunch.Vector2): void {
+        a.x -= b.x;
+        a.y -= b.y;
+
+        a.x -= Math.floor((a.x + 180) / 360) * 360;
+        a.y -= Math.floor((a.y + 180) / 360) * 360;
+    }
+
     protected onUpdateFrame(dt: number): void {
         super.onUpdateFrame(dt);
 
@@ -56,7 +74,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         const tickPeriod = 1.0 / this.replay.tickRate;
 
-        this.spareTime += dt;
+        this.spareTime += dt * this.playbackRate;
         while (this.spareTime >= tickPeriod) {
             this.spareTime -= tickPeriod;
             this.tick += 1;
@@ -65,22 +83,35 @@ class ReplayViewer extends SourceUtils.MapViewer {
                 this.tick = -this.pauseTicks;
             }
         }
-        
-        const clampedTick = this.tick < 0
-            ? 0 : this.tick >= this.replay.tickCount
-            ? this.replay.tickCount - 1 : this.tick;
 
-        this.replay.getTickData(clampedTick, this.tickData);
+        const prevTickIndex = this.clampTick(this.tick + 0);
+        const nextTickIndex = this.clampTick(this.tick + 1);
 
-        const eyeHeight = (this.tickData.flags & EntityFlag.Ducking) != 0 ? 28 : 64;
+        this.replay.getTickData(prevTickIndex, this.prevTick);
+        let eyeHeight = this.prevTick.getEyeHeight();
+
+        if (prevTickIndex !== nextTickIndex && this.spareTime >= 0 && this.spareTime <= tickPeriod) {
+            const t = this.spareTime / tickPeriod;
+            this.replay.getTickData(nextTickIndex, this.nextTick);
+
+            this.nextTick.position.sub(this.prevTick.position);
+            this.nextTick.position.multiplyScalar(t);
+            this.prevTick.position.add(this.nextTick.position);
+
+            this.subAngles(this.nextTick.angles, this.prevTick.angles);
+            this.nextTick.angles.multiplyScalar(t);
+            this.prevTick.angles.add(this.nextTick.angles);
+
+            eyeHeight += (this.nextTick.getEyeHeight() - eyeHeight) * t;
+        }
 
         this.mainCamera.setPosition(
-            this.tickData.position.x,
-            this.tickData.position.y,
-            this.tickData.position.z + eyeHeight);
+            this.prevTick.position.x,
+            this.prevTick.position.y,
+            this.prevTick.position.z + eyeHeight);
 
         this.setCameraAngles(
-            (this.tickData.angles.y - 90) * Math.PI / 180,
-            -this.tickData.angles.x * Math.PI / 180);
+            (this.prevTick.angles.y - 90) * Math.PI / 180,
+            -this.prevTick.angles.x * Math.PI / 180);
     }
 }
