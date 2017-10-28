@@ -143,7 +143,7 @@ var TickData = (function () {
         this.flags = 0;
     }
     TickData.prototype.getEyeHeight = function () {
-        return (this.flags & EntityFlag.Ducking) != 0 ? 28 : 64;
+        return (this.flags & EntityFlag.Ducking) != 0 ? 46 : 64;
     };
     return TickData;
 }());
