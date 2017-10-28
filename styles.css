@@ -14,6 +14,7 @@ body {
 }
 
 #map-view canvas {
+    position: absolute;
     width: 100%;
     height: 100%;
 }
@@ -25,21 +26,27 @@ body {
     right: 0;
 }
 
-#debug-panel {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+.side-panel {
+    position: relative;
+    float: right;
+    clear: right;
+    z-index: 32;
     width: 256px;
     background-color: rgba(0, 0, 0, 0.25);
     color: white;
     font-family: sans-serif;
-    padding: 8px;
+    padding: 16px;
+    margin: 8px;
 }
 
-#debug-panel .debug-label {
+.side-panel .slider {
+    width: 240px;
+    margin: 8px;
+}
+
+.side-panel .label {
     display: inline-block;
-    width: 144px;
+    width: 128px;
     padding-right: 8px;
-    text-align: right;
     color: #cccccc;
 }

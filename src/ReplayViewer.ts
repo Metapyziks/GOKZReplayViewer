@@ -10,8 +10,16 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     protected onInitialize(): void {
         super.onInitialize();
+
         this.canLockPointer = false;
         this.useDefaultCameraControl = false;
+
+        $("#playback-speed").on("input", ev => {
+            const val = $("#playback-speed").val();
+            const rate = Math.pow(2, val);
+            this.playbackRate = rate;
+            $("#control-playbackrate").text(Math.round(rate * 100).toString());
+        });
     }
 
     loadReplay(url: string): void {

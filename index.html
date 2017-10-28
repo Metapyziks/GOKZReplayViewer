@@ -7,10 +7,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js"></script>
-        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=14954ec"></script>
-        <script src="/GOKZReplayViewer/js/sourceutils.js?v=14954ec"></script>
-        <script src="/GOKZReplayViewer/js/replayviewer.js?v=14954ec"></script>
-        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=14954ec" />
+        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=1bfc821"></script>
+        <script src="/GOKZReplayViewer/js/sourceutils.js?v=1bfc821"></script>
+        <script src="/GOKZReplayViewer/js/replayviewer.js?v=1bfc821"></script>
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=1bfc821" />
     </head>
     <body>
     <h2>GOKZ Replay Viewer Demo - kz_reach_v2</h2>
@@ -19,22 +19,26 @@
             var viewer;
             window.onload = function() {
                 viewer = new ReplayViewer($("#map-view")[0]);
-                viewer.loadMap("/GOKZReplayViewer/maps/kz_reach_v2/index.json?v=14954ec");
+                viewer.loadMap("/GOKZReplayViewer/maps/kz_reach_v2/index.json?v=1bfc821");
                 viewer.loadReplay("/GOKZReplayViewer/replays/kz_reach_v2/0_SKZ_NRM_PRO.replay");
                 viewer.animate();
             }
         </script>
-        <div id="debug-panel">
-            <span class="debug-label">Frame time:</span>&nbsp;<span id="debug-frametime"></span>&nbsp;ms<br/>
-            <span class="debug-label">Frame rate:</span>&nbsp;<span id="debug-framerate"></span>&nbsp;fps<br />
-            <span class="debug-label">Draw calls:</span>&nbsp;<span id="debug-drawcalls"></span><br />
+        <div id="control-panel" class="side-panel">
+            <span class="label">Playback rate:</span>&nbsp;<span id="control-playbackrate">100.0</span>%<br/>
+            <input id="playback-speed" class="slider" type="range" min="-6.0" max="3.0" value="0.0" step="0.25" />
+        </div>
+        <div id="debug-panel" class="side-panel">
+            <span class="label">Frame time:</span>&nbsp;<span id="debug-frametime"></span>&nbsp;ms<br/>
+            <span class="label">Frame rate:</span>&nbsp;<span id="debug-framerate"></span>&nbsp;fps<br />
+            <span class="label">Draw calls:</span>&nbsp;<span id="debug-drawcalls"></span><br />
             <div id="debug-loading">
-                <span class="debug-label">Vis loaded:</span>&nbsp;<span id="debug-visloaded"></span>%<br />
-                <span class="debug-label">Bsp loaded:</span>&nbsp;<span id="debug-bsploaded"></span>%<br />
-                <span class="debug-label">Geom loaded:</span>&nbsp;<span id="debug-geomloaded"></span>%<br />
-                <span class="debug-label">Props loaded:</span>&nbsp;<span id="debug-propsloaded"></span>%<br />
-                <span class="debug-label">Lightmap loaded:</span>&nbsp;<span id="debug-lightmaploaded"></span>%<br />
-                <span class="debug-label">Materials loaded:</span>&nbsp;<span id="debug-materialsloaded"></span>%<br />
+                <span class="label">Vis loaded:</span>&nbsp;<span id="debug-visloaded"></span>%<br />
+                <span class="label">Bsp loaded:</span>&nbsp;<span id="debug-bsploaded"></span>%<br />
+                <span class="label">Geom loaded:</span>&nbsp;<span id="debug-geomloaded"></span>%<br />
+                <span class="label">Props loaded:</span>&nbsp;<span id="debug-propsloaded"></span>%<br />
+                <span class="label">Lightmap loaded:</span>&nbsp;<span id="debug-lightmaploaded"></span>%<br />
+                <span class="label">Materials loaded:</span>&nbsp;<span id="debug-materialsloaded"></span>%<br />
             </div>
         </div>
     </div>

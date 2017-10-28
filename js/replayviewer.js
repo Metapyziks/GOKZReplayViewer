@@ -201,9 +201,16 @@ var ReplayViewer = (function (_super) {
         return _this;
     }
     ReplayViewer.prototype.onInitialize = function () {
+        var _this = this;
         _super.prototype.onInitialize.call(this);
         this.canLockPointer = false;
         this.useDefaultCameraControl = false;
+        $("#playback-speed").on("input", function (ev) {
+            var val = $("#playback-speed").val();
+            var rate = Math.pow(2, val);
+            _this.playbackRate = rate;
+            $("#control-playbackrate").text(Math.round(rate * 100).toString());
+        });
     };
     ReplayViewer.prototype.loadReplay = function (url) {
         var _this = this;
