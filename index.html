@@ -7,10 +7,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js"></script>
-        <script src="https://metapyziks.github.io/GOKZReplayViewer/js/facepunch.webgame.js?v=b3d8e7e"></script>
-        <script src="https://metapyziks.github.io/GOKZReplayViewer/js/sourceutils.js?v=b3d8e7e"></script>
-        <script src="https://metapyziks.github.io/GOKZReplayViewer/js/replayviewer.js?v=b3d8e7e"></script>
-        <link type="text/css" rel="stylesheet" href="https://metapyziks.github.io/GOKZReplayViewer/styles.css?v=b3d8e7e" />
+        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=b3d8e7e"></script>
+        <script src="/GOKZReplayViewer/js/sourceutils.js?v=b3d8e7e"></script>
+        <script src="/GOKZReplayViewer/js/replayviewer.js?v=b3d8e7e"></script>
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=b3d8e7e" />
     </head>
     <body>
     <h2>GOKZ Replay Viewer Demo - kz_reach_v2</h2>
@@ -19,8 +19,8 @@
             var viewer;
             window.onload = function() {
                 viewer = new ReplayViewer($("#map-view")[0]);
-                viewer.loadMap("https://metapyziks.github.io/GOKZReplayViewer/maps/kz_reach_v2/index.json?v=b3d8e7e");
-                viewer.loadReplay("https://metapyziks.github.io/GOKZReplayViewer/replays/kz_reach_v2/0_SKZ_NRM_PRO.replay");
+                viewer.loadMap("/GOKZReplayViewer/maps/kz_reach_v2/index.json?v=b3d8e7e");
+                viewer.loadReplay("/GOKZReplayViewer/replays/kz_reach_v2/0_SKZ_NRM_PRO.replay");
                 viewer.animate();
             }
         </script>

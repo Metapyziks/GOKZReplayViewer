@@ -21,11 +21,11 @@
     },
     {
       "level": 1,
-      "url": "https://metapyziks.github.io/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf/mip1.png"
+      "url": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf/mip1.png"
     },
     {
       "level": 0,
-      "url": "https://metapyziks.github.io/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf/mip0.png"
+      "url": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf/mip0.png"
     }
   ]
 }
