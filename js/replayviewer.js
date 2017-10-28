@@ -194,6 +194,7 @@ var ReplayViewer = (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.playbackRate = 1;
         _this.pauseTime = 1.0;
+        _this.isPaused = false;
         _this.tick = -1;
         _this.spareTime = 0;
         _this.tickData = new TickData();
@@ -234,7 +235,7 @@ var ReplayViewer = (function (_super) {
     ReplayViewer.prototype.setReplay = function (replay) {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
-        this.tick = -this.pauseTicks;
+        this.tick = this.tick === -1 ? -this.pauseTicks : this.tick;
         this.spareTime = 0;
         var mins = Math.floor(replay.time / 60);
         var secs = replay.time - (mins * 60);
@@ -246,10 +247,25 @@ var ReplayViewer = (function (_super) {
             this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json");
         }
     };
+    ReplayViewer.prototype.getIsPaused = function () {
+        return this.isPaused;
+    };
+    ReplayViewer.prototype.pause = function () {
+        this.isPaused = true;
+    };
+    ReplayViewer.prototype.resume = function () {
+        this.isPaused = false;
+    };
+    ReplayViewer.prototype.goToTick = function (tick) {
+        this.tick = tick;
+    };
     ReplayViewer.prototype.onKeyDown = function (key) {
         switch (key) {
             case WebGame.Key.F:
                 this.toggleFullscreen();
+                break;
+            case WebGame.Key.Space:
+                this.isPaused = !this.isPaused;
                 break;
         }
         return _super.prototype.onKeyDown.call(this, key);
@@ -284,7 +300,7 @@ var ReplayViewer = (function (_super) {
         if (this.replay == null)
             return;
         var tickPeriod = 1.0 / this.replay.tickRate;
-        if (this.map.isReady()) {
+        if (this.map.isReady() && !this.isPaused) {
             this.spareTime += dt * this.playbackRate;
             while (this.spareTime >= tickPeriod) {
                 this.spareTime -= tickPeriod;

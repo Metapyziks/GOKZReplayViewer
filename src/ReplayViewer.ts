@@ -41,6 +41,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     private pauseTime = 1.0;
     private pauseTicks: number;
+
+    private isPaused = false;
     private tick = -1;
     private spareTime = 0;
 
@@ -57,7 +59,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
     setReplay(replay: ReplayFile): void {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
-        this.tick = -this.pauseTicks;
+        this.tick = this.tick === -1 ? -this.pauseTicks : this.tick;
         this.spareTime = 0;
 
         const mins = Math.floor(replay.time / 60);
@@ -74,10 +76,29 @@ class ReplayViewer extends SourceUtils.MapViewer {
         }
     }
 
+    getIsPaused(): boolean {
+        return this.isPaused;
+    }
+
+    pause(): void {
+        this.isPaused = true;
+    }
+
+    resume(): void {
+        this.isPaused = false;
+    }
+
+    goToTick(tick: number): void {
+        this.tick = tick;
+    }
+
     protected onKeyDown(key: WebGame.Key): boolean {
         switch (key) {
             case WebGame.Key.F:
                 this.toggleFullscreen();
+                break;
+            case WebGame.Key.Space:
+                this.isPaused = !this.isPaused;
                 break;
         }
 
@@ -133,7 +154,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         const tickPeriod = 1.0 / this.replay.tickRate;
 
-        if (this.map.isReady()) {
+        if (this.map.isReady() && !this.isPaused) {
             this.spareTime += dt * this.playbackRate;
             while (this.spareTime >= tickPeriod) {
                 this.spareTime -= tickPeriod;
