@@ -1,53 +1,53 @@
 {
   "name": "kz_reach_v2",
-  "lightmapUrl": "/GOKZReplayViewer/maps/kz_reach_v2/lightmap.json?v=196e-10b7c",
+  "lightmapUrl": "/GOKZReplayViewer/maps/kz_reach_v2/lightmap.json?v=196e-12e15",
   "visPages": [
     {
       "first": 0,
       "count": 319,
-      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/vispage0.json?v=196e-10b7c"
+      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/vispage0.json?v=196e-12e15"
     }
   ],
   "leafPages": [
     {
       "first": 0,
       "count": 2770,
-      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/leafpage0.json?v=196e-10b7c"
+      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/leafpage0.json?v=196e-12e15"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 13,
-      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/disppage0.json?v=196e-10b7c"
+      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/disppage0.json?v=196e-12e15"
     }
   ],
   "materialPages": [
     {
       "first": 0,
       "count": 46,
-      "url": "/GOKZReplayViewer/maps/kz_reach_v2/materials/matpage0.json?v=196e-10b7c"
+      "url": "/GOKZReplayViewer/maps/kz_reach_v2/materials/matpage0.json?v=196e-12e15"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 173,
-      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/bsppage0.json?v=196e-10b7c"
+      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/bsppage0.json?v=196e-12e15"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 8,
-      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/mdlpage0.json?v=196e-10b7c"
+      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/mdlpage0.json?v=196e-12e15"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 50,
-      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/vhvpage0.json?v=196e-10b7c"
+      "url": "/GOKZReplayViewer/maps/kz_reach_v2/geom/vhvpage0.json?v=196e-12e15"
     }
   ],
   "entities": [
@@ -63,32 +63,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrrt.vtf.json?v=196e-10b7c"
+            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrrt.vtf.json?v=196e-12e15"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrlf.vtf.json?v=196e-10b7c"
+            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrlf.vtf.json?v=196e-12e15"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrbk.vtf.json?v=196e-10b7c"
+            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrbk.vtf.json?v=196e-12e15"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrft.vtf.json?v=196e-10b7c"
+            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrft.vtf.json?v=196e-12e15"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrup.vtf.json?v=196e-10b7c"
+            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrup.vtf.json?v=196e-12e15"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf.json?v=196e-10b7c"
+            "value": "/GOKZReplayViewer/materials/skybox/sky_cs15_daylight03_hdrdn.vtf.json?v=196e-12e15"
           },
           {
             "name": "hdrCompressed",

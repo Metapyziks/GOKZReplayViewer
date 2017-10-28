@@ -7529,7 +7529,21 @@
         }
       ]
     },
-    null,
+    {
+      "shader": "SourceUtils.Shaders.LightmappedGeneric",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 6
+        },
+        {
+          "name": "basetexture2",
+          "type": 5,
+          "value": 2
+        }
+      ]
+    },
     {
       "shader": "SourceUtils.Shaders.LightmappedGeneric",
       "properties": [
