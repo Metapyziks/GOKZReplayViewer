@@ -118,6 +118,40 @@ var BinaryReader = (function () {
     };
     return BinaryReader;
 }());
+var KeyDisplay = (function () {
+    function KeyDisplay(container) {
+        this.buttonMap = {};
+        this.element = document.createElement("div");
+        this.element.classList.add("key-display");
+        this.element.innerHTML = "\n            <div class=\"key key-w\">W</div>\n            <div class=\"key key-a\">A</div>\n            <div class=\"key key-s\">S</div>\n            <div class=\"key key-d\">D</div>\n            <div class=\"key key-walk\">Walk</div>\n            <div class=\"key key-duck\">Duck</div>\n            <div class=\"key key-jump\">Jump</div>";
+        container.appendChild(this.element);
+        this.buttonMap[Button.Forward] = this.element.getElementsByClassName("key-w")[0];
+        this.buttonMap[Button.MoveLeft] = this.element.getElementsByClassName("key-a")[0];
+        this.buttonMap[Button.Back] = this.element.getElementsByClassName("key-s")[0];
+        this.buttonMap[Button.MoveRight] = this.element.getElementsByClassName("key-d")[0];
+        this.buttonMap[Button.Walk] = this.element.getElementsByClassName("key-walk")[0];
+        this.buttonMap[Button.Duck] = this.element.getElementsByClassName("key-duck")[0];
+        this.buttonMap[Button.Jump] = this.element.getElementsByClassName("key-jump")[0];
+    }
+    KeyDisplay.prototype.update = function (keys) {
+        for (var key in this.buttonMap) {
+            var pressed = (keys & parseInt(key)) !== 0;
+            if (pressed) {
+                this.buttonMap[key].classList.add("pressed");
+            }
+            else {
+                this.buttonMap[key].classList.remove("pressed");
+            }
+        }
+    };
+    KeyDisplay.prototype.show = function () {
+        this.element.style.display = "block";
+    };
+    KeyDisplay.prototype.hide = function () {
+        this.element.style.display = "none";
+    };
+    return KeyDisplay;
+}());
 var Button;
 (function (Button) {
     Button[Button["Attack"] = 1] = "Attack";
@@ -252,6 +286,7 @@ var ReplayViewer = (function (_super) {
         _this.autoRepeat = true;
         _this.ignoreMouseUp = true;
         _this.onCreatePlaybackBar();
+        _this.keyDisplay = new KeyDisplay(container);
         return _this;
     }
     ReplayViewer.prototype.onCreatePlaybackBar = function () {
@@ -550,6 +585,7 @@ var ReplayViewer = (function (_super) {
             this.hermiteAngles(d0.angles, d1.angles, d2.angles, d3.angles, t, this.tickData.angles);
             eyeHeight = this.hermiteValue(d0.getEyeHeight(), d1.getEyeHeight(), d2.getEyeHeight(), d3.getEyeHeight(), t);
         }
+        this.keyDisplay.update(this.tickData.buttons);
         this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
         this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
     };

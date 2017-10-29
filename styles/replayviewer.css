@@ -113,10 +113,72 @@
     margin-left: -256px;
     margin-top: -32px;
 
-    background-color: rgba(31, 31, 31, 0.25);
+    background-color: rgba(15, 15, 15, 0.825);
     color: white;
     font-family: sans-serif;
     text-align: center;
     line-height: 64px;
     user-select: none;
+}
+
+.map-viewer .key-display {
+    position: absolute;
+    width: 296px;
+    height: 200px;
+    left: 8px;
+    bottom: 48px;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.map-viewer .key-display .key {
+    position: absolute;
+    width: 64px;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #666;
+    font-weight: bold;
+}
+
+.map-viewer .key-display .pressed {
+    background-color: rgba(0, 0, 0, 0.875);
+    color: #fff;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
+}
+
+.map-viewer .key-display .key-w {
+    left: 152px;
+    top: 8px;
+}
+
+.map-viewer .key-display .key-a {
+    left: 80px;
+    top: 72px;
+}
+
+.map-viewer .key-display .key-s {
+    left: 152px;
+    top: 72px;
+}
+
+.map-viewer .key-display .key-d {
+    left: 224px;
+    top: 72px;
+}
+
+.map-viewer .key-display .key-walk {
+    left: 8px;
+    top: 8px;
+}
+
+.map-viewer .key-display .key-duck {
+    left: 8px;
+    top: 72px;
+}
+
+.map-viewer .key-display .key-jump {
+    left: 8px;
+    width: 280px;
+    bottom: 8px;
 }
