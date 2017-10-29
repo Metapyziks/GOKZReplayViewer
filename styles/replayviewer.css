@@ -11,8 +11,8 @@
 
 .map-viewer .playback-bar .scrubber-container {
     position: absolute;
-    left: 72px;
-    right: 96px;
+    left: 136px;
+    right: 160px;
     top: 0;
     bottom: 0;
     vertical-align: middle;
@@ -23,21 +23,37 @@
     height: 36px;
 }
 
-.map-viewer .playback-bar #pause, .map-viewer .playback-bar #play {
+.map-viewer .playback-bar #time {
+    position: absolute;
+    left: 40px;
+    width: 96px;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+.map-viewer .playback-bar .control {
     position: absolute;
     width: 24px;
     height: 24px;
-    left: 24px;
     top: 8px;
+    cursor: pointer;
 }
 
 .map-viewer .playback-bar #pause {
     display: none;
+    left: 16px;
     background-image: url(/GOKZReplayViewer/images/pause.png);
 }
 
 .map-viewer .playback-bar #play {
+    left: 16px;
     background-image: url(/GOKZReplayViewer/images/play.png);
+}
+
+.map-viewer .playback-bar #fullscreen {
+    right: 16px;
+    background-image: url(/GOKZReplayViewer/images/fullscreen.png);
 }
 
 .map-viewer .message {
