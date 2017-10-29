@@ -36,25 +36,23 @@ Then in the body of your page add a div that will host the canvas:
 
 Finally, use this JavaScript to create the viewer when the page loads:
 
-```javascript
-<script>
-    var viewer;
-    window.onload = function() {
-        // Create a replay viewer canvas inside the #example-viewer div
-        viewer = new ReplayViewer(document.getElementById("example-viewer"));
+```html
+var viewer;
+window.onload = function() {
+    // Create a replay viewer canvas inside the #example-viewer div
+    viewer = new ReplayViewer(document.getElementById("example-viewer"));
 
-        // Show FPS and frame time
-        viewer.showDebugPanel = true;
+    // Show FPS and frame time
+    viewer.showDebugPanel = true;
 
-        // Set the URL to look for maps exported using https://github.com/Metapyziks/SourceUtils
-        // The example below will make the app look for de_dust2 at http://www.example.com/maps/de_dust2/index.json
-        viewer.setMapBaseUrl("http://www.example.com/maps");
+    // Set the URL to look for maps exported using https://github.com/Metapyziks/SourceUtils
+    // The example below will make the app look for de_dust2 at http://www.example.com/maps/de_dust2/index.json
+    viewer.setMapBaseUrl("http://www.example.com/maps");
 
-        // Start downloading a replay
-        viewer.loadReplay("http://www.example.com/replays/test-replay.replay");
+    // Start downloading a replay
+    viewer.loadReplay("http://www.example.com/replays/test-replay.replay");
 
-        // Start the main loop
-        viewer.animate();
-    }
-</script>
+    // Start the main loop
+    viewer.animate();
+}
 ```
