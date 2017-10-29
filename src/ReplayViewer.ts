@@ -131,10 +131,19 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.updateControlText();
     }
 
+    private ignoreMouseUp = false;
+
+    protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
+        this.ignoreMouseUp = $(".side-panel").find(":hover").length > 0;
+        return super.onMouseDown(button, screenPos);
+    }
+
     protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
         if (super.onMouseUp(button, screenPos)) return true;
 
-        if (this.replay != null && this.map.isReady() && button === WebGame.MouseButton.Left) {
+        if (button === WebGame.MouseButton.Left && this.replay != null
+            && this.map.isReady() && !this.ignoreMouseUp) {
+                
             this.togglePause();
             return true;
         }

@@ -202,6 +202,7 @@ var ReplayViewer = (function (_super) {
         _this.tempTickData0 = new TickData();
         _this.tempTickData1 = new TickData();
         _this.tempTickData2 = new TickData();
+        _this.ignoreMouseUp = false;
         return _this;
     }
     ReplayViewer.prototype.onInitialize = function () {
@@ -292,10 +293,15 @@ var ReplayViewer = (function (_super) {
         this.tick = tick;
         this.updateControlText();
     };
+    ReplayViewer.prototype.onMouseDown = function (button, screenPos) {
+        this.ignoreMouseUp = $(".side-panel").find(":hover").length > 0;
+        return _super.prototype.onMouseDown.call(this, button, screenPos);
+    };
     ReplayViewer.prototype.onMouseUp = function (button, screenPos) {
         if (_super.prototype.onMouseUp.call(this, button, screenPos))
             return true;
-        if (this.replay != null && this.map.isReady() && button === WebGame.MouseButton.Left) {
+        if (button === WebGame.MouseButton.Left && this.replay != null
+            && this.map.isReady() && !this.ignoreMouseUp) {
             this.togglePause();
             return true;
         }
