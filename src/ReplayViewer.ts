@@ -10,10 +10,13 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private currentMapName: string;
     private mapBaseUrl: string;
 
+    private timeElem: HTMLElement;
     private pauseElem: HTMLElement;
     private resumeElem: HTMLElement;
-    private messageElem: HTMLElement;
+    private fullscreenElem: HTMLElement;
     private scrubberElem: HTMLInputElement;
+    
+    private messageElem: HTMLElement;
     
     private pauseTime = 1.0;
     private pauseTicks: number;
@@ -86,13 +89,27 @@ class ReplayViewer extends SourceUtils.MapViewer {
             this.isScrubbing = false;
         };
 
+        this.timeElem = document.createElement("div");
+        this.timeElem.id = "time";
+        playbackBar.appendChild(this.timeElem);
+
         this.pauseElem = document.createElement("div");
         this.pauseElem.id = "pause";
+        this.pauseElem.classList.add("control");
+        this.pauseElem.onclick = ev => this.pause();
         playbackBar.appendChild(this.pauseElem);
 
         this.resumeElem = document.createElement("div");
         this.resumeElem.id = "play";
+        this.resumeElem.classList.add("control");
+        this.resumeElem.onclick = ev => this.resume();
         playbackBar.appendChild(this.resumeElem);
+
+        this.fullscreenElem = document.createElement("div");
+        this.fullscreenElem.id = "fullscreen";
+        this.fullscreenElem.classList.add("control");
+        this.fullscreenElem.onclick = ev => this.toggleFullscreen();
+        playbackBar.appendChild(this.fullscreenElem);
 
         return playbackBar;
     }
@@ -155,7 +172,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.spareTime = 0;
         
         this.scrubberElem.max = this.replay.tickCount.toString();
-        this.scrubberElem.valueAsNumber = this.tick;
+        this.onTickChanged(this.tick);
 
         const mins = Math.floor(replay.time / 60);
         const secs = replay.time - (mins * 60);
@@ -210,6 +227,13 @@ class ReplayViewer extends SourceUtils.MapViewer {
     }
 
     protected onTickChanged(tick: number): void {
+        if (this.replay != null) {
+            const totalSeconds = this.clampTick(this.tick) / this.replay.tickRate;
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds - minutes * 60;
+            this.timeElem.innerText = `${minutes}:${seconds < 10 ? "0" : ""}${seconds.toFixed(1)}`;
+        }
+
         document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
         this.scrubberElem.valueAsNumber = tick;
     }
@@ -222,17 +246,13 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     private ignoreMouseUp = true;
 
-    private canTogglePlayWithClick(): boolean {
-        return event.target === this.canvas || event.target === this.pauseElem || event.target === this.resumeElem;
-    }
-
     protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
-        this.ignoreMouseUp = !this.canTogglePlayWithClick();
+        this.ignoreMouseUp = event.target !== this.canvas;
         return super.onMouseDown(button, screenPos);
     }
 
     protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
-        const ignored = this.ignoreMouseUp || !this.canTogglePlayWithClick();
+        const ignored = this.ignoreMouseUp || event.target !== this.canvas;
         this.ignoreMouseUp = true;
 
         if (super.onMouseUp(button, screenPos)) return true;

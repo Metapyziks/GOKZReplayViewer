@@ -287,12 +287,24 @@ var ReplayViewer = (function (_super) {
             _this.updateTickHash();
             _this.isScrubbing = false;
         };
+        this.timeElem = document.createElement("div");
+        this.timeElem.id = "time";
+        playbackBar.appendChild(this.timeElem);
         this.pauseElem = document.createElement("div");
         this.pauseElem.id = "pause";
+        this.pauseElem.classList.add("control");
+        this.pauseElem.onclick = function (ev) { return _this.pause(); };
         playbackBar.appendChild(this.pauseElem);
         this.resumeElem = document.createElement("div");
         this.resumeElem.id = "play";
+        this.resumeElem.classList.add("control");
+        this.resumeElem.onclick = function (ev) { return _this.resume(); };
         playbackBar.appendChild(this.resumeElem);
+        this.fullscreenElem = document.createElement("div");
+        this.fullscreenElem.id = "fullscreen";
+        this.fullscreenElem.classList.add("control");
+        this.fullscreenElem.onclick = function (ev) { return _this.toggleFullscreen(); };
+        playbackBar.appendChild(this.fullscreenElem);
         return playbackBar;
     };
     ReplayViewer.prototype.onCreateMessagePanel = function () {
@@ -342,7 +354,7 @@ var ReplayViewer = (function (_super) {
         this.tick = this.tick === -1 ? -this.pauseTicks : this.tick;
         this.spareTime = 0;
         this.scrubberElem.max = this.replay.tickCount.toString();
-        this.scrubberElem.valueAsNumber = this.tick;
+        this.onTickChanged(this.tick);
         var mins = Math.floor(replay.time / 60);
         var secs = replay.time - (mins * 60);
         var title = replay.playerName + " - " + replay.mapName + " - " + mins + ":" + (secs < 10 ? '0' : '') + secs.toFixed(3);
@@ -387,6 +399,12 @@ var ReplayViewer = (function (_super) {
         this.pause();
     };
     ReplayViewer.prototype.onTickChanged = function (tick) {
+        if (this.replay != null) {
+            var totalSeconds = this.clampTick(this.tick) / this.replay.tickRate;
+            var minutes = Math.floor(totalSeconds / 60);
+            var seconds = totalSeconds - minutes * 60;
+            this.timeElem.innerText = minutes + ":" + (seconds < 10 ? "0" : "") + seconds.toFixed(1);
+        }
         document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
         this.scrubberElem.valueAsNumber = tick;
     };
@@ -396,15 +414,12 @@ var ReplayViewer = (function (_super) {
         this.tick = tick;
         this.onTickChanged(tick);
     };
-    ReplayViewer.prototype.canTogglePlayWithClick = function () {
-        return event.target === this.canvas || event.target === this.pauseElem || event.target === this.resumeElem;
-    };
     ReplayViewer.prototype.onMouseDown = function (button, screenPos) {
-        this.ignoreMouseUp = !this.canTogglePlayWithClick();
+        this.ignoreMouseUp = event.target !== this.canvas;
         return _super.prototype.onMouseDown.call(this, button, screenPos);
     };
     ReplayViewer.prototype.onMouseUp = function (button, screenPos) {
-        var ignored = this.ignoreMouseUp || !this.canTogglePlayWithClick();
+        var ignored = this.ignoreMouseUp || event.target !== this.canvas;
         this.ignoreMouseUp = true;
         if (_super.prototype.onMouseUp.call(this, button, screenPos))
             return true;
