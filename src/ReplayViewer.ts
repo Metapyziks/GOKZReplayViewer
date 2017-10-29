@@ -127,7 +127,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
     }
 
     showSettings(): void {
-
+        this.showDebugPanel = !this.showDebugPanel;
     }
 
     showMessage(message: string): void {
@@ -147,9 +147,18 @@ class ReplayViewer extends SourceUtils.MapViewer {
         req.open("GET", url, true);
         req.responseType = "arraybuffer";
         req.onload = ev => {
+            if (req.status !== 200) {
+                this.showMessage(`Unable to download replay: ${req.statusText}`);
+                return;
+            }
+
             const arrayBuffer = req.response;
             if (arrayBuffer) {
-                this.setReplay(new ReplayFile(arrayBuffer));
+                try {
+                    this.setReplay(new ReplayFile(arrayBuffer));
+                } catch (e) {
+                    this.showMessage(`Unable to read replay: ${e}`);
+                }
             }
         };
         req.send(null);

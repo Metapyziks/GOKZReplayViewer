@@ -316,6 +316,7 @@ var ReplayViewer = (function (_super) {
         this.cameraMode = SourceUtils.CameraMode.Fixed;
     };
     ReplayViewer.prototype.showSettings = function () {
+        this.showDebugPanel = !this.showDebugPanel;
     };
     ReplayViewer.prototype.showMessage = function (message) {
         if (this.messageElem === undefined) {
@@ -332,9 +333,18 @@ var ReplayViewer = (function (_super) {
         req.open("GET", url, true);
         req.responseType = "arraybuffer";
         req.onload = function (ev) {
+            if (req.status !== 200) {
+                _this.showMessage("Unable to download replay: " + req.statusText);
+                return;
+            }
             var arrayBuffer = req.response;
             if (arrayBuffer) {
-                _this.setReplay(new ReplayFile(arrayBuffer));
+                try {
+                    _this.setReplay(new ReplayFile(arrayBuffer));
+                }
+                catch (e) {
+                    _this.showMessage("Unable to read replay: " + e);
+                }
             }
         };
         req.send(null);
