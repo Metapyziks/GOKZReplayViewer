@@ -34,7 +34,7 @@ Then in the body of your page add a div that will host the canvas:
 <div id="example-viewer" style="width: 1024px;height: 768px;"></div>
 ```
 
-Finally use this JavaScript to create the viewer when the page loads:
+Finally, use this JavaScript to create the viewer when the page loads:
 
 ```javascript
 <script>
