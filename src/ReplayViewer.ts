@@ -11,13 +11,16 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private mapBaseUrl: string;
     private ignoreHashChange = false;
 
+    private pauseElem: HTMLElement;
+    private resumeElem: HTMLElement;
+
     playbackRate = 1;
 
     protected onInitialize(): void {
         super.onInitialize();
 
         this.canLockPointer = false;
-        this.useDefaultCameraControl = false;
+        this.cameraMode = SourceUtils.CameraMode.Fixed;
 
         this.gotoTickHash();
 
@@ -26,12 +29,33 @@ class ReplayViewer extends SourceUtils.MapViewer {
             this.gotoTickHash();
         };
 
-        $("#playback-speed").on("input", ev => {
-            const val = $("#playback-speed").val();
+        const controlPanel = document.createElement("div");
+        controlPanel.id = "control-panel";
+        controlPanel.classList.add("side-panel");
+        controlPanel.innerHTML = `
+            <span class="label">Playback tick:</span>&nbsp;<span id="control-currenttick">0</span> / <span id="control-totalticks">0</span><br/>
+            <span class="label">Playback rate:</span>&nbsp;<span id="control-playbackrate">1.0</span>x<br/>
+            <input id="playback-speed" class="slider" type="range" min="-2.0" max="2.0" value="1.0" step="0.1" />`;
+
+        this.container.appendChild(controlPanel);
+
+        const speedSlider = document.getElementById("playback-speed") as HTMLInputElement;
+        const speedLabel = document.getElementById("control-playbackrate") as HTMLSpanElement;
+
+        speedSlider.oninput = ev => {
+            const val = speedSlider.valueAsNumber;
             const rate = val * Math.abs(val);
             this.playbackRate = rate;
-            $("#control-playbackrate").text(rate.toPrecision(2));
-        });
+            speedLabel.innerText = rate.toPrecision(2);
+        };
+
+        this.pauseElem = document.createElement("div");
+        this.pauseElem.id = "pause";
+        this.container.appendChild(this.pauseElem);
+        
+        this.resumeElem = document.createElement("div");
+        this.resumeElem.id = "resume";
+        this.container.appendChild(this.resumeElem);
     }
 
     loadReplay(url: string): void {
@@ -77,10 +101,10 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         const title = `${replay.playerName} - ${replay.mapName} - ${mins}:${secs < 10 ? '0' : ''}${secs.toFixed(3)}`;
 
-        $("#title").text(title);
+        document.getElementById("title").innerText = title;
         document.title = title;
 
-        $("#control-totalticks").text(replay.tickCount.toLocaleString());
+        document.getElementById("control-totalticks").innerText = replay.tickCount.toLocaleString();
 
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
@@ -94,13 +118,13 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     pause(): void {
         this.isPaused = true;
-        $("#pause").show();
-        $("#play").hide();
+        document.getElementById("pause").style.display = "block";
+        document.getElementById("resume").style.display = "none";
         this.updateTickHash();
     }
 
     resume(): void {
-        $("#pause").hide();
+        document.getElementById("pause").style.display = "none";
         this.isPaused = false;
     }
 
@@ -123,7 +147,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
     }
 
     private updateControlText(): void {
-        $("#control-currenttick").text((this.clampTick(this.tick) + 1).toLocaleString());
+        document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
     }
 
     gotoTick(tick: number): void {
@@ -134,7 +158,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private ignoreMouseUp = false;
 
     protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
-        this.ignoreMouseUp = $(".side-panel").find(":hover").length > 0;
+        this.ignoreMouseUp = event.target !== this.canvas;
         return super.onMouseDown(button, screenPos);
     }
 
