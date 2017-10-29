@@ -7,6 +7,7 @@
     line-height: 40px;
 
     background-color: rgba(15, 15, 15, 0.825);
+    font-weight: 550;
 }
 
 .map-viewer .playback-bar .scrubber-container {
@@ -30,6 +31,26 @@
     top: 0;
     bottom: 0;
     text-align: center;
+    user-select: none;
+}
+
+.map-viewer .playback-bar #speed {
+    position: absolute;
+    right: 92px;
+    width: 56px;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    user-select: none;
+}
+
+.map-viewer .playback-bar #speed:hover {
+    cursor: pointer;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.25);
+}
+
+.map-viewer .playback-bar #speed::before {
+    content: "x";
 }
 
 .map-viewer .playback-bar .control {
@@ -37,7 +58,12 @@
     width: 24px;
     height: 24px;
     top: 8px;
+}
+
+.map-viewer .playback-bar .control:hover {
     cursor: pointer;
+    -webkit-filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.25));
+    filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.25));
 }
 
 .map-viewer .playback-bar #pause {
@@ -49,6 +75,11 @@
 .map-viewer .playback-bar #play {
     left: 16px;
     background-image: url(/GOKZReplayViewer/images/play.png);
+}
+
+.map-viewer .playback-bar #settings {
+    right: 56px;
+    background-image: url(/GOKZReplayViewer/images/settings.png);
 }
 
 .map-viewer .playback-bar #fullscreen {
@@ -70,4 +101,5 @@
     font-family: sans-serif;
     text-align: center;
     line-height: 64px;
+    user-select: none;
 }

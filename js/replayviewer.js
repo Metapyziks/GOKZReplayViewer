@@ -239,37 +239,20 @@ var ReplayViewer = (function (_super) {
     function ReplayViewer(container) {
         var _this = _super.call(this, container) || this;
         _this.pauseTime = 1.0;
-        _this.isPaused = false;
+        _this.isPaused = true;
         _this.isScrubbing = false;
         _this.tick = -1;
         _this.spareTime = 0;
+        _this.playbackRate = 1;
         _this.tickData = new TickData();
         _this.tempTickData0 = new TickData();
         _this.tempTickData1 = new TickData();
         _this.tempTickData2 = new TickData();
-        _this.playbackRate = 1;
+        _this.autoRepeat = true;
         _this.ignoreMouseUp = true;
-        _this.onCreateControlPanel();
         _this.onCreatePlaybackBar();
         return _this;
     }
-    ReplayViewer.prototype.onCreateControlPanel = function () {
-        var _this = this;
-        var controlPanel = document.createElement("div");
-        controlPanel.id = "control-panel";
-        controlPanel.classList.add("side-panel");
-        controlPanel.innerHTML = "\n            <span class=\"label\">Playback tick:</span>&nbsp;<span id=\"control-currenttick\">0</span> / <span id=\"control-totalticks\">0</span><br/>\n            <span class=\"label\">Playback rate:</span>&nbsp;<span id=\"control-playbackrate\">1.0</span>x<br/>\n            <input id=\"playback-speed\" class=\"slider\" type=\"range\" min=\"-2.0\" max=\"2.0\" value=\"1.0\" step=\"0.1\" />";
-        this.container.appendChild(controlPanel);
-        var speedSlider = document.getElementById("playback-speed");
-        var speedLabel = document.getElementById("control-playbackrate");
-        speedSlider.oninput = function (ev) {
-            var val = speedSlider.valueAsNumber;
-            var rate = val * Math.abs(val);
-            _this.playbackRate = rate;
-            speedLabel.innerText = rate.toPrecision(2);
-        };
-        return controlPanel;
-    };
     ReplayViewer.prototype.onCreatePlaybackBar = function () {
         var _this = this;
         var playbackBar = document.createElement("div");
@@ -290,6 +273,9 @@ var ReplayViewer = (function (_super) {
         this.timeElem = document.createElement("div");
         this.timeElem.id = "time";
         playbackBar.appendChild(this.timeElem);
+        this.speedElem = document.createElement("div");
+        this.speedElem.id = "speed";
+        playbackBar.appendChild(this.speedElem);
         this.pauseElem = document.createElement("div");
         this.pauseElem.id = "pause";
         this.pauseElem.classList.add("control");
@@ -300,6 +286,11 @@ var ReplayViewer = (function (_super) {
         this.resumeElem.classList.add("control");
         this.resumeElem.onclick = function (ev) { return _this.resume(); };
         playbackBar.appendChild(this.resumeElem);
+        this.settingsElem = document.createElement("div");
+        this.settingsElem.id = "settings";
+        this.settingsElem.classList.add("control");
+        this.settingsElem.onclick = function (ev) { return _this.showSettings(); };
+        playbackBar.appendChild(this.settingsElem);
         this.fullscreenElem = document.createElement("div");
         this.fullscreenElem.id = "fullscreen";
         this.fullscreenElem.classList.add("control");
@@ -317,11 +308,14 @@ var ReplayViewer = (function (_super) {
         var _this = this;
         _super.prototype.onInitialize.call(this);
         this.gotoTickHash();
+        this.setPlaybackRate(1);
         window.onhashchange = function (ev) {
             _this.gotoTickHash();
         };
         this.canLockPointer = false;
         this.cameraMode = SourceUtils.CameraMode.Fixed;
+    };
+    ReplayViewer.prototype.showSettings = function () {
     };
     ReplayViewer.prototype.showMessage = function (message) {
         if (this.messageElem === undefined) {
@@ -351,7 +345,7 @@ var ReplayViewer = (function (_super) {
     ReplayViewer.prototype.setReplay = function (replay) {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
-        this.tick = this.tick === -1 ? -this.pauseTicks : this.tick;
+        this.tick = this.tick === -1 ? 0 : this.tick;
         this.spareTime = 0;
         this.scrubberElem.max = this.replay.tickCount.toString();
         this.onTickChanged(this.tick);
@@ -361,7 +355,6 @@ var ReplayViewer = (function (_super) {
         var title = replay.playerName + " - " + replay.mapName + " - " + mins + ":" + (secsString.indexOf(".") === 1 ? "0" : "") + secsString;
         document.getElementById("title").innerText = title;
         document.title = title;
-        document.getElementById("control-totalticks").innerText = replay.tickCount.toLocaleString();
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
             this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json");
@@ -407,7 +400,6 @@ var ReplayViewer = (function (_super) {
             var secondsString = seconds.toFixed(1);
             this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
         }
-        document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
         this.scrubberElem.valueAsNumber = tick;
     };
     ReplayViewer.prototype.gotoTick = function (tick) {
@@ -415,6 +407,13 @@ var ReplayViewer = (function (_super) {
             return;
         this.tick = tick;
         this.onTickChanged(tick);
+    };
+    ReplayViewer.prototype.setPlaybackRate = function (speed) {
+        this.playbackRate = speed;
+        this.speedElem.innerText = speed.toPrecision(2);
+    };
+    ReplayViewer.prototype.getPlaybackRate = function () {
+        return this.playbackRate;
     };
     ReplayViewer.prototype.onMouseDown = function (button, screenPos) {
         this.ignoreMouseUp = event.target !== this.canvas;

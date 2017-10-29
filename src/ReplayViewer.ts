@@ -11,20 +11,24 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private mapBaseUrl: string;
 
     private timeElem: HTMLElement;
+    private speedElem: HTMLElement;
     private pauseElem: HTMLElement;
     private resumeElem: HTMLElement;
+    private settingsElem: HTMLElement;
     private fullscreenElem: HTMLElement;
     private scrubberElem: HTMLInputElement;
-    
+
     private messageElem: HTMLElement;
-    
+
     private pauseTime = 1.0;
     private pauseTicks: number;
 
-    private isPaused = false;
+    private isPaused = true;
     private isScrubbing = false;
+
     private tick = -1;
     private spareTime = 0;
+    private playbackRate = 1;
 
     private tickData = new TickData();
 
@@ -32,37 +36,12 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private tempTickData1 = new TickData();
     private tempTickData2 = new TickData();
 
-    playbackRate = 1;
+    autoRepeat = true;
 
     constructor(container: HTMLElement) {
         super(container);
 
-        this.onCreateControlPanel();
         this.onCreatePlaybackBar();
-    }
-    
-    protected onCreateControlPanel(): HTMLElement {
-        const controlPanel = document.createElement("div");
-        controlPanel.id = "control-panel";
-        controlPanel.classList.add("side-panel");
-        controlPanel.innerHTML = `
-            <span class="label">Playback tick:</span>&nbsp;<span id="control-currenttick">0</span> / <span id="control-totalticks">0</span><br/>
-            <span class="label">Playback rate:</span>&nbsp;<span id="control-playbackrate">1.0</span>x<br/>
-            <input id="playback-speed" class="slider" type="range" min="-2.0" max="2.0" value="1.0" step="0.1" />`;
-
-        this.container.appendChild(controlPanel);
-
-        const speedSlider = document.getElementById("playback-speed") as HTMLInputElement;
-        const speedLabel = document.getElementById("control-playbackrate") as HTMLSpanElement;
-
-        speedSlider.oninput = ev => {
-            const val = speedSlider.valueAsNumber;
-            const rate = val * Math.abs(val);
-            this.playbackRate = rate;
-            speedLabel.innerText = rate.toPrecision(2);
-        };
-
-        return controlPanel;
     }
 
     protected onCreatePlaybackBar(): HTMLElement {
@@ -93,6 +72,10 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.timeElem.id = "time";
         playbackBar.appendChild(this.timeElem);
 
+        this.speedElem = document.createElement("div");
+        this.speedElem.id = "speed";
+        playbackBar.appendChild(this.speedElem);
+
         this.pauseElem = document.createElement("div");
         this.pauseElem.id = "pause";
         this.pauseElem.classList.add("control");
@@ -104,6 +87,12 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.resumeElem.classList.add("control");
         this.resumeElem.onclick = ev => this.resume();
         playbackBar.appendChild(this.resumeElem);
+
+        this.settingsElem = document.createElement("div");
+        this.settingsElem.id = "settings";
+        this.settingsElem.classList.add("control");
+        this.settingsElem.onclick = ev => this.showSettings();
+        playbackBar.appendChild(this.settingsElem);
 
         this.fullscreenElem = document.createElement("div");
         this.fullscreenElem.id = "fullscreen";
@@ -127,6 +116,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
         super.onInitialize();
 
         this.gotoTickHash();
+        this.setPlaybackRate(1);
 
         window.onhashchange = ev => {
             this.gotoTickHash();
@@ -134,6 +124,10 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         this.canLockPointer = false;
         this.cameraMode = SourceUtils.CameraMode.Fixed;
+    }
+
+    showSettings(): void {
+
     }
 
     showMessage(message: string): void {
@@ -168,9 +162,9 @@ class ReplayViewer extends SourceUtils.MapViewer {
     setReplay(replay: ReplayFile): void {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
-        this.tick = this.tick === -1 ? -this.pauseTicks : this.tick;
+        this.tick = this.tick === -1 ? 0 : this.tick;
         this.spareTime = 0;
-        
+
         this.scrubberElem.max = this.replay.tickCount.toString();
         this.onTickChanged(this.tick);
 
@@ -182,8 +176,6 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         document.getElementById("title").innerText = title;
         document.title = title;
-
-        document.getElementById("control-totalticks").innerText = replay.tickCount.toLocaleString();
 
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
@@ -236,7 +228,6 @@ class ReplayViewer extends SourceUtils.MapViewer {
             this.timeElem.innerText = `${minutes}:${secondsString.indexOf(".") === 1 ? "0" : ""}${secondsString}`;
         }
 
-        document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
         this.scrubberElem.valueAsNumber = tick;
     }
 
@@ -244,6 +235,15 @@ class ReplayViewer extends SourceUtils.MapViewer {
         if (tick === this.tick) return;
         this.tick = tick;
         this.onTickChanged(tick);
+    }
+
+    setPlaybackRate(speed: number): void {
+        this.playbackRate = speed;
+        this.speedElem.innerText = speed.toPrecision(2);
+    }
+
+    getPlaybackRate(): number {
+        return this.playbackRate;
     }
 
     private ignoreMouseUp = true;

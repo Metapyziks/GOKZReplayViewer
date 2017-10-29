@@ -62,6 +62,7 @@
 
                 if (replayUrl != null) {
                     viewer.loadReplay(decodeURIComponent(replayUrl));
+                    viewer.resume();
                     viewer.animate();
                 } else {
                     viewer.showMessage("No replay URL provided");
