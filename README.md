@@ -9,7 +9,7 @@ https://metapyziks.github.io/GOKZReplayViewer/
 First you'll need to use [SourceUtils](https://github.com/Metapyziks/SourceUtils) to export a bunch of maps, and
 host them on a web server.
 
-### Copy Resources
+### Setup Web Page
 
 Make sure you include these references in your web page:
 
