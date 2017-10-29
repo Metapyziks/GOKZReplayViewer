@@ -18,6 +18,31 @@
     background-image: url(/GOKZReplayViewer/images/play.png);
 }
 
+.map-viewer .playback-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+
+    background-color: rgba(15, 15, 15, 0.825);
+}
+
+.map-viewer .playback-bar .scrubber-container {
+    position: absolute;
+    left: 96px;
+    right: 96px;
+    top: 0;
+    bottom: 0;
+    vertical-align: middle;
+}
+
+.map-viewer .playback-bar .scrubber-container #scrubber {
+    width: 100%;
+    height: 36px;
+}
+
 .map-viewer .message {
     position: absolute;
     width: 512px;
