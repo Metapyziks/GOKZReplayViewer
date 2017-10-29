@@ -9,7 +9,6 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private replay: ReplayFile;
     private currentMapName: string;
     private mapBaseUrl: string;
-    private ignoreHashChange = false;
 
     private pauseElem: HTMLElement;
     private resumeElem: HTMLElement;
@@ -20,6 +19,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private pauseTicks: number;
 
     private isPaused = false;
+    private isScrubbing = false;
     private tick = -1;
     private spareTime = 0;
 
@@ -84,8 +84,14 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.scrubberElem.oninput = ev => {
             this.gotoTick(this.scrubberElem.valueAsNumber);
         };
-        this.scrubberElem.onchange = ev => {
+
+        this.scrubberElem.onmousedown = ev => {
+            this.isScrubbing = true;
+        };
+
+        this.scrubberElem.onmouseup = ev => {
             this.updateTickHash();
+            this.isScrubbing = false;
         };
 
         return playbackBar;
@@ -106,7 +112,6 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.gotoTickHash();
 
         window.onhashchange = ev => {
-            if (this.ignoreHashChange) return;
             this.gotoTickHash();
         };
 
@@ -190,16 +195,17 @@ class ReplayViewer extends SourceUtils.MapViewer {
     }
 
     private updateTickHash(): void {
-        this.ignoreHashChange = true;
         window.location.hash = `#t${this.clampTick(this.tick) + 1}`;
-        this.ignoreHashChange = false;
     }
 
     private gotoTickHash(): void {        
-        if (window.location.hash != null && ReplayViewer.hashTickRegex.test(window.location.hash)) {
-            this.gotoTick(parseInt(window.location.hash.substr(2)) - 1);
-            this.pause();
-        }
+        if (window.location.hash == null || !ReplayViewer.hashTickRegex.test(window.location.hash)) return;
+
+        const parsedTick = parseInt(window.location.hash.substr(2)) - 1;
+        if (this.tick === parsedTick) return;
+        
+        this.gotoTick(parsedTick);
+        this.pause();
     }
 
     protected onTickChanged(tick: number): void {
@@ -302,7 +308,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         const tickPeriod = 1.0 / this.replay.tickRate;
 
-        if (this.map.isReady() && !this.isPaused) {
+        if (this.map.isReady() && !this.isPaused && !this.isScrubbing) {
             this.spareTime += dt * this.playbackRate;
 
             const oldTick = this.tick;

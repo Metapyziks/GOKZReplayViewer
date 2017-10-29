@@ -238,9 +238,9 @@ var ReplayViewer = (function (_super) {
     __extends(ReplayViewer, _super);
     function ReplayViewer(container) {
         var _this = _super.call(this, container) || this;
-        _this.ignoreHashChange = false;
         _this.pauseTime = 1.0;
         _this.isPaused = false;
+        _this.isScrubbing = false;
         _this.tick = -1;
         _this.spareTime = 0;
         _this.tickData = new TickData();
@@ -286,8 +286,12 @@ var ReplayViewer = (function (_super) {
         this.scrubberElem.oninput = function (ev) {
             _this.gotoTick(_this.scrubberElem.valueAsNumber);
         };
-        this.scrubberElem.onchange = function (ev) {
+        this.scrubberElem.onmousedown = function (ev) {
+            _this.isScrubbing = true;
+        };
+        this.scrubberElem.onmouseup = function (ev) {
             _this.updateTickHash();
+            _this.isScrubbing = false;
         };
         return playbackBar;
     };
@@ -302,8 +306,6 @@ var ReplayViewer = (function (_super) {
         _super.prototype.onInitialize.call(this);
         this.gotoTickHash();
         window.onhashchange = function (ev) {
-            if (_this.ignoreHashChange)
-                return;
             _this.gotoTickHash();
         };
         this.canLockPointer = false;
@@ -372,15 +374,16 @@ var ReplayViewer = (function (_super) {
             this.pause();
     };
     ReplayViewer.prototype.updateTickHash = function () {
-        this.ignoreHashChange = true;
         window.location.hash = "#t" + (this.clampTick(this.tick) + 1);
-        this.ignoreHashChange = false;
     };
     ReplayViewer.prototype.gotoTickHash = function () {
-        if (window.location.hash != null && ReplayViewer.hashTickRegex.test(window.location.hash)) {
-            this.gotoTick(parseInt(window.location.hash.substr(2)) - 1);
-            this.pause();
-        }
+        if (window.location.hash == null || !ReplayViewer.hashTickRegex.test(window.location.hash))
+            return;
+        var parsedTick = parseInt(window.location.hash.substr(2)) - 1;
+        if (this.tick === parsedTick)
+            return;
+        this.gotoTick(parsedTick);
+        this.pause();
     };
     ReplayViewer.prototype.onTickChanged = function (tick) {
         document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
@@ -453,7 +456,7 @@ var ReplayViewer = (function (_super) {
         if (this.replay == null)
             return;
         var tickPeriod = 1.0 / this.replay.tickRate;
-        if (this.map.isReady() && !this.isPaused) {
+        if (this.map.isReady() && !this.isPaused && !this.isScrubbing) {
             this.spareTime += dt * this.playbackRate;
             var oldTick = this.tick;
             // Forward playback
