@@ -357,7 +357,8 @@ var ReplayViewer = (function (_super) {
         this.onTickChanged(this.tick);
         var mins = Math.floor(replay.time / 60);
         var secs = replay.time - (mins * 60);
-        var title = replay.playerName + " - " + replay.mapName + " - " + mins + ":" + (secs < 10 ? '0' : '') + secs.toFixed(3);
+        var secsString = secs.toFixed(3);
+        var title = replay.playerName + " - " + replay.mapName + " - " + mins + ":" + (secsString.indexOf(".") === 1 ? "0" : "") + secsString;
         document.getElementById("title").innerText = title;
         document.title = title;
         document.getElementById("control-totalticks").innerText = replay.tickCount.toLocaleString();
@@ -403,7 +404,8 @@ var ReplayViewer = (function (_super) {
             var totalSeconds = this.clampTick(this.tick) / this.replay.tickRate;
             var minutes = Math.floor(totalSeconds / 60);
             var seconds = totalSeconds - minutes * 60;
-            this.timeElem.innerText = minutes + ":" + (seconds < 10 ? "0" : "") + seconds.toFixed(1);
+            var secondsString = seconds.toFixed(1);
+            this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
         }
         document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
         this.scrubberElem.valueAsNumber = tick;

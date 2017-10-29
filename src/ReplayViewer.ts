@@ -176,8 +176,9 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         const mins = Math.floor(replay.time / 60);
         const secs = replay.time - (mins * 60);
+        const secsString = secs.toFixed(3);
 
-        const title = `${replay.playerName} - ${replay.mapName} - ${mins}:${secs < 10 ? '0' : ''}${secs.toFixed(3)}`;
+        const title = `${replay.playerName} - ${replay.mapName} - ${mins}:${secsString.indexOf(".") === 1 ? "0" : ""}${secsString}`;
 
         document.getElementById("title").innerText = title;
         document.title = title;
@@ -231,7 +232,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
             const totalSeconds = this.clampTick(this.tick) / this.replay.tickRate;
             const minutes = Math.floor(totalSeconds / 60);
             const seconds = totalSeconds - minutes * 60;
-            this.timeElem.innerText = `${minutes}:${seconds < 10 ? "0" : ""}${seconds.toFixed(1)}`;
+            const secondsString = seconds.toFixed(1);
+            this.timeElem.innerText = `${minutes}:${secondsString.indexOf(".") === 1 ? "0" : ""}${secondsString}`;
         }
 
         document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
