@@ -260,10 +260,19 @@ var ReplayViewer = (function (_super) {
     };
     ReplayViewer.prototype.pause = function () {
         this.isPaused = true;
+        $("#pause").show();
+        $("#play").hide();
         this.updateTickHash();
     };
     ReplayViewer.prototype.resume = function () {
+        $("#pause").hide();
         this.isPaused = false;
+    };
+    ReplayViewer.prototype.togglePause = function () {
+        if (this.isPaused)
+            this.resume();
+        else
+            this.pause();
     };
     ReplayViewer.prototype.updateTickHash = function () {
         this.ignoreHashChange = true;
@@ -283,17 +292,25 @@ var ReplayViewer = (function (_super) {
         this.tick = tick;
         this.updateControlText();
     };
+    ReplayViewer.prototype.onMouseUp = function (button, screenPos) {
+        if (_super.prototype.onMouseUp.call(this, button, screenPos))
+            return true;
+        if (this.replay != null && this.map.isReady() && button === WebGame.MouseButton.Left) {
+            this.togglePause();
+            return true;
+        }
+        return false;
+    };
     ReplayViewer.prototype.onKeyDown = function (key) {
         switch (key) {
             case WebGame.Key.F:
                 this.toggleFullscreen();
-                break;
+                return true;
             case WebGame.Key.Space:
-                if (this.isPaused)
-                    this.resume();
-                else
-                    this.pause();
-                break;
+                if (this.replay != null && this.map.isReady()) {
+                    this.togglePause();
+                }
+                return true;
         }
         return _super.prototype.onKeyDown.call(this, key);
     };

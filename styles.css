@@ -49,3 +49,22 @@ body {
     padding-right: 8px;
     color: #cccccc;
 }
+
+#pause, #play {
+    position: absolute;
+    display: none;
+    z-index: 32;
+    width: 192px;
+    height: 192px;
+    left: 50%;
+    top: 50%;
+    margin: -96px;
+}
+
+#pause {
+    background-image: url(/GOKZReplayViewer/images/pause.png);
+}
+
+#play {
+    background-image: url(/GOKZReplayViewer/images/play.png);
+}

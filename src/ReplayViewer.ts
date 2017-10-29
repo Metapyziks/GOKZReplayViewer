@@ -94,11 +94,19 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     pause(): void {
         this.isPaused = true;
+        $("#pause").show();
+        $("#play").hide();
         this.updateTickHash();
     }
 
     resume(): void {
+        $("#pause").hide();
         this.isPaused = false;
+    }
+
+    togglePause(): void {
+        if (this.isPaused) this.resume();
+        else this.pause();
     }
 
     private updateTickHash(): void {
@@ -123,15 +131,27 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.updateControlText();
     }
 
+    protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
+        if (super.onMouseUp(button, screenPos)) return true;
+
+        if (this.replay != null && this.map.isReady() && button === WebGame.MouseButton.Left) {
+            this.togglePause();
+            return true;
+        }
+
+        return false;
+    }
+
     protected onKeyDown(key: WebGame.Key): boolean {
         switch (key) {
             case WebGame.Key.F:
                 this.toggleFullscreen();
-                break;
+                return true;
             case WebGame.Key.Space:
-                if (this.isPaused) this.resume();
-                else this.pause();
-                break;
+                if (this.replay != null && this.map.isReady()) {
+                    this.togglePause();
+                }
+                return true;
         }
 
         return super.onKeyDown(key);
