@@ -14,26 +14,31 @@
         <style>
             body {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                background-color: #000;
+                color: #fff;
+            }
+
+            #title {
+                padding-left: 24px;
             }
 
             #map-view {
                 position: absolute;
                 top: 72px;
                 left: 16px;
-                right: 25%;
+                right: 312px;
                 bottom: 16px;
                 background-color: black;
             }
 
             #replay-list {
                 position: absolute;
-                left: 75%;
+                width: 256px;
                 right: 16px;
                 top: 72px;
                 bottom: 16px;
                 background-color: #111;
-                color: rgb(225, 220, 202);
-                padding-left: 32px;
+                padding-left: 24px;
             }
 
             #replay-list a {
@@ -49,6 +54,7 @@
             var viewer;
             window.onload = function() {
                 viewer = new ReplayViewer(document.getElementById("map-view"));
+                viewer.showDebugPanel = true;
                 viewer.setMapBaseUrl("${MAPSURL}");
 
                 var searchParams = new URLSearchParams(window.location.search);
@@ -67,18 +73,18 @@
         <h2>Example Replays</h2>
         <h3>kz_exps_cursedjourney</h2>
         <ul>
-            <li><a href="?replay=replays/kz_exps_cursedjourney/0_KZT_NRM_NUB.replay">0_KZT_NRM_NUB.replay</a></li>
-            <li><a href="?replay=replays/kz_exps_cursedjourney/0_KZT_NRM_NUB.replay">0_KZT_NRM_NUB.replay</a></li>
+            <li><a href="?replay=replays/kz_exps_cursedjourney/0_KZT_NRM_NUB.replay">Jak - 41:04.789</a></li>
+            <li><a href="?replay=replays/kz_exps_cursedjourney/0_SKZ_NRM_NUB.replay">Sachburger - 28:10.961</a></li>
         </ul>
         <h3>kz_colors_v2</h2>
         <ul>
-            <li><a href="?replay=replays/kz_colors_v2/0_SKZ_NRM_PRO.replay">0_SKZ_NRM_PRO.replay</a></li>
+            <li><a href="?replay=replays/kz_colors_v2/0_SKZ_NRM_PRO.replay">burhác - 53:16.031</a></li>
         </ul>
         <h3>kz_reach_v2</h2>
         <ul>
-            <li><a href="?replay=replays/kz_reach_v2/0_KZT_NRM_PRO.replay">0_KZT_NRM_PRO.replay</a></li>
-            <li><a href="?replay=replays/kz_reach_v2/0_SKZ_NRM_NUB.replay">0_SKZ_NRM_NUB.replay</a></li>
-            <li><a href="?replay=replays/kz_reach_v2/0_SKZ_NRM_PRO.replay">0_SKZ_NRM_PRO.replay</a></li>
+            <li><a href="?replay=replays/kz_reach_v2/0_KZT_NRM_PRO.replay">Slumpfy - 1:38.516</a></li>
+            <li><a href="?replay=replays/kz_reach_v2/0_SKZ_NRM_NUB.replay">Slumpfy - 1:38.336</a></li>
+            <li><a href="?replay=replays/kz_reach_v2/0_SKZ_NRM_PRO.replay">Slumpfy - 1:53.344</a></li>
         </ul>
     </div>
     </body>

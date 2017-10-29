@@ -103,18 +103,18 @@ class ReplayFile {
         }
 
         this.formatVersion = reader.readUint8();
-        this.pluginVersion = reader.readAsciiString();
+        this.pluginVersion = reader.readString();
 
-        this.mapName = reader.readAsciiString();
+        this.mapName = reader.readString();
         this.course = reader.readInt32();
         this.mode = reader.readInt32();
         this.style = reader.readInt32();
         this.time = reader.readFloat32();
         this.teleportsUsed = reader.readInt32();
         this.steamId = reader.readInt32();
-        this.steamId2 = reader.readAsciiString();
-        reader.readAsciiString();
-        this.playerName = reader.readAsciiString();
+        this.steamId2 = reader.readString();
+        reader.readString();
+        this.playerName = reader.readString();
         this.tickCount = reader.readInt32();
         this.tickRate = Math.round(this.tickCount / this.time); // todo
 
