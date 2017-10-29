@@ -3,79 +3,83 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
-        <title>GOKZ Replay Viewer Demo</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <title>GOKZ Replay Viewer</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js"></script>
-        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=50d023e"></script>
-        <script src="/GOKZReplayViewer/js/sourceutils.js?v=50d023e"></script>
-        <script src="/GOKZReplayViewer/js/replayviewer.js?v=50d023e"></script>
-        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles.css?v=50d023e" />
+        <script src="/GOKZReplayViewer/js/facepunch.webgame.js?v=2ac695e-106ad"></script>
+        <script src="/GOKZReplayViewer/js/sourceutils.js?v=2ac695e-106ad"></script>
+        <script src="/GOKZReplayViewer/js/replayviewer.js?v=2ac695e-106ad"></script>
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles/mapviewer.css?v=2ac695e-106ad" />
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/styles/replayviewer.css?v=2ac695e-106ad" />
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+
+            #map-view {
+                position: absolute;
+                top: 72px;
+                left: 16px;
+                right: 25%;
+                bottom: 16px;
+                background-color: black;
+            }
+
+            #replay-list {
+                position: absolute;
+                left: 75%;
+                right: 16px;
+                top: 72px;
+                bottom: 16px;
+                background-color: #111;
+                color: rgb(225, 220, 202);
+                padding-left: 32px;
+            }
+
+            #replay-list a {
+                color: #bcf;
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
-    <h2 id="title">GOKZ Replay Viewer Demo</h2>
-    <div id="replay-list">
-        <h3>Example replays:</h3>
-        <ul>
-            <li><a href="/GOKZReplayViewer/index.html?replay=%2FGOKZReplayViewer%2Freplays%2Fkz_exps_cursedjourney%2F0_KZT_NRM_NUB.replay">
-                kz_exps_cursedjourney - 0_KZT_NRM_NUB.replay
-            </a></li>
-            <li><a href="/GOKZReplayViewer/index.html?replay=%2FGOKZReplayViewer%2Freplays%2Fkz_exps_cursedjourney%2F0_SKZ_NRM_NUB.replay">
-                kz_exps_cursedjourney - 0_SKZ_NRM_NUB.replay
-            </a></li>
-            <li><a href="/GOKZReplayViewer/index.html?replay=%2FGOKZReplayViewer%2Freplays%2Fkz_colors_v2%2F0_SKZ_NRM_PRO.replay">
-                kz_colors_v2 - 0_SKZ_NRM_PRO.replay
-            </a></li>
-            <li><a href="/GOKZReplayViewer/index.html?replay=%2FGOKZReplayViewer%2Freplays%2Fkz_reach_v2%2F0_KZT_NRM_PRO.replay">
-                kz_reach_v2 - 0_KZT_NRM_PRO.replay
-            </a></li>
-            <li><a href="/GOKZReplayViewer/index.html?replay=%2FGOKZReplayViewer%2Freplays%2Fkz_reach_v2%2F0_SKZ_NRM_NUB.replay">
-                kz_reach_v2 - 0_SKZ_NRM_NUB.replay
-            </a></li>
-        </ul>
-    </div>
+    <h2 id="title">GOKZ Replay Viewer</h2>
     <div id="map-view">
         <script>
             var viewer;
             window.onload = function() {
+                viewer = new ReplayViewer(document.getElementById("map-view"));
+                viewer.setMapBaseUrl("/GOKZReplayViewer/resources/maps");
+
                 var searchParams = new URLSearchParams(window.location.search);
                 var replayUrl = searchParams.get("replay");
 
-                if (replayUrl == null) {
-                    $("#map-view").hide();
-                } else {
-                    $("#replay-list").hide();
-                    $("body")
-                        .css("background-color", "#000")
-                        .css("color", "#fff");
-
-                    viewer = new ReplayViewer($("#map-view")[0]);
-                    viewer.setMapBaseUrl("/GOKZReplayViewer/maps");
+                if (replayUrl != null) {
                     viewer.loadReplay(decodeURIComponent(replayUrl));
                     viewer.animate();
+                } else {
+                    viewer.showMessage("No replay URL provided");
                 }
             }
         </script>
-        <div id="control-panel" class="side-panel">
-            <span class="label">Playback tick:</span>&nbsp;<span id="control-currenttick">0</span> / <span id="control-totalticks">0</span><br/>
-            <span class="label">Playback rate:</span>&nbsp;<span id="control-playbackrate">1.0</span>x<br/>
-            <input id="playback-speed" class="slider" type="range" min="-2.0" max="2.0" value="1.0" step="0.1" />
-        </div>
-        <div id="debug-panel" class="side-panel">
-            <span class="label">Frame time:</span>&nbsp;<span id="debug-frametime"></span>&nbsp;ms<br/>
-            <span class="label">Frame rate:</span>&nbsp;<span id="debug-framerate"></span>&nbsp;fps<br />
-            <span class="label">Draw calls:</span>&nbsp;<span id="debug-drawcalls"></span><br />
-            <div id="debug-loading">
-                <span class="label">Vis loaded:</span>&nbsp;<span id="debug-visloaded"></span>%<br />
-                <span class="label">Bsp loaded:</span>&nbsp;<span id="debug-bsploaded"></span>%<br />
-                <span class="label">Geom loaded:</span>&nbsp;<span id="debug-geomloaded"></span>%<br />
-                <span class="label">Props loaded:</span>&nbsp;<span id="debug-propsloaded"></span>%<br />
-                <span class="label">Lightmap loaded:</span>&nbsp;<span id="debug-lightmaploaded"></span>%<br />
-                <span class="label">Materials loaded:</span>&nbsp;<span id="debug-materialsloaded"></span>%<br />
-            </div>
-        </div>
-        <div id="pause"></div>
-        <div id="play"></div>
+    </div>
+    <div id="replay-list">
+        <h2>Example Replays</h2>
+        <h3>kz_exps_cursedjourney</h2>
+        <ul>
+            <li><a href="?replay=replays/kz_exps_cursedjourney/0_KZT_NRM_NUB.replay">0_KZT_NRM_NUB.replay</a></li>
+            <li><a href="?replay=replays/kz_exps_cursedjourney/0_KZT_NRM_NUB.replay">0_KZT_NRM_NUB.replay</a></li>
+        </ul>
+        <h3>kz_colors_v2</h2>
+        <ul>
+            <li><a href="?replay=replays/kz_colors_v2/0_SKZ_NRM_PRO.replay">0_SKZ_NRM_PRO.replay</a></li>
+        </ul>
+        <h3>kz_reach_v2</h2>
+        <ul>
+            <li><a href="?replay=replays/kz_reach_v2/0_KZT_NRM_PRO.replay">0_KZT_NRM_PRO.replay</a></li>
+            <li><a href="?replay=replays/kz_reach_v2/0_SKZ_NRM_NUB.replay">0_SKZ_NRM_NUB.replay</a></li>
+            <li><a href="?replay=replays/kz_reach_v2/0_SKZ_NRM_PRO.replay">0_SKZ_NRM_PRO.replay</a></li>
+        </ul>
     </div>
     </body>
 </html>

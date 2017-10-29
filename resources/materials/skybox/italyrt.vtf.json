@@ -1,0 +1,59 @@
+{
+  "path": "materials/skybox/italyrt.vtf",
+  "target": 3553,
+  "width": 512,
+  "height": 512,
+  "params": {
+    "wrapS": 33071,
+    "wrapT": 33071,
+    "filter": 9729,
+    "mipmap": false
+  },
+  "elements": [
+    {
+      "level": 9,
+      "color": {
+        "r": 0.5568628,
+        "g": 0.5411765,
+        "b": 0.549019635,
+        "a": 1.0
+      }
+    },
+    {
+      "level": 8,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip8.png"
+    },
+    {
+      "level": 7,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip7.png"
+    },
+    {
+      "level": 6,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip6.png"
+    },
+    {
+      "level": 5,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip5.png"
+    },
+    {
+      "level": 4,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip4.png"
+    },
+    {
+      "level": 3,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip3.png"
+    },
+    {
+      "level": 2,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip2.png"
+    },
+    {
+      "level": 1,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip1.png"
+    },
+    {
+      "level": 0,
+      "url": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf/mip0.png"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>Map Viewer - kz_reach_v2</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js"></script>
+        <script src="/GOKZReplayViewer/resources/js/facepunch.webgame.js?v=196f-e4df"></script>
+        <script src="/GOKZReplayViewer/resources/js/sourceutils.js?v=196f-e4df"></script>
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/resources/styles/mapviewer.css?v=196f-e4df" />
+        <style>
+            #map-view {
+                position: absolute;
+                top: 72px;
+                left: 32px;
+                right: 32px;
+                bottom: 32px;
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+    <h2>Source Map Viewer Demo - kz_reach_v2</h2>
+    <div id="map-view">
+        <script>
+            var viewer;
+            window.onload = function() {
+                viewer = new SourceUtils.MapViewer(document.getElementById("map-view"));
+                viewer.cameraMode = SourceUtils.CameraMode.FreeCam;
+                viewer.showDebugPanel = true;
+                viewer.loadMap("/GOKZReplayViewer/resources/maps/kz_reach_v2/index.json?v=196f-e4df");
+                viewer.animate();
+            }
+        </script>
+    </div>
+    </body>
+</html>
