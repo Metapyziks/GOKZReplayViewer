@@ -5,6 +5,7 @@ import WebGame = Facepunch.WebGame;
 
 class ReplayViewer extends SourceUtils.MapViewer {
     static readonly hashTickRegex = /^#t[0-9]+$/;
+    static readonly speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
 
     private replay: ReplayFile;
     private currentMapName: string;
@@ -17,6 +18,10 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private settingsElem: HTMLElement;
     private fullscreenElem: HTMLElement;
     private scrubberElem: HTMLInputElement;
+
+    private speedControlElem: HTMLElement;
+    private speedSliderElem: HTMLInputElement;
+    private speedControlVisible = false;
 
     private messageElem: HTMLElement;
 
@@ -74,6 +79,10 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         this.speedElem = document.createElement("div");
         this.speedElem.id = "speed";
+        this.speedElem.onclick = ev => {
+            if (this.speedControlVisible) this.hideSpeedControl();
+            else this.showSpeedControl();
+        }
         playbackBar.appendChild(this.speedElem);
 
         this.pauseElem = document.createElement("div");
@@ -99,6 +108,16 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.fullscreenElem.classList.add("control");
         this.fullscreenElem.onclick = ev => this.toggleFullscreen();
         playbackBar.appendChild(this.fullscreenElem);
+
+        this.speedControlElem = document.createElement("div");
+        this.speedControlElem.classList.add("speed-control");
+        this.speedControlElem.innerHTML = `<input id="speed-slider" type="range" min="0" max="${ReplayViewer.speedSliderValues.length - 1}" step="1">`;
+        this.container.appendChild(this.speedControlElem);
+
+        this.speedSliderElem = document.getElementById("speed-slider") as HTMLInputElement;
+        this.speedSliderElem.oninput = ev => {
+            this.setPlaybackRate(ReplayViewer.speedSliderValues[this.speedSliderElem.valueAsNumber]);
+        }
 
         return playbackBar;
     }
@@ -127,7 +146,18 @@ class ReplayViewer extends SourceUtils.MapViewer {
     }
 
     showSettings(): void {
+        // TODO
         this.showDebugPanel = !this.showDebugPanel;
+    }
+
+    showSpeedControl(): void {
+        this.speedControlVisible = true;
+        this.speedControlElem.style.display = "block";
+    }
+
+    hideSpeedControl(): void {
+        this.speedControlVisible = false;
+        this.speedControlElem.style.display = "none";
     }
 
     showMessage(message: string): void {
@@ -248,7 +278,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     setPlaybackRate(speed: number): void {
         this.playbackRate = speed;
-        this.speedElem.innerText = speed.toPrecision(2);
+        this.speedElem.innerText = speed.toString();
+        this.speedSliderElem.valueAsNumber = ReplayViewer.speedSliderValues.indexOf(this.playbackRate);
     }
 
     getPlaybackRate(): number {
@@ -267,6 +298,11 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.ignoreMouseUp = true;
 
         if (super.onMouseUp(button, screenPos)) return true;
+
+        if (!ignored && this.speedControlVisible) {
+            this.hideSpeedControl();
+            return true;
+        }
 
         if (!ignored && button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
             this.togglePause();

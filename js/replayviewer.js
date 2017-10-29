@@ -238,6 +238,7 @@ var ReplayViewer = (function (_super) {
     __extends(ReplayViewer, _super);
     function ReplayViewer(container) {
         var _this = _super.call(this, container) || this;
+        _this.speedControlVisible = false;
         _this.pauseTime = 1.0;
         _this.isPaused = true;
         _this.isScrubbing = false;
@@ -275,6 +276,12 @@ var ReplayViewer = (function (_super) {
         playbackBar.appendChild(this.timeElem);
         this.speedElem = document.createElement("div");
         this.speedElem.id = "speed";
+        this.speedElem.onclick = function (ev) {
+            if (_this.speedControlVisible)
+                _this.hideSpeedControl();
+            else
+                _this.showSpeedControl();
+        };
         playbackBar.appendChild(this.speedElem);
         this.pauseElem = document.createElement("div");
         this.pauseElem.id = "pause";
@@ -296,6 +303,14 @@ var ReplayViewer = (function (_super) {
         this.fullscreenElem.classList.add("control");
         this.fullscreenElem.onclick = function (ev) { return _this.toggleFullscreen(); };
         playbackBar.appendChild(this.fullscreenElem);
+        this.speedControlElem = document.createElement("div");
+        this.speedControlElem.classList.add("speed-control");
+        this.speedControlElem.innerHTML = "<input id=\"speed-slider\" type=\"range\" min=\"0\" max=\"" + (ReplayViewer.speedSliderValues.length - 1) + "\" step=\"1\">";
+        this.container.appendChild(this.speedControlElem);
+        this.speedSliderElem = document.getElementById("speed-slider");
+        this.speedSliderElem.oninput = function (ev) {
+            _this.setPlaybackRate(ReplayViewer.speedSliderValues[_this.speedSliderElem.valueAsNumber]);
+        };
         return playbackBar;
     };
     ReplayViewer.prototype.onCreateMessagePanel = function () {
@@ -316,7 +331,16 @@ var ReplayViewer = (function (_super) {
         this.cameraMode = SourceUtils.CameraMode.Fixed;
     };
     ReplayViewer.prototype.showSettings = function () {
+        // TODO
         this.showDebugPanel = !this.showDebugPanel;
+    };
+    ReplayViewer.prototype.showSpeedControl = function () {
+        this.speedControlVisible = true;
+        this.speedControlElem.style.display = "block";
+    };
+    ReplayViewer.prototype.hideSpeedControl = function () {
+        this.speedControlVisible = false;
+        this.speedControlElem.style.display = "none";
     };
     ReplayViewer.prototype.showMessage = function (message) {
         if (this.messageElem === undefined) {
@@ -420,7 +444,8 @@ var ReplayViewer = (function (_super) {
     };
     ReplayViewer.prototype.setPlaybackRate = function (speed) {
         this.playbackRate = speed;
-        this.speedElem.innerText = speed.toPrecision(2);
+        this.speedElem.innerText = speed.toString();
+        this.speedSliderElem.valueAsNumber = ReplayViewer.speedSliderValues.indexOf(this.playbackRate);
     };
     ReplayViewer.prototype.getPlaybackRate = function () {
         return this.playbackRate;
@@ -434,6 +459,10 @@ var ReplayViewer = (function (_super) {
         this.ignoreMouseUp = true;
         if (_super.prototype.onMouseUp.call(this, button, screenPos))
             return true;
+        if (!ignored && this.speedControlVisible) {
+            this.hideSpeedControl();
+            return true;
+        }
         if (!ignored && button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
             this.togglePause();
             return true;
@@ -527,3 +556,4 @@ var ReplayViewer = (function (_super) {
     return ReplayViewer;
 }(SourceUtils.MapViewer));
 ReplayViewer.hashTickRegex = /^#t[0-9]+$/;
+ReplayViewer.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];

@@ -87,6 +87,23 @@
     background-image: url(/GOKZReplayViewer/images/fullscreen.png);
 }
 
+.map-viewer .speed-control {
+    display: none;
+    position: absolute;
+    bottom: 48px;
+    right: 8px;
+    width: 256px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: rgba(15, 15, 15, 0.825);
+}
+
+.map-viewer .speed-control #speed-slider {
+    width: 100%;
+}
+
 .map-viewer .message {
     position: absolute;
     width: 512px;
