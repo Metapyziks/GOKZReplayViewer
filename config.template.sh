@@ -1,3 +1,3 @@
-TARGETDIR=../GOKZReplayViewer-pages
-BASEURL=/GOKZReplayViewer
-MAPSURL=/GOKZReplayViewer/resources/maps
+TARGETDIR=
+BASEURL=
+MAPSURL=
