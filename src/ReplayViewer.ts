@@ -4,9 +4,12 @@
 import WebGame = Facepunch.WebGame;
 
 class ReplayViewer extends SourceUtils.MapViewer {
+    static readonly hashTickRegex = /^#t[0-9]+$/;
+
     private replay: ReplayFile;
     private currentMapName: string;
     private mapBaseUrl: string;
+    private ignoreHashChange = false;
 
     playbackRate = 1;
 
@@ -15,6 +18,13 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         this.canLockPointer = false;
         this.useDefaultCameraControl = false;
+
+        this.gotoTickHash();
+
+        window.onhashchange = ev => {
+            if (this.ignoreHashChange) return;
+            this.gotoTickHash();
+        };
 
         $("#playback-speed").on("input", ev => {
             const val = $("#playback-speed").val();
@@ -70,6 +80,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
         $("#title").text(title);
         document.title = title;
 
+        $("#control-totalticks").text(replay.tickCount.toLocaleString());
+
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
             this.loadMap(`${this.mapBaseUrl}/${replay.mapName}/index.json`);
@@ -82,14 +94,33 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     pause(): void {
         this.isPaused = true;
+        this.updateTickHash();
     }
 
     resume(): void {
         this.isPaused = false;
     }
 
+    private updateTickHash(): void {
+        this.ignoreHashChange = true;
+        window.location.hash = `#t${this.clampTick(this.tick) + 1}`;
+        this.ignoreHashChange = false;
+    }
+
+    private gotoTickHash(): void {        
+        if (window.location.hash != null && ReplayViewer.hashTickRegex.test(window.location.hash)) {
+            this.gotoTick(parseInt(window.location.hash.substr(2)) - 1);
+            this.pause();
+        }
+    }
+
+    private updateControlText(): void {
+        $("#control-currenttick").text((this.clampTick(this.tick) + 1).toLocaleString());
+    }
+
     gotoTick(tick: number): void {
         this.tick = tick;
+        this.updateControlText();
     }
 
     protected onKeyDown(key: WebGame.Key): boolean {
@@ -98,7 +129,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
                 this.toggleFullscreen();
                 break;
             case WebGame.Key.Space:
-                this.isPaused = !this.isPaused;
+                if (this.isPaused) this.resume();
+                else this.pause();
                 break;
         }
 
@@ -107,7 +139,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     private clampTick(index: number): number {
         return index < 0
-            ? 0 : index >= this.replay.tickCount
+            ? 0 : this.replay != null && index >= this.replay.tickCount
             ? this.replay.tickCount - 1 : index;
     }
 
@@ -176,6 +208,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
                     this.tick = this.replay.tickCount + this.pauseTicks;
                 }
             }
+
+            this.updateControlText();
         } else {
             this.spareTime = 0;
         }

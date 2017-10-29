@@ -192,6 +192,7 @@ var ReplayViewer = (function (_super) {
     __extends(ReplayViewer, _super);
     function ReplayViewer() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.ignoreHashChange = false;
         _this.playbackRate = 1;
         _this.pauseTime = 1.0;
         _this.isPaused = false;
@@ -208,6 +209,12 @@ var ReplayViewer = (function (_super) {
         _super.prototype.onInitialize.call(this);
         this.canLockPointer = false;
         this.useDefaultCameraControl = false;
+        this.gotoTickHash();
+        window.onhashchange = function (ev) {
+            if (_this.ignoreHashChange)
+                return;
+            _this.gotoTickHash();
+        };
         $("#playback-speed").on("input", function (ev) {
             var val = $("#playback-speed").val();
             var rate = val * Math.abs(val);
@@ -242,6 +249,7 @@ var ReplayViewer = (function (_super) {
         var title = replay.playerName + " - " + replay.mapName + " - " + mins + ":" + (secs < 10 ? '0' : '') + secs.toFixed(3);
         $("#title").text(title);
         document.title = title;
+        $("#control-totalticks").text(replay.tickCount.toLocaleString());
         if (this.currentMapName !== replay.mapName) {
             this.currentMapName = replay.mapName;
             this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json");
@@ -252,12 +260,28 @@ var ReplayViewer = (function (_super) {
     };
     ReplayViewer.prototype.pause = function () {
         this.isPaused = true;
+        this.updateTickHash();
     };
     ReplayViewer.prototype.resume = function () {
         this.isPaused = false;
     };
+    ReplayViewer.prototype.updateTickHash = function () {
+        this.ignoreHashChange = true;
+        window.location.hash = "#t" + (this.clampTick(this.tick) + 1);
+        this.ignoreHashChange = false;
+    };
+    ReplayViewer.prototype.gotoTickHash = function () {
+        if (window.location.hash != null && ReplayViewer.hashTickRegex.test(window.location.hash)) {
+            this.gotoTick(parseInt(window.location.hash.substr(2)) - 1);
+            this.pause();
+        }
+    };
+    ReplayViewer.prototype.updateControlText = function () {
+        $("#control-currenttick").text((this.clampTick(this.tick) + 1).toLocaleString());
+    };
     ReplayViewer.prototype.gotoTick = function (tick) {
         this.tick = tick;
+        this.updateControlText();
     };
     ReplayViewer.prototype.onKeyDown = function (key) {
         switch (key) {
@@ -265,14 +289,17 @@ var ReplayViewer = (function (_super) {
                 this.toggleFullscreen();
                 break;
             case WebGame.Key.Space:
-                this.isPaused = !this.isPaused;
+                if (this.isPaused)
+                    this.resume();
+                else
+                    this.pause();
                 break;
         }
         return _super.prototype.onKeyDown.call(this, key);
     };
     ReplayViewer.prototype.clampTick = function (index) {
         return index < 0
-            ? 0 : index >= this.replay.tickCount
+            ? 0 : this.replay != null && index >= this.replay.tickCount
             ? this.replay.tickCount - 1 : index;
     };
     ReplayViewer.prototype.deltaAngle = function (a, b) {
@@ -318,6 +345,7 @@ var ReplayViewer = (function (_super) {
                     this.tick = this.replay.tickCount + this.pauseTicks;
                 }
             }
+            this.updateControlText();
         }
         else {
             this.spareTime = 0;
@@ -339,3 +367,4 @@ var ReplayViewer = (function (_super) {
     };
     return ReplayViewer;
 }(SourceUtils.MapViewer));
+ReplayViewer.hashTickRegex = /^#t[0-9]+$/;

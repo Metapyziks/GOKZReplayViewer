@@ -44,7 +44,8 @@ body {
 
 .side-panel .label {
     display: inline-block;
-    width: 128px;
+    font-size: 10pt;
+    width: 96px;
     padding-right: 8px;
     color: #cccccc;
 }
