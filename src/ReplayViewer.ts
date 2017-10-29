@@ -13,21 +13,25 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     private pauseElem: HTMLElement;
     private resumeElem: HTMLElement;
+    private messageElem: HTMLElement;
+    
+    private pauseTime = 1.0;
+    private pauseTicks: number;
+
+    private isPaused = false;
+    private tick = -1;
+    private spareTime = 0;
+
+    private tickData = new TickData();
+
+    private tempTickData0 = new TickData();
+    private tempTickData1 = new TickData();
+    private tempTickData2 = new TickData();
 
     playbackRate = 1;
 
-    protected onInitialize(): void {
-        super.onInitialize();
-
-        this.canLockPointer = false;
-        this.cameraMode = SourceUtils.CameraMode.Fixed;
-
-        this.gotoTickHash();
-
-        window.onhashchange = ev => {
-            if (this.ignoreHashChange) return;
-            this.gotoTickHash();
-        };
+    constructor(container: HTMLElement) {
+        super(container);
 
         const controlPanel = document.createElement("div");
         controlPanel.id = "control-panel";
@@ -58,6 +62,39 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.container.appendChild(this.resumeElem);
     }
 
+    protected onInitialize(): void {
+        super.onInitialize();
+
+        this.gotoTickHash();
+
+        window.onhashchange = ev => {
+            if (this.ignoreHashChange) return;
+            this.gotoTickHash();
+        };
+
+        this.canLockPointer = false;
+        this.cameraMode = SourceUtils.CameraMode.Fixed;
+    }
+
+    protected onCreateMessagePanel(): HTMLElement {
+        const elem = document.createElement("div");
+        elem.classList.add("message");
+
+        this.container.appendChild(elem);
+
+        return elem;
+    }
+
+    showMessage(message: string): void {
+        if (this.messageElem === undefined) {
+            this.messageElem = this.onCreateMessagePanel();
+        }
+
+        if (this.messageElem == null) return;
+
+        this.messageElem.innerText = message;
+    }
+
     loadReplay(url: string): void {
         console.log(`Downloading: ${url}`);
 
@@ -72,19 +109,6 @@ class ReplayViewer extends SourceUtils.MapViewer {
         };
         req.send(null);
     }
-
-    private pauseTime = 1.0;
-    private pauseTicks: number;
-
-    private isPaused = false;
-    private tick = -1;
-    private spareTime = 0;
-
-    private tickData = new TickData();
-
-    private tempTickData0 = new TickData();
-    private tempTickData1 = new TickData();
-    private tempTickData2 = new TickData();
 
     setMapBaseUrl(url: string): void {
         this.mapBaseUrl = url;
@@ -155,18 +179,22 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.updateControlText();
     }
 
-    private ignoreMouseUp = false;
+    private ignoreMouseUp = true;
 
     protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
-        this.ignoreMouseUp = event.target !== this.canvas;
+        this.ignoreMouseUp = (event.target !== this.canvas && event.target !== this.pauseElem && event.target !== this.resumeElem)
+            || screenPos.x < 0 || screenPos.y < 0 || screenPos.x >= this.getWidth() || screenPos.y >= this.getHeight();
         return super.onMouseDown(button, screenPos);
     }
 
     protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
+        const ignored = this.ignoreMouseUp;
+        this.ignoreMouseUp = true;
+
         if (super.onMouseUp(button, screenPos)) return true;
 
         if (button === WebGame.MouseButton.Left && this.replay != null
-            && this.map.isReady() && !this.ignoreMouseUp) {
+            && this.map.isReady() && !ignored) {
                 
             this.togglePause();
             return true;

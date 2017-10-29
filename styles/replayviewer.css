@@ -1,6 +1,7 @@
 .map-viewer #pause, .map-viewer #play {
     position: absolute;
     display: none;
+    opacity: 0.5;
     z-index: 32;
     width: 192px;
     height: 192px;
@@ -20,14 +21,15 @@
 .map-viewer .message {
     position: absolute;
     width: 512px;
-    height: 192px;
+    height: 64px;
     left: 50%;
     top: 50%;
     margin-left: -256px;
-    margin-top: -96px;
+    margin-top: -32px;
 
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(31, 31, 31, 0.25);
     color: white;
     font-family: sans-serif;
-    padding: 16px;
+    text-align: center;
+    line-height: 64px;
 }

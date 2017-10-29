@@ -190,10 +190,9 @@ ReplayFile.MAGIC = 0x676F6B7A;
 var WebGame = Facepunch.WebGame;
 var ReplayViewer = (function (_super) {
     __extends(ReplayViewer, _super);
-    function ReplayViewer() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+    function ReplayViewer(container) {
+        var _this = _super.call(this, container) || this;
         _this.ignoreHashChange = false;
-        _this.playbackRate = 1;
         _this.pauseTime = 1.0;
         _this.isPaused = false;
         _this.tick = -1;
@@ -202,25 +201,13 @@ var ReplayViewer = (function (_super) {
         _this.tempTickData0 = new TickData();
         _this.tempTickData1 = new TickData();
         _this.tempTickData2 = new TickData();
-        _this.ignoreMouseUp = false;
-        return _this;
-    }
-    ReplayViewer.prototype.onInitialize = function () {
-        var _this = this;
-        _super.prototype.onInitialize.call(this);
-        this.canLockPointer = false;
-        this.cameraMode = SourceUtils.CameraMode.Fixed;
-        this.gotoTickHash();
-        window.onhashchange = function (ev) {
-            if (_this.ignoreHashChange)
-                return;
-            _this.gotoTickHash();
-        };
+        _this.playbackRate = 1;
+        _this.ignoreMouseUp = true;
         var controlPanel = document.createElement("div");
         controlPanel.id = "control-panel";
         controlPanel.classList.add("side-panel");
         controlPanel.innerHTML = "\n            <span class=\"label\">Playback tick:</span>&nbsp;<span id=\"control-currenttick\">0</span> / <span id=\"control-totalticks\">0</span><br/>\n            <span class=\"label\">Playback rate:</span>&nbsp;<span id=\"control-playbackrate\">1.0</span>x<br/>\n            <input id=\"playback-speed\" class=\"slider\" type=\"range\" min=\"-2.0\" max=\"2.0\" value=\"1.0\" step=\"0.1\" />";
-        this.container.appendChild(controlPanel);
+        _this.container.appendChild(controlPanel);
         var speedSlider = document.getElementById("playback-speed");
         var speedLabel = document.getElementById("control-playbackrate");
         speedSlider.oninput = function (ev) {
@@ -229,12 +216,39 @@ var ReplayViewer = (function (_super) {
             _this.playbackRate = rate;
             speedLabel.innerText = rate.toPrecision(2);
         };
-        this.pauseElem = document.createElement("div");
-        this.pauseElem.id = "pause";
-        this.container.appendChild(this.pauseElem);
-        this.resumeElem = document.createElement("div");
-        this.resumeElem.id = "resume";
-        this.container.appendChild(this.resumeElem);
+        _this.pauseElem = document.createElement("div");
+        _this.pauseElem.id = "pause";
+        _this.container.appendChild(_this.pauseElem);
+        _this.resumeElem = document.createElement("div");
+        _this.resumeElem.id = "resume";
+        _this.container.appendChild(_this.resumeElem);
+        return _this;
+    }
+    ReplayViewer.prototype.onInitialize = function () {
+        var _this = this;
+        _super.prototype.onInitialize.call(this);
+        this.gotoTickHash();
+        window.onhashchange = function (ev) {
+            if (_this.ignoreHashChange)
+                return;
+            _this.gotoTickHash();
+        };
+        this.canLockPointer = false;
+        this.cameraMode = SourceUtils.CameraMode.Fixed;
+    };
+    ReplayViewer.prototype.onCreateMessagePanel = function () {
+        var elem = document.createElement("div");
+        elem.classList.add("message");
+        this.container.appendChild(elem);
+        return elem;
+    };
+    ReplayViewer.prototype.showMessage = function (message) {
+        if (this.messageElem === undefined) {
+            this.messageElem = this.onCreateMessagePanel();
+        }
+        if (this.messageElem == null)
+            return;
+        this.messageElem.innerText = message;
     };
     ReplayViewer.prototype.loadReplay = function (url) {
         var _this = this;
@@ -307,14 +321,17 @@ var ReplayViewer = (function (_super) {
         this.updateControlText();
     };
     ReplayViewer.prototype.onMouseDown = function (button, screenPos) {
-        this.ignoreMouseUp = event.target !== this.canvas;
+        this.ignoreMouseUp = (event.target !== this.canvas && event.target !== this.pauseElem && event.target !== this.resumeElem)
+            || screenPos.x < 0 || screenPos.y < 0 || screenPos.x >= this.getWidth() || screenPos.y >= this.getHeight();
         return _super.prototype.onMouseDown.call(this, button, screenPos);
     };
     ReplayViewer.prototype.onMouseUp = function (button, screenPos) {
+        var ignored = this.ignoreMouseUp;
+        this.ignoreMouseUp = true;
         if (_super.prototype.onMouseUp.call(this, button, screenPos))
             return true;
         if (button === WebGame.MouseButton.Left && this.replay != null
-            && this.map.isReady() && !this.ignoreMouseUp) {
+            && this.map.isReady() && !ignored) {
             this.togglePause();
             return true;
         }
