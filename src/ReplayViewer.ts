@@ -36,14 +36,6 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         this.onCreateControlPanel();
         this.onCreatePlaybackBar();
-
-        this.pauseElem = document.createElement("div");
-        this.pauseElem.id = "pause";
-        this.container.appendChild(this.pauseElem);
-
-        this.resumeElem = document.createElement("div");
-        this.resumeElem.id = "resume";
-        this.container.appendChild(this.resumeElem);
     }
     
     protected onCreateControlPanel(): HTMLElement {
@@ -93,6 +85,14 @@ class ReplayViewer extends SourceUtils.MapViewer {
             this.updateTickHash();
             this.isScrubbing = false;
         };
+
+        this.pauseElem = document.createElement("div");
+        this.pauseElem.id = "pause";
+        playbackBar.appendChild(this.pauseElem);
+
+        this.resumeElem = document.createElement("div");
+        this.resumeElem.id = "play";
+        playbackBar.appendChild(this.resumeElem);
 
         return playbackBar;
     }
@@ -179,13 +179,14 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
     pause(): void {
         this.isPaused = true;
-        document.getElementById("pause").style.display = "block";
-        document.getElementById("resume").style.display = "none";
+        document.getElementById("pause").style.display = "none";
+        document.getElementById("play").style.display = "block";
         this.updateTickHash();
     }
 
     resume(): void {
-        document.getElementById("pause").style.display = "none";
+        document.getElementById("pause").style.display = "block";
+        document.getElementById("play").style.display = "none";
         this.isPaused = false;
     }
 
@@ -203,7 +204,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         const parsedTick = parseInt(window.location.hash.substr(2)) - 1;
         if (this.tick === parsedTick) return;
-        
+
         this.gotoTick(parsedTick);
         this.pause();
     }

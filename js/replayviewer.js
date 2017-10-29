@@ -251,12 +251,6 @@ var ReplayViewer = (function (_super) {
         _this.ignoreMouseUp = true;
         _this.onCreateControlPanel();
         _this.onCreatePlaybackBar();
-        _this.pauseElem = document.createElement("div");
-        _this.pauseElem.id = "pause";
-        _this.container.appendChild(_this.pauseElem);
-        _this.resumeElem = document.createElement("div");
-        _this.resumeElem.id = "resume";
-        _this.container.appendChild(_this.resumeElem);
         return _this;
     }
     ReplayViewer.prototype.onCreateControlPanel = function () {
@@ -293,6 +287,12 @@ var ReplayViewer = (function (_super) {
             _this.updateTickHash();
             _this.isScrubbing = false;
         };
+        this.pauseElem = document.createElement("div");
+        this.pauseElem.id = "pause";
+        playbackBar.appendChild(this.pauseElem);
+        this.resumeElem = document.createElement("div");
+        this.resumeElem.id = "play";
+        playbackBar.appendChild(this.resumeElem);
         return playbackBar;
     };
     ReplayViewer.prototype.onCreateMessagePanel = function () {
@@ -359,12 +359,13 @@ var ReplayViewer = (function (_super) {
     };
     ReplayViewer.prototype.pause = function () {
         this.isPaused = true;
-        document.getElementById("pause").style.display = "block";
-        document.getElementById("resume").style.display = "none";
+        document.getElementById("pause").style.display = "none";
+        document.getElementById("play").style.display = "block";
         this.updateTickHash();
     };
     ReplayViewer.prototype.resume = function () {
-        document.getElementById("pause").style.display = "none";
+        document.getElementById("pause").style.display = "block";
+        document.getElementById("play").style.display = "none";
         this.isPaused = false;
     };
     ReplayViewer.prototype.togglePause = function () {
