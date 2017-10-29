@@ -14,6 +14,7 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private pauseElem: HTMLElement;
     private resumeElem: HTMLElement;
     private messageElem: HTMLElement;
+    private scrubberElem: HTMLInputElement;
     
     private pauseTime = 1.0;
     private pauseTicks: number;
@@ -33,6 +34,19 @@ class ReplayViewer extends SourceUtils.MapViewer {
     constructor(container: HTMLElement) {
         super(container);
 
+        this.onCreateControlPanel();
+        this.onCreatePlaybackBar();
+
+        this.pauseElem = document.createElement("div");
+        this.pauseElem.id = "pause";
+        this.container.appendChild(this.pauseElem);
+
+        this.resumeElem = document.createElement("div");
+        this.resumeElem.id = "resume";
+        this.container.appendChild(this.resumeElem);
+    }
+    
+    protected onCreateControlPanel(): HTMLElement {
         const controlPanel = document.createElement("div");
         controlPanel.id = "control-panel";
         controlPanel.classList.add("side-panel");
@@ -53,13 +67,37 @@ class ReplayViewer extends SourceUtils.MapViewer {
             speedLabel.innerText = rate.toPrecision(2);
         };
 
-        this.pauseElem = document.createElement("div");
-        this.pauseElem.id = "pause";
-        this.container.appendChild(this.pauseElem);
-        
-        this.resumeElem = document.createElement("div");
-        this.resumeElem.id = "resume";
-        this.container.appendChild(this.resumeElem);
+        return controlPanel;
+    }
+
+    protected onCreatePlaybackBar(): HTMLElement {
+        const playbackBar = document.createElement("div");
+        playbackBar.classList.add("playback-bar");
+        playbackBar.innerHTML = `
+            <div class="scrubber-container">
+            <input id="scrubber" type="range" min="0" max="1.0" value="0.0" step="1" />
+            </div>`;
+
+        this.container.appendChild(playbackBar);
+
+        this.scrubberElem = document.getElementById("scrubber") as HTMLInputElement;
+        this.scrubberElem.oninput = ev => {
+            this.gotoTick(this.scrubberElem.valueAsNumber);
+        };
+        this.scrubberElem.onchange = ev => {
+            this.updateTickHash();
+        };
+
+        return playbackBar;
+    }
+
+    protected onCreateMessagePanel(): HTMLElement {
+        const elem = document.createElement("div");
+        elem.classList.add("message");
+
+        this.container.appendChild(elem);
+
+        return elem;
     }
 
     protected onInitialize(): void {
@@ -74,15 +112,6 @@ class ReplayViewer extends SourceUtils.MapViewer {
 
         this.canLockPointer = false;
         this.cameraMode = SourceUtils.CameraMode.Fixed;
-    }
-
-    protected onCreateMessagePanel(): HTMLElement {
-        const elem = document.createElement("div");
-        elem.classList.add("message");
-
-        this.container.appendChild(elem);
-
-        return elem;
     }
 
     showMessage(message: string): void {
@@ -119,6 +148,9 @@ class ReplayViewer extends SourceUtils.MapViewer {
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
         this.tick = this.tick === -1 ? -this.pauseTicks : this.tick;
         this.spareTime = 0;
+        
+        this.scrubberElem.max = this.replay.tickCount.toString();
+        this.scrubberElem.valueAsNumber = this.tick;
 
         const mins = Math.floor(replay.time / 60);
         const secs = replay.time - (mins * 60);
@@ -170,32 +202,35 @@ class ReplayViewer extends SourceUtils.MapViewer {
         }
     }
 
-    private updateControlText(): void {
+    protected onTickChanged(tick: number): void {
         document.getElementById("control-currenttick").innerText = (this.clampTick(this.tick) + 1).toLocaleString();
+        this.scrubberElem.valueAsNumber = tick;
     }
 
     gotoTick(tick: number): void {
+        if (tick === this.tick) return;
         this.tick = tick;
-        this.updateControlText();
+        this.onTickChanged(tick);
     }
 
     private ignoreMouseUp = true;
 
+    private canTogglePlayWithClick(): boolean {
+        return event.target === this.canvas || event.target === this.pauseElem || event.target === this.resumeElem;
+    }
+
     protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
-        this.ignoreMouseUp = (event.target !== this.canvas && event.target !== this.pauseElem && event.target !== this.resumeElem)
-            || screenPos.x < 0 || screenPos.y < 0 || screenPos.x >= this.getWidth() || screenPos.y >= this.getHeight();
+        this.ignoreMouseUp = !this.canTogglePlayWithClick();
         return super.onMouseDown(button, screenPos);
     }
 
     protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
-        const ignored = this.ignoreMouseUp;
+        const ignored = this.ignoreMouseUp || !this.canTogglePlayWithClick();
         this.ignoreMouseUp = true;
 
         if (super.onMouseUp(button, screenPos)) return true;
 
-        if (button === WebGame.MouseButton.Left && this.replay != null
-            && this.map.isReady() && !ignored) {
-                
+        if (!ignored && button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
             this.togglePause();
             return true;
         }
@@ -270,6 +305,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
         if (this.map.isReady() && !this.isPaused) {
             this.spareTime += dt * this.playbackRate;
 
+            const oldTick = this.tick;
+
             // Forward playback
             while (this.spareTime > tickPeriod) {
                 this.spareTime -= tickPeriod;
@@ -290,7 +327,9 @@ class ReplayViewer extends SourceUtils.MapViewer {
                 }
             }
 
-            this.updateControlText();
+            if (this.tick !== oldTick) {
+                this.onTickChanged(this.tick);
+            }
         } else {
             this.spareTime = 0;
         }
