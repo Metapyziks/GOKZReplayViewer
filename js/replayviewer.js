@@ -48,15 +48,61 @@ var BinaryReader = (function () {
         this.offset += 4;
         return value;
     };
-    BinaryReader.prototype.readAsciiString = function (length) {
+    // http://www.onicos.com/staff/iz/amuse/javascript/expert/utf.txt
+    /* utf.js - UTF-8 <=> UTF-16 convertion
+    *
+    * Copyright (C) 1999 Masanao Izumo <iz@onicos.co.jp>
+    * Version: 1.0
+    * LastModified: Dec 25 1999
+    * This library is free.  You can redistribute it and/or modify it.
+    */
+    BinaryReader.utf8ArrayToStr = function (array) {
+        var out, i, len, c;
+        var char2, char3;
+        out = "";
+        len = array.length;
+        i = 0;
+        while (i < len) {
+            c = array[i++];
+            switch (c >> 4) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    // 0xxxxxxx
+                    out += String.fromCharCode(c);
+                    break;
+                case 12:
+                case 13:
+                    // 110x xxxx   10xx xxxx
+                    char2 = array[i++];
+                    out += String.fromCharCode(((c & 0x1F) << 6) | (char2 & 0x3F));
+                    break;
+                case 14:
+                    // 1110 xxxx  10xx xxxx  10xx xxxx
+                    char2 = array[i++];
+                    char3 = array[i++];
+                    out += String.fromCharCode(((c & 0x0F) << 12) |
+                        ((char2 & 0x3F) << 6) |
+                        ((char3 & 0x3F) << 0));
+                    break;
+            }
+        }
+        return out;
+    };
+    BinaryReader.prototype.readString = function (length) {
         if (length === undefined) {
             length = this.readUint8();
         }
-        var result = "";
+        var chars = new Array(length);
         for (var i = 0; i < length; ++i) {
-            result += String.fromCharCode(this.readUint8());
+            chars[i] = this.readUint8();
         }
-        return result;
+        return BinaryReader.utf8ArrayToStr(chars);
     };
     BinaryReader.prototype.readVector2 = function (vec) {
         if (vec === undefined)
@@ -155,17 +201,17 @@ var ReplayFile = (function () {
             throw "Unrecognised replay file format.";
         }
         this.formatVersion = reader.readUint8();
-        this.pluginVersion = reader.readAsciiString();
-        this.mapName = reader.readAsciiString();
+        this.pluginVersion = reader.readString();
+        this.mapName = reader.readString();
         this.course = reader.readInt32();
         this.mode = reader.readInt32();
         this.style = reader.readInt32();
         this.time = reader.readFloat32();
         this.teleportsUsed = reader.readInt32();
         this.steamId = reader.readInt32();
-        this.steamId2 = reader.readAsciiString();
-        reader.readAsciiString();
-        this.playerName = reader.readAsciiString();
+        this.steamId2 = reader.readString();
+        reader.readString();
+        this.playerName = reader.readString();
         this.tickCount = reader.readInt32();
         this.tickRate = Math.round(this.tickCount / this.time); // todo
         this.firstTickOffset = reader.getOffset();
