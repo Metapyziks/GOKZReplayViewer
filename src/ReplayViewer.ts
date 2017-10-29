@@ -41,12 +41,16 @@ class ReplayViewer extends SourceUtils.MapViewer {
     private tempTickData1 = new TickData();
     private tempTickData2 = new TickData();
 
+    readonly keyDisplay: KeyDisplay;
+
     autoRepeat = true;
 
     constructor(container: HTMLElement) {
         super(container);
 
         this.onCreatePlaybackBar();
+
+        this.keyDisplay = new KeyDisplay(container);
     }
 
     protected onCreatePlaybackBar(): HTMLElement {
@@ -428,6 +432,8 @@ class ReplayViewer extends SourceUtils.MapViewer {
                 d0.getEyeHeight(), d1.getEyeHeight(),
                 d2.getEyeHeight(), d3.getEyeHeight(), t);
         }
+
+        this.keyDisplay.update(this.tickData.buttons);
 
         this.mainCamera.setPosition(
             this.tickData.position.x,
