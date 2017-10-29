@@ -239,7 +239,7 @@ var ReplayViewer = (function (_super) {
     function ReplayViewer(container) {
         var _this = _super.call(this, container) || this;
         _this.pauseTime = 1.0;
-        _this.isPaused = false;
+        _this.isPaused = true;
         _this.isScrubbing = false;
         _this.tick = -1;
         _this.spareTime = 0;
@@ -247,6 +247,7 @@ var ReplayViewer = (function (_super) {
         _this.tempTickData0 = new TickData();
         _this.tempTickData1 = new TickData();
         _this.tempTickData2 = new TickData();
+        _this.autoRepeat = true;
         _this.playbackRate = 1;
         _this.ignoreMouseUp = true;
         _this.onCreateControlPanel();
@@ -351,7 +352,7 @@ var ReplayViewer = (function (_super) {
     ReplayViewer.prototype.setReplay = function (replay) {
         this.replay = replay;
         this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
-        this.tick = this.tick === -1 ? -this.pauseTicks : this.tick;
+        this.tick = this.tick === -1 ? 0 : this.tick;
         this.spareTime = 0;
         this.scrubberElem.max = this.replay.tickCount.toString();
         this.onTickChanged(this.tick);
