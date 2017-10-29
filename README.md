@@ -1,6 +1,8 @@
 # GOKZ Replay Viewer
 Prototype of a WebGL GOKZ recording player.
 
+![](https://files.facepunch.com/ziks/2017/October/29/chrome_2017-10-29_22-27-47.png)
+
 ## Try it out!
 https://metapyziks.github.io/GOKZReplayViewer/
 
