@@ -36,7 +36,7 @@ Then in the body of your page add a div that will host the canvas:
 
 Finally, use this JavaScript to create the viewer when the page loads:
 
-```html
+```javascript
 var viewer;
 window.onload = function() {
     // Create a replay viewer canvas inside the #example-viewer div
