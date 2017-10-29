@@ -6,11 +6,14 @@ MAPSURL=
 INDEXTEMPLATE=index.template.html
 
 CONFIGPATH=config.sh
+CONFIGTEMPALTE=config.template.sh
 
-if [ -f "$CONFIGPATH" ]; then
-    echo "Reading $CONFIGPATH"
-    source "$CONFIGPATH"
+if [ ! -f "$CONFIGPATH" ]; then
+    echo "Creating $CONFIGPATH"
+    cp "$CONFIGTEMPALTE" "$CONFIGPATH"
 fi
+
+source "$CONFIGPATH"
 
 tsc -p tsconfig.json
 
