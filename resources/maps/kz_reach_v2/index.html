@@ -6,9 +6,9 @@
         <title>Map Viewer - kz_reach_v2</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/base64-string.min.js"></script>
-        <script src="/GOKZReplayViewer/resources/js/facepunch.webgame.js?v=196f-e4df"></script>
-        <script src="/GOKZReplayViewer/resources/js/sourceutils.js?v=196f-e4df"></script>
-        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/resources/styles/mapviewer.css?v=196f-e4df" />
+        <script src="/GOKZReplayViewer/resources/js/facepunch.webgame.js?v=1971-ea91"></script>
+        <script src="/GOKZReplayViewer/resources/js/sourceutils.js?v=1971-ea91"></script>
+        <link type="text/css" rel="stylesheet" href="/GOKZReplayViewer/resources/styles/mapviewer.css?v=1971-ea91" />
         <style>
             #map-view {
                 position: absolute;
@@ -29,7 +29,8 @@
                 viewer = new SourceUtils.MapViewer(document.getElementById("map-view"));
                 viewer.cameraMode = SourceUtils.CameraMode.FreeCam;
                 viewer.showDebugPanel = true;
-                viewer.loadMap("/GOKZReplayViewer/resources/maps/kz_reach_v2/index.json?v=196f-e4df");
+                viewer.saveCameraPosInHash = true;
+                viewer.loadMap("/GOKZReplayViewer/resources/maps/kz_reach_v2/index.json?v=1971-ea91");
                 viewer.animate();
             }
         </script>

@@ -1,63 +1,63 @@
 {
   "name": "kz_exps_cursedjourney",
-  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/lightmap.json?v=196f-e4e0",
+  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/lightmap.json?v=1971-ea92",
   "visPages": [
     {
       "first": 0,
       "count": 2329,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vispage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vispage0.json?v=1971-ea92"
     }
   ],
   "leafPages": [
     {
       "first": 0,
       "count": 6779,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/leafpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/leafpage0.json?v=1971-ea92"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 305,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/disppage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/disppage0.json?v=1971-ea92"
     }
   ],
   "materialPages": [
     {
       "first": 0,
       "count": 146,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/matpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/matpage0.json?v=1971-ea92"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 1,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage0.json?v=1971-ea92"
     },
     {
       "first": 1,
       "count": 139,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage1.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage1.json?v=1971-ea92"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 73,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/mdlpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/mdlpage0.json?v=1971-ea92"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 1024,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage0.json?v=1971-ea92"
     },
     {
       "first": 1024,
       "count": 353,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage1.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage1.json?v=1971-ea92"
     }
   ],
   "entities": [
@@ -73,32 +73,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01rt.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01rt.vtf.json?v=1971-ea92"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01lf.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01lf.vtf.json?v=1971-ea92"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01bk.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01bk.vtf.json?v=1971-ea92"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf.json?v=1971-ea92"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01up.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01up.vtf.json?v=1971-ea92"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01dn.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01dn.vtf.json?v=1971-ea92"
           },
           {
             "name": "aspect",

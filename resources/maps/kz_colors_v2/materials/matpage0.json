@@ -5458,7 +5458,7 @@
       ]
     },
     {
-      "path": "materials/tools/toolstrigger-dx10.vtf",
+      "path": "materials/tools/toolstrigger.vtf",
       "target": 3553,
       "width": 64,
       "height": 64,
@@ -5475,32 +5475,32 @@
             "r": 0.968627453,
             "g": 0.596078455,
             "b": 0.0,
-            "a": 0.309803933
+            "a": 0.4117647
           }
         },
         {
           "level": 5,
-          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger-dx10.vtf/mip5.png"
+          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger.vtf/mip5.png"
         },
         {
           "level": 4,
-          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger-dx10.vtf/mip4.png"
+          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger.vtf/mip4.png"
         },
         {
           "level": 3,
-          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger-dx10.vtf/mip3.png"
+          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger.vtf/mip3.png"
         },
         {
           "level": 2,
-          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger-dx10.vtf/mip2.png"
+          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger.vtf/mip2.png"
         },
         {
           "level": 1,
-          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger-dx10.vtf/mip1.png"
+          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger.vtf/mip1.png"
         },
         {
           "level": 0,
-          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger-dx10.vtf/mip0.png"
+          "url": "/GOKZReplayViewer/resources/materials/tools/toolstrigger.vtf/mip0.png"
         }
       ]
     },

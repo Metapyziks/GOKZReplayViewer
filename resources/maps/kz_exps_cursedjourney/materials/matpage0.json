@@ -7258,6 +7258,16 @@
           "value": 0.8
         },
         {
+          "name": "refractTint",
+          "type": 3,
+          "value": {
+            "r": 0.392156869,
+            "g": 0.392156869,
+            "b": 0.392156869,
+            "a": 1.0
+          }
+        },
+        {
           "name": "fogColor",
           "type": 3,
           "value": {
@@ -7276,6 +7286,11 @@
           "name": "fogEnd",
           "type": 2,
           "value": 15.0
+        },
+        {
+          "name": "fogLightmapped",
+          "type": 1,
+          "value": true
         }
       ]
     },
@@ -8258,13 +8273,23 @@
           "value": 1.0
         },
         {
+          "name": "refractTint",
+          "type": 3,
+          "value": {
+            "r": 0.9490196,
+            "g": 1.0,
+            "b": 0.968627453,
+            "a": 1.0
+          }
+        },
+        {
           "name": "reflectTint",
           "type": 3,
           "value": {
-            "r": 0.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 0.0
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
           }
         },
         {

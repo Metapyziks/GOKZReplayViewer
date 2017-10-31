@@ -1,58 +1,58 @@
 {
   "name": "kz_colors_v2",
-  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_colors_v2/lightmap.json?v=196f-e4e0",
+  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_colors_v2/lightmap.json?v=1971-ea91",
   "visPages": [
     {
       "first": 0,
       "count": 756,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vispage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vispage0.json?v=1971-ea91"
     }
   ],
   "leafPages": [
     {
       "first": 0,
       "count": 2332,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/leafpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/leafpage0.json?v=1971-ea91"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/disppage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/disppage0.json?v=1971-ea91"
     }
   ],
   "materialPages": [
     {
       "first": 0,
       "count": 180,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/materials/matpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/materials/matpage0.json?v=1971-ea91"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 1,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage0.json?v=1971-ea91"
     },
     {
       "first": 1,
       "count": 16,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage1.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage1.json?v=1971-ea91"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/mdlpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/mdlpage0.json?v=1971-ea91"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vhvpage0.json?v=196f-e4e0"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vhvpage0.json?v=1971-ea91"
     }
   ],
   "entities": [
@@ -68,32 +68,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf.json?v=1971-ea91"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italylf.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italylf.vtf.json?v=1971-ea91"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italybk.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italybk.vtf.json?v=1971-ea91"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyft.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyft.vtf.json?v=1971-ea91"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyup.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyup.vtf.json?v=1971-ea91"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italydn.vtf.json?v=196f-e4e0"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italydn.vtf.json?v=1971-ea91"
           }
         ]
       },

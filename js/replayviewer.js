@@ -262,32 +262,31 @@ var ReplayFile = (function () {
         data.flags = reader.readInt32();
         return data;
     };
+    ReplayFile.MAGIC = 0x676F6B7A;
     return ReplayFile;
 }());
-ReplayFile.MAGIC = 0x676F6B7A;
 ///<reference path="../js/facepunch.webgame.d.ts"/>
 ///<reference path="../js/sourceutils.d.ts"/>
 var WebGame = Facepunch.WebGame;
 var ReplayViewer = (function (_super) {
     __extends(ReplayViewer, _super);
     function ReplayViewer(container) {
-        var _this = _super.call(this, container) || this;
-        _this.speedControlVisible = false;
-        _this.pauseTime = 1.0;
-        _this.isPaused = true;
-        _this.isScrubbing = false;
-        _this.tick = -1;
-        _this.spareTime = 0;
-        _this.playbackRate = 1;
-        _this.tickData = new TickData();
-        _this.tempTickData0 = new TickData();
-        _this.tempTickData1 = new TickData();
-        _this.tempTickData2 = new TickData();
-        _this.autoRepeat = true;
-        _this.ignoreMouseUp = true;
-        _this.onCreatePlaybackBar();
-        _this.keyDisplay = new KeyDisplay(container);
-        return _this;
+        _super.call(this, container);
+        this.speedControlVisible = false;
+        this.pauseTime = 1.0;
+        this.isPaused = true;
+        this.isScrubbing = false;
+        this.tick = -1;
+        this.spareTime = 0;
+        this.playbackRate = 1;
+        this.tickData = new TickData();
+        this.tempTickData0 = new TickData();
+        this.tempTickData1 = new TickData();
+        this.tempTickData2 = new TickData();
+        this.autoRepeat = true;
+        this.ignoreMouseUp = true;
+        this.onCreatePlaybackBar();
+        this.keyDisplay = new KeyDisplay(container);
     }
     ReplayViewer.prototype.onCreatePlaybackBar = function () {
         var _this = this;
@@ -589,7 +588,7 @@ var ReplayViewer = (function (_super) {
         this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
         this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
     };
+    ReplayViewer.hashTickRegex = /^#t[0-9]+$/;
+    ReplayViewer.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
     return ReplayViewer;
 }(SourceUtils.MapViewer));
-ReplayViewer.hashTickRegex = /^#t[0-9]+$/;
-ReplayViewer.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
