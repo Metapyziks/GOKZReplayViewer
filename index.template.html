@@ -65,8 +65,8 @@
                     var title = replay.playerName
                         + " - " + replay.mapName
                         + " - " + mins + ":" + (secsString.indexOf(".") === 1 ? "0" : "") + secsString
-                        + " - " + Gokz.GlobalMode[replay.mode]
-                        + " - " + (replay.teleportsUsed === 0 ? "Pro" : "Nub");
+                        + " [" + Gokz.GlobalMode[replay.mode].toUpperCase() + "]"
+                        + " [" + (replay.teleportsUsed === 0 ? "PRO" : "NUB") + "]";
 
                     document.getElementById("title").innerText = title;
                     document.title = title;
