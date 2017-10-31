@@ -146,5 +146,9 @@ namespace Gokz {
 
             return data;
         }
+
+        clampTick(tick: number): number {
+            return tick < 0 ? 0 : tick >= this.tickCount ? this.tickCount - 1 : tick;
+        }
     }
 }

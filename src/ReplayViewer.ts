@@ -9,35 +9,16 @@ namespace Gokz {
     }
 
     export class ReplayViewer extends SourceUtils.MapViewer {
-        private static readonly speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
-
-        private replay: ReplayFile;
-        private currentMapName: string;
-        private mapBaseUrl: string;
-
-        private timeElem: HTMLElement;
-        private speedElem: HTMLElement;
-        private pauseElem: HTMLElement;
-        private resumeElem: HTMLElement;
-        private settingsElem: HTMLElement;
-        private fullscreenElem: HTMLElement;
-        private scrubberElem: HTMLInputElement;
-
-        private speedControlElem: HTMLElement;
-        private speedSliderElem: HTMLInputElement;
-        private speedControlVisible = false;
-
         private messageElem: HTMLElement;
+
+        private lastReplay: ReplayFile;
+        private currentMapName: string;
+        mapBaseUrl: string;
 
         private pauseTime = 1.0;
         private pauseTicks: number;
 
-        private isPaused = true;
-        private isScrubbing = false;
-
-        private tick = -1;
         private spareTime = 0;
-        private playbackRate = 1;
 
         private tickData = new TickData();
 
@@ -46,8 +27,14 @@ namespace Gokz {
         private tempTickData2 = new TickData();
 
         readonly keyDisplay: KeyDisplay;
+        readonly controls: ReplayControls;
 
+        replay: ReplayFile;
+        tick = -1;
+        playbackRate = 1.0;
         autoRepeat = true;
+        isScrubbing = false;
+        isPlaying = false;
 
         //
         // Events
@@ -62,87 +49,13 @@ namespace Gokz {
         constructor(container: HTMLElement) {
             super(container);
 
-            this.onCreatePlaybackBar();
-
+            this.controls = new ReplayControls(this);
             this.keyDisplay = new KeyDisplay(container);
         }
 
         //
         // Overrides
         //
-
-        protected onCreatePlaybackBar(): HTMLElement {
-            const playbackBar = document.createElement("div");
-            playbackBar.classList.add("playback-bar");
-            playbackBar.innerHTML = `
-                <div class="scrubber-container">
-                <input class="scrubber" type="range" min="0" max="1.0" value="0.0" step="1" />
-                </div>`;
-
-            this.container.appendChild(playbackBar);
-
-            this.scrubberElem = playbackBar.getElementsByClassName("scrubber")[0] as HTMLInputElement;
-            this.scrubberElem.oninput = ev => {
-                this.gotoTick(this.scrubberElem.valueAsNumber);
-            };
-
-            this.scrubberElem.onmousedown = ev => {
-                this.isScrubbing = true;
-            };
-
-            this.scrubberElem.onmouseup = ev => {
-                this.updateTickHash();
-                this.isScrubbing = false;
-            };
-
-            this.timeElem = document.createElement("div");
-            this.timeElem.classList.add("time");
-            playbackBar.appendChild(this.timeElem);
-
-            this.speedElem = document.createElement("div");
-            this.speedElem.classList.add("speed");
-            this.speedElem.onclick = ev => {
-                if (this.speedControlVisible) this.hideSpeedControl();
-                else this.showSpeedControl();
-            }
-            playbackBar.appendChild(this.speedElem);
-
-            this.pauseElem = document.createElement("div");
-            this.pauseElem.classList.add("pause");
-            this.pauseElem.classList.add("control");
-            this.pauseElem.onclick = ev => this.pause();
-            playbackBar.appendChild(this.pauseElem);
-
-            this.resumeElem = document.createElement("div");
-            this.resumeElem.classList.add("play");
-            this.resumeElem.classList.add("control");
-            this.resumeElem.onclick = ev => this.resume();
-            playbackBar.appendChild(this.resumeElem);
-
-            this.settingsElem = document.createElement("div");
-            this.settingsElem.classList.add("settings");
-            this.settingsElem.classList.add("control");
-            this.settingsElem.onclick = ev => this.showSettings();
-            playbackBar.appendChild(this.settingsElem);
-
-            this.fullscreenElem = document.createElement("div");
-            this.fullscreenElem.classList.add("fullscreen");
-            this.fullscreenElem.classList.add("control");
-            this.fullscreenElem.onclick = ev => this.toggleFullscreen();
-            playbackBar.appendChild(this.fullscreenElem);
-
-            this.speedControlElem = document.createElement("div");
-            this.speedControlElem.classList.add("speed-control");
-            this.speedControlElem.innerHTML = `<input class="speed-slider" type="range" min="0" max="${ReplayViewer.speedSliderValues.length - 1}" step="1">`;
-            this.container.appendChild(this.speedControlElem);
-
-            this.speedSliderElem = this.speedControlElem.getElementsByClassName("speed-slider")[0] as HTMLInputElement;
-            this.speedSliderElem.oninput = ev => {
-                this.setPlaybackRate(ReplayViewer.speedSliderValues[this.speedSliderElem.valueAsNumber]);
-            }
-
-            return playbackBar;
-        }
 
         protected onCreateMessagePanel(): HTMLElement {
             const elem = document.createElement("div");
@@ -156,8 +69,6 @@ namespace Gokz {
         protected onInitialize(): void {
             super.onInitialize();
 
-            this.setPlaybackRate(1);
-
             this.canLockPointer = false;
             this.cameraMode = SourceUtils.CameraMode.Fixed;
         }
@@ -168,8 +79,8 @@ namespace Gokz {
             const data = hash as IHashData;
 
             if (data.t !== undefined && this.tick !== data.t) {
-                this.gotoTick(data.t);
-                this.pause();
+                this.tick = data.t;
+                this.isPlaying = false;
             }
         }
 
@@ -186,13 +97,12 @@ namespace Gokz {
 
             if (super.onMouseUp(button, screenPos)) return true;
 
-            if (!ignored && this.speedControlVisible) {
-                this.hideSpeedControl();
+            if (!ignored && this.controls.hideSpeedControl()) {
                 return true;
             }
 
             if (!ignored && button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
-                this.togglePause();
+                this.isPlaying = !this.isPlaying;
                 return true;
             }
 
@@ -206,7 +116,7 @@ namespace Gokz {
                     return true;
                 case WebGame.Key.Space:
                     if (this.replay != null && this.map.isReady()) {
-                        this.togglePause();
+                        this.isPlaying = !this.isPlaying;
                     }
                     return true;
             }
@@ -214,14 +124,44 @@ namespace Gokz {
             return super.onKeyDown(key);
         }
 
+        protected onChangeReplay(replay: ReplayFile): void {
+            this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
+            this.tick = this.tick === -1 ? 0 : this.tick;
+            this.spareTime = 0;
+
+            this.controls.setScrubberMax(this.replay.tickCount);
+
+            if (this.onreplayloaded != null) {
+                this.onreplayloaded(this.replay);
+            }
+
+            if (this.currentMapName !== replay.mapName) {
+                if (this.currentMapName != null) {
+                    this.map.unload();
+                }
+
+                this.currentMapName = replay.mapName;
+                this.loadMap(`${this.mapBaseUrl}/${replay.mapName}/index.json`);
+            }
+        }
+
         protected onUpdateFrame(dt: number): void {
             super.onUpdateFrame(dt);
 
+            if (this.replay != this.lastReplay) {
+                this.lastReplay = this.replay;
+
+                if (this.replay != null) {
+                    this.onChangeReplay(this.replay);
+                }
+            }
+
             if (this.replay == null) return;
 
-            const tickPeriod = 1.0 / this.replay.tickRate;
+            const replay = this.replay;
+            const tickPeriod = 1.0 / replay.tickRate;
 
-            if (this.map.isReady() && !this.isPaused && !this.isScrubbing) {
+            if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
 
                 const oldTick = this.tick;
@@ -231,7 +171,7 @@ namespace Gokz {
                     this.spareTime -= tickPeriod;
                     this.tick += 1;
 
-                    if (this.tick > this.replay.tickCount + this.pauseTicks * 2) {
+                    if (this.tick > replay.tickCount + this.pauseTicks * 2) {
                         this.tick = -this.pauseTicks;
                     }
                 }
@@ -242,27 +182,23 @@ namespace Gokz {
                     this.tick -= 1;
 
                     if (this.tick < -this.pauseTicks * 2) {
-                        this.tick = this.replay.tickCount + this.pauseTicks;
+                        this.tick = replay.tickCount + this.pauseTicks;
                     }
-                }
-
-                if (this.tick !== oldTick) {
-                    this.onTickChanged(this.tick);
                 }
             } else {
                 this.spareTime = 0;
             }
 
-            this.replay.getTickData(this.clampTick(this.tick), this.tickData);
+            replay.getTickData(replay.clampTick(this.tick), this.tickData);
             let eyeHeight = this.tickData.getEyeHeight();
 
             if (this.spareTime >= 0 && this.spareTime <= tickPeriod) {
                 const t = this.spareTime / tickPeriod;
 
-                const d0 = this.replay.getTickData(this.clampTick(this.tick - 1), this.tempTickData0);
+                const d0 = replay.getTickData(replay.clampTick(this.tick - 1), this.tempTickData0);
                 const d1 = this.tickData;
-                const d2 = this.replay.getTickData(this.clampTick(this.tick + 1), this.tempTickData1);
-                const d3 = this.replay.getTickData(this.clampTick(this.tick + 2), this.tempTickData2);
+                const d2 = replay.getTickData(replay.clampTick(this.tick + 1), this.tempTickData1);
+                const d3 = replay.getTickData(replay.clampTick(this.tick + 2), this.tempTickData2);
 
                 Utils.hermitePosition(d0.position, d1.position,
                     d2.position, d3.position, t, this.tickData.position);
@@ -274,6 +210,7 @@ namespace Gokz {
                     d2.getEyeHeight(), d3.getEyeHeight(), t);
             }
 
+            this.controls.update();
             this.keyDisplay.update(this.tickData.buttons);
 
             this.mainCamera.setPosition(
@@ -284,21 +221,6 @@ namespace Gokz {
             this.setCameraAngles(
                 (this.tickData.angles.y - 90) * Math.PI / 180,
                 -this.tickData.angles.x * Math.PI / 180);
-        }
-
-        showSettings(): void {
-            // TODO
-            this.showDebugPanel = !this.showDebugPanel;
-        }
-
-        showSpeedControl(): void {
-            this.speedControlVisible = true;
-            this.speedControlElem.style.display = "block";
-        }
-
-        hideSpeedControl(): void {
-            this.speedControlVisible = false;
-            this.speedControlElem.style.display = "none";
         }
 
         showMessage(message: string): void {
@@ -326,7 +248,7 @@ namespace Gokz {
                 const arrayBuffer = req.response;
                 if (arrayBuffer) {
                     try {
-                        this.setReplay(new ReplayFile(arrayBuffer));
+                        this.replay = new ReplayFile(arrayBuffer);
                     } catch (e) {
                         this.showMessage(`Unable to read replay: ${e}`);
                     }
@@ -335,87 +257,9 @@ namespace Gokz {
             req.send(null);
         }
 
-        setMapBaseUrl(url: string): void {
-            this.mapBaseUrl = url;
-        }
-
-        setReplay(replay: ReplayFile): void {
-            this.replay = replay;
-            this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
-            this.tick = this.tick === -1 ? 0 : this.tick;
-            this.spareTime = 0;
-
-            this.scrubberElem.max = this.replay.tickCount.toString();
-            this.onTickChanged(this.tick);
-
-            if (this.onreplayloaded != null) {
-                this.onreplayloaded(this.replay);
-            }
-
-            if (this.currentMapName !== replay.mapName) {
-                this.currentMapName = replay.mapName;
-                this.loadMap(`${this.mapBaseUrl}/${replay.mapName}/index.json`);
-            }
-        }
-
-        getIsPaused(): boolean {
-            return this.isPaused;
-        }
-
-        pause(): void {
-            this.isPaused = true;
-            this.pauseElem.style.display = "none";
-            this.resumeElem.style.display = "block";
-            this.updateTickHash();
-        }
-
-        resume(): void {
-            this.pauseElem.style.display = "block";
-            this.resumeElem.style.display = "none";
-            this.isPaused = false;
-        }
-
-        togglePause(): void {
-            if (this.isPaused) this.resume();
-            else this.pause();
-        }
-
-        private updateTickHash(): void {
-            this.setHash({ t: this.clampTick(this.tick) + 1 });
-        }
-
-        protected onTickChanged(tick: number): void {
-            if (this.replay != null) {
-                const totalSeconds = this.clampTick(this.tick) / this.replay.tickRate;
-                const minutes = Math.floor(totalSeconds / 60);
-                const seconds = totalSeconds - minutes * 60;
-                const secondsString = seconds.toFixed(1);
-                this.timeElem.innerText = `${minutes}:${secondsString.indexOf(".") === 1 ? "0" : ""}${secondsString}`;
-            }
-
-            this.scrubberElem.valueAsNumber = tick;
-        }
-
-        gotoTick(tick: number): void {
-            if (tick === this.tick) return;
-            this.tick = tick;
-            this.onTickChanged(tick);
-        }
-
-        setPlaybackRate(speed: number): void {
-            this.playbackRate = speed;
-            this.speedElem.innerText = speed.toString();
-            this.speedSliderElem.valueAsNumber = ReplayViewer.speedSliderValues.indexOf(this.playbackRate);
-        }
-
-        getPlaybackRate(): number {
-            return this.playbackRate;
-        }
-
-        private clampTick(index: number): number {
-            return index < 0
-                ? 0 : this.replay != null && index >= this.replay.tickCount
-                ? this.replay.tickCount - 1 : index;
+        updateTickHash(): void {
+            if (this.replay == null) return;
+            this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         }
     }
 }

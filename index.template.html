@@ -55,7 +55,7 @@
             window.onload = function() {
                 viewer = new Gokz.ReplayViewer(document.getElementById("map-view"));
                 viewer.showDebugPanel = true;
-                viewer.setMapBaseUrl("${MAPSURL}");
+                viewer.mapBaseUrl = "${MAPSURL}";
 
                 viewer.onreplayloaded = function(replay) {
                     var mins = Math.floor(replay.time / 60);
@@ -76,8 +76,8 @@
                 var replayUrl = searchParams.get("replay");
 
                 if (replayUrl != null) {
+                    viewer.isPlaying = true;
                     viewer.loadReplay(decodeURIComponent(replayUrl));
-                    viewer.resume();
                     viewer.animate();
                 } else {
                     viewer.showMessage("No replay URL provided");

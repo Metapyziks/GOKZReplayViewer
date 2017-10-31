@@ -50,9 +50,12 @@ window.onload = function() {
     // Show FPS and frame time
     viewer.showDebugPanel = true;
 
+    // Start playing immediately when the replay is loaded
+    viewer.isPlaying = true;
+
     // Set the URL to look for maps exported using https://github.com/Metapyziks/SourceUtils
     // The example below will make the app look for de_dust2 at http://www.example.com/maps/de_dust2/index.json
-    viewer.setMapBaseUrl("http://www.example.com/maps");
+    viewer.mapBaseUrl = "http://www.example.com/maps";
 
     // Start downloading a replay
     viewer.loadReplay("http://www.example.com/replays/test-replay.replay");
