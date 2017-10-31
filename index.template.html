@@ -53,9 +53,24 @@
         <script>
             var viewer;
             window.onload = function() {
-                viewer = new ReplayViewer(document.getElementById("map-view"));
+                viewer = new Gokz.ReplayViewer(document.getElementById("map-view"));
                 viewer.showDebugPanel = true;
                 viewer.setMapBaseUrl("${MAPSURL}");
+
+                viewer.onreplayloaded = function(replay) {
+                    var mins = Math.floor(replay.time / 60);
+                    var secs = replay.time - (mins * 60);
+                    var secsString = secs.toFixed(3);
+
+                    var title = replay.playerName
+                        + " - " + replay.mapName
+                        + " - " + mins + ":" + (secsString.indexOf(".") === 1 ? "0" : "") + secsString
+                        + " - " + Gokz.GlobalMode[replay.mode]
+                        + " - " + (replay.teleportsUsed === 0 ? "Pro" : "Nub");
+
+                    document.getElementById("title").innerText = title;
+                    document.title = title;
+                };
 
                 var searchParams = new URLSearchParams(window.location.search);
                 var replayUrl = searchParams.get("replay");

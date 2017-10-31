@@ -45,7 +45,7 @@ Finally, use this JavaScript to create the viewer when the page loads:
 var viewer;
 window.onload = function() {
     // Create a replay viewer canvas inside the #example-viewer div
-    viewer = new ReplayViewer(document.getElementById("example-viewer"));
+    viewer = new Gokz.ReplayViewer(document.getElementById("example-viewer"));
 
     // Show FPS and frame time
     viewer.showDebugPanel = true;
