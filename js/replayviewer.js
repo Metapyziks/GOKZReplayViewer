@@ -392,7 +392,6 @@ var Gokz;
             this.cameraMode = SourceUtils.CameraMode.Fixed;
         };
         ReplayViewer.prototype.onHashChange = function (hash) {
-            console.log(hash);
             if (typeof hash === "string")
                 return;
             var data = hash;
