@@ -162,9 +162,123 @@ var Gokz;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {
+    var ReplayControls = (function () {
+        function ReplayControls(viewer) {
+            var _this = this;
+            this.speedControlVisible = false;
+            this.viewer = viewer;
+            this.container = viewer.container;
+            var playbackBar = document.createElement("div");
+            playbackBar.classList.add("playback-bar");
+            playbackBar.innerHTML = "\n                <div class=\"scrubber-container\">\n                <input class=\"scrubber\" type=\"range\" min=\"0\" max=\"1.0\" value=\"0.0\" step=\"1\" />\n                </div>";
+            this.container.appendChild(playbackBar);
+            this.scrubberElem = playbackBar.getElementsByClassName("scrubber")[0];
+            this.scrubberElem.oninput = function (ev) {
+                viewer.tick = _this.scrubberElem.valueAsNumber;
+            };
+            this.scrubberElem.onmousedown = function (ev) {
+                _this.viewer.isScrubbing = true;
+            };
+            this.scrubberElem.onmouseup = function (ev) {
+                _this.viewer.updateTickHash();
+                _this.viewer.isScrubbing = false;
+            };
+            this.timeElem = document.createElement("div");
+            this.timeElem.classList.add("time");
+            playbackBar.appendChild(this.timeElem);
+            this.speedElem = document.createElement("div");
+            this.speedElem.classList.add("speed");
+            this.speedElem.onclick = function (ev) {
+                if (_this.speedControlVisible)
+                    _this.hideSpeedControl();
+                else
+                    _this.showSpeedControl();
+            };
+            playbackBar.appendChild(this.speedElem);
+            this.pauseElem = document.createElement("div");
+            this.pauseElem.classList.add("pause");
+            this.pauseElem.classList.add("control");
+            this.pauseElem.onclick = function (ev) { return _this.viewer.isPlaying = false; };
+            playbackBar.appendChild(this.pauseElem);
+            this.resumeElem = document.createElement("div");
+            this.resumeElem.classList.add("play");
+            this.resumeElem.classList.add("control");
+            this.resumeElem.onclick = function (ev) { return _this.viewer.isPlaying = true; };
+            playbackBar.appendChild(this.resumeElem);
+            this.settingsElem = document.createElement("div");
+            this.settingsElem.classList.add("settings");
+            this.settingsElem.classList.add("control");
+            this.settingsElem.onclick = function (ev) { return _this.showSettings(); };
+            playbackBar.appendChild(this.settingsElem);
+            this.fullscreenElem = document.createElement("div");
+            this.fullscreenElem.classList.add("fullscreen");
+            this.fullscreenElem.classList.add("control");
+            this.fullscreenElem.onclick = function (ev) { return _this.viewer.toggleFullscreen(); };
+            playbackBar.appendChild(this.fullscreenElem);
+            this.speedControlElem = document.createElement("div");
+            this.speedControlElem.classList.add("speed-control");
+            this.speedControlElem.innerHTML = "<input class=\"speed-slider\" type=\"range\" min=\"0\" max=\"" + (ReplayControls.speedSliderValues.length - 1) + "\" step=\"1\">";
+            this.container.appendChild(this.speedControlElem);
+            this.speedSliderElem = this.speedControlElem.getElementsByClassName("speed-slider")[0];
+            this.speedSliderElem.oninput = function (ev) {
+                _this.viewer.playbackRate = ReplayControls.speedSliderValues[_this.speedSliderElem.valueAsNumber];
+            };
+        }
+        ReplayControls.prototype.showSpeedControl = function () {
+            if (this.speedControlVisible)
+                return false;
+            this.speedControlVisible = true;
+            this.speedControlElem.style.display = "block";
+            return true;
+        };
+        ReplayControls.prototype.hideSpeedControl = function () {
+            if (!this.speedControlVisible)
+                return false;
+            this.speedControlVisible = false;
+            this.speedControlElem.style.display = "none";
+            return true;
+        };
+        ReplayControls.prototype.showSettings = function () {
+            // TODO
+            this.viewer.showDebugPanel = !this.viewer.showDebugPanel;
+        };
+        ReplayControls.prototype.setScrubberMax = function (value) {
+            this.scrubberElem.max = value.toString();
+        };
+        ReplayControls.prototype.update = function () {
+            if (this.wasPlaying !== this.viewer.isPlaying) {
+                var isPlaying = this.wasPlaying = this.viewer.isPlaying;
+                this.pauseElem.style.display = isPlaying ? "none" : "block";
+                this.resumeElem.style.display = isPlaying ? "block" : "none";
+            }
+            if (this.lastTick !== this.viewer.tick) {
+                var tick = this.lastTick = this.viewer.tick;
+                var replay = this.viewer.replay;
+                if (replay != null) {
+                    var totalSeconds = replay.clampTick(tick) / replay.tickRate;
+                    var minutes = Math.floor(totalSeconds / 60);
+                    var seconds = totalSeconds - minutes * 60;
+                    var secondsString = seconds.toFixed(1);
+                    this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
+                }
+                this.scrubberElem.valueAsNumber = this.lastTick;
+            }
+            if (this.lastPlaybackRate !== this.viewer.playbackRate) {
+                var playbackRate = this.lastPlaybackRate = this.viewer.playbackRate;
+                this.speedElem.innerText = playbackRate.toString();
+                this.speedSliderElem.valueAsNumber = ReplayControls.speedSliderValues.indexOf(playbackRate);
+            }
+        };
+        return ReplayControls;
+    }());
+    ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
+    Gokz.ReplayControls = ReplayControls;
+})(Gokz || (Gokz = {}));
+var Gokz;
+(function (Gokz) {
     var GlobalMode;
     (function (GlobalMode) {
-        GlobalMode[GlobalMode["KzVanilla"] = 0] = "KzVanilla";
+        GlobalMode[GlobalMode["Vanilla"] = 0] = "Vanilla";
         GlobalMode[GlobalMode["KzSimple"] = 1] = "KzSimple";
         GlobalMode[GlobalMode["KzTimer"] = 2] = "KzTimer";
     })(GlobalMode = Gokz.GlobalMode || (Gokz.GlobalMode = {}));
@@ -283,6 +397,9 @@ var Gokz;
             data.flags = reader.readInt32();
             return data;
         };
+        ReplayFile.prototype.clampTick = function (tick) {
+            return tick < 0 ? 0 : tick >= this.tickCount ? this.tickCount - 1 : tick;
+        };
         return ReplayFile;
     }());
     ReplayFile.MAGIC = 0x676F6B7A;
@@ -300,85 +417,25 @@ var Gokz;
         //
         function ReplayViewer(container) {
             var _this = _super.call(this, container) || this;
-            _this.speedControlVisible = false;
             _this.pauseTime = 1.0;
-            _this.isPaused = true;
-            _this.isScrubbing = false;
-            _this.tick = -1;
             _this.spareTime = 0;
-            _this.playbackRate = 1;
             _this.tickData = new Gokz.TickData();
             _this.tempTickData0 = new Gokz.TickData();
             _this.tempTickData1 = new Gokz.TickData();
             _this.tempTickData2 = new Gokz.TickData();
+            _this.tick = -1;
+            _this.playbackRate = 1.0;
             _this.autoRepeat = true;
+            _this.isScrubbing = false;
+            _this.isPlaying = false;
             _this.ignoreMouseUp = true;
-            _this.onCreatePlaybackBar();
+            _this.controls = new Gokz.ReplayControls(_this);
             _this.keyDisplay = new Gokz.KeyDisplay(container);
             return _this;
         }
         //
         // Overrides
         //
-        ReplayViewer.prototype.onCreatePlaybackBar = function () {
-            var _this = this;
-            var playbackBar = document.createElement("div");
-            playbackBar.classList.add("playback-bar");
-            playbackBar.innerHTML = "\n                <div class=\"scrubber-container\">\n                <input class=\"scrubber\" type=\"range\" min=\"0\" max=\"1.0\" value=\"0.0\" step=\"1\" />\n                </div>";
-            this.container.appendChild(playbackBar);
-            this.scrubberElem = playbackBar.getElementsByClassName("scrubber")[0];
-            this.scrubberElem.oninput = function (ev) {
-                _this.gotoTick(_this.scrubberElem.valueAsNumber);
-            };
-            this.scrubberElem.onmousedown = function (ev) {
-                _this.isScrubbing = true;
-            };
-            this.scrubberElem.onmouseup = function (ev) {
-                _this.updateTickHash();
-                _this.isScrubbing = false;
-            };
-            this.timeElem = document.createElement("div");
-            this.timeElem.classList.add("time");
-            playbackBar.appendChild(this.timeElem);
-            this.speedElem = document.createElement("div");
-            this.speedElem.classList.add("speed");
-            this.speedElem.onclick = function (ev) {
-                if (_this.speedControlVisible)
-                    _this.hideSpeedControl();
-                else
-                    _this.showSpeedControl();
-            };
-            playbackBar.appendChild(this.speedElem);
-            this.pauseElem = document.createElement("div");
-            this.pauseElem.classList.add("pause");
-            this.pauseElem.classList.add("control");
-            this.pauseElem.onclick = function (ev) { return _this.pause(); };
-            playbackBar.appendChild(this.pauseElem);
-            this.resumeElem = document.createElement("div");
-            this.resumeElem.classList.add("play");
-            this.resumeElem.classList.add("control");
-            this.resumeElem.onclick = function (ev) { return _this.resume(); };
-            playbackBar.appendChild(this.resumeElem);
-            this.settingsElem = document.createElement("div");
-            this.settingsElem.classList.add("settings");
-            this.settingsElem.classList.add("control");
-            this.settingsElem.onclick = function (ev) { return _this.showSettings(); };
-            playbackBar.appendChild(this.settingsElem);
-            this.fullscreenElem = document.createElement("div");
-            this.fullscreenElem.classList.add("fullscreen");
-            this.fullscreenElem.classList.add("control");
-            this.fullscreenElem.onclick = function (ev) { return _this.toggleFullscreen(); };
-            playbackBar.appendChild(this.fullscreenElem);
-            this.speedControlElem = document.createElement("div");
-            this.speedControlElem.classList.add("speed-control");
-            this.speedControlElem.innerHTML = "<input class=\"speed-slider\" type=\"range\" min=\"0\" max=\"" + (ReplayViewer.speedSliderValues.length - 1) + "\" step=\"1\">";
-            this.container.appendChild(this.speedControlElem);
-            this.speedSliderElem = this.speedControlElem.getElementsByClassName("speed-slider")[0];
-            this.speedSliderElem.oninput = function (ev) {
-                _this.setPlaybackRate(ReplayViewer.speedSliderValues[_this.speedSliderElem.valueAsNumber]);
-            };
-            return playbackBar;
-        };
         ReplayViewer.prototype.onCreateMessagePanel = function () {
             var elem = document.createElement("div");
             elem.classList.add("message");
@@ -387,7 +444,6 @@ var Gokz;
         };
         ReplayViewer.prototype.onInitialize = function () {
             _super.prototype.onInitialize.call(this);
-            this.setPlaybackRate(1);
             this.canLockPointer = false;
             this.cameraMode = SourceUtils.CameraMode.Fixed;
         };
@@ -396,8 +452,8 @@ var Gokz;
                 return;
             var data = hash;
             if (data.t !== undefined && this.tick !== data.t) {
-                this.gotoTick(data.t);
-                this.pause();
+                this.tick = data.t;
+                this.isPlaying = false;
             }
         };
         ReplayViewer.prototype.onMouseDown = function (button, screenPos) {
@@ -409,12 +465,11 @@ var Gokz;
             this.ignoreMouseUp = true;
             if (_super.prototype.onMouseUp.call(this, button, screenPos))
                 return true;
-            if (!ignored && this.speedControlVisible) {
-                this.hideSpeedControl();
+            if (!ignored && this.controls.hideSpeedControl()) {
                 return true;
             }
             if (!ignored && button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
-                this.togglePause();
+                this.isPlaying = !this.isPlaying;
                 return true;
             }
             return false;
@@ -426,25 +481,48 @@ var Gokz;
                     return true;
                 case WebGame.Key.Space:
                     if (this.replay != null && this.map.isReady()) {
-                        this.togglePause();
+                        this.isPlaying = !this.isPlaying;
                     }
                     return true;
             }
             return _super.prototype.onKeyDown.call(this, key);
         };
+        ReplayViewer.prototype.onChangeReplay = function (replay) {
+            this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
+            this.tick = this.tick === -1 ? 0 : this.tick;
+            this.spareTime = 0;
+            this.controls.setScrubberMax(this.replay.tickCount);
+            if (this.onreplayloaded != null) {
+                this.onreplayloaded(this.replay);
+            }
+            if (this.currentMapName !== replay.mapName) {
+                if (this.currentMapName != null) {
+                    this.map.unload();
+                }
+                this.currentMapName = replay.mapName;
+                this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json");
+            }
+        };
         ReplayViewer.prototype.onUpdateFrame = function (dt) {
             _super.prototype.onUpdateFrame.call(this, dt);
+            if (this.replay != this.lastReplay) {
+                this.lastReplay = this.replay;
+                if (this.replay != null) {
+                    this.onChangeReplay(this.replay);
+                }
+            }
             if (this.replay == null)
                 return;
-            var tickPeriod = 1.0 / this.replay.tickRate;
-            if (this.map.isReady() && !this.isPaused && !this.isScrubbing) {
+            var replay = this.replay;
+            var tickPeriod = 1.0 / replay.tickRate;
+            if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
                 var oldTick = this.tick;
                 // Forward playback
                 while (this.spareTime > tickPeriod) {
                     this.spareTime -= tickPeriod;
                     this.tick += 1;
-                    if (this.tick > this.replay.tickCount + this.pauseTicks * 2) {
+                    if (this.tick > replay.tickCount + this.pauseTicks * 2) {
                         this.tick = -this.pauseTicks;
                     }
                 }
@@ -453,43 +531,29 @@ var Gokz;
                     this.spareTime += tickPeriod;
                     this.tick -= 1;
                     if (this.tick < -this.pauseTicks * 2) {
-                        this.tick = this.replay.tickCount + this.pauseTicks;
+                        this.tick = replay.tickCount + this.pauseTicks;
                     }
-                }
-                if (this.tick !== oldTick) {
-                    this.onTickChanged(this.tick);
                 }
             }
             else {
                 this.spareTime = 0;
             }
-            this.replay.getTickData(this.clampTick(this.tick), this.tickData);
+            replay.getTickData(replay.clampTick(this.tick), this.tickData);
             var eyeHeight = this.tickData.getEyeHeight();
             if (this.spareTime >= 0 && this.spareTime <= tickPeriod) {
                 var t = this.spareTime / tickPeriod;
-                var d0 = this.replay.getTickData(this.clampTick(this.tick - 1), this.tempTickData0);
+                var d0 = replay.getTickData(replay.clampTick(this.tick - 1), this.tempTickData0);
                 var d1 = this.tickData;
-                var d2 = this.replay.getTickData(this.clampTick(this.tick + 1), this.tempTickData1);
-                var d3 = this.replay.getTickData(this.clampTick(this.tick + 2), this.tempTickData2);
+                var d2 = replay.getTickData(replay.clampTick(this.tick + 1), this.tempTickData1);
+                var d3 = replay.getTickData(replay.clampTick(this.tick + 2), this.tempTickData2);
                 Gokz.Utils.hermitePosition(d0.position, d1.position, d2.position, d3.position, t, this.tickData.position);
                 Gokz.Utils.hermiteAngles(d0.angles, d1.angles, d2.angles, d3.angles, t, this.tickData.angles);
                 eyeHeight = Gokz.Utils.hermiteValue(d0.getEyeHeight(), d1.getEyeHeight(), d2.getEyeHeight(), d3.getEyeHeight(), t);
             }
+            this.controls.update();
             this.keyDisplay.update(this.tickData.buttons);
             this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
             this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
-        };
-        ReplayViewer.prototype.showSettings = function () {
-            // TODO
-            this.showDebugPanel = !this.showDebugPanel;
-        };
-        ReplayViewer.prototype.showSpeedControl = function () {
-            this.speedControlVisible = true;
-            this.speedControlElem.style.display = "block";
-        };
-        ReplayViewer.prototype.hideSpeedControl = function () {
-            this.speedControlVisible = false;
-            this.speedControlElem.style.display = "none";
         };
         ReplayViewer.prototype.showMessage = function (message) {
             if (this.messageElem === undefined) {
@@ -513,7 +577,7 @@ var Gokz;
                 var arrayBuffer = req.response;
                 if (arrayBuffer) {
                     try {
-                        _this.setReplay(new Gokz.ReplayFile(arrayBuffer));
+                        _this.replay = new Gokz.ReplayFile(arrayBuffer);
                     }
                     catch (e) {
                         _this.showMessage("Unable to read replay: " + e);
@@ -522,79 +586,13 @@ var Gokz;
             };
             req.send(null);
         };
-        ReplayViewer.prototype.setMapBaseUrl = function (url) {
-            this.mapBaseUrl = url;
-        };
-        ReplayViewer.prototype.setReplay = function (replay) {
-            this.replay = replay;
-            this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
-            this.tick = this.tick === -1 ? 0 : this.tick;
-            this.spareTime = 0;
-            this.scrubberElem.max = this.replay.tickCount.toString();
-            this.onTickChanged(this.tick);
-            if (this.onreplayloaded != null) {
-                this.onreplayloaded(this.replay);
-            }
-            if (this.currentMapName !== replay.mapName) {
-                this.currentMapName = replay.mapName;
-                this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json");
-            }
-        };
-        ReplayViewer.prototype.getIsPaused = function () {
-            return this.isPaused;
-        };
-        ReplayViewer.prototype.pause = function () {
-            this.isPaused = true;
-            this.pauseElem.style.display = "none";
-            this.resumeElem.style.display = "block";
-            this.updateTickHash();
-        };
-        ReplayViewer.prototype.resume = function () {
-            this.pauseElem.style.display = "block";
-            this.resumeElem.style.display = "none";
-            this.isPaused = false;
-        };
-        ReplayViewer.prototype.togglePause = function () {
-            if (this.isPaused)
-                this.resume();
-            else
-                this.pause();
-        };
         ReplayViewer.prototype.updateTickHash = function () {
-            this.setHash({ t: this.clampTick(this.tick) + 1 });
-        };
-        ReplayViewer.prototype.onTickChanged = function (tick) {
-            if (this.replay != null) {
-                var totalSeconds = this.clampTick(this.tick) / this.replay.tickRate;
-                var minutes = Math.floor(totalSeconds / 60);
-                var seconds = totalSeconds - minutes * 60;
-                var secondsString = seconds.toFixed(1);
-                this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
-            }
-            this.scrubberElem.valueAsNumber = tick;
-        };
-        ReplayViewer.prototype.gotoTick = function (tick) {
-            if (tick === this.tick)
+            if (this.replay == null)
                 return;
-            this.tick = tick;
-            this.onTickChanged(tick);
-        };
-        ReplayViewer.prototype.setPlaybackRate = function (speed) {
-            this.playbackRate = speed;
-            this.speedElem.innerText = speed.toString();
-            this.speedSliderElem.valueAsNumber = ReplayViewer.speedSliderValues.indexOf(this.playbackRate);
-        };
-        ReplayViewer.prototype.getPlaybackRate = function () {
-            return this.playbackRate;
-        };
-        ReplayViewer.prototype.clampTick = function (index) {
-            return index < 0
-                ? 0 : this.replay != null && index >= this.replay.tickCount
-                ? this.replay.tickCount - 1 : index;
+            this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         };
         return ReplayViewer;
     }(SourceUtils.MapViewer));
-    ReplayViewer.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
     Gokz.ReplayViewer = ReplayViewer;
 })(Gokz || (Gokz = {}));
 var Gokz;
