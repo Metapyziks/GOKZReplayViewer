@@ -1,6 +1,6 @@
 namespace Gokz {
     export enum GlobalMode {
-        KzVanilla = 0,
+        Vanilla = 0,
         KzSimple = 1,
         KzTimer = 2
     }

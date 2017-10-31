@@ -164,7 +164,7 @@ var Gokz;
 (function (Gokz) {
     var GlobalMode;
     (function (GlobalMode) {
-        GlobalMode[GlobalMode["KzVanilla"] = 0] = "KzVanilla";
+        GlobalMode[GlobalMode["Vanilla"] = 0] = "Vanilla";
         GlobalMode[GlobalMode["KzSimple"] = 1] = "KzSimple";
         GlobalMode[GlobalMode["KzTimer"] = 2] = "KzTimer";
     })(GlobalMode = Gokz.GlobalMode || (Gokz.GlobalMode = {}));
