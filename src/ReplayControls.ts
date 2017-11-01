@@ -122,8 +122,8 @@ namespace Gokz {
         update(): void {
             if (this.wasPlaying !== this.viewer.isPlaying) {
                 const isPlaying = this.wasPlaying = this.viewer.isPlaying;
-                this.pauseElem.style.display = isPlaying ? "none" : "block";
-                this.resumeElem.style.display = isPlaying ? "block" : "none";
+                this.pauseElem.style.display = isPlaying ? "block" : "none";
+                this.resumeElem.style.display = isPlaying ? "none" : "block";
             }
 
             if (this.lastTickCount !== this.viewer.replay.tickCount) {
