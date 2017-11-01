@@ -1,10 +1,5 @@
 #!/bin/bash
 
-TARGETDIR=
-BASEURL=
-MAPSURL=
-INDEXTEMPLATE=index.template.html
-
 CONFIGPATH=config.sh
 CONFIGTEMPALTE=config.template.sh
 
