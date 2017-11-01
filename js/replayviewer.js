@@ -242,14 +242,15 @@ var Gokz;
             // TODO
             this.viewer.showDebugPanel = !this.viewer.showDebugPanel;
         };
-        ReplayControls.prototype.setScrubberMax = function (value) {
-            this.scrubberElem.max = value.toString();
-        };
         ReplayControls.prototype.update = function () {
             if (this.wasPlaying !== this.viewer.isPlaying) {
                 var isPlaying = this.wasPlaying = this.viewer.isPlaying;
                 this.pauseElem.style.display = isPlaying ? "none" : "block";
                 this.resumeElem.style.display = isPlaying ? "block" : "none";
+            }
+            if (this.lastTickCount !== this.viewer.replay.tickCount) {
+                var tickCount = this.lastTickCount = this.viewer.replay.tickCount;
+                this.scrubberElem.max = tickCount.toString();
             }
             if (this.lastTick !== this.viewer.tick) {
                 var tick = this.lastTick = this.viewer.tick;
@@ -413,7 +414,7 @@ var Gokz;
     var ReplayViewer = (function (_super) {
         __extends(ReplayViewer, _super);
         //
-        // Constructors
+        // Public constructors
         //
         function ReplayViewer(container) {
             var _this = _super.call(this, container) || this;
@@ -433,6 +434,45 @@ var Gokz;
             _this.keyDisplay = new Gokz.KeyDisplay(container);
             return _this;
         }
+        //
+        // Public Methods
+        //
+        ReplayViewer.prototype.showMessage = function (message) {
+            if (this.messageElem === undefined) {
+                this.messageElem = this.onCreateMessagePanel();
+            }
+            if (this.messageElem == null)
+                return;
+            this.messageElem.innerText = message;
+        };
+        ReplayViewer.prototype.loadReplay = function (url) {
+            var _this = this;
+            console.log("Downloading: " + url);
+            var req = new XMLHttpRequest();
+            req.open("GET", url, true);
+            req.responseType = "arraybuffer";
+            req.onload = function (ev) {
+                if (req.status !== 200) {
+                    _this.showMessage("Unable to download replay: " + req.statusText);
+                    return;
+                }
+                var arrayBuffer = req.response;
+                if (arrayBuffer) {
+                    try {
+                        _this.replay = new Gokz.ReplayFile(arrayBuffer);
+                    }
+                    catch (e) {
+                        _this.showMessage("Unable to read replay: " + e);
+                    }
+                }
+            };
+            req.send(null);
+        };
+        ReplayViewer.prototype.updateTickHash = function () {
+            if (this.replay == null)
+                return;
+            this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
+        };
         //
         // Overrides
         //
@@ -491,7 +531,6 @@ var Gokz;
             this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
             this.tick = this.tick === -1 ? 0 : this.tick;
             this.spareTime = 0;
-            this.controls.setScrubberMax(this.replay.tickCount);
             if (this.onreplayloaded != null) {
                 this.onreplayloaded(this.replay);
             }
@@ -554,42 +593,6 @@ var Gokz;
             this.keyDisplay.update(this.tickData.buttons);
             this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
             this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
-        };
-        ReplayViewer.prototype.showMessage = function (message) {
-            if (this.messageElem === undefined) {
-                this.messageElem = this.onCreateMessagePanel();
-            }
-            if (this.messageElem == null)
-                return;
-            this.messageElem.innerText = message;
-        };
-        ReplayViewer.prototype.loadReplay = function (url) {
-            var _this = this;
-            console.log("Downloading: " + url);
-            var req = new XMLHttpRequest();
-            req.open("GET", url, true);
-            req.responseType = "arraybuffer";
-            req.onload = function (ev) {
-                if (req.status !== 200) {
-                    _this.showMessage("Unable to download replay: " + req.statusText);
-                    return;
-                }
-                var arrayBuffer = req.response;
-                if (arrayBuffer) {
-                    try {
-                        _this.replay = new Gokz.ReplayFile(arrayBuffer);
-                    }
-                    catch (e) {
-                        _this.showMessage("Unable to read replay: " + e);
-                    }
-                }
-            };
-            req.send(null);
-        };
-        ReplayViewer.prototype.updateTickHash = function () {
-            if (this.replay == null)
-                return;
-            this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         };
         return ReplayViewer;
     }(SourceUtils.MapViewer));

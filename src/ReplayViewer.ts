@@ -9,11 +9,15 @@ namespace Gokz {
     }
 
     export class ReplayViewer extends SourceUtils.MapViewer {
+
+        //
+        // Private properties
+        //
+
         private messageElem: HTMLElement;
 
         private lastReplay: ReplayFile;
         private currentMapName: string;
-        mapBaseUrl: string;
 
         private pauseTime = 1.0;
         private pauseTicks: number;
@@ -26,10 +30,16 @@ namespace Gokz {
         private tempTickData1 = new TickData();
         private tempTickData2 = new TickData();
 
+        //
+        // Public properties
+        //
+
         readonly keyDisplay: KeyDisplay;
         readonly controls: ReplayControls;
 
+        mapBaseUrl: string;
         replay: ReplayFile;
+
         tick = -1;
         playbackRate = 1.0;
         autoRepeat = true;
@@ -37,13 +47,13 @@ namespace Gokz {
         isPlaying = false;
 
         //
-        // Events
+        // Public events
         //
 
         onreplayloaded: (this: ReplayViewer, replay: ReplayFile) => void;
 
         //
-        // Constructors
+        // Public constructors
         //
 
         constructor(container: HTMLElement) {
@@ -51,6 +61,49 @@ namespace Gokz {
 
             this.controls = new ReplayControls(this);
             this.keyDisplay = new KeyDisplay(container);
+        }
+
+        //
+        // Public Methods
+        //
+
+        showMessage(message: string): void {
+            if (this.messageElem === undefined) {
+                this.messageElem = this.onCreateMessagePanel();
+            }
+
+            if (this.messageElem == null) return;
+
+            this.messageElem.innerText = message;
+        }
+
+        loadReplay(url: string): void {
+            console.log(`Downloading: ${url}`);
+
+            const req = new XMLHttpRequest();
+            req.open("GET", url, true);
+            req.responseType = "arraybuffer";
+            req.onload = ev => {
+                if (req.status !== 200) {
+                    this.showMessage(`Unable to download replay: ${req.statusText}`);
+                    return;
+                }
+
+                const arrayBuffer = req.response;
+                if (arrayBuffer) {
+                    try {
+                        this.replay = new ReplayFile(arrayBuffer);
+                    } catch (e) {
+                        this.showMessage(`Unable to read replay: ${e}`);
+                    }
+                }
+            };
+            req.send(null);
+        }
+
+        updateTickHash(): void {
+            if (this.replay == null) return;
+            this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         }
 
         //
@@ -128,8 +181,6 @@ namespace Gokz {
             this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
             this.tick = this.tick === -1 ? 0 : this.tick;
             this.spareTime = 0;
-
-            this.controls.setScrubberMax(this.replay.tickCount);
 
             if (this.onreplayloaded != null) {
                 this.onreplayloaded(this.replay);
@@ -221,45 +272,6 @@ namespace Gokz {
             this.setCameraAngles(
                 (this.tickData.angles.y - 90) * Math.PI / 180,
                 -this.tickData.angles.x * Math.PI / 180);
-        }
-
-        showMessage(message: string): void {
-            if (this.messageElem === undefined) {
-                this.messageElem = this.onCreateMessagePanel();
-            }
-
-            if (this.messageElem == null) return;
-
-            this.messageElem.innerText = message;
-        }
-
-        loadReplay(url: string): void {
-            console.log(`Downloading: ${url}`);
-
-            const req = new XMLHttpRequest();
-            req.open("GET", url, true);
-            req.responseType = "arraybuffer";
-            req.onload = ev => {
-                if (req.status !== 200) {
-                    this.showMessage(`Unable to download replay: ${req.statusText}`);
-                    return;
-                }
-
-                const arrayBuffer = req.response;
-                if (arrayBuffer) {
-                    try {
-                        this.replay = new ReplayFile(arrayBuffer);
-                    } catch (e) {
-                        this.showMessage(`Unable to read replay: ${e}`);
-                    }
-                }
-            };
-            req.send(null);
-        }
-
-        updateTickHash(): void {
-            if (this.replay == null) return;
-            this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Gokz {
         private speedControlVisible = false;
         private wasPlaying: boolean;
         private lastTick: number;
+        private lastTickCount: number;
         private lastPlaybackRate: number;
 
         constructor(viewer: ReplayViewer) {
@@ -118,15 +119,16 @@ namespace Gokz {
             this.viewer.showDebugPanel = !this.viewer.showDebugPanel;
         }
 
-        setScrubberMax(value: number): void {
-            this.scrubberElem.max = value.toString();
-        }
-
         update(): void {
             if (this.wasPlaying !== this.viewer.isPlaying) {
                 const isPlaying = this.wasPlaying = this.viewer.isPlaying;
                 this.pauseElem.style.display = isPlaying ? "none" : "block";
                 this.resumeElem.style.display = isPlaying ? "block" : "none";
+            }
+
+            if (this.lastTickCount !== this.viewer.replay.tickCount) {
+                const tickCount = this.lastTickCount = this.viewer.replay.tickCount;
+                this.scrubberElem.max = tickCount.toString();
             }
 
             if (this.lastTick !== this.viewer.tick) {
