@@ -1104,7 +1104,7 @@ var SourceUtils;
         MapViewer.prototype.onCreateDebugPanel = function () {
             var panel = document.createElement("div");
             panel.classList.add("side-panel");
-            panel.innerHTML = "\n                <span class=\"label\">Frame time:</span>&nbsp;<span id=\"debug-frametime\">0</span>&nbsp;ms<br/>\n                <span class=\"label\">Frame rate:</span>&nbsp;<span id=\"debug-framerate\">0</span>&nbsp;fps<br />\n                <span class=\"label\">Draw calls:</span>&nbsp;<span id=\"debug-drawcalls\">0</span><br />\n                <div id=\"debug-loading\">\n                    <span class=\"label\">Map loaded:</span>&nbsp;<span id=\"debug-loadpercent\">0</span>%<br />\n                </div>";
+            panel.innerHTML = "\n                <span class=\"label\">Frame time:</span>&nbsp;<span class=\"debug-frametime\">0</span>&nbsp;ms<br/>\n                <span class=\"label\">Frame rate:</span>&nbsp;<span class=\"debug-framerate\">0</span>&nbsp;fps<br />\n                <span class=\"label\">Draw calls:</span>&nbsp;<span class=\"debug-drawcalls\">0</span><br />\n                <div class=\"debug-loading\">\n                    <span class=\"label\">Map loaded:</span>&nbsp;<span class=\"debug-loadpercent\">0</span>%<br />\n                </div>";
             this.container.appendChild(panel);
             return panel;
         };
@@ -1189,13 +1189,13 @@ var SourceUtils;
                     return false;
             }
         };
-        MapViewer.prototype.onSetDebugText = function (id, value) {
-            var elem = document.getElementById(id);
-            if (elem != null) {
-                elem.innerText = value;
-            }
-            if (id === "debug-loadpercent" && parseInt(value) >= 100) {
-                var loading = document.getElementById("debug-loading");
+        MapViewer.prototype.onSetDebugText = function (className, value) {
+            var elem = this.debugPanel.getElementsByClassName(className)[0];
+            if (elem == null)
+                return;
+            elem.innerText = value;
+            if (className === "debug-loadpercent" && parseInt(value) >= 100) {
+                var loading = this.debugPanel.getElementsByClassName("debug-loading")[0];
                 if (loading != null) {
                     loading.style.display = "none";
                 }

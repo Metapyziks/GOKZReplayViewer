@@ -433,7 +433,7 @@ declare namespace SourceUtils {
         private frameCount;
         private lastDrawCalls;
         private allLoaded;
-        protected onSetDebugText(id: string, value: string): void;
+        protected onSetDebugText(className: string, value: string): void;
         private readonly onUpdateFrame_temp;
         protected onUpdateFrame(dt: number): void;
         protected onRenderFrame(dt: number): void;
