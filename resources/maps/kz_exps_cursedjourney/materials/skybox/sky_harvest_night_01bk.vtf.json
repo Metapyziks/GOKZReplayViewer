@@ -1,6 +1,7 @@
 {
   "path": "materials/skybox/sky_harvest_night_01bk.vtf",
   "target": 3553,
+  "frames": 1,
   "width": 1024,
   "height": 512,
   "params": {

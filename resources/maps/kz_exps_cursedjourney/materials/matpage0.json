@@ -3,6 +3,7 @@
     {
       "path": "materials/tools/toolsplayerclip.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 64,
       "height": 64,
       "params": {
@@ -50,6 +51,7 @@
     {
       "path": "materials/egypt/sand_floor_05.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -113,6 +115,7 @@
     {
       "path": "materials/egypt/sand_floor_04.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -176,6 +179,7 @@
     {
       "path": "materials/egypt/flat_wall_03.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -239,6 +243,7 @@
     {
       "path": "materials/dev/water_normal.vtf",
       "target": 3553,
+      "frames": 29,
       "width": 256,
       "height": 256,
       "params": {
@@ -250,6 +255,287 @@
       "elements": [
         {
           "level": 8,
+          "frame": 0,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 1,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 2,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 3,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 4,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 5,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 6,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 7,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 8,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 9,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 10,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 11,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 12,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 13,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 14,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 15,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 16,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 17,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 18,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 19,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 20,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 21,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 22,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 23,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 24,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 25,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 26,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 27,
+          "color": {
+            "r": 0.4862745,
+            "g": 0.4862745,
+            "b": 0.996078432,
+            "a": 0.0
+          }
+        },
+        {
+          "level": 8,
+          "frame": 28,
           "color": {
             "r": 0.4862745,
             "g": 0.4862745,
@@ -259,41 +545,1170 @@
         },
         {
           "level": 7,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame0.png"
+        },
+        {
+          "level": 7,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame1.png"
+        },
+        {
+          "level": 7,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame2.png"
+        },
+        {
+          "level": 7,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame3.png"
+        },
+        {
+          "level": 7,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame4.png"
+        },
+        {
+          "level": 7,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame5.png"
+        },
+        {
+          "level": 7,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame6.png"
+        },
+        {
+          "level": 7,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame7.png"
+        },
+        {
+          "level": 7,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame8.png"
+        },
+        {
+          "level": 7,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame9.png"
+        },
+        {
+          "level": 7,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame10.png"
+        },
+        {
+          "level": 7,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame11.png"
+        },
+        {
+          "level": 7,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame12.png"
+        },
+        {
+          "level": 7,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame13.png"
+        },
+        {
+          "level": 7,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame14.png"
+        },
+        {
+          "level": 7,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame15.png"
+        },
+        {
+          "level": 7,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame16.png"
+        },
+        {
+          "level": 7,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame17.png"
+        },
+        {
+          "level": 7,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame18.png"
+        },
+        {
+          "level": 7,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame19.png"
+        },
+        {
+          "level": 7,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame20.png"
+        },
+        {
+          "level": 7,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame21.png"
+        },
+        {
+          "level": 7,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame22.png"
+        },
+        {
+          "level": 7,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame23.png"
+        },
+        {
+          "level": 7,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame24.png"
+        },
+        {
+          "level": 7,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame25.png"
+        },
+        {
+          "level": 7,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame26.png"
+        },
+        {
+          "level": 7,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame27.png"
+        },
+        {
+          "level": 7,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip7.frame28.png"
         },
         {
           "level": 6,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame0.png"
+        },
+        {
+          "level": 6,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame1.png"
+        },
+        {
+          "level": 6,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame2.png"
+        },
+        {
+          "level": 6,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame3.png"
+        },
+        {
+          "level": 6,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame4.png"
+        },
+        {
+          "level": 6,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame5.png"
+        },
+        {
+          "level": 6,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame6.png"
+        },
+        {
+          "level": 6,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame7.png"
+        },
+        {
+          "level": 6,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame8.png"
+        },
+        {
+          "level": 6,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame9.png"
+        },
+        {
+          "level": 6,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame10.png"
+        },
+        {
+          "level": 6,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame11.png"
+        },
+        {
+          "level": 6,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame12.png"
+        },
+        {
+          "level": 6,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame13.png"
+        },
+        {
+          "level": 6,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame14.png"
+        },
+        {
+          "level": 6,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame15.png"
+        },
+        {
+          "level": 6,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame16.png"
+        },
+        {
+          "level": 6,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame17.png"
+        },
+        {
+          "level": 6,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame18.png"
+        },
+        {
+          "level": 6,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame19.png"
+        },
+        {
+          "level": 6,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame20.png"
+        },
+        {
+          "level": 6,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame21.png"
+        },
+        {
+          "level": 6,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame22.png"
+        },
+        {
+          "level": 6,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame23.png"
+        },
+        {
+          "level": 6,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame24.png"
+        },
+        {
+          "level": 6,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame25.png"
+        },
+        {
+          "level": 6,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame26.png"
+        },
+        {
+          "level": 6,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame27.png"
+        },
+        {
+          "level": 6,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip6.frame28.png"
         },
         {
           "level": 5,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame0.png"
+        },
+        {
+          "level": 5,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame1.png"
+        },
+        {
+          "level": 5,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame2.png"
+        },
+        {
+          "level": 5,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame3.png"
+        },
+        {
+          "level": 5,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame4.png"
+        },
+        {
+          "level": 5,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame5.png"
+        },
+        {
+          "level": 5,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame6.png"
+        },
+        {
+          "level": 5,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame7.png"
+        },
+        {
+          "level": 5,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame8.png"
+        },
+        {
+          "level": 5,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame9.png"
+        },
+        {
+          "level": 5,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame10.png"
+        },
+        {
+          "level": 5,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame11.png"
+        },
+        {
+          "level": 5,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame12.png"
+        },
+        {
+          "level": 5,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame13.png"
+        },
+        {
+          "level": 5,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame14.png"
+        },
+        {
+          "level": 5,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame15.png"
+        },
+        {
+          "level": 5,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame16.png"
+        },
+        {
+          "level": 5,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame17.png"
+        },
+        {
+          "level": 5,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame18.png"
+        },
+        {
+          "level": 5,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame19.png"
+        },
+        {
+          "level": 5,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame20.png"
+        },
+        {
+          "level": 5,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame21.png"
+        },
+        {
+          "level": 5,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame22.png"
+        },
+        {
+          "level": 5,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame23.png"
+        },
+        {
+          "level": 5,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame24.png"
+        },
+        {
+          "level": 5,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame25.png"
+        },
+        {
+          "level": 5,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame26.png"
+        },
+        {
+          "level": 5,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame27.png"
+        },
+        {
+          "level": 5,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip5.frame28.png"
         },
         {
           "level": 4,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame0.png"
+        },
+        {
+          "level": 4,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame1.png"
+        },
+        {
+          "level": 4,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame2.png"
+        },
+        {
+          "level": 4,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame3.png"
+        },
+        {
+          "level": 4,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame4.png"
+        },
+        {
+          "level": 4,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame5.png"
+        },
+        {
+          "level": 4,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame6.png"
+        },
+        {
+          "level": 4,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame7.png"
+        },
+        {
+          "level": 4,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame8.png"
+        },
+        {
+          "level": 4,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame9.png"
+        },
+        {
+          "level": 4,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame10.png"
+        },
+        {
+          "level": 4,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame11.png"
+        },
+        {
+          "level": 4,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame12.png"
+        },
+        {
+          "level": 4,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame13.png"
+        },
+        {
+          "level": 4,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame14.png"
+        },
+        {
+          "level": 4,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame15.png"
+        },
+        {
+          "level": 4,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame16.png"
+        },
+        {
+          "level": 4,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame17.png"
+        },
+        {
+          "level": 4,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame18.png"
+        },
+        {
+          "level": 4,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame19.png"
+        },
+        {
+          "level": 4,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame20.png"
+        },
+        {
+          "level": 4,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame21.png"
+        },
+        {
+          "level": 4,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame22.png"
+        },
+        {
+          "level": 4,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame23.png"
+        },
+        {
+          "level": 4,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame24.png"
+        },
+        {
+          "level": 4,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame25.png"
+        },
+        {
+          "level": 4,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame26.png"
+        },
+        {
+          "level": 4,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame27.png"
+        },
+        {
+          "level": 4,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip4.frame28.png"
         },
         {
           "level": 3,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame0.png"
+        },
+        {
+          "level": 3,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame1.png"
+        },
+        {
+          "level": 3,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame2.png"
+        },
+        {
+          "level": 3,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame3.png"
+        },
+        {
+          "level": 3,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame4.png"
+        },
+        {
+          "level": 3,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame5.png"
+        },
+        {
+          "level": 3,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame6.png"
+        },
+        {
+          "level": 3,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame7.png"
+        },
+        {
+          "level": 3,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame8.png"
+        },
+        {
+          "level": 3,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame9.png"
+        },
+        {
+          "level": 3,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame10.png"
+        },
+        {
+          "level": 3,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame11.png"
+        },
+        {
+          "level": 3,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame12.png"
+        },
+        {
+          "level": 3,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame13.png"
+        },
+        {
+          "level": 3,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame14.png"
+        },
+        {
+          "level": 3,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame15.png"
+        },
+        {
+          "level": 3,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame16.png"
+        },
+        {
+          "level": 3,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame17.png"
+        },
+        {
+          "level": 3,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame18.png"
+        },
+        {
+          "level": 3,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame19.png"
+        },
+        {
+          "level": 3,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame20.png"
+        },
+        {
+          "level": 3,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame21.png"
+        },
+        {
+          "level": 3,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame22.png"
+        },
+        {
+          "level": 3,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame23.png"
+        },
+        {
+          "level": 3,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame24.png"
+        },
+        {
+          "level": 3,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame25.png"
+        },
+        {
+          "level": 3,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame26.png"
+        },
+        {
+          "level": 3,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame27.png"
+        },
+        {
+          "level": 3,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip3.frame28.png"
         },
         {
           "level": 2,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame0.png"
+        },
+        {
+          "level": 2,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame1.png"
+        },
+        {
+          "level": 2,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame2.png"
+        },
+        {
+          "level": 2,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame3.png"
+        },
+        {
+          "level": 2,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame4.png"
+        },
+        {
+          "level": 2,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame5.png"
+        },
+        {
+          "level": 2,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame6.png"
+        },
+        {
+          "level": 2,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame7.png"
+        },
+        {
+          "level": 2,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame8.png"
+        },
+        {
+          "level": 2,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame9.png"
+        },
+        {
+          "level": 2,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame10.png"
+        },
+        {
+          "level": 2,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame11.png"
+        },
+        {
+          "level": 2,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame12.png"
+        },
+        {
+          "level": 2,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame13.png"
+        },
+        {
+          "level": 2,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame14.png"
+        },
+        {
+          "level": 2,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame15.png"
+        },
+        {
+          "level": 2,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame16.png"
+        },
+        {
+          "level": 2,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame17.png"
+        },
+        {
+          "level": 2,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame18.png"
+        },
+        {
+          "level": 2,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame19.png"
+        },
+        {
+          "level": 2,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame20.png"
+        },
+        {
+          "level": 2,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame21.png"
+        },
+        {
+          "level": 2,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame22.png"
+        },
+        {
+          "level": 2,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame23.png"
+        },
+        {
+          "level": 2,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame24.png"
+        },
+        {
+          "level": 2,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame25.png"
+        },
+        {
+          "level": 2,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame26.png"
+        },
+        {
+          "level": 2,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame27.png"
+        },
+        {
+          "level": 2,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip2.frame28.png"
         },
         {
           "level": 1,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame0.png"
+        },
+        {
+          "level": 1,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame1.png"
+        },
+        {
+          "level": 1,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame2.png"
+        },
+        {
+          "level": 1,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame3.png"
+        },
+        {
+          "level": 1,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame4.png"
+        },
+        {
+          "level": 1,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame5.png"
+        },
+        {
+          "level": 1,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame6.png"
+        },
+        {
+          "level": 1,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame7.png"
+        },
+        {
+          "level": 1,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame8.png"
+        },
+        {
+          "level": 1,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame9.png"
+        },
+        {
+          "level": 1,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame10.png"
+        },
+        {
+          "level": 1,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame11.png"
+        },
+        {
+          "level": 1,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame12.png"
+        },
+        {
+          "level": 1,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame13.png"
+        },
+        {
+          "level": 1,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame14.png"
+        },
+        {
+          "level": 1,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame15.png"
+        },
+        {
+          "level": 1,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame16.png"
+        },
+        {
+          "level": 1,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame17.png"
+        },
+        {
+          "level": 1,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame18.png"
+        },
+        {
+          "level": 1,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame19.png"
+        },
+        {
+          "level": 1,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame20.png"
+        },
+        {
+          "level": 1,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame21.png"
+        },
+        {
+          "level": 1,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame22.png"
+        },
+        {
+          "level": 1,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame23.png"
+        },
+        {
+          "level": 1,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame24.png"
+        },
+        {
+          "level": 1,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame25.png"
+        },
+        {
+          "level": 1,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame26.png"
+        },
+        {
+          "level": 1,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame27.png"
+        },
+        {
+          "level": 1,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip1.frame28.png"
         },
         {
           "level": 0,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame0.png"
+        },
+        {
+          "level": 0,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame1.png"
+        },
+        {
+          "level": 0,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame2.png"
+        },
+        {
+          "level": 0,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame3.png"
+        },
+        {
+          "level": 0,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame4.png"
+        },
+        {
+          "level": 0,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame5.png"
+        },
+        {
+          "level": 0,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame6.png"
+        },
+        {
+          "level": 0,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame7.png"
+        },
+        {
+          "level": 0,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame8.png"
+        },
+        {
+          "level": 0,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame9.png"
+        },
+        {
+          "level": 0,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame10.png"
+        },
+        {
+          "level": 0,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame11.png"
+        },
+        {
+          "level": 0,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame12.png"
+        },
+        {
+          "level": 0,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame13.png"
+        },
+        {
+          "level": 0,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame14.png"
+        },
+        {
+          "level": 0,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame15.png"
+        },
+        {
+          "level": 0,
+          "frame": 16,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame16.png"
+        },
+        {
+          "level": 0,
+          "frame": 17,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame17.png"
+        },
+        {
+          "level": 0,
+          "frame": 18,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame18.png"
+        },
+        {
+          "level": 0,
+          "frame": 19,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame19.png"
+        },
+        {
+          "level": 0,
+          "frame": 20,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame20.png"
+        },
+        {
+          "level": 0,
+          "frame": 21,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame21.png"
+        },
+        {
+          "level": 0,
+          "frame": 22,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame22.png"
+        },
+        {
+          "level": 0,
+          "frame": 23,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame23.png"
+        },
+        {
+          "level": 0,
+          "frame": 24,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame24.png"
+        },
+        {
+          "level": 0,
+          "frame": 25,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame25.png"
+        },
+        {
+          "level": 0,
+          "frame": 26,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame26.png"
+        },
+        {
+          "level": 0,
+          "frame": 27,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame27.png"
+        },
+        {
+          "level": 0,
+          "frame": 28,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/dev/water_normal.vtf/mip0.frame28.png"
         }
       ]
     },
     {
       "path": "materials/tools/toolsblack.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 64,
       "height": 64,
       "params": {
@@ -341,6 +1756,7 @@
     {
       "path": "materials/nature/cliff_terrain03.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -404,6 +1820,7 @@
     {
       "path": "materials/watersource/waterglow/waterglow256x16.vtf",
       "target": 3553,
+      "frames": 16,
       "width": 256,
       "height": 256,
       "params": {
@@ -415,13 +1832,90 @@
       "elements": [
         {
           "level": 0,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame0.png"
+        },
+        {
+          "level": 0,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame1.png"
+        },
+        {
+          "level": 0,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame2.png"
+        },
+        {
+          "level": 0,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame3.png"
+        },
+        {
+          "level": 0,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame4.png"
+        },
+        {
+          "level": 0,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame5.png"
+        },
+        {
+          "level": 0,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame6.png"
+        },
+        {
+          "level": 0,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame7.png"
+        },
+        {
+          "level": 0,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame8.png"
+        },
+        {
+          "level": 0,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame9.png"
+        },
+        {
+          "level": 0,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame10.png"
+        },
+        {
+          "level": 0,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame11.png"
+        },
+        {
+          "level": 0,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame12.png"
+        },
+        {
+          "level": 0,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame13.png"
+        },
+        {
+          "level": 0,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame14.png"
+        },
+        {
+          "level": 0,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow256x16.vtf/mip0.frame15.png"
         }
       ]
     },
     {
       "path": "materials/trippin/sfwater.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 128,
       "height": 128,
       "params": {
@@ -473,6 +1967,7 @@
     {
       "path": "materials/s_toon/s_water.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 128,
       "height": 128,
       "params": {
@@ -524,6 +2019,7 @@
     {
       "path": "materials/egypt/hyro_flat_outdoors_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -583,6 +2079,7 @@
     {
       "path": "materials/egypt/flat_wall_02.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -646,6 +2143,7 @@
     {
       "path": "materials/egypt/bumpy_wall_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -705,6 +2203,7 @@
     {
       "path": "materials/egypt/smaller_flat_edge_border_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 64,
       "params": {
@@ -764,6 +2263,7 @@
     {
       "path": "materials/egypt/cow_border.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 256,
       "params": {
@@ -827,6 +2327,7 @@
     {
       "path": "materials/egypt/flat_wall_02_b.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -890,6 +2391,7 @@
     {
       "path": "materials/egypt/sand_floor_06.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -953,6 +2455,7 @@
     {
       "path": "materials/egypt/smaller_flat_edge_border_02.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 64,
       "params": {
@@ -1012,6 +2515,7 @@
     {
       "path": "materials/egypt/ground_brick_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -1071,6 +2575,7 @@
     {
       "path": "materials/wood/cursedwood01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -1130,6 +2635,7 @@
     {
       "path": "materials/detail/dt_wood1.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 128,
       "height": 128,
       "params": {
@@ -1181,6 +2687,7 @@
     {
       "path": "materials/egypt/barbed_wire_fence_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -1240,6 +2747,7 @@
     {
       "path": "materials/tools/toolsskybox.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 128,
       "height": 128,
       "params": {
@@ -1291,6 +2799,7 @@
     {
       "path": "materials/tools/toolsblockbullets.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 64,
       "height": 64,
       "params": {
@@ -1338,6 +2847,7 @@
     {
       "path": "materials/giza/sandripple.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -1397,6 +2907,7 @@
     {
       "path": "materials/egypt/flat_wall_skinny_02.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -1456,6 +2967,7 @@
     {
       "path": "materials/cursedjourney/pyrog.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 256,
       "params": {
@@ -1519,6 +3031,7 @@
     {
       "path": "materials/egypt/flat_wall_03_b.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -1582,6 +3095,7 @@
     {
       "path": "materials/tomb/swirledsandbrick2.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -1641,6 +3155,7 @@
     {
       "path": "materials/nature/rockwall004.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 2048,
       "params": {
@@ -1708,6 +3223,7 @@
     {
       "path": "materials/overlays/detail004.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -1771,6 +3287,7 @@
     {
       "path": "materials/egypt/smaller_lined_edge_border_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 64,
       "params": {
@@ -1830,6 +3347,7 @@
     {
       "path": "materials/egypt/flat_wall_skinny_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -1889,6 +3407,7 @@
     {
       "path": "materials/cs_italy/black.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 32,
       "height": 32,
       "params": {
@@ -1932,6 +3451,7 @@
     {
       "path": "materials/giza/stone-block.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -1991,6 +3511,7 @@
     {
       "path": "materials/cursedjourney/cran.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -2050,6 +3571,7 @@
     {
       "path": "materials/cursedjourney/krushed.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 512,
       "params": {
@@ -2113,6 +3635,7 @@
     {
       "path": "materials/cursedjourney/amoy.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 512,
       "params": {
@@ -2176,6 +3699,7 @@
     {
       "path": "materials/cursedjourney/gould.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 512,
       "params": {
@@ -2239,6 +3763,7 @@
     {
       "path": "materials/cursedjourney/mancini.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2294,6 +3819,7 @@
     {
       "path": "materials/cursedjourney/crook.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2349,6 +3875,7 @@
     {
       "path": "materials/cursedjourney/blondie.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2404,6 +3931,7 @@
     {
       "path": "materials/cursedjourney/kask.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2459,6 +3987,7 @@
     {
       "path": "materials/cursedjourney/jay.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 512,
       "params": {
@@ -2522,6 +4051,7 @@
     {
       "path": "materials/cursedjourney/kellz.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2577,6 +4107,7 @@
     {
       "path": "materials/cursedjourney/plekz.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2632,6 +4163,7 @@
     {
       "path": "materials/cursedjourney/rip.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2687,6 +4219,7 @@
     {
       "path": "materials/cursedjourney/kowinator.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2742,6 +4275,7 @@
     {
       "path": "materials/cursedjourney/nut.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2797,6 +4331,7 @@
     {
       "path": "materials/cursedjourney/lutefisk.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -2852,6 +4387,7 @@
     {
       "path": "materials/egypt/stone_floor_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -2915,6 +4451,7 @@
     {
       "path": "materials/watersource/waterglow/waterglow512x16.vtf",
       "target": 3553,
+      "frames": 16,
       "width": 512,
       "height": 512,
       "params": {
@@ -2926,13 +4463,90 @@
       "elements": [
         {
           "level": 0,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame0.png"
+        },
+        {
+          "level": 0,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame1.png"
+        },
+        {
+          "level": 0,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame2.png"
+        },
+        {
+          "level": 0,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame3.png"
+        },
+        {
+          "level": 0,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame4.png"
+        },
+        {
+          "level": 0,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame5.png"
+        },
+        {
+          "level": 0,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame6.png"
+        },
+        {
+          "level": 0,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame7.png"
+        },
+        {
+          "level": 0,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame8.png"
+        },
+        {
+          "level": 0,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame9.png"
+        },
+        {
+          "level": 0,
+          "frame": 10,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame10.png"
+        },
+        {
+          "level": 0,
+          "frame": 11,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame11.png"
+        },
+        {
+          "level": 0,
+          "frame": 12,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame12.png"
+        },
+        {
+          "level": 0,
+          "frame": 13,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame13.png"
+        },
+        {
+          "level": 0,
+          "frame": 14,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame14.png"
+        },
+        {
+          "level": 0,
+          "frame": 15,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/watersource/waterglow/waterglow512x16.vtf/mip0.frame15.png"
         }
       ]
     },
     {
       "path": "materials/cursedjourney/cj_digits.vtf",
       "target": 3553,
+      "frames": 10,
       "width": 64,
       "height": 64,
       "params": {
@@ -2944,6 +4558,7 @@
       "elements": [
         {
           "level": 6,
+          "frame": 0,
           "color": {
             "r": 0.623529434,
             "g": 0.623529434,
@@ -2952,34 +4567,401 @@
           }
         },
         {
+          "level": 6,
+          "frame": 1,
+          "color": {
+            "r": 0.9019608,
+            "g": 0.9019608,
+            "b": 0.9019608,
+            "a": 0.08627451
+          }
+        },
+        {
+          "level": 6,
+          "frame": 2,
+          "color": {
+            "r": 0.772549033,
+            "g": 0.768627465,
+            "b": 0.772549033,
+            "a": 0.129411772
+          }
+        },
+        {
+          "level": 6,
+          "frame": 3,
+          "color": {
+            "r": 0.5176471,
+            "g": 0.5176471,
+            "b": 0.5176471,
+            "a": 0.164705887
+          }
+        },
+        {
+          "level": 6,
+          "frame": 4,
+          "color": {
+            "r": 0.5372549,
+            "g": 0.533333361,
+            "b": 0.5372549,
+            "a": 0.180392161
+          }
+        },
+        {
+          "level": 6,
+          "frame": 5,
+          "color": {
+            "r": 0.5372549,
+            "g": 0.5372549,
+            "b": 0.5372549,
+            "a": 0.160784319
+          }
+        },
+        {
+          "level": 6,
+          "frame": 6,
+          "color": {
+            "r": 0.5176471,
+            "g": 0.5176471,
+            "b": 0.5176471,
+            "a": 0.203921571
+          }
+        },
+        {
+          "level": 6,
+          "frame": 7,
+          "color": {
+            "r": 0.545098066,
+            "g": 0.545098066,
+            "b": 0.545098066,
+            "a": 0.129411772
+          }
+        },
+        {
+          "level": 6,
+          "frame": 8,
+          "color": {
+            "r": 0.5254902,
+            "g": 0.5294118,
+            "b": 0.5254902,
+            "a": 0.23137255
+          }
+        },
+        {
+          "level": 6,
+          "frame": 9,
+          "color": {
+            "r": 0.494117647,
+            "g": 0.498039216,
+            "b": 0.494117647,
+            "a": 0.211764708
+          }
+        },
+        {
           "level": 5,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame0.png"
+        },
+        {
+          "level": 5,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame1.png"
+        },
+        {
+          "level": 5,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame2.png"
+        },
+        {
+          "level": 5,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame3.png"
+        },
+        {
+          "level": 5,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame4.png"
+        },
+        {
+          "level": 5,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame5.png"
+        },
+        {
+          "level": 5,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame6.png"
+        },
+        {
+          "level": 5,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame7.png"
+        },
+        {
+          "level": 5,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame8.png"
+        },
+        {
+          "level": 5,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip5.frame9.png"
         },
         {
           "level": 4,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame0.png"
+        },
+        {
+          "level": 4,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame1.png"
+        },
+        {
+          "level": 4,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame2.png"
+        },
+        {
+          "level": 4,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame3.png"
+        },
+        {
+          "level": 4,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame4.png"
+        },
+        {
+          "level": 4,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame5.png"
+        },
+        {
+          "level": 4,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame6.png"
+        },
+        {
+          "level": 4,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame7.png"
+        },
+        {
+          "level": 4,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame8.png"
+        },
+        {
+          "level": 4,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip4.frame9.png"
         },
         {
           "level": 3,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame0.png"
+        },
+        {
+          "level": 3,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame1.png"
+        },
+        {
+          "level": 3,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame2.png"
+        },
+        {
+          "level": 3,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame3.png"
+        },
+        {
+          "level": 3,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame4.png"
+        },
+        {
+          "level": 3,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame5.png"
+        },
+        {
+          "level": 3,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame6.png"
+        },
+        {
+          "level": 3,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame7.png"
+        },
+        {
+          "level": 3,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame8.png"
+        },
+        {
+          "level": 3,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip3.frame9.png"
         },
         {
           "level": 2,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame0.png"
+        },
+        {
+          "level": 2,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame1.png"
+        },
+        {
+          "level": 2,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame2.png"
+        },
+        {
+          "level": 2,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame3.png"
+        },
+        {
+          "level": 2,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame4.png"
+        },
+        {
+          "level": 2,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame5.png"
+        },
+        {
+          "level": 2,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame6.png"
+        },
+        {
+          "level": 2,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame7.png"
+        },
+        {
+          "level": 2,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame8.png"
+        },
+        {
+          "level": 2,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip2.frame9.png"
         },
         {
           "level": 1,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame0.png"
+        },
+        {
+          "level": 1,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame1.png"
+        },
+        {
+          "level": 1,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame2.png"
+        },
+        {
+          "level": 1,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame3.png"
+        },
+        {
+          "level": 1,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame4.png"
+        },
+        {
+          "level": 1,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame5.png"
+        },
+        {
+          "level": 1,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame6.png"
+        },
+        {
+          "level": 1,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame7.png"
+        },
+        {
+          "level": 1,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame8.png"
+        },
+        {
+          "level": 1,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip1.frame9.png"
         },
         {
           "level": 0,
-          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.png"
+          "frame": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame0.png"
+        },
+        {
+          "level": 0,
+          "frame": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame1.png"
+        },
+        {
+          "level": 0,
+          "frame": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame2.png"
+        },
+        {
+          "level": 0,
+          "frame": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame3.png"
+        },
+        {
+          "level": 0,
+          "frame": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame4.png"
+        },
+        {
+          "level": 0,
+          "frame": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame5.png"
+        },
+        {
+          "level": 0,
+          "frame": 6,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame6.png"
+        },
+        {
+          "level": 0,
+          "frame": 7,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame7.png"
+        },
+        {
+          "level": 0,
+          "frame": 8,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame8.png"
+        },
+        {
+          "level": 0,
+          "frame": 9,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cursedjourney/cj_digits.vtf/mip0.frame9.png"
         }
       ]
     },
     {
       "path": "materials/cursedjourney/foopy.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3035,6 +5017,7 @@
     {
       "path": "materials/cursedjourney/dcl.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3090,6 +5073,7 @@
     {
       "path": "materials/cursedjourney/sinn.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3145,6 +5129,7 @@
     {
       "path": "materials/cursedjourney/purplegrad.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 256,
       "params": {
@@ -3200,6 +5185,7 @@
     {
       "path": "materials/cursedjourney/prismetic.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3255,6 +5241,7 @@
     {
       "path": "materials/cursedjourney/thanks.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3310,6 +5297,7 @@
     {
       "path": "materials/watersource/waterfall/waterfallfull_512_clear.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -3369,6 +5357,7 @@
     {
       "path": "materials/egypt/flat_edge_border_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -3428,6 +5417,7 @@
     {
       "path": "materials/cursedjourney/longwall.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3483,6 +5473,7 @@
     {
       "path": "materials/cursedjourney/houseofclimb.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3538,6 +5529,7 @@
     {
       "path": "materials/cursedjourney/pika.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3593,6 +5585,7 @@
     {
       "path": "materials/cursedjourney/energy.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3648,6 +5641,7 @@
     {
       "path": "materials/cursedjourney/cc_wall.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3703,6 +5697,7 @@
     {
       "path": "materials/cursedjourney/tekkii.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3758,6 +5753,7 @@
     {
       "path": "materials/cursedjourney/pano.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3813,6 +5809,7 @@
     {
       "path": "materials/cursedjourney/climblounge.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3868,6 +5865,7 @@
     {
       "path": "materials/cursedjourney/dzm.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3923,6 +5921,7 @@
     {
       "path": "materials/cursedjourney/8.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -3978,6 +5977,7 @@
     {
       "path": "materials/tools/toolstrigger.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 64,
       "height": 64,
       "params": {
@@ -4025,6 +6025,7 @@
     {
       "path": "materials/cursedjourney/mk.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -4080,6 +6081,7 @@
     {
       "path": "materials/cursedjourney/boxr.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 512,
       "params": {
@@ -4143,6 +6145,7 @@
     {
       "path": "materials/watersource/waterfall/highfall.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 512,
       "params": {
@@ -4202,6 +6205,7 @@
     {
       "path": "materials/cursedjourney/coffins/dahna.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -4257,6 +6261,7 @@
     {
       "path": "materials/cursedjourney/sandblock.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -4312,6 +6317,7 @@
     {
       "path": "materials/cursedjourney/flat_cj.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -4367,6 +6373,7 @@
     {
       "path": "materials/kz_ovi_rats/spiderweb.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 256,
       "params": {
@@ -4422,6 +6429,7 @@
     {
       "path": "materials/wood/houseceiling01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -4481,6 +6489,7 @@
     {
       "path": "materials/cursedjourney/amoy2.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 256,
       "params": {
@@ -4544,6 +6553,7 @@
     {
       "path": "materials/concrete/concretewall_handling01b_yellow.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -4603,6 +6613,7 @@
     {
       "path": "materials/detail/detailconcrete001a.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -4662,6 +6673,7 @@
     {
       "path": "materials/cstrike/{tk_grate.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 128,
       "params": {
@@ -4717,6 +6729,7 @@
     {
       "path": "materials/cursedjourney/coffins/krushed2.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -4776,6 +6789,7 @@
     {
       "path": "materials/cursedjourney/coffins/cout.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -4835,6 +6849,7 @@
     {
       "path": "materials/cursedjourney/tape/dixon.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -4890,6 +6905,7 @@
     {
       "path": "materials/cursedjourney/coffins/crook2.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -4949,6 +6965,7 @@
     {
       "path": "materials/cursedjourney/coffins/flipo.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -5008,6 +7025,7 @@
     {
       "path": "materials/cursedjourney/coffins/tygurz.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -5067,6 +7085,7 @@
     {
       "path": "materials/cursedjourney/tape/blank.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5122,6 +7141,7 @@
     {
       "path": "materials/cursedjourney/coffins/foopy2.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -5181,6 +7201,7 @@
     {
       "path": "materials/overlays/stain016.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -5244,6 +7265,7 @@
     {
       "path": "materials/overlays/stain015.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -5307,6 +7329,7 @@
     {
       "path": "materials/overlays/lilly_01a.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 1024,
       "params": {
@@ -5370,6 +7393,7 @@
     {
       "path": "materials/cursedjourney/coffins/hoc.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -5429,6 +7453,7 @@
     {
       "path": "materials/cursedjourney/coffins/ruben.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -5488,6 +7513,7 @@
     {
       "path": "materials/cursedjourney/coffins/gould.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -5547,6 +7573,7 @@
     {
       "path": "materials/cursedjourney/coffins/pyroguden.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 128,
       "params": {
@@ -5606,6 +7633,7 @@
     {
       "path": "materials/cursedjourney/coffins/steven.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5661,6 +7689,7 @@
     {
       "path": "materials/cursedjourney/coffins/chad.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5716,6 +7745,7 @@
     {
       "path": "materials/cursedjourney/coffins/sach.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5771,6 +7801,7 @@
     {
       "path": "materials/cursedjourney/coffins/launders.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5826,6 +7857,7 @@
     {
       "path": "materials/cursedjourney/coffins/zpamm.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5881,6 +7913,7 @@
     {
       "path": "materials/cursedjourney/coffins/lutefisk.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5936,6 +7969,7 @@
     {
       "path": "materials/cursedjourney/coffins/kask.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -5991,6 +8025,7 @@
     {
       "path": "materials/cursedjourney/coffins/sofa.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6046,6 +8081,7 @@
     {
       "path": "materials/cursedjourney/coffins/chuckles.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6101,6 +8137,7 @@
     {
       "path": "materials/cursedjourney/coffins/haven.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6156,6 +8193,7 @@
     {
       "path": "materials/cursedjourney/coffins/summer.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6211,6 +8249,7 @@
     {
       "path": "materials/cursedjourney/coffins/azn.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6266,6 +8305,7 @@
     {
       "path": "materials/cursedjourney/coffins/joel.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6321,6 +8361,7 @@
     {
       "path": "materials/cursedjourney/coffins/luq.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6376,6 +8417,7 @@
     {
       "path": "materials/cursedjourney/coffins/jay.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6431,6 +8473,7 @@
     {
       "path": "materials/cursedjourney/coffins/brwr.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6486,6 +8529,7 @@
     {
       "path": "materials/cursedjourney/coffins/sinful.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6541,6 +8585,7 @@
     {
       "path": "materials/cursedjourney/coffins/chris.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6596,6 +8641,7 @@
     {
       "path": "materials/cursedjourney/coffins/supa.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6651,6 +8697,7 @@
     {
       "path": "materials/cursedjourney/coffins/plekz.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6706,6 +8753,7 @@
     {
       "path": "materials/cursedjourney/coffins/8.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 256,
       "height": 64,
       "params": {
@@ -6761,6 +8809,7 @@
     {
       "path": "materials/overlays/rug001a.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 512,
       "params": {
@@ -6824,6 +8873,7 @@
     {
       "path": "materials/egypt/palm_tree/palm_tree_skin.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -6883,6 +8933,7 @@
     {
       "path": "materials/egypt/stick_torch/stick_torch_skin.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -6942,6 +8993,7 @@
     {
       "path": "materials/egypt/pillar/pillar_skin.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -7001,6 +9053,7 @@
     {
       "path": "materials/egypt/wall_torch/wall_torch_skin.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 512,
       "height": 512,
       "params": {
@@ -7060,6 +9113,7 @@
     {
       "path": "materials/models/props_foliage/urban_trees_branches02.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 2048,
       "height": 2048,
       "params": {
@@ -7127,6 +9181,7 @@
     {
       "path": "materials/egypt/hyro_outdoors_01.vtf",
       "target": 3553,
+      "frames": 1,
       "width": 1024,
       "height": 256,
       "params": {

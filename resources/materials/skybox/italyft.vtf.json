@@ -1,6 +1,7 @@
 {
   "path": "materials/skybox/italyft.vtf",
   "target": 3553,
+  "frames": 1,
   "width": 512,
   "height": 512,
   "params": {

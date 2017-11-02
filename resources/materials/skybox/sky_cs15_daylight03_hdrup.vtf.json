@@ -1,6 +1,7 @@
 {
   "path": "materials/skybox/sky_cs15_daylight03_hdrup.vtf",
   "target": 3553,
+  "frames": 1,
   "width": 512,
   "height": 512,
   "params": {
