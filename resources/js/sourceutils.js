@@ -1,13 +1,8 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var SourceUtils;
 (function (SourceUtils) {
     var ResourcePage = (function () {
@@ -136,6 +131,32 @@ var SourceUtils;
 /// <reference path="PagedLoader.ts"/>
 var SourceUtils;
 (function (SourceUtils) {
+    var AmbientPage = (function (_super) {
+        __extends(AmbientPage, _super);
+        function AmbientPage() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        AmbientPage.prototype.onGetValue = function (index) {
+            return this.page.values[index];
+        };
+        return AmbientPage;
+    }(SourceUtils.ResourcePage));
+    SourceUtils.AmbientPage = AmbientPage;
+    var AmbientLoader = (function (_super) {
+        __extends(AmbientLoader, _super);
+        function AmbientLoader() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        AmbientLoader.prototype.onCreatePage = function (page) {
+            return new AmbientPage(page);
+        };
+        return AmbientLoader;
+    }(SourceUtils.PagedLoader));
+    SourceUtils.AmbientLoader = AmbientLoader;
+})(SourceUtils || (SourceUtils = {}));
+/// <reference path="PagedLoader.ts"/>
+var SourceUtils;
+(function (SourceUtils) {
     var WebGame = Facepunch.WebGame;
     var LeafFlags;
     (function (LeafFlags) {
@@ -157,11 +178,11 @@ var SourceUtils;
     }());
     SourceUtils.Plane = Plane;
     var BspNode = (function () {
-        function BspNode(loader, info) {
+        function BspNode(viewer, info) {
             this.isLeaf = false;
             this.plane = new Plane();
             this.children = new Array(2);
-            this.loader = loader;
+            this.viewer = viewer;
             this.plane.copy(info.plane);
             this.children[0] = this.loadChild(info.children[0]);
             this.children[1] = this.loadChild(info.children[1]);
@@ -169,10 +190,10 @@ var SourceUtils;
         BspNode.prototype.loadChild = function (value) {
             var node = value;
             if (node.children !== undefined) {
-                return new BspNode(this.loader, node);
+                return new BspNode(this.viewer, node);
             }
             var leaf = value;
-            return new BspLeaf(this.loader, leaf);
+            return new BspLeaf(this.viewer, leaf);
         };
         BspNode.prototype.findLeaves = function (target) {
             this.children[0].findLeaves(target);
@@ -183,23 +204,81 @@ var SourceUtils;
     SourceUtils.BspNode = BspNode;
     var BspLeaf = (function (_super) {
         __extends(BspLeaf, _super);
-        function BspLeaf(loader, info) {
+        function BspLeaf(viewer, info) {
             var _this = _super.call(this) || this;
             _this.isLeaf = true;
-            _this.loader = loader;
+            _this.viewer = viewer;
             _this.index = info.index;
             _this.flags = info.flags;
             _this.cluster = info.cluster;
             _this.hasFaces = info.hasFaces;
             return _this;
         }
+        BspLeaf.prototype.getAmbientCube = function (pos, outSamples, callback) {
+            var _this = this;
+            if (!this.hasLoadedAmbient) {
+                this.hasLoadedAmbient = true;
+                this.viewer.ambientLoader.load(this.index, function (value) { return _this.ambientSamples = value; });
+            }
+            var samples = this.ambientSamples;
+            if (samples == null) {
+                if (callback != null) {
+                    var leafCopy_1 = this;
+                    this.viewer.ambientLoader.load(this.index, function (value) {
+                        if (value.length > 0) {
+                            leafCopy_1.getAmbientCube(pos, outSamples);
+                            callback(true);
+                        }
+                        else {
+                            callback(false);
+                        }
+                    });
+                }
+                return false;
+            }
+            if (samples.length === 0) {
+                if (callback != null)
+                    callback(false);
+                return false;
+            }
+            var closestIndex = undefined;
+            var closestDistSq = Number.MAX_VALUE;
+            var temp = BspLeaf.getAmbientCube_temp;
+            // TODO: interpolation
+            for (var i = 0; i < samples.length; ++i) {
+                var sample = samples[i];
+                temp.copy(sample.position);
+                temp.sub(pos);
+                var distSq = temp.lengthSq();
+                if (distSq < closestDistSq) {
+                    closestDistSq = distSq;
+                    closestIndex = i;
+                }
+            }
+            var closestSamples = samples[closestIndex].samples;
+            for (var i = 0; i < 6; ++i) {
+                var rgbExp = closestSamples[i];
+                var outVec = outSamples[i] || (outSamples[i] = new Facepunch.Vector3());
+                var r = ((rgbExp >> 0) & 0xff);
+                var g = ((rgbExp >> 8) & 0xff);
+                var b = ((rgbExp >> 16) & 0xff);
+                var exp = ((rgbExp >> 24) & 0xff) - 128;
+                var mul = Math.pow(2.0, exp);
+                outVec.x = Math.pow(mul * r, 0.5);
+                outVec.y = Math.pow(mul * g, 0.5);
+                outVec.z = Math.pow(mul * b, 0.5);
+            }
+            if (callback != null)
+                callback(true);
+            return true;
+        };
         BspLeaf.prototype.getMeshHandles = function () {
             var _this = this;
             if (!this.hasFaces)
                 return null;
             if (!this.hasLoaded) {
                 this.hasLoaded = true;
-                this.loader.load(this.index, function (handles) { return _this.addMeshHandles(handles); });
+                this.viewer.leafGeometryLoader.load(this.index, function (handles) { return _this.addMeshHandles(handles); });
             }
             return _super.prototype.getMeshHandles.call(this);
         };
@@ -209,6 +288,7 @@ var SourceUtils;
         };
         return BspLeaf;
     }(WebGame.DrawListItem));
+    BspLeaf.getAmbientCube_temp = new Facepunch.Vector3();
     SourceUtils.BspLeaf = BspLeaf;
     var BspModel = (function (_super) {
         __extends(BspModel, _super);
@@ -219,7 +299,7 @@ var SourceUtils;
         }
         BspModel.prototype.loadFromInfo = function (info) {
             this.info = info;
-            this.headNode = new BspNode(this.viewer.leafGeometryLoader, info.headNode);
+            this.headNode = new BspNode(this.viewer, info.headNode);
             this.leaves = [];
             this.headNode.findLeaves(this.leaves);
             this.dispatchOnLoadCallbacks();
@@ -332,877 +412,6 @@ var SourceUtils;
         return DispGeometryLoader;
     }(SourceUtils.PagedLoader));
     SourceUtils.DispGeometryLoader = DispGeometryLoader;
-})(SourceUtils || (SourceUtils = {}));
-/// <reference path="PagedLoader.ts"/>
-var SourceUtils;
-(function (SourceUtils) {
-    var WebGame = Facepunch.WebGame;
-    var LeafGeometryPage = (function (_super) {
-        __extends(LeafGeometryPage, _super);
-        function LeafGeometryPage(viewer, page) {
-            var _this = _super.call(this, page) || this;
-            _this.viewer = viewer;
-            return _this;
-        }
-        LeafGeometryPage.prototype.onLoadValues = function (page) {
-            this.matGroups = new Array(page.materials.length);
-            this.leafFaces = page.leaves;
-            var _loop_3 = function (i, iEnd) {
-                var matGroup = page.materials[i];
-                var mat = this_3.viewer.mapMaterialLoader.loadMaterial(matGroup.material);
-                var data = WebGame.MeshManager.decompress(matGroup.meshData);
-                this_3.matGroups[i] = this_3.viewer.meshes.addMeshData(data, function (index) { return mat; });
-            };
-            var this_3 = this;
-            for (var i = 0, iEnd = page.materials.length; i < iEnd; ++i) {
-                _loop_3(i, iEnd);
-            }
-            _super.prototype.onLoadValues.call(this, page);
-        };
-        LeafGeometryPage.prototype.onGetValue = function (index) {
-            var leafFaces = this.leafFaces[index];
-            var handles = new Array(leafFaces.length);
-            for (var i = 0, iEnd = leafFaces.length; i < iEnd; ++i) {
-                var leafFace = leafFaces[i];
-                handles[i] = this.matGroups[leafFace.material][leafFace.element];
-            }
-            return handles;
-        };
-        return LeafGeometryPage;
-    }(SourceUtils.ResourcePage));
-    SourceUtils.LeafGeometryPage = LeafGeometryPage;
-    var LeafGeometryLoader = (function (_super) {
-        __extends(LeafGeometryLoader, _super);
-        function LeafGeometryLoader(viewer) {
-            var _this = _super.call(this) || this;
-            _this.viewer = viewer;
-            return _this;
-        }
-        LeafGeometryLoader.prototype.onCreatePage = function (page) {
-            return new LeafGeometryPage(this.viewer, page);
-        };
-        return LeafGeometryLoader;
-    }(SourceUtils.PagedLoader));
-    SourceUtils.LeafGeometryLoader = LeafGeometryLoader;
-})(SourceUtils || (SourceUtils = {}));
-/// <reference path="../js/facepunch.webgame.d.ts"/>
-var SourceUtils;
-(function (SourceUtils) {
-    var WebGame = Facepunch.WebGame;
-    var Map = (function () {
-        function Map(viewer) {
-            this.clusterVis = {};
-            this.clusterEnts = {};
-            this.viewer = viewer;
-        }
-        Map.prototype.isReady = function () {
-            return this.info != null && this.lightmap != null && this.lightmap.isLoaded() && this.worldspawn.model != null;
-        };
-        Map.prototype.unload = function () {
-            throw new Error("Map unloading not implemented.");
-        };
-        Map.prototype.load = function (url) {
-            var _this = this;
-            Facepunch.Http.getJson(url, function (info) {
-                _this.onLoad(info);
-            });
-        };
-        Map.prototype.getLightmapLoadProgress = function () {
-            return this.lightmap == null ? 0 : this.lightmap.getLoadProgress();
-        };
-        Map.prototype.onLoad = function (info) {
-            if (this.info != null)
-                this.unload();
-            this.info = info;
-            this.viewer.visLoader.setPageLayout(info.visPages);
-            this.viewer.leafGeometryLoader.setPageLayout(info.leafPages);
-            this.viewer.dispGeometryLoader.setPageLayout(info.dispPages);
-            this.viewer.mapMaterialLoader.setPageLayout(info.materialPages);
-            this.viewer.bspModelLoader.setPageLayout(info.brushModelPages);
-            this.viewer.studioModelLoader.setPageLayout(info.studioModelPages);
-            this.viewer.vertLightingLoader.setPageLayout(info.vertLightingPages);
-            this.lightmap = this.viewer.textureLoader.load(info.lightmapUrl);
-            this.tSpawns = [];
-            this.ctSpawns = [];
-            this.playerSpawns = [];
-            this.pvsEntities = [];
-            for (var i = 0, iEnd = info.entities.length; i < iEnd; ++i) {
-                var ent = info.entities[i];
-                var pvsInst = null;
-                switch (ent.classname) {
-                    case "worldspawn":
-                        var worldspawn = ent;
-                        this.worldspawn = new SourceUtils.Entities.Worldspawn(this, worldspawn);
-                        this.lightmap.addUsage(this.worldspawn);
-                        if (worldspawn.skyMaterial != null) {
-                            var skyMat = new WebGame.MaterialLoadable(this.viewer);
-                            skyMat.loadFromInfo(worldspawn.skyMaterial);
-                            this.skyCube = new SourceUtils.SkyCube(this.viewer, skyMat);
-                        }
-                        break;
-                    case "env_fog_controller":
-                        var fogController = ent;
-                        var fog = this.viewer.mainCamera.fog;
-                        if (!fogController.fogEnabled)
-                            break;
-                        fog.color.set(fogController.fogColor.r, fogController.fogColor.g, fogController.fogColor.b);
-                        fog.start = fogController.fogStart;
-                        fog.end = fogController.fogEnd;
-                        fog.maxDensity = fogController.fogMaxDensity;
-                        if (fogController.farZ !== 0)
-                            this.viewer.mainCamera.setFar(fogController.farZ);
-                        break;
-                    case "info_player_terrorist":
-                        this.tSpawns.push(ent);
-                        break;
-                    case "info_player_counterterrorist":
-                        this.ctSpawns.push(ent);
-                        break;
-                    case "info_player_start":
-                        this.playerSpawns.push(ent);
-                        break;
-                    case "displacement":
-                        pvsInst = new SourceUtils.Entities.Displacement(this, ent);
-                        break;
-                    case "func_brush":
-                        pvsInst = new SourceUtils.Entities.BrushEntity(this, ent);
-                        break;
-                    case "prop_static":
-                        if (ent.model === -1)
-                            break;
-                        pvsInst = new SourceUtils.Entities.StaticProp(this, ent);
-                        break;
-                    case "sky_camera":
-                        this.skyCamera = new SourceUtils.Entities.SkyCamera(this.viewer, ent);
-                        break;
-                }
-                if (pvsInst != null) {
-                    this.pvsEntities.push(pvsInst);
-                }
-            }
-            var pos = new Facepunch.Vector3();
-            if (this.viewer.mainCamera.getPosition(pos).x === 0 && pos.y === 0 && pos.z === 0) {
-                var spawn = this.tSpawns[0] || this.ctSpawns[0] || this.playerSpawns[0];
-                this.viewer.mainCamera.setPosition(spawn.origin);
-                this.viewer.mainCamera.translate(0, 0, 64);
-                this.viewer.setCameraAngles((spawn.angles.y - 90) * Math.PI / 180, spawn.angles.x * Math.PI / 180);
-            }
-            this.viewer.forceDrawListInvalidation(true);
-        };
-        Map.prototype.getPvsEntitiesInCluster = function (cluster) {
-            var ents = this.clusterEnts[cluster];
-            if (ents !== undefined)
-                return ents;
-            this.clusterEnts[cluster] = ents = [];
-            for (var _i = 0, _a = this.pvsEntities; _i < _a.length; _i++) {
-                var ent = _a[_i];
-                if (ent.isInCluster(cluster)) {
-                    ents.push(ent);
-                }
-            }
-            return ents;
-        };
-        Map.prototype.getLeafAt = function (pos) {
-            if (this.worldspawn == null || this.worldspawn.model == null)
-                return undefined;
-            return this.worldspawn.model.getLeafAt(pos);
-        };
-        Map.prototype.populateDrawList = function (drawList, pvsRoot) {
-            var _this = this;
-            if (this.worldspawn == null)
-                return;
-            if (pvsRoot != null && this.skyCube != null && (this.skyCamera == null || pvsRoot === this.skyCamera.getLeaf())) {
-                drawList.addItem(this.skyCube);
-            }
-            var vis = null;
-            if (this.worldspawn.model != null && pvsRoot != null && pvsRoot.cluster !== undefined) {
-                var cluster_1 = pvsRoot.cluster;
-                vis = this.clusterVis[cluster_1];
-                if (vis === undefined) {
-                    var immediate_1 = true;
-                    this.viewer.visLoader.load(cluster_1, function (loaded) {
-                        _this.clusterVis[cluster_1] = vis = loaded;
-                        if (!immediate_1)
-                            _this.viewer.forceDrawListInvalidation(true);
-                    });
-                    immediate_1 = false;
-                    if (vis === undefined) {
-                        this.clusterVis[cluster_1] = vis = null;
-                    }
-                }
-            }
-            this.worldspawn.populateDrawList(drawList, vis);
-            if (vis == null) {
-                for (var _i = 0, _a = this.pvsEntities; _i < _a.length; _i++) {
-                    var ent = _a[_i];
-                    drawList.addItem(ent);
-                }
-                return;
-            }
-            for (var _b = 0, vis_1 = vis; _b < vis_1.length; _b++) {
-                var cluster = vis_1[_b];
-                var ents = this.getPvsEntitiesInCluster(cluster);
-                for (var _c = 0, ents_1 = ents; _c < ents_1.length; _c++) {
-                    var ent = ents_1[_c];
-                    if (ent.getIsInDrawList(drawList))
-                        continue;
-                    drawList.addItem(ent);
-                }
-            }
-        };
-        Map.prototype.populateCommandBufferParameters = function (buf) {
-            var lightmap = this.lightmap != null && this.lightmap.isLoaded()
-                ? this.lightmap
-                : WebGame.TextureUtils.getWhiteTexture(this.viewer.context);
-            buf.setParameter(Map.lightmapParam, lightmap);
-        };
-        return Map;
-    }());
-    Map.lightmapParam = new WebGame.CommandBufferParameter(WebGame.UniformType.Texture);
-    SourceUtils.Map = Map;
-})(SourceUtils || (SourceUtils = {}));
-/// <reference path="PagedLoader.ts"/>
-var SourceUtils;
-(function (SourceUtils) {
-    var WebGame = Facepunch.WebGame;
-    var MapMaterialPage = (function (_super) {
-        __extends(MapMaterialPage, _super);
-        function MapMaterialPage(viewer, page) {
-            var _this = _super.call(this, page) || this;
-            _this.viewer = viewer;
-            return _this;
-        }
-        MapMaterialPage.prototype.onLoadValues = function (page) {
-            this.materials = page.materials;
-            var textures = page.textures;
-            for (var i = 0, iEnd = this.materials.length; i < iEnd; ++i) {
-                var mat = this.materials[i];
-                if (mat == null)
-                    continue;
-                var props = mat.properties;
-                for (var j = 0, jEnd = props.length; j < jEnd; ++j) {
-                    var prop = props[j];
-                    if (prop.type !== WebGame.MaterialPropertyType.TextureIndex)
-                        continue;
-                    prop.type = WebGame.MaterialPropertyType.TextureInfo;
-                    prop.value = textures[prop.value];
-                }
-            }
-            _super.prototype.onLoadValues.call(this, page);
-        };
-        MapMaterialPage.prototype.onGetValue = function (index) {
-            return this.materials[index];
-        };
-        return MapMaterialPage;
-    }(SourceUtils.ResourcePage));
-    SourceUtils.MapMaterialPage = MapMaterialPage;
-    var MapMaterialLoader = (function (_super) {
-        __extends(MapMaterialLoader, _super);
-        function MapMaterialLoader(viewer) {
-            var _this = _super.call(this) || this;
-            _this.materials = {};
-            _this.viewer = viewer;
-            return _this;
-        }
-        MapMaterialLoader.prototype.loadMaterial = function (index) {
-            var material = this.materials[index];
-            if (material !== undefined)
-                return material;
-            this.materials[index] = material = new WebGame.MaterialLoadable(this.viewer);
-            this.load(index, function (info) { return info == null ? null : material.loadFromInfo(info); });
-            return material;
-        };
-        MapMaterialLoader.prototype.onCreatePage = function (page) {
-            return new MapMaterialPage(this.viewer, page);
-        };
-        return MapMaterialLoader;
-    }(SourceUtils.PagedLoader));
-    SourceUtils.MapMaterialLoader = MapMaterialLoader;
-})(SourceUtils || (SourceUtils = {}));
-/// <reference path="../js/facepunch.webgame.d.ts"/>
-var SourceUtils;
-(function (SourceUtils) {
-    var WebGame = Facepunch.WebGame;
-    var CameraMode;
-    (function (CameraMode) {
-        CameraMode[CameraMode["Fixed"] = 0] = "Fixed";
-        CameraMode[CameraMode["CanLook"] = 1] = "CanLook";
-        CameraMode[CameraMode["CanMove"] = 2] = "CanMove";
-        CameraMode[CameraMode["FreeCam"] = 3] = "FreeCam";
-    })(CameraMode = SourceUtils.CameraMode || (SourceUtils.CameraMode = {}));
-    var MapViewer = (function (_super) {
-        __extends(MapViewer, _super);
-        function MapViewer(container) {
-            var _this = _super.call(this, container) || this;
-            _this.map = new SourceUtils.Map(_this);
-            _this.visLoader = _this.addLoader(new SourceUtils.VisLoader());
-            _this.bspModelLoader = _this.addLoader(new SourceUtils.BspModelLoader(_this));
-            _this.mapMaterialLoader = _this.addLoader(new SourceUtils.MapMaterialLoader(_this));
-            _this.leafGeometryLoader = _this.addLoader(new SourceUtils.LeafGeometryLoader(_this));
-            _this.dispGeometryLoader = _this.addLoader(new SourceUtils.DispGeometryLoader(_this));
-            _this.studioModelLoader = _this.addLoader(new SourceUtils.StudioModelLoader(_this));
-            _this.vertLightingLoader = _this.addLoader(new SourceUtils.VertexLightingLoader(_this));
-            _this.cameraMode = CameraMode.Fixed;
-            _this.saveCameraPosInHash = false;
-            _this.showDebugPanel = false;
-            _this.totalLoadProgress = 0;
-            _this.onHashChange_temp = new Facepunch.Vector3();
-            _this.lookAngs = new Facepunch.Vector2();
-            _this.tempQuat = new Facepunch.Quaternion();
-            _this.lookQuat = new Facepunch.Quaternion();
-            _this.frameCount = 0;
-            _this.allLoaded = false;
-            _this.onUpdateFrame_temp = new Facepunch.Vector3();
-            container.classList.add("map-viewer");
-            return _this;
-        }
-        MapViewer.prototype.loadMap = function (url) {
-            this.map.load(url);
-        };
-        MapViewer.prototype.onInitialize = function () {
-            var _this = this;
-            this.canLockPointer = true;
-            this.mainCamera = new SourceUtils.Entities.Camera(this, 75);
-            var deltaAngles = new Facepunch.Vector3();
-            var lastRotationSampleTime = new Date().getTime() / 1000;
-            var deviceRotate = function (x, y, z, period, toRadians) {
-                x *= toRadians / period;
-                y *= toRadians / period;
-                z *= toRadians / period;
-                var sampleTime = new Date().getTime() / 1000;
-                var deltaTime = sampleTime - lastRotationSampleTime;
-                lastRotationSampleTime = sampleTime;
-                deltaAngles.x = x * deltaTime;
-                deltaAngles.y = y * deltaTime;
-                deltaAngles.z = z * deltaTime;
-                _this.onDeviceRotate(deltaAngles);
-            };
-            var wind = window;
-            if (wind.DeviceMotionEvent) {
-                window.addEventListener("devicemotion", function (evnt) {
-                    var rate = evnt.rotationRate;
-                    deviceRotate(rate.beta, rate.gamma, rate.alpha, 1.0, 1.0);
-                }, true);
-            }
-            if (window.location.hash != null && window.location.hash.length > 1) {
-                this.hashChange();
-            }
-            window.onhashchange = function (ev) { return _this.hashChange(); };
-            _super.prototype.onInitialize.call(this);
-        };
-        MapViewer.prototype.setHash = function (value) {
-            if (typeof value === "string") {
-                this.oldHash = value;
-                window.location.hash = value;
-                return;
-            }
-            var hash = "#";
-            for (var key in value) {
-                if (!value.hasOwnProperty(key))
-                    continue;
-                if (!MapViewer.hashKeyRegex.test(key)) {
-                    console.warn("Invalid hash object key: " + key);
-                    continue;
-                }
-                var val = value[key];
-                if (typeof val !== "number" && (typeof val !== "string" || isNaN(parseFloat(val)))) {
-                    console.warn("Invalid hash object value: " + val);
-                    continue;
-                }
-                hash += key;
-                hash += val;
-            }
-            this.setHash(hash);
-        };
-        MapViewer.prototype.hashChange = function () {
-            var hash = window.location.hash;
-            if (hash === this.oldHash)
-                return;
-            this.oldHash = hash;
-            if (!MapViewer.hashObjectRegex.test(hash)) {
-                this.onHashChange(hash);
-                return;
-            }
-            var obj = {};
-            var keyValRegex = /([a-z_]+)(-?[0-9]+(?:\.[0-9]+)?)/ig;
-            var match;
-            while ((match = keyValRegex.exec(hash)) != null) {
-                obj[match[1]] = parseFloat(match[2]);
-            }
-            this.onHashChange(obj);
-        };
-        MapViewer.prototype.onHashChange = function (value) {
-            if (typeof value === "string")
-                return;
-            if (!this.saveCameraPosInHash)
-                return;
-            var posHash = value;
-            var pos = this.mainCamera.getPosition(this.onHashChange_temp);
-            if (posHash.x !== undefined) {
-                pos.x = posHash.x;
-            }
-            if (posHash.y !== undefined) {
-                pos.y = posHash.y;
-            }
-            if (posHash.z !== undefined) {
-                pos.z = posHash.z;
-            }
-            this.mainCamera.setPosition(pos);
-            if (posHash.r !== undefined) {
-                this.lookAngs.x = posHash.r / 180 * Math.PI;
-            }
-            if (posHash.s !== undefined) {
-                this.lookAngs.y = posHash.s / 180 * Math.PI;
-            }
-            this.updateCameraAngles();
-        };
-        MapViewer.prototype.onCreateDebugPanel = function () {
-            var panel = document.createElement("div");
-            panel.classList.add("side-panel");
-            panel.innerHTML = "\n                <span class=\"label\">Frame time:</span>&nbsp;<span class=\"debug-frametime\">0</span>&nbsp;ms<br/>\n                <span class=\"label\">Frame rate:</span>&nbsp;<span class=\"debug-framerate\">0</span>&nbsp;fps<br />\n                <span class=\"label\">Draw calls:</span>&nbsp;<span class=\"debug-drawcalls\">0</span><br />\n                <div class=\"debug-loading\">\n                    <span class=\"label\">Map loaded:</span>&nbsp;<span class=\"debug-loadpercent\">0</span>%<br />\n                </div>";
-            this.container.appendChild(panel);
-            return panel;
-        };
-        MapViewer.prototype.onDeviceRotate = function (deltaAngles) {
-            if ((this.cameraMode & CameraMode.CanLook) === 0)
-                return;
-            if (window.innerWidth > window.innerHeight) {
-                this.lookAngs.x += deltaAngles.z;
-                this.lookAngs.y -= deltaAngles.x;
-            }
-            else {
-                this.lookAngs.x += deltaAngles.x;
-                this.lookAngs.y += deltaAngles.z;
-            }
-            this.notMovedTime = 0;
-            this.updateCameraAngles();
-        };
-        MapViewer.prototype.onResize = function () {
-            _super.prototype.onResize.call(this);
-            this.mainCamera.setAspect(this.getWidth() / this.getHeight());
-        };
-        MapViewer.prototype.setCameraAngles = function (yaw, pitch) {
-            this.lookAngs.x = yaw;
-            this.lookAngs.y = pitch;
-            this.updateCameraAngles();
-        };
-        MapViewer.prototype.updateCameraAngles = function () {
-            if (this.lookAngs.y < -Math.PI * 0.5)
-                this.lookAngs.y = -Math.PI * 0.5;
-            if (this.lookAngs.y > Math.PI * 0.5)
-                this.lookAngs.y = Math.PI * 0.5;
-            this.lookQuat.setAxisAngle(Facepunch.Vector3.unitZ, this.lookAngs.x);
-            this.tempQuat.setAxisAngle(Facepunch.Vector3.unitX, this.lookAngs.y + Math.PI * 0.5);
-            this.lookQuat.multiply(this.tempQuat);
-            this.mainCamera.setRotation(this.lookQuat);
-        };
-        MapViewer.prototype.onMouseLook = function (delta) {
-            _super.prototype.onMouseLook.call(this, delta);
-            if ((this.cameraMode & CameraMode.CanLook) === 0)
-                return;
-            if (Math.abs(delta.x) === 0 && Math.abs(delta.y) === 0)
-                return;
-            this.lookAngs.sub(delta.multiplyScalar(1 / 800));
-            this.notMovedTime = 0;
-            this.updateCameraAngles();
-        };
-        MapViewer.prototype.toggleFullscreen = function () {
-            var container = this.container;
-            var cont = container;
-            var doc = document;
-            if (document.fullscreenElement === container || document.webkitFullscreenElement === container || doc.mozFullScreenElement === container) {
-                if (document.exitFullscreen)
-                    document.exitFullscreen();
-                else if (document.webkitExitFullscreen)
-                    document.webkitExitFullscreen();
-                else if (doc.mozCancelFullScreen)
-                    doc.mozCancelFullScreen();
-            }
-            else if (container.requestFullscreen) {
-                container.requestFullscreen();
-            }
-            else if (container.webkitRequestFullscreen) {
-                container.webkitRequestFullscreen();
-            }
-            else if (cont.mozRequestFullScreen) {
-                cont.mozRequestFullScreen();
-            }
-        };
-        MapViewer.prototype.onKeyDown = function (key) {
-            _super.prototype.onKeyDown.call(this, key);
-            switch (key) {
-                case WebGame.Key.F:
-                    this.toggleFullscreen();
-                    return true;
-                case WebGame.Key.W:
-                case WebGame.Key.A:
-                case WebGame.Key.S:
-                case WebGame.Key.D:
-                case WebGame.Key.Shift:
-                    return this.isPointerLocked() && (this.cameraMode & CameraMode.CanMove) !== 0;
-                default:
-                    return false;
-            }
-        };
-        MapViewer.prototype.onSetDebugText = function (className, value) {
-            var elem = this.debugPanel.getElementsByClassName(className)[0];
-            if (elem == null)
-                return;
-            elem.innerText = value;
-            if (className === "debug-loadpercent" && parseInt(value) >= 100) {
-                var loading = this.debugPanel.getElementsByClassName("debug-loading")[0];
-                if (loading != null) {
-                    loading.style.display = "none";
-                }
-            }
-        };
-        MapViewer.prototype.onUpdateFrame = function (dt) {
-            _super.prototype.onUpdateFrame.call(this, dt);
-            if (this.showDebugPanel !== this.debugPanelVisible) {
-                this.debugPanelVisible = this.showDebugPanel;
-                if (this.showDebugPanel && this.debugPanel === undefined) {
-                    this.debugPanel = this.onCreateDebugPanel();
-                }
-                if (this.debugPanel != null) {
-                    if (this.showDebugPanel)
-                        this.debugPanel.style.display = null;
-                    else
-                        this.debugPanel.style.display = "none";
-                }
-            }
-            var savePosPeriod = 1;
-            var wasBeforeSavePosPeriod = this.notMovedTime < savePosPeriod;
-            if ((this.cameraMode & CameraMode.CanMove) !== 0 && this.isPointerLocked() && this.map.isReady()) {
-                var move = this.onUpdateFrame_temp;
-                move.set(0, 0, 0);
-                var moveSpeed = 512 * dt * (this.isKeyDown(WebGame.Key.Shift) ? 4 : 1);
-                if (this.isKeyDown(WebGame.Key.W))
-                    move.z -= moveSpeed;
-                if (this.isKeyDown(WebGame.Key.S))
-                    move.z += moveSpeed;
-                if (this.isKeyDown(WebGame.Key.A))
-                    move.x -= moveSpeed;
-                if (this.isKeyDown(WebGame.Key.D))
-                    move.x += moveSpeed;
-                if (move.lengthSq() > 0) {
-                    this.mainCamera.applyRotationTo(move);
-                    this.mainCamera.translate(move);
-                    this.notMovedTime = 0;
-                }
-            }
-            this.notMovedTime += dt;
-            if (this.saveCameraPosInHash && wasBeforeSavePosPeriod && this.notMovedTime >= savePosPeriod) {
-                var pos = this.mainCamera.getPosition(this.onUpdateFrame_temp);
-                var pitch = this.lookAngs.x * 180.0 / Math.PI;
-                var yaw = this.lookAngs.y * 180.0 / Math.PI;
-                this.setHash({
-                    x: pos.x.toFixed(1),
-                    y: pos.y.toFixed(1),
-                    z: pos.z.toFixed(1),
-                    r: pitch.toFixed(1),
-                    s: yaw.toFixed(1)
-                });
-            }
-            // Diagnostics
-            var drawCalls = this.mainCamera.getDrawCalls();
-            if (drawCalls !== this.lastDrawCalls && this.showDebugPanel) {
-                this.lastDrawCalls = drawCalls;
-                this.onSetDebugText("debug-drawcalls", drawCalls.toString());
-            }
-            ++this.frameCount;
-            var time = performance.now();
-            if (this.lastProfileTime === undefined) {
-                this.lastProfileTime = time;
-            }
-            else if (time - this.lastProfileTime >= 500) {
-                var timeDiff = (time - this.lastProfileTime) / 1000;
-                this.avgFrameTime = timeDiff * 1000 / this.frameCount;
-                this.avgFrameRate = this.frameCount / timeDiff;
-                if (this.showDebugPanel) {
-                    this.onSetDebugText("debug-frametime", this.avgFrameTime.toPrecision(4));
-                    this.onSetDebugText("debug-framerate", this.avgFrameRate.toPrecision(4));
-                }
-                if (!this.allLoaded) {
-                    var visLoaded = this.visLoader.getLoadProgress();
-                    var bspLoaded = this.bspModelLoader.getLoadProgress();
-                    var lightmapLoaded = this.map.getLightmapLoadProgress();
-                    var materialsLoaded = this.mapMaterialLoader.getLoadProgress();
-                    var geomLoaded = this.leafGeometryLoader.getLoadProgress() * 0.5
-                        + this.dispGeometryLoader.getLoadProgress() * 0.5;
-                    var propsLoaded = this.vertLightingLoader.getLoadProgress() * 0.25
-                        + this.studioModelLoader.getLoadProgress() * 0.75;
-                    this.totalLoadProgress = (visLoaded + bspLoaded + lightmapLoaded + materialsLoaded + geomLoaded + propsLoaded) / 6;
-                    if (this.showDebugPanel) {
-                        this.onSetDebugText("debug-loadpercent", (this.totalLoadProgress * 100).toPrecision(3));
-                    }
-                    if (this.totalLoadProgress >= 1) {
-                        this.allLoaded = true;
-                    }
-                }
-                this.lastProfileTime = time;
-                this.frameCount = 0;
-            }
-        };
-        MapViewer.prototype.onRenderFrame = function (dt) {
-            _super.prototype.onRenderFrame.call(this, dt);
-            var gl = this.context;
-            gl.clear(gl.DEPTH_BUFFER_BIT);
-            gl.depthFunc(gl.LEQUAL);
-            gl.cullFace(gl.FRONT);
-            this.mainCamera.render();
-        };
-        MapViewer.prototype.populateCommandBufferParameters = function (buf) {
-            _super.prototype.populateCommandBufferParameters.call(this, buf);
-            this.map.populateCommandBufferParameters(buf);
-        };
-        return MapViewer;
-    }(WebGame.Game));
-    MapViewer.hashKeyRegex = /^[a-z_]+$/i;
-    MapViewer.hashObjectRegex = /^#((?:[a-z_]+)(?:-?[0-9]+(?:\.[0-9]+)?))+$/i;
-    SourceUtils.MapViewer = MapViewer;
-})(SourceUtils || (SourceUtils = {}));
-var SourceUtils;
-(function (SourceUtils) {
-    var WebGame = Facepunch.WebGame;
-    var SkyCube = (function (_super) {
-        __extends(SkyCube, _super);
-        function SkyCube(viewer, material) {
-            var _this = _super.call(this) || this;
-            var meshData = {
-                attributes: [WebGame.VertexAttribute.uv, WebGame.VertexAttribute.alpha],
-                elements: [
-                    {
-                        mode: WebGame.DrawMode.Triangles,
-                        material: material,
-                        indexOffset: 0,
-                        indexCount: 36
-                    }
-                ],
-                vertices: [],
-                indices: []
-            };
-            for (var face = 0; face < 6; ++face) {
-                meshData.vertices.push(0, 0, face);
-                meshData.vertices.push(1, 0, face);
-                meshData.vertices.push(1, 1, face);
-                meshData.vertices.push(0, 1, face);
-                var index = face * 4;
-                meshData.indices.push(index + 0, index + 1, index + 2);
-                meshData.indices.push(index + 0, index + 2, index + 3);
-            }
-            _this.addMeshHandles(viewer.meshes.addMeshData(meshData));
-            return _this;
-        }
-        return SkyCube;
-    }(WebGame.DrawListItem));
-    SourceUtils.SkyCube = SkyCube;
-})(SourceUtils || (SourceUtils = {}));
-/// <reference path="PagedLoader.ts"/>
-var SourceUtils;
-(function (SourceUtils) {
-    var WebGame = Facepunch.WebGame;
-    var StudioModel = (function (_super) {
-        __extends(StudioModel, _super);
-        function StudioModel(viewer) {
-            var _this = _super.call(this) || this;
-            _this.viewer = viewer;
-            return _this;
-        }
-        StudioModel.getOrCreateMatGroup = function (matGroups, attribs) {
-            for (var _i = 0, matGroups_1 = matGroups; _i < matGroups_1.length; _i++) {
-                var matGroup = matGroups_1[_i];
-                if (matGroup.attributes.length !== attribs.length)
-                    continue;
-                var matches = true;
-                for (var i = 0; i < attribs.length; ++i) {
-                    if (matGroup.attributes[i].id !== attribs[i].id) {
-                        matches = false;
-                        break;
-                    }
-                }
-                if (matches)
-                    return matGroup;
-            }
-            var newGroup = WebGame.MeshManager.createEmpty(attribs);
-            matGroups.push(newGroup);
-            return newGroup;
-        };
-        StudioModel.encode2CompColor = function (vertLit, albedoMod) {
-            return vertLit + albedoMod * 0.00390625;
-        };
-        StudioModel.prototype.createMeshHandles = function (bodyPartIndex, transform, vertLighting, albedoModulation) {
-            var _this = this;
-            var bodyPart = this.info.bodyParts[bodyPartIndex];
-            var handles = [];
-            var matGroups = [];
-            if (albedoModulation === undefined)
-                albedoModulation = 0xffffff;
-            else
-                albedoModulation &= 0xffffff;
-            var albedoR = albedoModulation & 0xff;
-            var albedoG = (albedoModulation >> 8) & 0xff;
-            var albedoB = (albedoModulation >> 16) & 0xff;
-            for (var _i = 0, _a = bodyPart.models; _i < _a.length; _i++) {
-                var model = _a[_i];
-                for (var _b = 0, _c = model.meshes; _b < _c.length; _b++) {
-                    var mesh = _c[_b];
-                    var srcGroup = this.page.getMaterialGroup(mesh.material);
-                    var attribs = [];
-                    attribs.push.apply(attribs, srcGroup.attributes);
-                    attribs.push(WebGame.VertexAttribute.rgb);
-                    var dstGroup = StudioModel.getOrCreateMatGroup(matGroups, attribs);
-                    var newElem = WebGame.MeshManager.copyElement(srcGroup, dstGroup, mesh.element);
-                    var rgbOffset = WebGame.MeshManager.getAttributeOffset(attribs, WebGame.VertexAttribute.rgb);
-                    var vertLength = WebGame.MeshManager.getVertexLength(attribs);
-                    var lighting = vertLighting == null ? null : vertLighting[mesh.meshId];
-                    var vertData = dstGroup.vertices;
-                    for (var i = newElem.vertexOffset + rgbOffset, iEnd = newElem.vertexOffset + newElem.vertexCount, j = 0; i < iEnd; i += vertLength, ++j) {
-                        var lightValue = lighting == null ? 0x7f7f7f : lighting[j];
-                        vertData[i] = StudioModel.encode2CompColor(lightValue & 0xff, albedoR);
-                        vertData[i + 1] = StudioModel.encode2CompColor((lightValue >> 8) & 0xff, albedoG);
-                        vertData[i + 2] = StudioModel.encode2CompColor((lightValue >> 16) & 0xff, albedoB);
-                    }
-                }
-            }
-            for (var _d = 0, matGroups_2 = matGroups; _d < matGroups_2.length; _d++) {
-                var matGroup = matGroups_2[_d];
-                WebGame.MeshManager.transform4F(matGroup, WebGame.VertexAttribute.position, function (pos) { return pos.applyMatrix4(transform); }, 1);
-                WebGame.MeshManager.transform4F(matGroup, WebGame.VertexAttribute.normal, function (norm) { return norm.applyMatrix4(transform); }, 0);
-                this.viewer.meshes.addMeshData(matGroup, function (index) { return _this.viewer.mapMaterialLoader.loadMaterial(index); }, handles);
-            }
-            return handles;
-        };
-        StudioModel.prototype.loadFromInfo = function (info, page) {
-            this.info = info;
-            this.page = page;
-            this.dispatchOnLoadCallbacks();
-        };
-        StudioModel.prototype.isLoaded = function () { return this.info != null; };
-        return StudioModel;
-    }(WebGame.RenderResource));
-    SourceUtils.StudioModel = StudioModel;
-    var StudioModelPage = (function (_super) {
-        __extends(StudioModelPage, _super);
-        function StudioModelPage(page) {
-            return _super.call(this, page) || this;
-        }
-        StudioModelPage.prototype.getMaterialGroup = function (index) {
-            return this.matGroups[index];
-        };
-        StudioModelPage.prototype.onLoadValues = function (page) {
-            this.models = page.models;
-            this.matGroups = new Array(page.materials.length);
-            for (var i = 0, iEnd = page.materials.length; i < iEnd; ++i) {
-                var matGroup = page.materials[i];
-                this.matGroups[i] = WebGame.MeshManager.decompress(matGroup.meshData);
-                for (var _i = 0, _a = this.matGroups[i].elements; _i < _a.length; _i++) {
-                    var element = _a[_i];
-                    element.material = matGroup.material;
-                }
-            }
-            _super.prototype.onLoadValues.call(this, page);
-        };
-        StudioModelPage.prototype.onGetValue = function (index) {
-            return this.models[index];
-        };
-        return StudioModelPage;
-    }(SourceUtils.ResourcePage));
-    SourceUtils.StudioModelPage = StudioModelPage;
-    var StudioModelLoader = (function (_super) {
-        __extends(StudioModelLoader, _super);
-        function StudioModelLoader(viewer) {
-            var _this = _super.call(this) || this;
-            _this.models = {};
-            _this.viewer = viewer;
-            return _this;
-        }
-        StudioModelLoader.prototype.update = function (requestQuota) {
-            return _super.prototype.update.call(this, this.viewer.visLoader.getLoadProgress() < 1 ? 0 : requestQuota);
-        };
-        StudioModelLoader.prototype.loadModel = function (index) {
-            var model = this.models[index];
-            if (model !== undefined)
-                return model;
-            this.models[index] = model = new StudioModel(this.viewer);
-            this.load(index, function (info, page) { return model.loadFromInfo(info, page); });
-            return model;
-        };
-        StudioModelLoader.prototype.onCreatePage = function (page) {
-            return new StudioModelPage(page);
-        };
-        return StudioModelLoader;
-    }(SourceUtils.PagedLoader));
-    SourceUtils.StudioModelLoader = StudioModelLoader;
-    var VertexLightingPage = (function (_super) {
-        __extends(VertexLightingPage, _super);
-        function VertexLightingPage() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        VertexLightingPage.prototype.onLoadValues = function (page) {
-            this.props = new Array(page.props.length);
-            for (var i = 0, iEnd = page.props.length; i < iEnd; ++i) {
-                var srcProp = page.props[i];
-                var dstProp = this.props[i] = srcProp == null ? null : new Array(srcProp.length);
-                if (srcProp == null)
-                    continue;
-                for (var j = 0, jEnd = srcProp.length; j < jEnd; ++j) {
-                    dstProp[j] = Facepunch.Utils.decompress(srcProp[j]);
-                }
-            }
-            _super.prototype.onLoadValues.call(this, page);
-        };
-        VertexLightingPage.prototype.onGetValue = function (index) {
-            return this.props[index];
-        };
-        return VertexLightingPage;
-    }(SourceUtils.ResourcePage));
-    SourceUtils.VertexLightingPage = VertexLightingPage;
-    var VertexLightingLoader = (function (_super) {
-        __extends(VertexLightingLoader, _super);
-        function VertexLightingLoader(viewer) {
-            var _this = _super.call(this) || this;
-            _this.viewer = viewer;
-            return _this;
-        }
-        VertexLightingLoader.prototype.update = function (requestQuota) {
-            return _super.prototype.update.call(this, this.viewer.visLoader.getLoadProgress() < 1 ? 0 : requestQuota);
-        };
-        VertexLightingLoader.prototype.onCreatePage = function (page) {
-            return new VertexLightingPage(page);
-        };
-        return VertexLightingLoader;
-    }(SourceUtils.PagedLoader));
-    SourceUtils.VertexLightingLoader = VertexLightingLoader;
-})(SourceUtils || (SourceUtils = {}));
-var SourceUtils;
-(function (SourceUtils) {
-    var VisPage = (function (_super) {
-        __extends(VisPage, _super);
-        function VisPage() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        VisPage.prototype.onGetValue = function (index) {
-            if (typeof (this.page.values[index]) === "string") {
-                this.page.values[index] = Facepunch.Utils.decompress(this.page.values[index]);
-            }
-            return this.page.values[index];
-        };
-        return VisPage;
-    }(SourceUtils.ResourcePage));
-    SourceUtils.VisPage = VisPage;
-    var VisLoader = (function (_super) {
-        __extends(VisLoader, _super);
-        function VisLoader() {
-            var _this = _super.call(this) || this;
-            _this.throwIfNotFound = false;
-            return _this;
-        }
-        VisLoader.prototype.onCreatePage = function (page) {
-            return new VisPage(page);
-        };
-        return VisLoader;
-    }(SourceUtils.PagedLoader));
-    SourceUtils.VisLoader = VisLoader;
 })(SourceUtils || (SourceUtils = {}));
 var SourceUtils;
 (function (SourceUtils) {
@@ -1474,15 +683,27 @@ var SourceUtils;
             __extends(StaticProp, _super);
             function StaticProp(map, info) {
                 var _this = _super.call(this, map, info) || this;
+                _this.info = info;
                 _this.albedoModulation = info.albedoModulation;
-                if (info.vertLighting !== undefined) {
-                    map.viewer.vertLightingLoader.load(info.vertLighting, function (value) {
+                if (_this.info.vertLighting !== undefined) {
+                    _this.map.viewer.vertLightingLoader.load(_this.info.vertLighting, function (value) {
                         _this.lighting = value;
                         _this.checkLoaded();
                     });
                 }
                 else {
-                    _this.lighting = null;
+                    // TODO: lighting offset
+                    _this.map.getLeafAt(_this.info.origin, function (leaf) {
+                        if (leaf == null) {
+                            _this.lighting = null;
+                        }
+                        else {
+                            var samples_1 = new Array(6);
+                            leaf.getAmbientCube(_this.info.origin, samples_1, function (success) {
+                                _this.lighting = success ? samples_1 : null;
+                            });
+                        }
+                    });
                 }
                 _this.model = map.viewer.studioModelLoader.loadModel(info.model);
                 _this.model.addUsage(_this);
@@ -1553,6 +774,656 @@ var SourceUtils;
         }(Entities.BrushEntity));
         Entities.Worldspawn = Worldspawn;
     })(Entities = SourceUtils.Entities || (SourceUtils.Entities = {}));
+})(SourceUtils || (SourceUtils = {}));
+/// <reference path="PagedLoader.ts"/>
+var SourceUtils;
+(function (SourceUtils) {
+    var WebGame = Facepunch.WebGame;
+    var LeafGeometryPage = (function (_super) {
+        __extends(LeafGeometryPage, _super);
+        function LeafGeometryPage(viewer, page) {
+            var _this = _super.call(this, page) || this;
+            _this.viewer = viewer;
+            return _this;
+        }
+        LeafGeometryPage.prototype.onLoadValues = function (page) {
+            this.matGroups = new Array(page.materials.length);
+            this.leafFaces = page.leaves;
+            var _loop_3 = function (i, iEnd) {
+                var matGroup = page.materials[i];
+                var mat = this_3.viewer.mapMaterialLoader.loadMaterial(matGroup.material);
+                var data = WebGame.MeshManager.decompress(matGroup.meshData);
+                this_3.matGroups[i] = this_3.viewer.meshes.addMeshData(data, function (index) { return mat; });
+            };
+            var this_3 = this;
+            for (var i = 0, iEnd = page.materials.length; i < iEnd; ++i) {
+                _loop_3(i, iEnd);
+            }
+            _super.prototype.onLoadValues.call(this, page);
+        };
+        LeafGeometryPage.prototype.onGetValue = function (index) {
+            var leafFaces = this.leafFaces[index];
+            var handles = new Array(leafFaces.length);
+            for (var i = 0, iEnd = leafFaces.length; i < iEnd; ++i) {
+                var leafFace = leafFaces[i];
+                handles[i] = this.matGroups[leafFace.material][leafFace.element];
+            }
+            return handles;
+        };
+        return LeafGeometryPage;
+    }(SourceUtils.ResourcePage));
+    SourceUtils.LeafGeometryPage = LeafGeometryPage;
+    var LeafGeometryLoader = (function (_super) {
+        __extends(LeafGeometryLoader, _super);
+        function LeafGeometryLoader(viewer) {
+            var _this = _super.call(this) || this;
+            _this.viewer = viewer;
+            return _this;
+        }
+        LeafGeometryLoader.prototype.onCreatePage = function (page) {
+            return new LeafGeometryPage(this.viewer, page);
+        };
+        return LeafGeometryLoader;
+    }(SourceUtils.PagedLoader));
+    SourceUtils.LeafGeometryLoader = LeafGeometryLoader;
+})(SourceUtils || (SourceUtils = {}));
+/// <reference path="../js/facepunch.webgame.d.ts"/>
+var SourceUtils;
+(function (SourceUtils) {
+    var WebGame = Facepunch.WebGame;
+    var Map = (function () {
+        function Map(viewer) {
+            this.clusterVis = {};
+            this.clusterEnts = {};
+            this.worldspawnLoadedCallbacks = [];
+            this.viewer = viewer;
+        }
+        Map.prototype.isReady = function () {
+            return this.info != null && this.lightmap != null && this.lightmap.isLoaded() && this.worldspawn.model != null;
+        };
+        Map.prototype.unload = function () {
+            throw new Error("Map unloading not implemented.");
+        };
+        Map.prototype.load = function (url) {
+            var _this = this;
+            Facepunch.Http.getJson(url, function (info) {
+                _this.onLoad(info);
+            });
+        };
+        Map.prototype.getLightmapLoadProgress = function () {
+            return this.lightmap == null ? 0 : this.lightmap.getLoadProgress();
+        };
+        Map.prototype.onLoad = function (info) {
+            if (this.info != null)
+                this.unload();
+            this.info = info;
+            this.viewer.visLoader.setPageLayout(info.visPages);
+            this.viewer.leafGeometryLoader.setPageLayout(info.leafPages);
+            this.viewer.dispGeometryLoader.setPageLayout(info.dispPages);
+            this.viewer.mapMaterialLoader.setPageLayout(info.materialPages);
+            this.viewer.bspModelLoader.setPageLayout(info.brushModelPages);
+            this.viewer.studioModelLoader.setPageLayout(info.studioModelPages);
+            this.viewer.vertLightingLoader.setPageLayout(info.vertLightingPages);
+            this.viewer.ambientLoader.setPageLayout(info.ambientPages);
+            this.lightmap = this.viewer.textureLoader.load(info.lightmapUrl);
+            this.tSpawns = [];
+            this.ctSpawns = [];
+            this.playerSpawns = [];
+            this.pvsEntities = [];
+            for (var i = 0, iEnd = info.entities.length; i < iEnd; ++i) {
+                var ent = info.entities[i];
+                var pvsInst = null;
+                switch (ent.classname) {
+                    case "worldspawn":
+                        var worldspawn = ent;
+                        this.worldspawn = new SourceUtils.Entities.Worldspawn(this, worldspawn);
+                        this.lightmap.addUsage(this.worldspawn);
+                        if (worldspawn.skyMaterial != null) {
+                            var skyMat = new WebGame.MaterialLoadable(this.viewer);
+                            skyMat.loadFromInfo(worldspawn.skyMaterial);
+                            this.skyCube = new SourceUtils.SkyCube(this.viewer, skyMat);
+                        }
+                        break;
+                    case "env_fog_controller":
+                        var fogController = ent;
+                        var fog = this.viewer.mainCamera.fog;
+                        if (!fogController.fogEnabled)
+                            break;
+                        fog.color.set(fogController.fogColor.r, fogController.fogColor.g, fogController.fogColor.b);
+                        fog.start = fogController.fogStart;
+                        fog.end = fogController.fogEnd;
+                        fog.maxDensity = fogController.fogMaxDensity;
+                        if (fogController.farZ !== 0)
+                            this.viewer.mainCamera.setFar(fogController.farZ);
+                        break;
+                    case "info_player_terrorist":
+                        this.tSpawns.push(ent);
+                        break;
+                    case "info_player_counterterrorist":
+                        this.ctSpawns.push(ent);
+                        break;
+                    case "info_player_start":
+                        this.playerSpawns.push(ent);
+                        break;
+                    case "displacement":
+                        pvsInst = new SourceUtils.Entities.Displacement(this, ent);
+                        break;
+                    case "func_brush":
+                        pvsInst = new SourceUtils.Entities.BrushEntity(this, ent);
+                        break;
+                    case "prop_static":
+                        if (ent.model === -1)
+                            break;
+                        pvsInst = new SourceUtils.Entities.StaticProp(this, ent);
+                        break;
+                    case "sky_camera":
+                        this.skyCamera = new SourceUtils.Entities.SkyCamera(this.viewer, ent);
+                        break;
+                }
+                if (pvsInst != null) {
+                    this.pvsEntities.push(pvsInst);
+                }
+            }
+            var pos = new Facepunch.Vector3();
+            if (this.viewer.mainCamera.getPosition(pos).x === 0 && pos.y === 0 && pos.z === 0) {
+                var spawn = this.tSpawns[0] || this.ctSpawns[0] || this.playerSpawns[0];
+                this.viewer.mainCamera.setPosition(spawn.origin);
+                this.viewer.mainCamera.translate(0, 0, 64);
+                this.viewer.setCameraAngles((spawn.angles.y - 90) * Math.PI / 180, spawn.angles.x * Math.PI / 180);
+            }
+            this.viewer.forceDrawListInvalidation(true);
+        };
+        Map.prototype.getPvsEntitiesInCluster = function (cluster) {
+            var ents = this.clusterEnts[cluster];
+            if (ents !== undefined)
+                return ents;
+            this.clusterEnts[cluster] = ents = [];
+            for (var _i = 0, _a = this.pvsEntities; _i < _a.length; _i++) {
+                var ent = _a[_i];
+                if (ent.isInCluster(cluster)) {
+                    ents.push(ent);
+                }
+            }
+            return ents;
+        };
+        Map.prototype.getLeafAt = function (pos, callback) {
+            var _this = this;
+            if (this.worldspawn == null || !this.worldspawn.model.isLoaded()) {
+                if (callback != null) {
+                    var posCopy_1 = new Facepunch.Vector3().copy(pos);
+                    this.worldspawnLoadedCallbacks.push(function () { return callback(_this.getLeafAt(posCopy_1)); });
+                }
+                return undefined;
+            }
+            var leaf = this.worldspawn.model.getLeafAt(pos);
+            if (callback != null)
+                callback(leaf);
+            return leaf;
+        };
+        Map.prototype.update = function (dt) {
+            if (this.worldspawnLoadedCallbacks.length > 0 && this.worldspawn != null && this.worldspawn.model.isLoaded()) {
+                for (var _i = 0, _a = this.worldspawnLoadedCallbacks; _i < _a.length; _i++) {
+                    var callback = _a[_i];
+                    callback();
+                }
+                this.worldspawnLoadedCallbacks = [];
+            }
+        };
+        Map.prototype.populateDrawList = function (drawList, pvsRoot) {
+            var _this = this;
+            if (this.worldspawn == null)
+                return;
+            if (pvsRoot != null && this.skyCube != null && (this.skyCamera == null || pvsRoot === this.skyCamera.getLeaf())) {
+                drawList.addItem(this.skyCube);
+            }
+            var vis = null;
+            if (this.worldspawn.model != null && pvsRoot != null && pvsRoot.cluster !== undefined) {
+                var cluster_1 = pvsRoot.cluster;
+                vis = this.clusterVis[cluster_1];
+                if (vis === undefined) {
+                    var immediate_1 = true;
+                    this.viewer.visLoader.load(cluster_1, function (loaded) {
+                        _this.clusterVis[cluster_1] = vis = loaded;
+                        if (!immediate_1)
+                            _this.viewer.forceDrawListInvalidation(true);
+                    });
+                    immediate_1 = false;
+                    if (vis === undefined) {
+                        this.clusterVis[cluster_1] = vis = null;
+                    }
+                }
+            }
+            this.worldspawn.populateDrawList(drawList, vis);
+            if (vis == null) {
+                for (var _i = 0, _a = this.pvsEntities; _i < _a.length; _i++) {
+                    var ent = _a[_i];
+                    drawList.addItem(ent);
+                }
+                return;
+            }
+            for (var _b = 0, vis_1 = vis; _b < vis_1.length; _b++) {
+                var cluster = vis_1[_b];
+                var ents = this.getPvsEntitiesInCluster(cluster);
+                for (var _c = 0, ents_1 = ents; _c < ents_1.length; _c++) {
+                    var ent = ents_1[_c];
+                    if (ent.getIsInDrawList(drawList))
+                        continue;
+                    drawList.addItem(ent);
+                }
+            }
+        };
+        Map.prototype.populateCommandBufferParameters = function (buf) {
+            var lightmap = this.lightmap != null && this.lightmap.isLoaded()
+                ? this.lightmap
+                : WebGame.TextureUtils.getWhiteTexture(this.viewer.context);
+            buf.setParameter(Map.lightmapParam, lightmap);
+        };
+        return Map;
+    }());
+    Map.lightmapParam = new WebGame.CommandBufferParameter(WebGame.UniformType.Texture);
+    SourceUtils.Map = Map;
+})(SourceUtils || (SourceUtils = {}));
+/// <reference path="PagedLoader.ts"/>
+var SourceUtils;
+(function (SourceUtils) {
+    var WebGame = Facepunch.WebGame;
+    var MapMaterialPage = (function (_super) {
+        __extends(MapMaterialPage, _super);
+        function MapMaterialPage(viewer, page) {
+            var _this = _super.call(this, page) || this;
+            _this.viewer = viewer;
+            return _this;
+        }
+        MapMaterialPage.prototype.onLoadValues = function (page) {
+            this.materials = page.materials;
+            var textures = page.textures;
+            for (var i = 0, iEnd = this.materials.length; i < iEnd; ++i) {
+                var mat = this.materials[i];
+                if (mat == null)
+                    continue;
+                var props = mat.properties;
+                for (var j = 0, jEnd = props.length; j < jEnd; ++j) {
+                    var prop = props[j];
+                    if (prop.type !== WebGame.MaterialPropertyType.TextureIndex)
+                        continue;
+                    prop.type = WebGame.MaterialPropertyType.TextureInfo;
+                    prop.value = textures[prop.value];
+                }
+            }
+            _super.prototype.onLoadValues.call(this, page);
+        };
+        MapMaterialPage.prototype.onGetValue = function (index) {
+            return this.materials[index];
+        };
+        return MapMaterialPage;
+    }(SourceUtils.ResourcePage));
+    SourceUtils.MapMaterialPage = MapMaterialPage;
+    var MapMaterialLoader = (function (_super) {
+        __extends(MapMaterialLoader, _super);
+        function MapMaterialLoader(viewer) {
+            var _this = _super.call(this) || this;
+            _this.materials = {};
+            _this.viewer = viewer;
+            return _this;
+        }
+        MapMaterialLoader.prototype.loadMaterial = function (index) {
+            var material = this.materials[index];
+            if (material !== undefined)
+                return material;
+            this.materials[index] = material = new WebGame.MaterialLoadable(this.viewer);
+            this.load(index, function (info) { return info == null ? null : material.loadFromInfo(info); });
+            return material;
+        };
+        MapMaterialLoader.prototype.onCreatePage = function (page) {
+            return new MapMaterialPage(this.viewer, page);
+        };
+        return MapMaterialLoader;
+    }(SourceUtils.PagedLoader));
+    SourceUtils.MapMaterialLoader = MapMaterialLoader;
+})(SourceUtils || (SourceUtils = {}));
+/// <reference path="../js/facepunch.webgame.d.ts"/>
+var SourceUtils;
+(function (SourceUtils) {
+    var WebGame = Facepunch.WebGame;
+    var CameraMode;
+    (function (CameraMode) {
+        CameraMode[CameraMode["Fixed"] = 0] = "Fixed";
+        CameraMode[CameraMode["CanLook"] = 1] = "CanLook";
+        CameraMode[CameraMode["CanMove"] = 2] = "CanMove";
+        CameraMode[CameraMode["FreeCam"] = 3] = "FreeCam";
+    })(CameraMode = SourceUtils.CameraMode || (SourceUtils.CameraMode = {}));
+    var MapViewer = (function (_super) {
+        __extends(MapViewer, _super);
+        function MapViewer(container) {
+            var _this = _super.call(this, container) || this;
+            _this.map = new SourceUtils.Map(_this);
+            _this.visLoader = _this.addLoader(new SourceUtils.VisLoader());
+            _this.bspModelLoader = _this.addLoader(new SourceUtils.BspModelLoader(_this));
+            _this.mapMaterialLoader = _this.addLoader(new SourceUtils.MapMaterialLoader(_this));
+            _this.leafGeometryLoader = _this.addLoader(new SourceUtils.LeafGeometryLoader(_this));
+            _this.dispGeometryLoader = _this.addLoader(new SourceUtils.DispGeometryLoader(_this));
+            _this.studioModelLoader = _this.addLoader(new SourceUtils.StudioModelLoader(_this));
+            _this.vertLightingLoader = _this.addLoader(new SourceUtils.VertexLightingLoader(_this));
+            _this.ambientLoader = _this.addLoader(new SourceUtils.AmbientLoader());
+            _this.cameraMode = CameraMode.Fixed;
+            _this.saveCameraPosInHash = false;
+            _this.showDebugPanel = false;
+            _this.totalLoadProgress = 0;
+            _this.onHashChange_temp = new Facepunch.Vector3();
+            _this.lookAngs = new Facepunch.Vector2();
+            _this.tempQuat = new Facepunch.Quaternion();
+            _this.lookQuat = new Facepunch.Quaternion();
+            _this.frameCount = 0;
+            _this.allLoaded = false;
+            _this.onUpdateFrame_temp = new Facepunch.Vector3();
+            container.classList.add("map-viewer");
+            return _this;
+        }
+        MapViewer.prototype.loadMap = function (url) {
+            this.map.load(url);
+        };
+        MapViewer.prototype.onInitialize = function () {
+            var _this = this;
+            this.canLockPointer = true;
+            this.mainCamera = new SourceUtils.Entities.Camera(this, 75);
+            var deltaAngles = new Facepunch.Vector3();
+            var lastRotationSampleTime = new Date().getTime() / 1000;
+            var deviceRotate = function (x, y, z, period, toRadians) {
+                x *= toRadians / period;
+                y *= toRadians / period;
+                z *= toRadians / period;
+                var sampleTime = new Date().getTime() / 1000;
+                var deltaTime = sampleTime - lastRotationSampleTime;
+                lastRotationSampleTime = sampleTime;
+                deltaAngles.x = x * deltaTime;
+                deltaAngles.y = y * deltaTime;
+                deltaAngles.z = z * deltaTime;
+                _this.onDeviceRotate(deltaAngles);
+            };
+            var wind = window;
+            if (wind.DeviceMotionEvent) {
+                window.addEventListener("devicemotion", function (evnt) {
+                    var rate = evnt.rotationRate;
+                    deviceRotate(rate.beta, rate.gamma, rate.alpha, 1.0, 1.0);
+                }, true);
+            }
+            if (window.location.hash != null && window.location.hash.length > 1) {
+                this.hashChange();
+            }
+            window.onhashchange = function (ev) { return _this.hashChange(); };
+            _super.prototype.onInitialize.call(this);
+        };
+        MapViewer.prototype.setHash = function (value) {
+            if (typeof value === "string") {
+                this.oldHash = value;
+                window.location.hash = value;
+                return;
+            }
+            var hash = "#";
+            for (var key in value) {
+                if (!value.hasOwnProperty(key))
+                    continue;
+                if (!MapViewer.hashKeyRegex.test(key)) {
+                    console.warn("Invalid hash object key: " + key);
+                    continue;
+                }
+                var val = value[key];
+                if (typeof val !== "number" && (typeof val !== "string" || isNaN(parseFloat(val)))) {
+                    console.warn("Invalid hash object value: " + val);
+                    continue;
+                }
+                hash += key;
+                hash += val;
+            }
+            this.setHash(hash);
+        };
+        MapViewer.prototype.hashChange = function () {
+            var hash = window.location.hash;
+            if (hash === this.oldHash)
+                return;
+            this.oldHash = hash;
+            if (!MapViewer.hashObjectRegex.test(hash)) {
+                this.onHashChange(hash);
+                return;
+            }
+            var obj = {};
+            var keyValRegex = /([a-z_]+)(-?[0-9]+(?:\.[0-9]+)?)/ig;
+            var match;
+            while ((match = keyValRegex.exec(hash)) != null) {
+                obj[match[1]] = parseFloat(match[2]);
+            }
+            this.onHashChange(obj);
+        };
+        MapViewer.prototype.onHashChange = function (value) {
+            if (typeof value === "string")
+                return;
+            if (!this.saveCameraPosInHash)
+                return;
+            var posHash = value;
+            var pos = this.mainCamera.getPosition(this.onHashChange_temp);
+            if (posHash.x !== undefined) {
+                pos.x = posHash.x;
+            }
+            if (posHash.y !== undefined) {
+                pos.y = posHash.y;
+            }
+            if (posHash.z !== undefined) {
+                pos.z = posHash.z;
+            }
+            this.mainCamera.setPosition(pos);
+            if (posHash.r !== undefined) {
+                this.lookAngs.x = posHash.r / 180 * Math.PI;
+            }
+            if (posHash.s !== undefined) {
+                this.lookAngs.y = posHash.s / 180 * Math.PI;
+            }
+            this.updateCameraAngles();
+        };
+        MapViewer.prototype.onCreateDebugPanel = function () {
+            var panel = document.createElement("div");
+            panel.classList.add("side-panel");
+            panel.innerHTML = "\n                <span class=\"label\">Frame time:</span>&nbsp;<span class=\"debug-frametime\">0</span>&nbsp;ms<br/>\n                <span class=\"label\">Frame rate:</span>&nbsp;<span class=\"debug-framerate\">0</span>&nbsp;fps<br />\n                <span class=\"label\">Draw calls:</span>&nbsp;<span class=\"debug-drawcalls\">0</span><br />\n                <div class=\"debug-loading\">\n                    <span class=\"label\">Map loaded:</span>&nbsp;<span class=\"debug-loadpercent\">0</span>%<br />\n                </div>";
+            this.container.appendChild(panel);
+            return panel;
+        };
+        MapViewer.prototype.onDeviceRotate = function (deltaAngles) {
+            if ((this.cameraMode & CameraMode.CanLook) === 0)
+                return;
+            if (window.innerWidth > window.innerHeight) {
+                this.lookAngs.x += deltaAngles.z;
+                this.lookAngs.y -= deltaAngles.x;
+            }
+            else {
+                this.lookAngs.x += deltaAngles.x;
+                this.lookAngs.y += deltaAngles.z;
+            }
+            this.notMovedTime = 0;
+            this.updateCameraAngles();
+        };
+        MapViewer.prototype.onResize = function () {
+            _super.prototype.onResize.call(this);
+            this.mainCamera.setAspect(this.getWidth() / this.getHeight());
+        };
+        MapViewer.prototype.setCameraAngles = function (yaw, pitch) {
+            this.lookAngs.x = yaw;
+            this.lookAngs.y = pitch;
+            this.updateCameraAngles();
+        };
+        MapViewer.prototype.updateCameraAngles = function () {
+            if (this.lookAngs.y < -Math.PI * 0.5)
+                this.lookAngs.y = -Math.PI * 0.5;
+            if (this.lookAngs.y > Math.PI * 0.5)
+                this.lookAngs.y = Math.PI * 0.5;
+            this.lookQuat.setAxisAngle(Facepunch.Vector3.unitZ, this.lookAngs.x);
+            this.tempQuat.setAxisAngle(Facepunch.Vector3.unitX, this.lookAngs.y + Math.PI * 0.5);
+            this.lookQuat.multiply(this.tempQuat);
+            this.mainCamera.setRotation(this.lookQuat);
+        };
+        MapViewer.prototype.onMouseLook = function (delta) {
+            _super.prototype.onMouseLook.call(this, delta);
+            if ((this.cameraMode & CameraMode.CanLook) === 0)
+                return;
+            if (Math.abs(delta.x) === 0 && Math.abs(delta.y) === 0)
+                return;
+            this.lookAngs.sub(delta.multiplyScalar(1 / 800));
+            this.notMovedTime = 0;
+            this.updateCameraAngles();
+        };
+        MapViewer.prototype.toggleFullscreen = function () {
+            var container = this.container;
+            var cont = container;
+            var doc = document;
+            if (document.fullscreenElement === container || document.webkitFullscreenElement === container || doc.mozFullScreenElement === container) {
+                if (document.exitFullscreen)
+                    document.exitFullscreen();
+                else if (document.webkitExitFullscreen)
+                    document.webkitExitFullscreen();
+                else if (doc.mozCancelFullScreen)
+                    doc.mozCancelFullScreen();
+            }
+            else if (container.requestFullscreen) {
+                container.requestFullscreen();
+            }
+            else if (container.webkitRequestFullscreen) {
+                container.webkitRequestFullscreen();
+            }
+            else if (cont.mozRequestFullScreen) {
+                cont.mozRequestFullScreen();
+            }
+        };
+        MapViewer.prototype.onKeyDown = function (key) {
+            _super.prototype.onKeyDown.call(this, key);
+            switch (key) {
+                case WebGame.Key.F:
+                    this.toggleFullscreen();
+                    return true;
+                case WebGame.Key.W:
+                case WebGame.Key.A:
+                case WebGame.Key.S:
+                case WebGame.Key.D:
+                case WebGame.Key.Shift:
+                    return this.isPointerLocked() && (this.cameraMode & CameraMode.CanMove) !== 0;
+                default:
+                    return false;
+            }
+        };
+        MapViewer.prototype.onSetDebugText = function (className, value) {
+            var elem = this.debugPanel.getElementsByClassName(className)[0];
+            if (elem == null)
+                return;
+            elem.innerText = value;
+            if (className === "debug-loadpercent" && parseInt(value) >= 100) {
+                var loading = this.debugPanel.getElementsByClassName("debug-loading")[0];
+                if (loading != null) {
+                    loading.style.display = "none";
+                }
+            }
+        };
+        MapViewer.prototype.onUpdateFrame = function (dt) {
+            _super.prototype.onUpdateFrame.call(this, dt);
+            this.map.update(dt);
+            if (this.showDebugPanel !== this.debugPanelVisible) {
+                this.debugPanelVisible = this.showDebugPanel;
+                if (this.showDebugPanel && this.debugPanel === undefined) {
+                    this.debugPanel = this.onCreateDebugPanel();
+                }
+                if (this.debugPanel != null) {
+                    if (this.showDebugPanel)
+                        this.debugPanel.style.display = null;
+                    else
+                        this.debugPanel.style.display = "none";
+                }
+            }
+            var savePosPeriod = 1;
+            var wasBeforeSavePosPeriod = this.notMovedTime < savePosPeriod;
+            if ((this.cameraMode & CameraMode.CanMove) !== 0 && this.isPointerLocked() && this.map.isReady()) {
+                var move = this.onUpdateFrame_temp;
+                move.set(0, 0, 0);
+                var moveSpeed = 512 * dt * (this.isKeyDown(WebGame.Key.Shift) ? 4 : 1);
+                if (this.isKeyDown(WebGame.Key.W))
+                    move.z -= moveSpeed;
+                if (this.isKeyDown(WebGame.Key.S))
+                    move.z += moveSpeed;
+                if (this.isKeyDown(WebGame.Key.A))
+                    move.x -= moveSpeed;
+                if (this.isKeyDown(WebGame.Key.D))
+                    move.x += moveSpeed;
+                if (move.lengthSq() > 0) {
+                    this.mainCamera.applyRotationTo(move);
+                    this.mainCamera.translate(move);
+                    this.notMovedTime = 0;
+                }
+            }
+            this.notMovedTime += dt;
+            if (this.saveCameraPosInHash && wasBeforeSavePosPeriod && this.notMovedTime >= savePosPeriod) {
+                var pos = this.mainCamera.getPosition(this.onUpdateFrame_temp);
+                var pitch = this.lookAngs.x * 180.0 / Math.PI;
+                var yaw = this.lookAngs.y * 180.0 / Math.PI;
+                this.setHash({
+                    x: pos.x.toFixed(1),
+                    y: pos.y.toFixed(1),
+                    z: pos.z.toFixed(1),
+                    r: pitch.toFixed(1),
+                    s: yaw.toFixed(1)
+                });
+            }
+            // Diagnostics
+            var drawCalls = this.mainCamera.getDrawCalls();
+            if (drawCalls !== this.lastDrawCalls && this.showDebugPanel) {
+                this.lastDrawCalls = drawCalls;
+                this.onSetDebugText("debug-drawcalls", drawCalls.toString());
+            }
+            ++this.frameCount;
+            var time = performance.now();
+            if (this.lastProfileTime === undefined) {
+                this.lastProfileTime = time;
+            }
+            else if (time - this.lastProfileTime >= 500) {
+                var timeDiff = (time - this.lastProfileTime) / 1000;
+                this.avgFrameTime = timeDiff * 1000 / this.frameCount;
+                this.avgFrameRate = this.frameCount / timeDiff;
+                if (this.showDebugPanel) {
+                    this.onSetDebugText("debug-frametime", this.avgFrameTime.toPrecision(4));
+                    this.onSetDebugText("debug-framerate", this.avgFrameRate.toPrecision(4));
+                }
+                if (!this.allLoaded) {
+                    var visLoaded = this.visLoader.getLoadProgress();
+                    var bspLoaded = this.bspModelLoader.getLoadProgress();
+                    var lightmapLoaded = this.map.getLightmapLoadProgress();
+                    var materialsLoaded = this.mapMaterialLoader.getLoadProgress();
+                    var geomLoaded = this.leafGeometryLoader.getLoadProgress() * 0.5
+                        + this.dispGeometryLoader.getLoadProgress() * 0.5;
+                    var propsLoaded = this.vertLightingLoader.getLoadProgress() * 0.25
+                        + this.studioModelLoader.getLoadProgress() * 0.75;
+                    this.totalLoadProgress = (visLoaded + bspLoaded + lightmapLoaded + materialsLoaded + geomLoaded + propsLoaded) / 6;
+                    if (this.showDebugPanel) {
+                        this.onSetDebugText("debug-loadpercent", (this.totalLoadProgress * 100).toPrecision(3));
+                    }
+                    if (this.totalLoadProgress >= 1) {
+                        this.allLoaded = true;
+                    }
+                }
+                this.lastProfileTime = time;
+                this.frameCount = 0;
+            }
+        };
+        MapViewer.prototype.onRenderFrame = function (dt) {
+            _super.prototype.onRenderFrame.call(this, dt);
+            var gl = this.context;
+            gl.clear(gl.DEPTH_BUFFER_BIT);
+            gl.depthFunc(gl.LEQUAL);
+            gl.cullFace(gl.FRONT);
+            this.mainCamera.render();
+        };
+        MapViewer.prototype.populateCommandBufferParameters = function (buf) {
+            _super.prototype.populateCommandBufferParameters.call(this, buf);
+            this.map.populateCommandBufferParameters(buf);
+        };
+        return MapViewer;
+    }(WebGame.Game));
+    MapViewer.hashKeyRegex = /^[a-z_]+$/i;
+    MapViewer.hashObjectRegex = /^#((?:[a-z_]+)(?:-?[0-9]+(?:\.[0-9]+)?))+$/i;
+    SourceUtils.MapViewer = MapViewer;
 })(SourceUtils || (SourceUtils = {}));
 var SourceUtils;
 (function (SourceUtils) {
@@ -2021,4 +1892,299 @@ var SourceUtils;
         }(Shaders.LightmappedBase));
         Shaders.WorldTwoTextureBlend = WorldTwoTextureBlend;
     })(Shaders = SourceUtils.Shaders || (SourceUtils.Shaders = {}));
+})(SourceUtils || (SourceUtils = {}));
+var SourceUtils;
+(function (SourceUtils) {
+    var WebGame = Facepunch.WebGame;
+    var SkyCube = (function (_super) {
+        __extends(SkyCube, _super);
+        function SkyCube(viewer, material) {
+            var _this = _super.call(this) || this;
+            var meshData = {
+                attributes: [WebGame.VertexAttribute.uv, WebGame.VertexAttribute.alpha],
+                elements: [
+                    {
+                        mode: WebGame.DrawMode.Triangles,
+                        material: material,
+                        indexOffset: 0,
+                        indexCount: 36
+                    }
+                ],
+                vertices: [],
+                indices: []
+            };
+            for (var face = 0; face < 6; ++face) {
+                meshData.vertices.push(0, 0, face);
+                meshData.vertices.push(1, 0, face);
+                meshData.vertices.push(1, 1, face);
+                meshData.vertices.push(0, 1, face);
+                var index = face * 4;
+                meshData.indices.push(index + 0, index + 1, index + 2);
+                meshData.indices.push(index + 0, index + 2, index + 3);
+            }
+            _this.addMeshHandles(viewer.meshes.addMeshData(meshData));
+            return _this;
+        }
+        return SkyCube;
+    }(WebGame.DrawListItem));
+    SourceUtils.SkyCube = SkyCube;
+})(SourceUtils || (SourceUtils = {}));
+/// <reference path="PagedLoader.ts"/>
+var SourceUtils;
+(function (SourceUtils) {
+    var WebGame = Facepunch.WebGame;
+    var StudioModel = (function (_super) {
+        __extends(StudioModel, _super);
+        function StudioModel(viewer) {
+            var _this = _super.call(this) || this;
+            _this.viewer = viewer;
+            return _this;
+        }
+        StudioModel.getOrCreateMatGroup = function (matGroups, attribs) {
+            for (var _i = 0, matGroups_1 = matGroups; _i < matGroups_1.length; _i++) {
+                var matGroup = matGroups_1[_i];
+                if (matGroup.attributes.length !== attribs.length)
+                    continue;
+                var matches = true;
+                for (var i = 0; i < attribs.length; ++i) {
+                    if (matGroup.attributes[i].id !== attribs[i].id) {
+                        matches = false;
+                        break;
+                    }
+                }
+                if (matches)
+                    return matGroup;
+            }
+            var newGroup = WebGame.MeshManager.createEmpty(attribs);
+            matGroups.push(newGroup);
+            return newGroup;
+        };
+        StudioModel.encode2CompColor = function (vertLit, albedoMod) {
+            return vertLit + albedoMod * 0.00390625;
+        };
+        StudioModel.sampleAmbientCube = function (normal, samples) {
+            var rgb = StudioModel.sampleAmbientCube_temp.set(0, 0, 0);
+            var sample;
+            var mul;
+            if (normal.x < 0) {
+                sample = samples[1];
+            }
+            else {
+                sample = samples[0];
+            }
+            mul = normal.x * normal.x;
+            rgb.add(sample.x * mul, sample.y * mul, sample.z * mul);
+            if (normal.y < 0) {
+                sample = samples[3];
+            }
+            else {
+                sample = samples[2];
+            }
+            mul = normal.y * normal.y;
+            rgb.add(sample.x * mul, sample.y * mul, sample.z * mul);
+            if (normal.z < 0) {
+                sample = samples[5];
+            }
+            else {
+                sample = samples[4];
+            }
+            mul = normal.z * normal.z;
+            rgb.add(sample.x * mul, sample.y * mul, sample.z * mul);
+            var r = Math.min(Math.round(rgb.x * 255.0), 255);
+            var g = Math.min(Math.round(rgb.y * 255.0), 255);
+            var b = Math.min(Math.round(rgb.z * 255.0), 255);
+            return r | (g << 8) | (b << 16);
+        };
+        StudioModel.prototype.createMeshHandles = function (bodyPartIndex, transform, lighting, albedoModulation) {
+            var _this = this;
+            var bodyPart = this.info.bodyParts[bodyPartIndex];
+            var handles = [];
+            var matGroups = [];
+            if (albedoModulation === undefined)
+                albedoModulation = 0xffffff;
+            else
+                albedoModulation &= 0xffffff;
+            var albedoR = albedoModulation & 0xff;
+            var albedoG = (albedoModulation >> 8) & 0xff;
+            var albedoB = (albedoModulation >> 16) & 0xff;
+            var hasAmbientLighting = lighting != null && lighting.length === 6 && lighting[0].x !== undefined;
+            var hasVertLighting = lighting != null && !hasAmbientLighting;
+            var ambientLighting = hasAmbientLighting ? lighting : null;
+            var tempNormal = new Facepunch.Vector4();
+            for (var _i = 0, _a = bodyPart.models; _i < _a.length; _i++) {
+                var model = _a[_i];
+                for (var _b = 0, _c = model.meshes; _b < _c.length; _b++) {
+                    var mesh = _c[_b];
+                    var srcGroup = this.page.getMaterialGroup(mesh.material);
+                    var attribs = [];
+                    attribs.push.apply(attribs, srcGroup.attributes);
+                    attribs.push(WebGame.VertexAttribute.rgb);
+                    var dstGroup = StudioModel.getOrCreateMatGroup(matGroups, attribs);
+                    var newElem = WebGame.MeshManager.copyElement(srcGroup, dstGroup, mesh.element);
+                    var normalOffset = WebGame.MeshManager.getAttributeOffset(attribs, WebGame.VertexAttribute.normal);
+                    var rgbOffset = WebGame.MeshManager.getAttributeOffset(attribs, WebGame.VertexAttribute.rgb);
+                    var vertLength = WebGame.MeshManager.getVertexLength(attribs);
+                    var vertLighting = hasVertLighting ? lighting[mesh.meshId] : null;
+                    var vertData = dstGroup.vertices;
+                    for (var i = newElem.vertexOffset, iEnd = newElem.vertexOffset + newElem.vertexCount, j = 0; i < iEnd; i += vertLength, ++j) {
+                        var normalIndex = i + normalOffset;
+                        var rgbIndex = i + rgbOffset;
+                        var lightValue = void 0;
+                        if (hasVertLighting) {
+                            lightValue = vertLighting[j];
+                        }
+                        else if (hasAmbientLighting) {
+                            tempNormal.set(vertData[normalIndex], vertData[normalIndex + 1], vertData[normalIndex + 2], 0);
+                            tempNormal.applyMatrix4(transform);
+                            lightValue = StudioModel.sampleAmbientCube(tempNormal, ambientLighting);
+                        }
+                        else {
+                            lightValue = 0x7f7f7f;
+                        }
+                        vertData[rgbIndex] = StudioModel.encode2CompColor(lightValue & 0xff, albedoR);
+                        vertData[rgbIndex + 1] = StudioModel.encode2CompColor((lightValue >> 8) & 0xff, albedoG);
+                        vertData[rgbIndex + 2] = StudioModel.encode2CompColor((lightValue >> 16) & 0xff, albedoB);
+                    }
+                }
+            }
+            for (var _d = 0, matGroups_2 = matGroups; _d < matGroups_2.length; _d++) {
+                var matGroup = matGroups_2[_d];
+                WebGame.MeshManager.transform4F(matGroup, WebGame.VertexAttribute.position, function (pos) { return pos.applyMatrix4(transform); }, 1);
+                WebGame.MeshManager.transform4F(matGroup, WebGame.VertexAttribute.normal, function (norm) { return norm.applyMatrix4(transform); }, 0);
+                this.viewer.meshes.addMeshData(matGroup, function (index) { return _this.viewer.mapMaterialLoader.loadMaterial(index); }, handles);
+            }
+            return handles;
+        };
+        StudioModel.prototype.loadFromInfo = function (info, page) {
+            this.info = info;
+            this.page = page;
+            this.dispatchOnLoadCallbacks();
+        };
+        StudioModel.prototype.isLoaded = function () { return this.info != null; };
+        return StudioModel;
+    }(WebGame.RenderResource));
+    StudioModel.sampleAmbientCube_temp = new Facepunch.Vector3();
+    SourceUtils.StudioModel = StudioModel;
+    var StudioModelPage = (function (_super) {
+        __extends(StudioModelPage, _super);
+        function StudioModelPage(page) {
+            return _super.call(this, page) || this;
+        }
+        StudioModelPage.prototype.getMaterialGroup = function (index) {
+            return this.matGroups[index];
+        };
+        StudioModelPage.prototype.onLoadValues = function (page) {
+            this.models = page.models;
+            this.matGroups = new Array(page.materials.length);
+            for (var i = 0, iEnd = page.materials.length; i < iEnd; ++i) {
+                var matGroup = page.materials[i];
+                this.matGroups[i] = WebGame.MeshManager.decompress(matGroup.meshData);
+                for (var _i = 0, _a = this.matGroups[i].elements; _i < _a.length; _i++) {
+                    var element = _a[_i];
+                    element.material = matGroup.material;
+                }
+            }
+            _super.prototype.onLoadValues.call(this, page);
+        };
+        StudioModelPage.prototype.onGetValue = function (index) {
+            return this.models[index];
+        };
+        return StudioModelPage;
+    }(SourceUtils.ResourcePage));
+    SourceUtils.StudioModelPage = StudioModelPage;
+    var StudioModelLoader = (function (_super) {
+        __extends(StudioModelLoader, _super);
+        function StudioModelLoader(viewer) {
+            var _this = _super.call(this) || this;
+            _this.models = {};
+            _this.viewer = viewer;
+            return _this;
+        }
+        StudioModelLoader.prototype.update = function (requestQuota) {
+            return _super.prototype.update.call(this, this.viewer.visLoader.getLoadProgress() < 1 ? 0 : requestQuota);
+        };
+        StudioModelLoader.prototype.loadModel = function (index) {
+            var model = this.models[index];
+            if (model !== undefined)
+                return model;
+            this.models[index] = model = new StudioModel(this.viewer);
+            this.load(index, function (info, page) { return model.loadFromInfo(info, page); });
+            return model;
+        };
+        StudioModelLoader.prototype.onCreatePage = function (page) {
+            return new StudioModelPage(page);
+        };
+        return StudioModelLoader;
+    }(SourceUtils.PagedLoader));
+    SourceUtils.StudioModelLoader = StudioModelLoader;
+    var VertexLightingPage = (function (_super) {
+        __extends(VertexLightingPage, _super);
+        function VertexLightingPage() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        VertexLightingPage.prototype.onLoadValues = function (page) {
+            this.props = new Array(page.props.length);
+            for (var i = 0, iEnd = page.props.length; i < iEnd; ++i) {
+                var srcProp = page.props[i];
+                var dstProp = this.props[i] = srcProp == null ? null : new Array(srcProp.length);
+                if (srcProp == null)
+                    continue;
+                for (var j = 0, jEnd = srcProp.length; j < jEnd; ++j) {
+                    dstProp[j] = Facepunch.Utils.decompress(srcProp[j]);
+                }
+            }
+            _super.prototype.onLoadValues.call(this, page);
+        };
+        VertexLightingPage.prototype.onGetValue = function (index) {
+            return this.props[index];
+        };
+        return VertexLightingPage;
+    }(SourceUtils.ResourcePage));
+    SourceUtils.VertexLightingPage = VertexLightingPage;
+    var VertexLightingLoader = (function (_super) {
+        __extends(VertexLightingLoader, _super);
+        function VertexLightingLoader(viewer) {
+            var _this = _super.call(this) || this;
+            _this.viewer = viewer;
+            return _this;
+        }
+        VertexLightingLoader.prototype.update = function (requestQuota) {
+            return _super.prototype.update.call(this, this.viewer.visLoader.getLoadProgress() < 1 ? 0 : requestQuota);
+        };
+        VertexLightingLoader.prototype.onCreatePage = function (page) {
+            return new VertexLightingPage(page);
+        };
+        return VertexLightingLoader;
+    }(SourceUtils.PagedLoader));
+    SourceUtils.VertexLightingLoader = VertexLightingLoader;
+})(SourceUtils || (SourceUtils = {}));
+var SourceUtils;
+(function (SourceUtils) {
+    var VisPage = (function (_super) {
+        __extends(VisPage, _super);
+        function VisPage() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        VisPage.prototype.onGetValue = function (index) {
+            if (typeof (this.page.values[index]) === "string") {
+                this.page.values[index] = Facepunch.Utils.decompress(this.page.values[index]);
+            }
+            return this.page.values[index];
+        };
+        return VisPage;
+    }(SourceUtils.ResourcePage));
+    SourceUtils.VisPage = VisPage;
+    var VisLoader = (function (_super) {
+        __extends(VisLoader, _super);
+        function VisLoader() {
+            var _this = _super.call(this) || this;
+            _this.throwIfNotFound = false;
+            return _this;
+        }
+        VisLoader.prototype.onCreatePage = function (page) {
+            return new VisPage(page);
+        };
+        return VisLoader;
+    }(SourceUtils.PagedLoader));
+    SourceUtils.VisLoader = VisLoader;
 })(SourceUtils || (SourceUtils = {}));

@@ -5,12 +5,12 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Gokz;
 (function (Gokz) {
+    var SeekOrigin;
     (function (SeekOrigin) {
         SeekOrigin[SeekOrigin["Begin"] = 0] = "Begin";
         SeekOrigin[SeekOrigin["Current"] = 1] = "Current";
         SeekOrigin[SeekOrigin["End"] = 2] = "End";
-    })(Gokz.SeekOrigin || (Gokz.SeekOrigin = {}));
-    var SeekOrigin = Gokz.SeekOrigin;
+    })(SeekOrigin = Gokz.SeekOrigin || (Gokz.SeekOrigin = {}));
     var BinaryReader = (function () {
         function BinaryReader(buffer) {
             this.buffer = buffer;
@@ -270,23 +270,24 @@ var Gokz;
                 this.speedSliderElem.valueAsNumber = ReplayControls.speedSliderValues.indexOf(playbackRate);
             }
         };
-        ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
         return ReplayControls;
     }());
+    ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
     Gokz.ReplayControls = ReplayControls;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {
+    var GlobalMode;
     (function (GlobalMode) {
         GlobalMode[GlobalMode["Vanilla"] = 0] = "Vanilla";
         GlobalMode[GlobalMode["KzSimple"] = 1] = "KzSimple";
         GlobalMode[GlobalMode["KzTimer"] = 2] = "KzTimer";
-    })(Gokz.GlobalMode || (Gokz.GlobalMode = {}));
-    var GlobalMode = Gokz.GlobalMode;
+    })(GlobalMode = Gokz.GlobalMode || (Gokz.GlobalMode = {}));
+    var GlobalStyle;
     (function (GlobalStyle) {
         GlobalStyle[GlobalStyle["Normal"] = 0] = "Normal";
-    })(Gokz.GlobalStyle || (Gokz.GlobalStyle = {}));
-    var GlobalStyle = Gokz.GlobalStyle;
+    })(GlobalStyle = Gokz.GlobalStyle || (Gokz.GlobalStyle = {}));
+    var Button;
     (function (Button) {
         Button[Button["Attack"] = 1] = "Attack";
         Button[Button["Jump"] = 2] = "Jump";
@@ -313,8 +314,8 @@ var Gokz;
         Button[Button["BullRush"] = 4194304] = "BullRush";
         Button[Button["Grenade1"] = 8388608] = "Grenade1";
         Button[Button["Grenade2"] = 16777216] = "Grenade2";
-    })(Gokz.Button || (Gokz.Button = {}));
-    var Button = Gokz.Button;
+    })(Button = Gokz.Button || (Gokz.Button = {}));
+    var EntityFlag;
     (function (EntityFlag) {
         EntityFlag[EntityFlag["OnGround"] = 1] = "OnGround";
         EntityFlag[EntityFlag["Ducking"] = 2] = "Ducking";
@@ -348,8 +349,7 @@ var Gokz;
         EntityFlag[EntityFlag["TransRagdoll"] = 536870912] = "TransRagdoll";
         EntityFlag[EntityFlag["UnblockableByPlayer"] = 1073741824] = "UnblockableByPlayer";
         EntityFlag[EntityFlag["Freezing"] = -2147483648] = "Freezing";
-    })(Gokz.EntityFlag || (Gokz.EntityFlag = {}));
-    var EntityFlag = Gokz.EntityFlag;
+    })(EntityFlag = Gokz.EntityFlag || (Gokz.EntityFlag = {}));
     var TickData = (function () {
         function TickData() {
             this.position = new Facepunch.Vector3();
@@ -401,9 +401,9 @@ var Gokz;
         ReplayFile.prototype.clampTick = function (tick) {
             return tick < 0 ? 0 : tick >= this.tickCount ? this.tickCount - 1 : tick;
         };
-        ReplayFile.MAGIC = 0x676F6B7A;
         return ReplayFile;
     }());
+    ReplayFile.MAGIC = 0x676F6B7A;
     Gokz.ReplayFile = ReplayFile;
 })(Gokz || (Gokz = {}));
 ///<reference path="../js/facepunch.webgame.d.ts"/>
@@ -417,21 +417,22 @@ var Gokz;
         // Public constructors
         //
         function ReplayViewer(container) {
-            _super.call(this, container);
-            this.pauseTime = 1.0;
-            this.spareTime = 0;
-            this.tickData = new Gokz.TickData();
-            this.tempTickData0 = new Gokz.TickData();
-            this.tempTickData1 = new Gokz.TickData();
-            this.tempTickData2 = new Gokz.TickData();
-            this.tick = -1;
-            this.playbackRate = 1.0;
-            this.autoRepeat = true;
-            this.isScrubbing = false;
-            this.isPlaying = false;
-            this.ignoreMouseUp = true;
-            this.controls = new Gokz.ReplayControls(this);
-            this.keyDisplay = new Gokz.KeyDisplay(container);
+            var _this = _super.call(this, container) || this;
+            _this.pauseTime = 1.0;
+            _this.spareTime = 0;
+            _this.tickData = new Gokz.TickData();
+            _this.tempTickData0 = new Gokz.TickData();
+            _this.tempTickData1 = new Gokz.TickData();
+            _this.tempTickData2 = new Gokz.TickData();
+            _this.tick = -1;
+            _this.playbackRate = 1.0;
+            _this.autoRepeat = true;
+            _this.isScrubbing = false;
+            _this.isPlaying = false;
+            _this.ignoreMouseUp = true;
+            _this.controls = new Gokz.ReplayControls(_this);
+            _this.keyDisplay = new Gokz.KeyDisplay(container);
+            return _this;
         }
         //
         // Public Methods
