@@ -191,8 +191,10 @@ namespace Gokz {
                     this.map.unload();
                 }
 
+                const version = new Date().getTime().toString(16);
+
                 this.currentMapName = replay.mapName;
-                this.loadMap(`${this.mapBaseUrl}/${replay.mapName}/index.json`);
+                this.loadMap(`${this.mapBaseUrl}/${replay.mapName}/index.json?v=${version}`);
             }
         }
 

@@ -538,8 +538,9 @@ var Gokz;
                 if (this.currentMapName != null) {
                     this.map.unload();
                 }
+                var version = new Date().getTime().toString(16);
                 this.currentMapName = replay.mapName;
-                this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json");
+                this.loadMap(this.mapBaseUrl + "/" + replay.mapName + "/index.json?v=" + version);
             }
         };
         ReplayViewer.prototype.onUpdateFrame = function (dt) {
