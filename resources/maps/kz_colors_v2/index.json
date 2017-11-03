@@ -1,65 +1,65 @@
 {
   "name": "kz_colors_v2",
-  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_colors_v2/lightmap.json?v=1973-14682",
+  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_colors_v2/lightmap.json?v=1974-e0cb",
   "leafPages": [
     {
       "first": 0,
       "count": 2332,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/leafpage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/leafpage0.json?v=1974-e0cb"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/disppage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/disppage0.json?v=1974-e0cb"
     }
   ],
   "materialPages": [
     {
       "first": 0,
       "count": 180,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/materials/matpage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/materials/matpage0.json?v=1974-e0cb"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 1,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage0.json?v=1974-e0cb"
     },
     {
       "first": 1,
       "count": 16,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage1.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage1.json?v=1974-e0cb"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/mdlpage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/mdlpage0.json?v=1974-e0cb"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vhvpage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vhvpage0.json?v=1974-e0cb"
     }
   ],
   "visPages": [
     {
       "first": 0,
       "count": 756,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vispage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vispage0.json?v=1974-e0cb"
     }
   ],
   "ambientPages": [
     {
       "first": 0,
       "count": 2332,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/ambientpage0.json?v=1973-14682"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/ambientpage0.json?v=1974-e0cb"
     }
   ],
   "entities": [
@@ -75,32 +75,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf.json?v=1973-14682"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf.json?v=1974-e0cb"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italylf.vtf.json?v=1973-14682"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italylf.vtf.json?v=1974-e0cb"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italybk.vtf.json?v=1973-14682"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italybk.vtf.json?v=1974-e0cb"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyft.vtf.json?v=1973-14682"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyft.vtf.json?v=1974-e0cb"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyup.vtf.json?v=1973-14682"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyup.vtf.json?v=1974-e0cb"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italydn.vtf.json?v=1973-14682"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italydn.vtf.json?v=1974-e0cb"
           }
         ]
       },
