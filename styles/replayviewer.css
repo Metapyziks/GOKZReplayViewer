@@ -69,22 +69,22 @@
 .map-viewer .playback-bar .pause {
     display: none;
     left: 16px;
-    background-image: url(/GOKZReplayViewer/images/pause.png);
+    background-image: url(../images/pause.png);
 }
 
 .map-viewer .playback-bar .play {
     left: 16px;
-    background-image: url(/GOKZReplayViewer/images/play.png);
+    background-image: url(../images/play.png);
 }
 
 .map-viewer .playback-bar .settings {
     right: 56px;
-    background-image: url(/GOKZReplayViewer/images/settings.png);
+    background-image: url(../images/settings.png);
 }
 
 .map-viewer .playback-bar .fullscreen {
     right: 16px;
-    background-image: url(/GOKZReplayViewer/images/fullscreen.png);
+    background-image: url(../images/fullscreen.png);
 }
 
 .map-viewer .speed-control {

@@ -1,4 +1,5 @@
 TARGETDIR=
+RESOURCEDIR=resources
 BASEURL=
 MAPSURL=
 INDEXTEMPLATE=index.template.html

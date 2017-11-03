@@ -18,14 +18,14 @@ fi
 
 echo "Copying to $TARGETDIR"
 
-mkdir -p "$TARGETDIR"
-mkdir -p "$TARGETDIR/js"
-mkdir -p "$TARGETDIR/styles"
-mkdir -p "$TARGETDIR/images"
+mkdir -p "$TARGETDIR/$RESOURCEDIR"
+mkdir -p "$TARGETDIR/$RESOURCEDIR/js"
+mkdir -p "$TARGETDIR/$RESOURCEDIR/styles"
+mkdir -p "$TARGETDIR/$RESOURCEDIR/images"
 
-cp -r js "${TARGETDIR}"
-cp -r styles "${TARGETDIR}"
-cp -r images "${TARGETDIR}"
+cp -r js "$TARGETDIR/$RESOURCEDIR"
+cp -r styles "$TARGETDIR/$RESOURCEDIR"
+cp -r images "$TARGETDIR/$RESOURCEDIR"
 
 MIDNIGHT=$(date -d 'today 00:00:00' "+%s")
 NOW=$(date "+%s")
@@ -33,5 +33,5 @@ DIFF=$(($NOW - $MIDNIGHT))
 
 VERSION=$(git rev-parse --short HEAD)-$(printf '%x\n' $DIFF)
 
-SED_ARGS=( 's/${VERSION}/'${VERSION}'/g;s|${BASEURL}|'${BASEURL}'|g;s|${MAPSURL}|'${MAPSURL}'|g' )
+SED_ARGS=( 's/${VERSION}/'${VERSION}'/g;s|${RESOURCEDIR}|'${RESOURCEDIR}'|g;s|${BASEURL}|'${BASEURL}'|g;s|${MAPSURL}|'${MAPSURL}'|g' )
 sed "${SED_ARGS[@]}" "${INDEXTEMPLATE}" >"${TARGETDIR}/index.html"
