@@ -1,65 +1,65 @@
 {
   "name": "kz_colors_v2",
-  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_colors_v2/lightmap.json?v=1974-e0cb",
+  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_colors_v2/lightmap.json?v=1978-edd3",
   "leafPages": [
     {
       "first": 0,
       "count": 2332,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/leafpage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/leafpage0.json?v=1978-edd3"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/disppage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/disppage0.json?v=1978-edd3"
     }
   ],
   "materialPages": [
     {
       "first": 0,
       "count": 180,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/materials/matpage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/materials/matpage0.json?v=1978-edd3"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 1,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage0.json?v=1978-edd3"
     },
     {
       "first": 1,
       "count": 16,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage1.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/bsppage1.json?v=1978-edd3"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/mdlpage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/mdlpage0.json?v=1978-edd3"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 0,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vhvpage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vhvpage0.json?v=1978-edd3"
     }
   ],
   "visPages": [
     {
       "first": 0,
       "count": 756,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vispage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/vispage0.json?v=1978-edd3"
     }
   ],
   "ambientPages": [
     {
       "first": 0,
       "count": 2332,
-      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/ambientpage0.json?v=1974-e0cb"
+      "url": "/GOKZReplayViewer/resources/maps/kz_colors_v2/geom/ambientpage0.json?v=1978-edd3"
     }
   ],
   "entities": [
@@ -75,32 +75,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf.json?v=1974-e0cb"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyrt.vtf.json?v=1978-edd3"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italylf.vtf.json?v=1974-e0cb"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italylf.vtf.json?v=1978-edd3"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italybk.vtf.json?v=1974-e0cb"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italybk.vtf.json?v=1978-edd3"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyft.vtf.json?v=1974-e0cb"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyft.vtf.json?v=1978-edd3"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italyup.vtf.json?v=1974-e0cb"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italyup.vtf.json?v=1978-edd3"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/italydn.vtf.json?v=1974-e0cb"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/italydn.vtf.json?v=1978-edd3"
           }
         ]
       },
@@ -108,6 +108,7 @@
       "classname": "worldspawn"
     },
     {
+      "targetname": "target9",
       "classname": "info_target",
       "origin": {
         "x": 5580.0,
@@ -2015,6 +2016,7 @@
       }
     },
     {
+      "targetname": "tonemap",
       "classname": "env_tonemap_controller",
       "origin": {
         "x": -104.0,
@@ -2085,6 +2087,7 @@
       }
     },
     {
+      "targetname": "climb_startbutton",
       "classname": "func_button",
       "origin": {
         "x": -232.0,
@@ -2101,6 +2104,7 @@
       }
     },
     {
+      "targetname": "climb_endbutton",
       "classname": "func_button",
       "origin": {
         "x": 3640.0,
@@ -2109,6 +2113,7 @@
       }
     },
     {
+      "targetname": "target10",
       "classname": "info_target",
       "origin": {
         "x": 4544.0,
@@ -2218,6 +2223,7 @@
       }
     },
     {
+      "targetname": "target6",
       "classname": "info_target",
       "origin": {
         "x": 3616.0,
@@ -2239,6 +2245,7 @@
       }
     },
     {
+      "targetname": "target7",
       "classname": "info_target",
       "origin": {
         "x": 4496.0,
@@ -2252,6 +2259,7 @@
       }
     },
     {
+      "targetname": "target8",
       "classname": "info_target",
       "origin": {
         "x": 5340.0,
@@ -2593,6 +2601,7 @@
       }
     },
     {
+      "targetname": "target5",
       "classname": "info_target",
       "origin": {
         "x": 5120.0,
@@ -2630,6 +2639,7 @@
       }
     },
     {
+      "targetname": "target4",
       "classname": "info_target",
       "origin": {
         "x": 5520.0,
@@ -2923,6 +2933,7 @@
       }
     },
     {
+      "targetname": "target3",
       "classname": "info_target",
       "origin": {
         "x": 4352.0,
@@ -2960,6 +2971,7 @@
       }
     },
     {
+      "targetname": "target2",
       "classname": "info_target",
       "origin": {
         "x": 4176.0,
@@ -3021,6 +3033,7 @@
       }
     },
     {
+      "targetname": "target1",
       "classname": "info_target",
       "origin": {
         "x": 3376.0,

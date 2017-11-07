@@ -9241,6 +9241,102 @@
           "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/egypt/hyro_outdoors_01.vtf/mip0.png"
         }
       ]
+    },
+    {
+      "path": "materials/cable/rope2.vtf",
+      "target": 3553,
+      "frames": 1,
+      "width": 32,
+      "height": 64,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 6,
+          "color": {
+            "r": 0.3882353,
+            "g": 0.356862754,
+            "b": 0.266666681,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/resources/materials/cable/rope2.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/resources/materials/cable/rope2.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/resources/materials/cable/rope2.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/resources/materials/cable/rope2.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/resources/materials/cable/rope2.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/resources/materials/cable/rope2.vtf/mip0.png"
+        }
+      ]
+    },
+    {
+      "path": "materials/cable/rope.vtf",
+      "target": 3553,
+      "frames": 1,
+      "width": 32,
+      "height": 64,
+      "params": {
+        "wrapS": 10497,
+        "wrapT": 10497,
+        "filter": 9729,
+        "mipmap": true
+      },
+      "elements": [
+        {
+          "level": 6,
+          "color": {
+            "r": 0.6,
+            "g": 0.490196079,
+            "b": 0.298039228,
+            "a": 1.0
+          }
+        },
+        {
+          "level": 5,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cable/rope.vtf/mip5.png"
+        },
+        {
+          "level": 4,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cable/rope.vtf/mip4.png"
+        },
+        {
+          "level": 3,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cable/rope.vtf/mip3.png"
+        },
+        {
+          "level": 2,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cable/rope.vtf/mip2.png"
+        },
+        {
+          "level": 1,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cable/rope.vtf/mip1.png"
+        },
+        {
+          "level": 0,
+          "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/cable/rope.vtf/mip0.png"
+        }
+      ]
     }
   ],
   "materials": [
@@ -11146,6 +11242,31 @@
           "name": "detailScale",
           "type": 2,
           "value": 1.2
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.SplineRope",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 127
+        }
+      ]
+    },
+    {
+      "shader": "SourceUtils.Shaders.SplineRope",
+      "properties": [
+        {
+          "name": "basetexture",
+          "type": 5,
+          "value": 128
+        },
+        {
+          "name": "cullFace",
+          "type": 1,
+          "value": false
         }
       ]
     }

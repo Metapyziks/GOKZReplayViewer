@@ -1,60 +1,60 @@
 {
   "name": "kz_reach_v2",
-  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_reach_v2/lightmap.json?v=1974-e093",
+  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_reach_v2/lightmap.json?v=1978-ed95",
   "leafPages": [
     {
       "first": 0,
       "count": 2770,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/leafpage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/leafpage0.json?v=1978-ed95"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 13,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/disppage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/disppage0.json?v=1978-ed95"
     }
   ],
   "materialPages": [
     {
       "first": 0,
       "count": 46,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/materials/matpage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/materials/matpage0.json?v=1978-ed95"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 173,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/bsppage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/bsppage0.json?v=1978-ed95"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 8,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/mdlpage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/mdlpage0.json?v=1978-ed95"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 50,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/vhvpage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/vhvpage0.json?v=1978-ed95"
     }
   ],
   "visPages": [
     {
       "first": 0,
       "count": 319,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/vispage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/vispage0.json?v=1978-ed95"
     }
   ],
   "ambientPages": [
     {
       "first": 0,
       "count": 2770,
-      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/ambientpage0.json?v=1974-e093"
+      "url": "/GOKZReplayViewer/resources/maps/kz_reach_v2/geom/ambientpage0.json?v=1978-ed95"
     }
   ],
   "entities": [
@@ -70,32 +70,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrrt.vtf.json?v=1974-e093"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrrt.vtf.json?v=1978-ed95"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrlf.vtf.json?v=1974-e093"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrlf.vtf.json?v=1978-ed95"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrbk.vtf.json?v=1974-e093"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrbk.vtf.json?v=1978-ed95"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrft.vtf.json?v=1974-e093"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrft.vtf.json?v=1978-ed95"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrup.vtf.json?v=1974-e093"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrup.vtf.json?v=1978-ed95"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrdn.vtf.json?v=1974-e093"
+            "value": "/GOKZReplayViewer/resources/materials/skybox/sky_cs15_daylight03_hdrdn.vtf.json?v=1978-ed95"
           },
           {
             "name": "hdrCompressed",
@@ -145,6 +145,7 @@
       }
     },
     {
+      "targetname": "climb_endbutton_bonus1",
       "classname": "func_button",
       "origin": {
         "x": 5568.0,
@@ -153,6 +154,7 @@
       }
     },
     {
+      "targetname": "bonus",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 2304.0,
@@ -282,6 +284,7 @@
       }
     },
     {
+      "targetname": "water_room4",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 4384.0,
@@ -511,6 +514,7 @@
       }
     },
     {
+      "targetname": "water_room2",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 2304.0,
@@ -524,6 +528,7 @@
       }
     },
     {
+      "targetname": "water_room1",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 2304.0,
@@ -537,6 +542,7 @@
       }
     },
     {
+      "targetname": "startbutton_bonus1",
       "classname": "prop_dynamic",
       "origin": {
         "x": 2366.0,
@@ -550,6 +556,7 @@
       }
     },
     {
+      "targetname": "climb_startbutton_bonus1",
       "classname": "func_button",
       "origin": {
         "x": 2365.5,
@@ -618,6 +625,7 @@
       }
     },
     {
+      "targetname": "HDR_Control",
       "classname": "env_tonemap_controller",
       "origin": {
         "x": -280.0,
@@ -706,6 +714,7 @@
       }
     },
     {
+      "targetname": "start",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -352.0,
@@ -868,6 +877,7 @@
       }
     },
     {
+      "targetname": "lj",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -1648.0,
@@ -889,6 +899,7 @@
       }
     },
     {
+      "targetname": "long_jump_1",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -1376.0,
@@ -1434,6 +1445,7 @@
       }
     },
     {
+      "targetname": "kz_room_2e",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 160.0,
@@ -1551,6 +1563,7 @@
       }
     },
     {
+      "targetname": "kz_room_2b",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 608.0,
@@ -1564,6 +1577,7 @@
       }
     },
     {
+      "targetname": "kz_room_2a",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 608.0,
@@ -1593,6 +1607,7 @@
       }
     },
     {
+      "targetname": "start_room",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -256.0,
@@ -1622,6 +1637,7 @@
       }
     },
     {
+      "targetname": "kz_room_2c",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 31.9999,
@@ -1643,6 +1659,7 @@
       }
     },
     {
+      "targetname": "kz_room_2d",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 104.0,
@@ -1824,6 +1841,7 @@
       }
     },
     {
+      "targetname": "weird_jump_1",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -784.0,
@@ -1941,6 +1959,7 @@
       }
     },
     {
+      "targetname": "bhop_room_0",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 352.0,
@@ -1962,6 +1981,7 @@
       }
     },
     {
+      "targetname": "room_2",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -736.0,
@@ -2020,6 +2040,7 @@
       }
     },
     {
+      "targetname": "room_1",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -128.0,
@@ -2033,6 +2054,7 @@
       }
     },
     {
+      "targetname": "climb_startbutton",
       "classname": "func_button",
       "origin": {
         "x": -256.0,
@@ -2041,6 +2063,7 @@
       }
     },
     {
+      "targetname": "climb_endbutton",
       "classname": "func_button",
       "origin": {
         "x": -960.0,
@@ -2049,6 +2072,7 @@
       }
     },
     {
+      "targetname": "bhop_room_2",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -2144.0,
@@ -2142,6 +2166,7 @@
       }
     },
     {
+      "targetname": "bhop_room_3",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -2144.0,
@@ -2227,6 +2252,7 @@
       }
     },
     {
+      "targetname": "bhop_room_1",
       "classname": "info_teleport_destination",
       "origin": {
         "x": -1488.0,
@@ -2240,6 +2266,7 @@
       }
     },
     {
+      "targetname": "bhopfilter",
       "classname": "filter_activator_name",
       "origin": {
         "x": -248.0,

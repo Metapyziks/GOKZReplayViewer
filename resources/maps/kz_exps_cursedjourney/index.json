@@ -1,75 +1,75 @@
 {
   "name": "kz_exps_cursedjourney",
-  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/lightmap.json?v=1974-e0e2",
+  "lightmapUrl": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/lightmap.json?v=1978-eded",
   "leafPages": [
     {
       "first": 0,
       "count": 6779,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/leafpage0.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/leafpage0.json?v=1978-eded"
     }
   ],
   "dispPages": [
     {
       "first": 0,
       "count": 305,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/disppage0.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/disppage0.json?v=1978-eded"
     }
   ],
   "materialPages": [
     {
       "first": 0,
-      "count": 146,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/matpage0.json?v=1974-e0e2"
+      "count": 148,
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/matpage0.json?v=1978-eded"
     }
   ],
   "brushModelPages": [
     {
       "first": 0,
       "count": 1,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage0.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage0.json?v=1978-eded"
     },
     {
       "first": 1,
       "count": 139,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage1.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/bsppage1.json?v=1978-eded"
     }
   ],
   "studioModelPages": [
     {
       "first": 0,
       "count": 73,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/mdlpage0.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/mdlpage0.json?v=1978-eded"
     }
   ],
   "vertLightingPages": [
     {
       "first": 0,
       "count": 1024,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage0.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage0.json?v=1978-eded"
     },
     {
       "first": 1024,
       "count": 353,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage1.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vhvpage1.json?v=1978-eded"
     }
   ],
   "visPages": [
     {
       "first": 0,
       "count": 2329,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vispage0.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/vispage0.json?v=1978-eded"
     }
   ],
   "ambientPages": [
     {
       "first": 0,
       "count": 4096,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/ambientpage0.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/ambientpage0.json?v=1978-eded"
     },
     {
       "first": 4096,
       "count": 2683,
-      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/ambientpage1.json?v=1974-e0e2"
+      "url": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/geom/ambientpage1.json?v=1978-eded"
     }
   ],
   "entities": [
@@ -85,32 +85,32 @@
           {
             "name": "facePosX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01rt.vtf.json?v=1974-e0e2"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01rt.vtf.json?v=1978-eded"
           },
           {
             "name": "faceNegX",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01lf.vtf.json?v=1974-e0e2"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01lf.vtf.json?v=1978-eded"
           },
           {
             "name": "facePosY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01bk.vtf.json?v=1974-e0e2"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01bk.vtf.json?v=1978-eded"
           },
           {
             "name": "faceNegY",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf.json?v=1974-e0e2"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01ft.vtf.json?v=1978-eded"
           },
           {
             "name": "facePosZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01up.vtf.json?v=1974-e0e2"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01up.vtf.json?v=1978-eded"
           },
           {
             "name": "faceNegZ",
             "type": 4,
-            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01dn.vtf.json?v=1974-e0e2"
+            "value": "/GOKZReplayViewer/resources/maps/kz_exps_cursedjourney/materials/skybox/sky_harvest_night_01dn.vtf.json?v=1978-eded"
           },
           {
             "name": "aspect",
@@ -139,6 +139,7 @@
       }
     },
     {
+      "targetname": "l2",
       "classname": "info_target",
       "origin": {
         "x": 947.0,
@@ -152,6 +153,7 @@
       }
     },
     {
+      "targetname": "r2",
       "classname": "info_target",
       "origin": {
         "x": 1037.0,
@@ -165,6 +167,7 @@
       }
     },
     {
+      "targetname": "r2",
       "classname": "info_target",
       "origin": {
         "x": 996.0,
@@ -178,6 +181,7 @@
       }
     },
     {
+      "targetname": "r2",
       "classname": "info_target",
       "origin": {
         "x": 988.0,
@@ -191,6 +195,7 @@
       }
     },
     {
+      "targetname": "l2",
       "classname": "info_target",
       "origin": {
         "x": 939.0,
@@ -204,6 +209,7 @@
       }
     },
     {
+      "targetname": "r2",
       "classname": "info_target",
       "origin": {
         "x": 1136.0,
@@ -217,6 +223,7 @@
       }
     },
     {
+      "targetname": "l2",
       "classname": "info_target",
       "origin": {
         "x": 1087.0,
@@ -230,6 +237,7 @@
       }
     },
     {
+      "targetname": "l1",
       "classname": "info_target",
       "origin": {
         "x": 1007.0,
@@ -243,6 +251,7 @@
       }
     },
     {
+      "targetname": "bram1",
       "classname": "env_beam",
       "origin": {
         "x": 1045.0,
@@ -251,6 +260,7 @@
       }
     },
     {
+      "targetname": "r1",
       "classname": "info_target",
       "origin": {
         "x": 1045.0,
@@ -264,6 +274,7 @@
       }
     },
     {
+      "targetname": "l2",
       "classname": "info_target",
       "origin": {
         "x": 1008.0,
@@ -277,6 +288,7 @@
       }
     },
     {
+      "targetname": "r2",
       "classname": "info_target",
       "origin": {
         "x": 1057.0,
@@ -290,6 +302,7 @@
       }
     },
     {
+      "targetname": "beam2",
       "classname": "env_beam",
       "origin": {
         "x": 1007.0,
@@ -306,6 +319,7 @@
       }
     },
     {
+      "targetname": "teasert",
       "classname": "ambient_generic",
       "origin": {
         "x": 1026.0,
@@ -314,6 +328,7 @@
       }
     },
     {
+      "targetname": "r2",
       "classname": "info_target",
       "origin": {
         "x": 1084.0,
@@ -327,6 +342,7 @@
       }
     },
     {
+      "targetname": "l2",
       "classname": "info_target",
       "origin": {
         "x": 1035.0,
@@ -340,6 +356,7 @@
       }
     },
     {
+      "targetname": "l2",
       "classname": "info_target",
       "origin": {
         "x": 988.0,
@@ -369,6 +386,7 @@
       }
     },
     {
+      "targetname": "presssnd3",
       "classname": "ambient_generic",
       "origin": {
         "x": 1169.0,
@@ -377,6 +395,7 @@
       }
     },
     {
+      "targetname": "presssnd2",
       "classname": "ambient_generic",
       "origin": {
         "x": 1185.0,
@@ -385,6 +404,7 @@
       }
     },
     {
+      "targetname": "climb_endbutton",
       "classname": "func_button",
       "origin": {
         "x": 1196.5,
@@ -393,6 +413,7 @@
       }
     },
     {
+      "targetname": "endbuttonmodel",
       "classname": "prop_dynamic",
       "origin": {
         "x": 1197.15,
@@ -454,6 +475,7 @@
       "clusters": [
         1227
       ],
+      "targetname": "fb_timer_m1",
       "classname": "func_brush",
       "origin": {
         "x": 1199.5,
@@ -466,6 +488,7 @@
       "clusters": [
         1227
       ],
+      "targetname": "fb_timer_m0",
       "classname": "func_brush",
       "origin": {
         "x": 1199.5,
@@ -478,6 +501,7 @@
       "clusters": [
         1227
       ],
+      "targetname": "fb_timer_s1",
       "classname": "func_brush",
       "origin": {
         "x": 1199.5,
@@ -490,6 +514,7 @@
       "clusters": [
         1227
       ],
+      "targetname": "fb_timer_s0",
       "classname": "func_brush",
       "origin": {
         "x": 1199.5,
@@ -502,6 +527,7 @@
       "clusters": [
         1227
       ],
+      "targetname": "fb_timer_cs1",
       "classname": "func_brush",
       "origin": {
         "x": 1199.5,
@@ -514,6 +540,7 @@
       "clusters": [
         1227
       ],
+      "targetname": "fb_timer_cs0",
       "classname": "func_brush",
       "origin": {
         "x": 1199.5,
@@ -522,6 +549,7 @@
       }
     },
     {
+      "targetname": "spitbutton",
       "classname": "func_button",
       "origin": {
         "x": 1042.06,
@@ -538,6 +566,7 @@
       }
     },
     {
+      "targetname": "stop",
       "classname": "func_button",
       "origin": {
         "x": 1042.0,
@@ -880,6 +909,7 @@
       }
     },
     {
+      "targetname": "ett_timer_cs0",
       "classname": "env_texturetoggle",
       "origin": {
         "x": 1793.04,
@@ -888,6 +918,7 @@
       }
     },
     {
+      "targetname": "ett_timer_cs1",
       "classname": "env_texturetoggle",
       "origin": {
         "x": 1793.04,
@@ -896,6 +927,7 @@
       }
     },
     {
+      "targetname": "lt_timer_m",
       "classname": "logic_timer",
       "origin": {
         "x": 1793.04,
@@ -904,6 +936,7 @@
       }
     },
     {
+      "targetname": "ett_timer_s0",
       "classname": "env_texturetoggle",
       "origin": {
         "x": 1793.04,
@@ -912,6 +945,7 @@
       }
     },
     {
+      "targetname": "lr_timer_sync_s",
       "classname": "logic_relay",
       "origin": {
         "x": 1793.04,
@@ -920,6 +954,7 @@
       }
     },
     {
+      "targetname": "ett_timer_s1",
       "classname": "env_texturetoggle",
       "origin": {
         "x": 1793.04,
@@ -928,6 +963,7 @@
       }
     },
     {
+      "targetname": "lt_timer_s",
       "classname": "logic_timer",
       "origin": {
         "x": 1793.04,
@@ -936,6 +972,7 @@
       }
     },
     {
+      "targetname": "lr_timer_sync_cs",
       "classname": "logic_relay",
       "origin": {
         "x": 1793.04,
@@ -944,6 +981,7 @@
       }
     },
     {
+      "targetname": "ett_timer_m0",
       "classname": "env_texturetoggle",
       "origin": {
         "x": 1793.04,
@@ -952,6 +990,7 @@
       }
     },
     {
+      "targetname": "lt_timer_cs",
       "classname": "logic_timer",
       "origin": {
         "x": 1793.04,
@@ -968,6 +1007,7 @@
       }
     },
     {
+      "targetname": "ett_timer_m1",
       "classname": "env_texturetoggle",
       "origin": {
         "x": 1793.04,
@@ -976,6 +1016,7 @@
       }
     },
     {
+      "targetname": "lr_timer_reset",
       "classname": "logic_relay",
       "origin": {
         "x": 1793.04,
@@ -984,6 +1025,7 @@
       }
     },
     {
+      "targetname": "mc_timer_cs0",
       "classname": "math_counter",
       "origin": {
         "x": 1793.04,
@@ -992,6 +1034,7 @@
       }
     },
     {
+      "targetname": "mc_timer_cs1",
       "classname": "math_counter",
       "origin": {
         "x": 1793.04,
@@ -1000,6 +1043,7 @@
       }
     },
     {
+      "targetname": "mc_timer_s0",
       "classname": "math_counter",
       "origin": {
         "x": 1793.04,
@@ -1008,6 +1052,7 @@
       }
     },
     {
+      "targetname": "mc_timer_s1",
       "classname": "math_counter",
       "origin": {
         "x": 1793.04,
@@ -1016,6 +1061,7 @@
       }
     },
     {
+      "targetname": "mc_timer_m0",
       "classname": "math_counter",
       "origin": {
         "x": 1793.04,
@@ -1024,6 +1070,7 @@
       }
     },
     {
+      "targetname": "mc_timer_m1",
       "classname": "math_counter",
       "origin": {
         "x": 1793.04,
@@ -1152,6 +1199,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "nextKey": "endrope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        501,514,515,516,524,562,563,564,565,566,567,568,569,577,1140,1141,1142,1143,1144,1145,1147,1148,1149,1150,1152,1153,1157,1159,1207,1228,1245
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 592.0,
@@ -1160,6 +1218,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        501
+      ],
+      "targetname": "endrope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1856.0,
@@ -1173,6 +1241,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "pole_rope6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1140,1147,1199
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 1968.0,
@@ -1327,6 +1406,7 @@
       "clusters": [
         1613
       ],
+      "targetname": "fb_timer_s1",
       "classname": "func_brush",
       "origin": {
         "x": 2111.5,
@@ -1339,6 +1419,7 @@
       "clusters": [
         1613
       ],
+      "targetname": "fb_timer_m1",
       "classname": "func_brush",
       "origin": {
         "x": 2111.5,
@@ -1351,6 +1432,7 @@
       "clusters": [
         1613
       ],
+      "targetname": "fb_timer_m0",
       "classname": "func_brush",
       "origin": {
         "x": 2111.5,
@@ -1363,6 +1445,7 @@
       "clusters": [
         1613
       ],
+      "targetname": "fb_timer_s0",
       "classname": "func_brush",
       "origin": {
         "x": 2111.5,
@@ -1375,6 +1458,7 @@
       "clusters": [
         1613
       ],
+      "targetname": "fb_timer_cs1",
       "classname": "func_brush",
       "origin": {
         "x": 2111.5,
@@ -1387,6 +1471,7 @@
       "clusters": [
         1613
       ],
+      "targetname": "fb_timer_cs0",
       "classname": "func_brush",
       "origin": {
         "x": 2111.5,
@@ -1395,6 +1480,7 @@
       }
     },
     {
+      "targetname": "ljdoor_button",
       "classname": "func_button",
       "origin": {
         "x": 158.0,
@@ -1419,6 +1505,17 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rope_walk2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        245,246,247,281,286,288,289,1008,1009
+      ],
+      "targetname": "rope_walk",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3776.0,
@@ -1432,6 +1529,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rope_walk",
+      "moveSpeed": 64.0,
+      "clusters": [
+        245,246,458,459
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2768.0,
@@ -1445,6 +1553,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        484
+      ],
+      "targetname": "pole_rope5",
       "classname": "keyframe_rope",
       "origin": {
         "x": 2287.95,
@@ -1458,6 +1576,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "pole_rope5",
+      "moveSpeed": 64.0,
+      "clusters": [
+        481,484
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2287.95,
@@ -1521,6 +1650,17 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rope_walk4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1009
+      ],
+      "targetname": "rope_walk2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3328.0,
@@ -1534,6 +1674,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1009
+      ],
+      "targetname": "rope_walk4",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3328.0,
@@ -1547,6 +1697,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_walk6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1014
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 3328.0,
@@ -1555,6 +1716,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1014
+      ],
+      "targetname": "rope_walk6",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3328.0,
@@ -1568,6 +1739,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_walk10",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1072,1108
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 3328.0,
@@ -1581,6 +1763,17 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_walk11",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1014,1015,1071,1072
+      ],
+      "targetname": "rope_walk10",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3328.0,
@@ -1594,6 +1787,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1014
+      ],
+      "targetname": "rope_walk11",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3328.0,
@@ -1607,6 +1810,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_walk9",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1125,1130
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2592.0,
@@ -1620,6 +1834,17 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_walk12",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1130,1168
+      ],
+      "targetname": "rope_walk9",
       "classname": "keyframe_rope",
       "origin": {
         "x": 2592.0,
@@ -1633,6 +1858,17 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_walk13",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1168,1170,1199,1207
+      ],
+      "targetname": "rope_walk12",
       "classname": "keyframe_rope",
       "origin": {
         "x": 2592.0,
@@ -1646,6 +1882,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1207
+      ],
+      "targetname": "rope_walk13",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1392.0,
@@ -1659,6 +1905,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_walk12",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1168,1184
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2592.0,
@@ -1711,6 +1968,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1199
+      ],
+      "targetname": "pole_rope6",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1968.0,
@@ -1724,6 +1991,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "pole_rope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        501
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 1872.0,
@@ -1732,6 +2010,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        501
+      ],
+      "targetname": "pole_rope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1872.0,
@@ -1745,6 +2033,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        501
+      ],
+      "targetname": "pole_rope1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1856.0,
@@ -1758,6 +2056,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "pole_rope1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        501
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 1856.0,
@@ -1771,6 +2080,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "pole_rope2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1140
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 1968.0,
@@ -1784,6 +2104,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1140
+      ],
+      "targetname": "pole_rope2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1968.0,
@@ -1797,6 +2127,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1147
+      ],
+      "targetname": "pole_rope3",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1968.0,
@@ -1810,6 +2150,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "pole_rope3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1147
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 1968.0,
@@ -1823,6 +2174,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1203
+      ],
+      "targetname": "pole_rope4",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1968.0,
@@ -1836,6 +2197,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "pole_rope4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1199,1202,1203
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 1968.0,
@@ -2097,6 +2469,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "nextKey": "chill_0",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1287,1294
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 528.0,
@@ -2105,6 +2488,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "nextKey": "chill_1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1291,1294
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 416.0,
@@ -2118,6 +2512,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1294
+      ],
+      "targetname": "chill_1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 416.0,
@@ -2126,6 +2530,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1294
+      ],
+      "targetname": "chill_0",
       "classname": "keyframe_rope",
       "origin": {
         "x": 528.0,
@@ -2230,6 +2644,7 @@
       }
     },
     {
+      "targetname": "filter_activator",
       "classname": "filter_activator_name",
       "origin": {
         "x": 1008.0,
@@ -2670,6 +3085,7 @@
       }
     },
     {
+      "targetname": "math_ten",
       "classname": "math_counter",
       "origin": {
         "x": -804.452,
@@ -2678,6 +3094,7 @@
       }
     },
     {
+      "targetname": "math_ten_proxy",
       "classname": "math_counter",
       "origin": {
         "x": -804.452,
@@ -2686,6 +3103,7 @@
       }
     },
     {
+      "targetname": "math_inputcheck",
       "classname": "math_counter",
       "origin": {
         "x": -804.452,
@@ -2694,6 +3112,7 @@
       }
     },
     {
+      "targetname": "tex_ten",
       "classname": "env_texturetoggle",
       "origin": {
         "x": -804.452,
@@ -2702,6 +3121,7 @@
       }
     },
     {
+      "targetname": "math_ten_parse_display",
       "classname": "math_counter",
       "origin": {
         "x": -804.452,
@@ -2710,6 +3130,7 @@
       }
     },
     {
+      "targetname": "math_inputcheck_flag",
       "classname": "logic_branch",
       "origin": {
         "x": -804.452,
@@ -2718,6 +3139,7 @@
       }
     },
     {
+      "targetname": "math_hundred",
       "classname": "math_counter",
       "origin": {
         "x": -860.452,
@@ -2726,6 +3148,7 @@
       }
     },
     {
+      "targetname": "math_hundred_proxy",
       "classname": "math_counter",
       "origin": {
         "x": -860.452,
@@ -2734,6 +3157,7 @@
       }
     },
     {
+      "targetname": "math_one_inputcheck_proxy",
       "classname": "math_counter",
       "origin": {
         "x": -860.452,
@@ -2742,6 +3166,7 @@
       }
     },
     {
+      "targetname": "tex_hun",
       "classname": "env_texturetoggle",
       "origin": {
         "x": -860.452,
@@ -2750,6 +3175,7 @@
       }
     },
     {
+      "targetname": "math_hundred_parse_display",
       "classname": "math_counter",
       "origin": {
         "x": -860.452,
@@ -2758,6 +3184,7 @@
       }
     },
     {
+      "targetname": "math_one",
       "classname": "math_counter",
       "origin": {
         "x": -748.452,
@@ -2766,6 +3193,7 @@
       }
     },
     {
+      "targetname": "math_one_proxy",
       "classname": "math_counter",
       "origin": {
         "x": -748.452,
@@ -2774,6 +3202,7 @@
       }
     },
     {
+      "targetname": "@divisor",
       "classname": "math_counter",
       "origin": {
         "x": -748.452,
@@ -2782,6 +3211,7 @@
       }
     },
     {
+      "targetname": "tex_one",
       "classname": "env_texturetoggle",
       "origin": {
         "x": -748.452,
@@ -2790,6 +3220,7 @@
       }
     },
     {
+      "targetname": "math_one_parse_display",
       "classname": "math_counter",
       "origin": {
         "x": -748.452,
@@ -2802,6 +3233,7 @@
       "clusters": [
         2265
       ],
+      "targetname": "display_ten",
       "classname": "func_brush",
       "origin": {
         "x": -172.0,
@@ -2814,6 +3246,7 @@
       "clusters": [
         2265
       ],
+      "targetname": "display_hundred",
       "classname": "func_brush",
       "origin": {
         "x": -212.0,
@@ -2826,6 +3259,7 @@
       "clusters": [
         2265
       ],
+      "targetname": "display_one",
       "classname": "func_brush",
       "origin": {
         "x": -132.0,
@@ -2834,6 +3268,7 @@
       }
     },
     {
+      "targetname": "fb2_a",
       "classname": "ambient_generic",
       "origin": {
         "x": -172.0,
@@ -2842,6 +3277,7 @@
       }
     },
     {
+      "targetname": "fb2_s",
       "classname": "ambient_generic",
       "origin": {
         "x": -172.0,
@@ -2850,6 +3286,7 @@
       }
     },
     {
+      "targetname": "fb3_a",
       "classname": "ambient_generic",
       "origin": {
         "x": -132.0,
@@ -2858,6 +3295,7 @@
       }
     },
     {
+      "targetname": "fb3_s",
       "classname": "ambient_generic",
       "origin": {
         "x": -132.0,
@@ -2866,6 +3304,7 @@
       }
     },
     {
+      "targetname": "fb1_s",
       "classname": "ambient_generic",
       "origin": {
         "x": -212.0,
@@ -2874,6 +3313,7 @@
       }
     },
     {
+      "targetname": "fb1_a",
       "classname": "ambient_generic",
       "origin": {
         "x": -212.0,
@@ -2882,6 +3322,7 @@
       }
     },
     {
+      "targetname": "button_ten_sub",
       "classname": "func_button",
       "origin": {
         "x": -171.99,
@@ -2890,6 +3331,7 @@
       }
     },
     {
+      "targetname": "button_one_sub",
       "classname": "func_button",
       "origin": {
         "x": -131.99,
@@ -2898,6 +3340,7 @@
       }
     },
     {
+      "targetname": "button_hundred_sub",
       "classname": "func_button",
       "origin": {
         "x": -211.99,
@@ -2906,6 +3349,7 @@
       }
     },
     {
+      "targetname": "button_one_add",
       "classname": "func_button",
       "origin": {
         "x": -132.0,
@@ -2914,6 +3358,7 @@
       }
     },
     {
+      "targetname": "button_ten_add",
       "classname": "func_button",
       "origin": {
         "x": -172.0,
@@ -2922,6 +3367,7 @@
       }
     },
     {
+      "targetname": "button_hundred_add",
       "classname": "func_button",
       "origin": {
         "x": -212.0,
@@ -3018,6 +3464,7 @@
       }
     },
     {
+      "targetname": "ljdoor",
       "classname": "func_movelinear",
       "origin": {
         "x": -80.0,
@@ -3058,6 +3505,7 @@
       }
     },
     {
+      "targetname": "floorbuttondown4",
       "classname": "ambient_generic",
       "origin": {
         "x": -128.0,
@@ -3074,6 +3522,7 @@
       }
     },
     {
+      "targetname": "floorbutton4",
       "classname": "func_button",
       "origin": {
         "x": -128.01,
@@ -3082,6 +3531,7 @@
       }
     },
     {
+      "targetname": "floorbuttonup4",
       "classname": "ambient_generic",
       "origin": {
         "x": -128.0,
@@ -3122,6 +3572,7 @@
       }
     },
     {
+      "targetname": "ljdoor2",
       "classname": "func_movelinear",
       "origin": {
         "x": 176.0,
@@ -3194,6 +3645,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2316
+      ],
+      "targetname": "ljrope_0",
       "classname": "keyframe_rope",
       "origin": {
         "x": -264.0,
@@ -3207,6 +3668,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2316
+      ],
+      "targetname": "ljrope_2",
       "classname": "keyframe_rope",
       "origin": {
         "x": -568.0,
@@ -3220,6 +3691,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2316
+      ],
+      "targetname": "ljrope_3",
       "classname": "keyframe_rope",
       "origin": {
         "x": -264.0,
@@ -3233,6 +3714,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2316
+      ],
+      "targetname": "ljrope_4",
       "classname": "keyframe_rope",
       "origin": {
         "x": -568.0,
@@ -3246,6 +3737,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2273,2316
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -264.0,
@@ -3259,6 +3761,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2273,2316
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -568.0,
@@ -3272,6 +3785,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2314,2316
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -568.0,
@@ -3285,6 +3809,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_0",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2287,2300,2316
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -264.0,
@@ -3298,6 +3833,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1992
+      ],
+      "targetname": "ljrope_5",
       "classname": "keyframe_rope",
       "origin": {
         "x": 282.0,
@@ -3311,6 +3856,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2316
+      ],
+      "targetname": "ljrope_6",
       "classname": "keyframe_rope",
       "origin": {
         "x": -22.0,
@@ -3324,6 +3879,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2316
+      ],
+      "targetname": "ljrope_7",
       "classname": "keyframe_rope",
       "origin": {
         "x": -22.0,
@@ -3337,6 +3902,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1992
+      ],
+      "targetname": "ljrope_1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 282.0,
@@ -3350,6 +3925,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1986,1987,1992
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 282.0,
@@ -3358,6 +3944,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_5",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1982,1983,1992
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 282.0,
@@ -3366,6 +3963,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2278,2279,2316
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -22.0,
@@ -3374,6 +3982,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_7",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2282,2283,2316
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -22.0,
@@ -3382,6 +4001,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2300
+      ],
+      "targetname": "ljrope_12",
       "classname": "keyframe_rope",
       "origin": {
         "x": -304.0,
@@ -3395,6 +4024,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2300
+      ],
+      "targetname": "ljrope_8",
       "classname": "keyframe_rope",
       "origin": {
         "x": -304.0,
@@ -3408,6 +4047,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2311
+      ],
+      "targetname": "ljrope_10",
       "classname": "keyframe_rope",
       "origin": {
         "x": -528.0,
@@ -3421,6 +4070,16 @@
       }
     },
     {
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2311
+      ],
+      "targetname": "ljrope_11",
       "classname": "keyframe_rope",
       "origin": {
         "x": -528.0,
@@ -3434,6 +4093,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_12",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2290,2291,2300
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -304.0,
@@ -3447,6 +4117,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_11",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2303,2304,2311
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -528.0,
@@ -3460,6 +4141,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_10",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2307,2308,2311
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -528.0,
@@ -3473,6 +4165,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "ljrope_8",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2294,2295,2300
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -304.0,
@@ -3486,6 +4189,7 @@
       }
     },
     {
+      "targetname": "platform",
       "classname": "func_movelinear",
       "origin": {
         "x": -288.0,
@@ -3494,6 +4198,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "jump_rope2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2267
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -720.0,
@@ -3507,6 +4222,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "jump_rope1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2265
+      ],
       "classname": "move_rope",
       "origin": {
         "x": -720.0,
@@ -3520,6 +4246,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2265
+      ],
+      "targetname": "jump_rope1",
       "classname": "keyframe_rope",
       "origin": {
         "x": -256.0,
@@ -3533,6 +4269,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2267
+      ],
+      "targetname": "jump_rope2",
       "classname": "keyframe_rope",
       "origin": {
         "x": -256.0,
@@ -3586,6 +4332,7 @@
       }
     },
     {
+      "targetname": "floorbutton",
       "classname": "func_button",
       "origin": {
         "x": 2175.99,
@@ -3594,6 +4341,7 @@
       }
     },
     {
+      "targetname": "floorbuttonup",
       "classname": "ambient_generic",
       "origin": {
         "x": 2176.0,
@@ -3602,6 +4350,7 @@
       }
     },
     {
+      "targetname": "floorbuttondown",
       "classname": "ambient_generic",
       "origin": {
         "x": 2176.0,
@@ -3835,6 +4584,7 @@
       }
     },
     {
+      "targetname": "doorcrush1",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 1616.0,
@@ -3848,6 +4598,7 @@
       }
     },
     {
+      "targetname": "doorcrush",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 1616.0,
@@ -4444,6 +5195,7 @@
       }
     },
     {
+      "targetname": "floorbutton2",
       "classname": "func_button",
       "origin": {
         "x": 1616.0,
@@ -4452,6 +5204,7 @@
       }
     },
     {
+      "targetname": "floorbuttondown2",
       "classname": "ambient_generic",
       "origin": {
         "x": 1616.0,
@@ -4460,6 +5213,7 @@
       }
     },
     {
+      "targetname": "floorbuttonup2",
       "classname": "ambient_generic",
       "origin": {
         "x": 1616.0,
@@ -4476,6 +5230,7 @@
       }
     },
     {
+      "targetname": "floorbutton3",
       "classname": "func_button",
       "origin": {
         "x": 2912.0,
@@ -4484,6 +5239,7 @@
       }
     },
     {
+      "targetname": "floorbuttondown3",
       "classname": "ambient_generic",
       "origin": {
         "x": 2912.0,
@@ -4492,6 +5248,7 @@
       }
     },
     {
+      "targetname": "floorbuttonup3",
       "classname": "ambient_generic",
       "origin": {
         "x": 2912.0,
@@ -4500,6 +5257,7 @@
       }
     },
     {
+      "targetname": "faildoor",
       "classname": "func_movelinear",
       "origin": {
         "x": 2576.0,
@@ -4580,6 +5338,7 @@
       }
     },
     {
+      "targetname": "wellfall",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 7758.44,
@@ -4593,6 +5352,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        796
+      ],
+      "targetname": "wellrope_16",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7456.0,
@@ -4606,6 +5375,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        796
+      ],
+      "targetname": "wellrope_17",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7456.0,
@@ -4619,6 +5398,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_17",
+      "moveSpeed": 64.0,
+      "clusters": [
+        795,796
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7456.0,
@@ -4632,6 +5422,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_16",
+      "moveSpeed": 64.0,
+      "clusters": [
+        795,796
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7456.0,
@@ -4645,6 +5446,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_18",
+      "moveSpeed": 64.0,
+      "clusters": [
+        795,796
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7712.0,
@@ -4658,6 +5470,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        796
+      ],
+      "targetname": "wellrope_18",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7712.0,
@@ -4671,6 +5493,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        796
+      ],
+      "targetname": "wellrope_19",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7712.0,
@@ -4684,6 +5516,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_19",
+      "moveSpeed": 64.0,
+      "clusters": [
+        795,796
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7712.0,
@@ -5264,6 +6107,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 200.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        655
+      ],
+      "targetname": "rockrope_4",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9544.0,
@@ -5277,6 +6130,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        655
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9544.0,
@@ -5290,6 +6154,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1709
+      ],
+      "targetname": "rockrope_8",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9672.0,
@@ -5303,6 +6177,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_8",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1709
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9672.0,
@@ -5316,6 +6201,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 200.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        735
+      ],
+      "targetname": "rockrope_9",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9192.0,
@@ -5329,6 +6224,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_9",
+      "moveSpeed": 64.0,
+      "clusters": [
+        735
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9192.0,
@@ -5342,6 +6248,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1712
+      ],
+      "targetname": "rockrope_10",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9320.0,
@@ -5355,6 +6271,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_10",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1712
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9320.0,
@@ -5368,6 +6295,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1707
+      ],
+      "targetname": "rockrope_11",
       "classname": "keyframe_rope",
       "origin": {
         "x": 10024.0,
@@ -5381,6 +6318,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 175.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        653
+      ],
+      "targetname": "rockrope_12",
       "classname": "keyframe_rope",
       "origin": {
         "x": 10024.0,
@@ -5394,6 +6341,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_12",
+      "moveSpeed": 64.0,
+      "clusters": [
+        653
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 10024.0,
@@ -5407,6 +6365,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_11",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1707
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 10024.0,
@@ -5532,6 +6501,7 @@
       }
     },
     {
+      "targetname": "creditdoor",
       "classname": "func_movelinear",
       "origin": {
         "x": 1616.0,
@@ -5556,6 +6526,7 @@
       }
     },
     {
+      "targetname": "presssnd1",
       "classname": "ambient_generic",
       "origin": {
         "x": 1993.75,
@@ -6334,6 +7305,7 @@
       }
     },
     {
+      "targetname": "climb_startbutton",
       "classname": "func_button",
       "origin": {
         "x": 2002.89,
@@ -6342,6 +7314,7 @@
       }
     },
     {
+      "targetname": "button1",
       "classname": "prop_dynamic",
       "origin": {
         "x": 2004.66,
@@ -6656,6 +7629,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
+      "targetname": "wellrope_0",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6480.0,
@@ -6669,6 +7652,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
+      "targetname": "wellrope_1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6736.0,
@@ -6682,6 +7675,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
+      "targetname": "wellrope_2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6736.0,
@@ -6695,6 +7698,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
+      "targetname": "wellrope_3",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6480.0,
@@ -6708,6 +7721,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_0",
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6480.0,
@@ -6716,6 +7740,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6736.0,
@@ -6724,6 +7759,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6736.0,
@@ -6732,6 +7778,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        880
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6480.0,
@@ -6740,6 +7797,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
+      "targetname": "wellrope_4",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7456.0,
@@ -6753,6 +7820,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7456.0,
@@ -6766,6 +7844,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
+      "targetname": "wellrope_5",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7456.0,
@@ -6779,6 +7867,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
+      "targetname": "wellrope_6",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7712.0,
@@ -6792,6 +7890,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7712.0,
@@ -6805,6 +7914,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
+      "targetname": "wellrope_7",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7712.0,
@@ -6818,6 +7937,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_7",
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7712.0,
@@ -6831,6 +7961,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_5",
+      "moveSpeed": 64.0,
+      "clusters": [
+        689
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7456.0,
@@ -6844,6 +7985,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_8",
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6480.0,
@@ -6857,6 +8009,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
+      "targetname": "wellrope_8",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6480.0,
@@ -6870,6 +8032,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
+      "targetname": "wellrope_9",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6736.0,
@@ -6883,6 +8055,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
+      "targetname": "wellrope_10",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6736.0,
@@ -6896,6 +8078,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
+      "targetname": "wellrope_11",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6480.0,
@@ -6909,6 +8101,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_11",
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6480.0,
@@ -6922,6 +8125,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_10",
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6736.0,
@@ -6935,6 +8149,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_9",
+      "moveSpeed": 64.0,
+      "clusters": [
+        729
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6736.0,
@@ -6948,6 +8173,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
+      "targetname": "wellrope_12",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5520.0,
@@ -6961,6 +8196,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_12",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5520.0,
@@ -6974,6 +8220,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
+      "targetname": "wellrope_13",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5776.0,
@@ -6987,6 +8243,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_13",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5776.0,
@@ -7000,6 +8267,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
+      "targetname": "wellrope_14",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5520.0,
@@ -7013,6 +8290,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_14",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5520.0,
@@ -7026,6 +8314,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
+      "targetname": "wellrope_15",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5776.0,
@@ -7039,6 +8337,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope_15",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1497
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5776.0,
@@ -7052,6 +8361,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "caverope_climb",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1405,1406
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5520.0,
@@ -7065,6 +8385,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1406
+      ],
+      "targetname": "caverope_climb",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5520.0,
@@ -7073,6 +8403,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1403
+      ],
+      "targetname": "caverope_climb2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5520.0,
@@ -7081,6 +8421,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "caverope_climb2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1402,1403
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5520.0,
@@ -7150,6 +8501,7 @@
       }
     },
     {
+      "targetname": "cave1",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 8541.37,
@@ -7163,6 +8515,7 @@
       }
     },
     {
+      "targetname": "cave2",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 8249.44,
@@ -7176,6 +8529,7 @@
       }
     },
     {
+      "targetname": "cave3",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 9728.06,
@@ -7189,6 +8543,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        653
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9896.0,
@@ -7202,6 +8567,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        655
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9672.0,
@@ -7215,6 +8591,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        658
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9320.0,
@@ -7228,6 +8615,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 175.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        653
+      ],
+      "targetname": "rockrope_1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9896.0,
@@ -7241,6 +8638,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 200.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        655
+      ],
+      "targetname": "rockrope_2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9672.0,
@@ -7254,6 +8661,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 200.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        658
+      ],
+      "targetname": "rockrope_3",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9320.0,
@@ -7267,6 +8684,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1787,1788
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 8768.0,
@@ -7280,6 +8708,17 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1788
+      ],
+      "targetname": "caverope_1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 8768.0,
@@ -7293,6 +8732,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1724
+      ],
+      "targetname": "caverope_0",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9280.0,
@@ -7306,6 +8755,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_0",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1723,1724
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9280.0,
@@ -7319,6 +8779,17 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1801
+      ],
+      "targetname": "caverope_3",
       "classname": "keyframe_rope",
       "origin": {
         "x": 8320.0,
@@ -7332,6 +8803,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1800,1801
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 8320.0,
@@ -7345,6 +8827,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_5",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1800,1801
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 8832.0,
@@ -7358,6 +8851,17 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1801
+      ],
+      "targetname": "caverope_5",
       "classname": "keyframe_rope",
       "origin": {
         "x": 8832.0,
@@ -7371,6 +8875,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1801
+      ],
+      "targetname": "caverope_7",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9216.0,
@@ -7384,6 +8898,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_7",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1800,1801
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9216.0,
@@ -7397,6 +8922,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1733
+      ],
+      "targetname": "caverope_8",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9728.0,
@@ -7410,6 +8945,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_8",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1732,1733
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9728.0,
@@ -7423,6 +8969,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1733
+      ],
+      "targetname": "caverope_9",
       "classname": "keyframe_rope",
       "origin": {
         "x": 10208.0,
@@ -7436,6 +8992,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_9",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1732,1733
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 10208.0,
@@ -7449,6 +9016,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1730
+      ],
+      "targetname": "caverope_10",
       "classname": "keyframe_rope",
       "origin": {
         "x": 10464.0,
@@ -7462,6 +9039,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_10",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1730
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 10464.0,
@@ -7475,6 +9063,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_11",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1717
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 10464.0,
@@ -7488,6 +9087,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1717
+      ],
+      "targetname": "caverope_11",
       "classname": "keyframe_rope",
       "origin": {
         "x": 10464.0,
@@ -7501,6 +9110,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1717
+      ],
+      "targetname": "caverope_12",
       "classname": "keyframe_rope",
       "origin": {
         "x": 10464.0,
@@ -7514,6 +9133,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_12",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1717
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 10464.0,
@@ -7527,6 +9157,16 @@
       }
     },
     {
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1720
+      ],
+      "targetname": "caverope_13",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9728.0,
@@ -7540,6 +9180,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 12.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 146,
+      "nextKey": "caverope_13",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1719,1720
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9728.0,
@@ -7553,6 +9204,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_7",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1739
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9192.0,
@@ -7566,6 +9228,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1739
+      ],
+      "targetname": "rockrope_7",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9192.0,
@@ -7579,6 +9251,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1709
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9544.0,
@@ -7592,6 +9275,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1709
+      ],
+      "targetname": "rockrope_6",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9544.0,
@@ -7605,6 +9298,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1707
+      ],
+      "targetname": "rockrope_5",
       "classname": "keyframe_rope",
       "origin": {
         "x": 9896.0,
@@ -7618,6 +9321,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "rockrope_5",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1707
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 9896.0,
@@ -7727,6 +9441,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "caverope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1791,1794
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 8480.0,
@@ -7740,6 +9465,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1794
+      ],
+      "targetname": "caverope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 8480.0,
@@ -8049,6 +9784,7 @@
       }
     },
     {
+      "targetname": "tele4pill",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 5442.99,
@@ -8847,6 +10583,7 @@
       }
     },
     {
+      "targetname": "oldstart_tele",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 1584.0,
@@ -8924,6 +10661,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "faderope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2110,2111
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2912.0,
@@ -8937,6 +10685,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2111
+      ],
+      "targetname": "faderope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 2912.0,
@@ -8958,6 +10716,7 @@
       }
     },
     {
+      "targetname": "first",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 700.3,
@@ -8971,6 +10730,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "sandrope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        2057,2062,2068,2074,2077
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 336.0,
@@ -8984,6 +10754,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        2077
+      ],
+      "targetname": "sandrope",
       "classname": "move_rope",
       "origin": {
         "x": 336.0,
@@ -9093,6 +10874,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "safety1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        399,400
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 1632.0,
@@ -9106,6 +10898,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        400
+      ],
+      "targetname": "safety1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 1632.0,
@@ -9596,6 +11398,16 @@
       }
     },
     {
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1485
+      ],
+      "targetname": "woodrope3",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5928.0,
@@ -9625,6 +11437,7 @@
       }
     },
     {
+      "targetname": "350fall",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 6912.51,
@@ -9638,6 +11451,7 @@
       }
     },
     {
+      "targetname": "350fall",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 6912.0,
@@ -9651,6 +11465,7 @@
       }
     },
     {
+      "targetname": "350fall",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 7496.0,
@@ -9664,6 +11479,7 @@
       }
     },
     {
+      "targetname": "350fall",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 6240.0,
@@ -9717,6 +11533,7 @@
       }
     },
     {
+      "targetname": "slantfall",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 6688.0,
@@ -9746,6 +11563,7 @@
       }
     },
     {
+      "targetname": "sand3",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 4064.0,
@@ -9759,6 +11577,7 @@
       }
     },
     {
+      "targetname": "sand2",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 4258.58,
@@ -9881,6 +11700,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1463
+      ],
+      "targetname": "hangrope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6080.0,
@@ -9894,6 +11723,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "hangrope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1383,1461,1463
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6080.0,
@@ -9952,6 +11792,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "woodrope3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1484,1485
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5928.0,
@@ -9981,6 +11832,16 @@
       }
     },
     {
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1491
+      ],
+      "targetname": "woodrope1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5784.0,
@@ -9994,6 +11855,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "woodrope1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1490,1491
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5784.0,
@@ -10101,6 +11973,16 @@
       }
     },
     {
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1525
+      ],
+      "targetname": "woodrope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 5672.0,
@@ -10114,6 +11996,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "woodrope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1522,1525
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 5672.0,
@@ -10223,6 +12116,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "wellrope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        920,928
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 7607.0,
@@ -10236,6 +12140,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        928
+      ],
+      "targetname": "wellrope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7607.0,
@@ -10515,6 +12429,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        854
+      ],
+      "targetname": "tc_2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6912.0,
@@ -10528,6 +12452,16 @@
       }
     },
     {
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        722
+      ],
+      "targetname": "tc_1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 6520.0,
@@ -10541,6 +12475,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "tc_1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        722
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6520.0,
@@ -10554,6 +12499,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "tc_2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        823,840,847,853,854
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 6912.0,
@@ -10759,6 +12715,17 @@
       }
     },
     {
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "tallrope1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        910,912
+      ],
+      "targetname": "tallrope",
       "classname": "keyframe_rope",
       "origin": {
         "x": 7424.0,
@@ -10772,6 +12739,18 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 4.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "tallrope",
+      "moveSpeed": 64.0,
+      "clusters": [
+        910,912
+      ],
+      "targetname": "tallrope1",
       "classname": "move_rope",
       "origin": {
         "x": 7424.0,
@@ -10977,6 +12956,7 @@
       }
     },
     {
+      "targetname": "waterjump",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 3335.37,
@@ -11542,6 +13522,7 @@
       }
     },
     {
+      "targetname": "sandblock_tele",
       "classname": "info_teleport_destination",
       "origin": {
         "x": 4868.0,
@@ -12978,6 +14959,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope9",
+      "moveSpeed": 64.0,
+      "clusters": [
+        349
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2864.0,
@@ -12991,6 +14983,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        349
+      ],
+      "targetname": "divider_rope9",
       "classname": "keyframe_rope",
       "origin": {
         "x": 2864.0,
@@ -13012,6 +15014,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope10",
+      "moveSpeed": 64.0,
+      "clusters": [
+        456
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2680.0,
@@ -13025,6 +15038,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        456
+      ],
+      "targetname": "divider_rope10",
       "classname": "keyframe_rope",
       "origin": {
         "x": 2680.0,
@@ -13038,6 +15061,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope11",
+      "moveSpeed": 64.0,
+      "clusters": [
+        349
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 2680.0,
@@ -13051,6 +15085,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        349
+      ],
+      "targetname": "divider_rope11",
       "classname": "keyframe_rope",
       "origin": {
         "x": 2680.0,
@@ -13596,6 +15640,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1011
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 3808.0,
@@ -13609,6 +15664,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1011
+      ],
+      "targetname": "divider_rope1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3808.0,
@@ -13622,6 +15687,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1005
+      ],
+      "targetname": "divider_rope2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 4192.0,
@@ -13635,6 +15710,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1005
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4192.0,
@@ -13648,6 +15734,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 0.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1060
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 3808.0,
@@ -13661,6 +15758,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1060
+      ],
+      "targetname": "divider_rope3",
       "classname": "keyframe_rope",
       "origin": {
         "x": 3808.0,
@@ -13674,6 +15781,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1051
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4192.0,
@@ -13687,6 +15805,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope3",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1011,1060
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 3808.0,
@@ -13700,6 +15829,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1051
+      ],
+      "targetname": "divider_rope4",
       "classname": "keyframe_rope",
       "origin": {
         "x": 4192.0,
@@ -13713,6 +15852,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope4",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1005,1051
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4192.0,
@@ -13726,6 +15876,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope5",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1051
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4576.0,
@@ -13739,6 +15900,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1051
+      ],
+      "targetname": "divider_rope5",
       "classname": "keyframe_rope",
       "origin": {
         "x": 4576.0,
@@ -13752,6 +15923,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope5",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1005,1051
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4576.0,
@@ -13765,6 +15947,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1050
+      ],
+      "targetname": "divider_rope6",
       "classname": "keyframe_rope",
       "origin": {
         "x": 4960.0,
@@ -13778,6 +15970,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1050
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4960.0,
@@ -13791,6 +15994,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope6",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1004,1005,1050,1051
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4576.0,
@@ -13804,6 +16018,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1004
+      ],
+      "targetname": "divider_rope7",
       "classname": "keyframe_rope",
       "origin": {
         "x": 4960.0,
@@ -13817,6 +16041,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope7",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1004
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4960.0,
@@ -13830,6 +16065,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 100.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope7",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1004,1005
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4576.0,
@@ -13843,6 +16089,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 8.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 90.0,
+      "ropeMaterial": 147,
+      "nextKey": "divider_rope8",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1005
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 4192.0,
@@ -13856,6 +16113,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 147,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1005
+      ],
+      "targetname": "divider_rope8",
       "classname": "keyframe_rope",
       "origin": {
         "x": 4192.0,
@@ -13917,6 +16184,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope_o1",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1152
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 520.0,
@@ -13930,6 +16208,17 @@
       }
     },
     {
+      "positionInterp": 2,
+      "width": 6.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 146,
+      "nextKey": "rope2",
+      "moveSpeed": 64.0,
+      "clusters": [
+        1152
+      ],
       "classname": "move_rope",
       "origin": {
         "x": 392.0,
@@ -13943,6 +16232,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1152
+      ],
+      "targetname": "rope_o1",
       "classname": "keyframe_rope",
       "origin": {
         "x": 520.0,
@@ -13956,6 +16255,16 @@
       }
     },
     {
+      "width": 2.0,
+      "textureScale": 1.0,
+      "subDivisions": 2,
+      "slack": 25.0,
+      "ropeMaterial": 146,
+      "moveSpeed": 64.0,
+      "clusters": [
+        1152
+      ],
+      "targetname": "rope2",
       "classname": "keyframe_rope",
       "origin": {
         "x": 392.0,
