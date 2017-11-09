@@ -146,13 +146,6 @@ namespace Gokz {
             });
         }
 
-        hidePlaybackBar(): void {
-            if (!this.playbackBarVisible) return;
-            this.playbackBarVisible = false;
-            this.playbackBarElem.classList.add("hidden");
-            this.lastActionTime = undefined;
-        }
-
         showPlaybackBar(): void {
             if (this.playbackBarVisible) {
                 this.lastActionTime = performance.now();
@@ -161,6 +154,15 @@ namespace Gokz {
 
             this.playbackBarVisible = true;
             this.playbackBarElem.classList.remove("hidden");
+        }
+
+        hidePlaybackBar(): void {
+            if (!this.playbackBarVisible) return;
+            this.playbackBarVisible = false;
+            this.playbackBarElem.classList.add("hidden");
+            this.lastActionTime = undefined;
+
+            this.hideSpeedControl();
         }
 
         showSpeedControl(): boolean {

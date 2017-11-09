@@ -22,6 +22,8 @@ namespace Gokz {
         private pauseTime = 1.0;
         private pauseTicks: number;
 
+        private wakeLock: any;
+
         private spareTime = 0;
 
         private tickData = new TickData();
@@ -71,7 +73,17 @@ namespace Gokz {
 
             this.isPlayingChanged.addListener(isPlaying => {
                 if (!isPlaying && this.saveTickInHash) this.updateTickHash();
-            })
+
+                if (isPlaying) {
+                    this.wakeLock = (navigator as any).wakeLock;
+                    if (this.wakeLock != null) {
+                        this.wakeLock.request("display");
+                    }
+                } else if (this.wakeLock != null) {
+                    this.wakeLock.release("display");
+                    this.wakeLock = null;
+                }
+            });
         }
 
         //
