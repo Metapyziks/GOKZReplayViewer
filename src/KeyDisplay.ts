@@ -42,6 +42,15 @@ namespace Gokz {
             this.syncValueElem = this.element.getElementsByClassName("sync-value")[0] as HTMLElement;
             this.speedValueElem = this.element.getElementsByClassName("speed-value")[0] as HTMLElement;
 
+            viewer.playbackSkipped.addListener(oldTick => {
+                this.syncIndex = 0;
+                this.syncSampleCount = 0;
+
+                this.lastTick = viewer.replay.clampTick(viewer.playbackRate > 0
+                    ? viewer.tick - 32
+                    : viewer.tick + 32);
+            });
+
             viewer.tickChanged.addListener(tickData => {
                 this.updateButtons(tickData);
                 this.updateSpeed();
@@ -79,15 +88,6 @@ namespace Gokz {
 
             if (syncBuffer.length < maxSamples) {
                 syncBuffer = this.syncBuffer = new Array<boolean>(maxSamples);
-                this.syncIndex = 0;
-                this.syncSampleCount = 0;
-            }
-
-            if (Math.abs(this.viewer.tick - this.lastTick) > 32) {
-                this.lastTick = replay.clampTick(this.viewer.playbackRate > 0
-                    ? this.viewer.tick - 32
-                    : this.viewer.tick + 32);
-
                 this.syncIndex = 0;
                 this.syncSampleCount = 0;
             }

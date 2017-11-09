@@ -25,6 +25,7 @@ namespace Gokz {
         private wakeLock: any;
 
         private spareTime = 0;
+        private prevTick = undefined;
 
         private tickData = new TickData();
 
@@ -56,10 +57,22 @@ namespace Gokz {
         // Public events
         //
 
+        // (replay: ReplayFile, sender: ReplayViewer)
         readonly replayLoaded = new Event<ReplayFile, ReplayViewer>(this);
+
+        // (tickData: TickData, sender: ReplayViewer)
         readonly tickChanged = new ChangedEvent<number, TickData, ReplayViewer>(this);
+        
+        // (oldTick: number, sender: ReplayViewer)
+        readonly playbackSkipped = new Event<number, ReplayViewer>(this);
+        
+        // (playbackRate: number, sender: ReplayViewer)
         readonly playbackRateChanged = new ChangedEvent<number, number, ReplayViewer>(this);
+        
+        // (isPlaying: boolean, sender: ReplayViewer)
         readonly isPlayingChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
+        
+        // (showCrosshair: boolean, sender: ReplayViewer)
         readonly showCrosshairChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
 
         //
@@ -216,6 +229,7 @@ namespace Gokz {
             this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
             this.tick = this.tick === -1 ? 0 : this.tick;
             this.spareTime = 0;
+            this.prevTick = undefined;
 
             this.replayLoaded.dispatch(this.replay);
 
@@ -252,6 +266,10 @@ namespace Gokz {
 
             this.isPlayingChanged.update(this.isPlaying);
 
+            if (this.prevTick !== undefined && this.tick !== this.prevTick) {
+                this.playbackSkipped.dispatch(this.prevTick);
+            }
+
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
 
@@ -279,6 +297,8 @@ namespace Gokz {
             } else {
                 this.spareTime = 0;
             }
+
+            this.prevTick = this.tick;
 
             replay.getTickData(replay.clampTick(this.tick), this.tickData);
             let eyeHeight = this.tickData.getEyeHeight();
