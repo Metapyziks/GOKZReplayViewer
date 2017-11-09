@@ -324,13 +324,6 @@ var Gokz;
                 _this.showPlaybackBar();
             });
         }
-        ReplayControls.prototype.hidePlaybackBar = function () {
-            if (!this.playbackBarVisible)
-                return;
-            this.playbackBarVisible = false;
-            this.playbackBarElem.classList.add("hidden");
-            this.lastActionTime = undefined;
-        };
         ReplayControls.prototype.showPlaybackBar = function () {
             if (this.playbackBarVisible) {
                 this.lastActionTime = performance.now();
@@ -338,6 +331,14 @@ var Gokz;
             }
             this.playbackBarVisible = true;
             this.playbackBarElem.classList.remove("hidden");
+        };
+        ReplayControls.prototype.hidePlaybackBar = function () {
+            if (!this.playbackBarVisible)
+                return;
+            this.playbackBarVisible = false;
+            this.playbackBarElem.classList.add("hidden");
+            this.lastActionTime = undefined;
+            this.hideSpeedControl();
         };
         ReplayControls.prototype.showSpeedControl = function () {
             if (this.speedControlVisible)
@@ -534,6 +535,16 @@ var Gokz;
             this.isPlayingChanged.addListener(function (isPlaying) {
                 if (!isPlaying && _this.saveTickInHash)
                     _this.updateTickHash();
+                if (isPlaying) {
+                    _this.wakeLock = navigator.wakeLock;
+                    if (_this.wakeLock != null) {
+                        _this.wakeLock.request("display");
+                    }
+                }
+                else if (_this.wakeLock != null) {
+                    _this.wakeLock.release("display");
+                    _this.wakeLock = null;
+                }
             });
         }
         //
