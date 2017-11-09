@@ -62,7 +62,7 @@ window.onload = function() {
 
     // Attach an event handler to when a replay file is loaded
     viewer.replayLoaded.addListener(function(replay) {
-        console.log("Replay is on map: " + replay.mapName ", ran by: " + replay.playerName);
+        console.log("Replay is on map: " + replay.mapName + ", ran by: " + replay.playerName);
     });
 
     // Attach an event handler to when the current tick changes
