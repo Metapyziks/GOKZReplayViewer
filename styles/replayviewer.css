@@ -146,20 +146,44 @@
 .map-viewer .key-display {
     position: absolute;
     width: 296px;
-    height: 200px;
+    height: 248px;
     left: 8px;
     bottom: 48px;
     background-color: rgba(0, 0, 0, 0.25);
 }
 
-.map-viewer .key-display .key {
+.map-viewer .key-display .stat, .map-viewer .key-display .key {
     position: absolute;
-    width: 64px;
-    height: 56px;
     text-align: center;
-    line-height: 56px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #666;
+}
+
+.map-viewer .key-display .stat {
+    top: 8px;
+    width: 136px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 10pt;
+}
+
+.map-viewer .key-display .sync-outer {
+    left: 8px;
+}
+
+.map-viewer .key-display .speed-outer {
+    right: 8px;
+}
+
+.map-viewer .key-display .stat .value {
+    color: #fff;
+    font-size: 12pt;
+}
+
+.map-viewer .key-display .key {
+    width: 64px;
+    height: 56px;
+    line-height: 56px;
     font-weight: bold;
 }
 
@@ -171,32 +195,32 @@
 
 .map-viewer .key-display .key-w {
     left: 152px;
-    top: 8px;
+    bottom: 136px;
 }
 
 .map-viewer .key-display .key-a {
     left: 80px;
-    top: 72px;
+    bottom: 72px;
 }
 
 .map-viewer .key-display .key-s {
     left: 152px;
-    top: 72px;
+    bottom: 72px;
 }
 
 .map-viewer .key-display .key-d {
     left: 224px;
-    top: 72px;
+    bottom: 72px;
 }
 
 .map-viewer .key-display .key-walk {
     left: 8px;
-    top: 8px;
+    bottom: 136px;
 }
 
 .map-viewer .key-display .key-duck {
     left: 8px;
-    top: 72px;
+    bottom: 72px;
 }
 
 .map-viewer .key-display .key-jump {

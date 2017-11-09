@@ -181,11 +181,15 @@ var Gokz;
         function KeyDisplay(viewer, container) {
             var _this = this;
             this.buttonMap = {};
+            this.speedSampleRange = 8;
+            this.tempTickData = new Gokz.TickData();
+            this.tempPosition = new Facepunch.Vector3();
+            this.viewer = viewer;
             if (container === undefined)
                 container = viewer.container;
             this.element = document.createElement("div");
             this.element.classList.add("key-display");
-            this.element.innerHTML = "\n                <div class=\"key key-w\">W</div>\n                <div class=\"key key-a\">A</div>\n                <div class=\"key key-s\">S</div>\n                <div class=\"key key-d\">D</div>\n                <div class=\"key key-walk\">Walk</div>\n                <div class=\"key key-duck\">Duck</div>\n                <div class=\"key key-jump\">Jump</div>";
+            this.element.innerHTML = "\n                <div class=\"stat sync-outer\">Sync: <span class=\"value sync-value\">0.0</span> %</div>\n                <div class=\"stat speed-outer\">Speed: <span class=\"value speed-value\">000</span> u/s</div>\n                <div class=\"key key-w\">W</div>\n                <div class=\"key key-a\">A</div>\n                <div class=\"key key-s\">S</div>\n                <div class=\"key key-d\">D</div>\n                <div class=\"key key-walk\">Walk</div>\n                <div class=\"key key-duck\">Duck</div>\n                <div class=\"key key-jump\">Jump</div>";
             container.appendChild(this.element);
             this.buttonMap[Gokz.Button.Forward] = this.element.getElementsByClassName("key-w")[0];
             this.buttonMap[Gokz.Button.MoveLeft] = this.element.getElementsByClassName("key-a")[0];
@@ -194,20 +198,39 @@ var Gokz;
             this.buttonMap[Gokz.Button.Walk] = this.element.getElementsByClassName("key-walk")[0];
             this.buttonMap[Gokz.Button.Duck] = this.element.getElementsByClassName("key-duck")[0];
             this.buttonMap[Gokz.Button.Jump] = this.element.getElementsByClassName("key-jump")[0];
+            this.speedValueElem = this.element.getElementsByClassName("speed-value")[0];
             viewer.tickChanged.addListener(function (tickData) {
-                _this.update(tickData.buttons);
+                for (var key in _this.buttonMap) {
+                    var pressed = (tickData.buttons & parseInt(key)) !== 0;
+                    if (pressed) {
+                        _this.buttonMap[key].classList.add("pressed");
+                    }
+                    else {
+                        _this.buttonMap[key].classList.remove("pressed");
+                    }
+                }
+                _this.updateSpeed();
             });
         }
-        KeyDisplay.prototype.update = function (keys) {
-            for (var key in this.buttonMap) {
-                var pressed = (keys & parseInt(key)) !== 0;
-                if (pressed) {
-                    this.buttonMap[key].classList.add("pressed");
-                }
-                else {
-                    this.buttonMap[key].classList.remove("pressed");
-                }
-            }
+        KeyDisplay.prototype.updateSpeed = function () {
+            // TODO: cache
+            var firstTick = this.viewer.replay.clampTick(this.viewer.tick - Math.floor(this.speedSampleRange / 2));
+            var lastTick = this.viewer.replay.clampTick(firstTick + this.speedSampleRange);
+            var tickRange = lastTick - firstTick;
+            var tickData = this.tempTickData;
+            var position = this.tempPosition;
+            var replay = this.viewer.replay;
+            replay.getTickData(lastTick, tickData);
+            position.copy(tickData.position);
+            replay.getTickData(firstTick, tickData);
+            position.sub(tickData.position);
+            // Ignore vertical speed
+            position.z = 0;
+            var period = Math.max(1, lastTick - firstTick) / replay.tickRate;
+            var speedString = Math.round(position.length() / period).toString();
+            for (; speedString.length < 3; speedString = "0" + speedString)
+                ;
+            this.speedValueElem.innerText = speedString;
         };
         KeyDisplay.prototype.show = function () {
             this.element.style.display = "block";
