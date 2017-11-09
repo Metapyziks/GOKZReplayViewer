@@ -40,6 +40,8 @@ namespace Gokz {
         mapBaseUrl: string;
         replay: ReplayFile;
 
+        saveTickInHash = true;
+
         tick = -1;
         playbackRate = 1.0;
         autoRepeat = true;
@@ -62,8 +64,14 @@ namespace Gokz {
         constructor(container: HTMLElement) {
             super(container);
 
+            this.saveCameraPosInHash = false;
+
             this.controls = new ReplayControls(this);
             this.keyDisplay = new KeyDisplay(this);
+
+            this.isPlayingChanged.addListener(isPlaying => {
+                if (!isPlaying && this.saveTickInHash) this.updateTickHash();
+            })
         }
 
         //
@@ -105,7 +113,7 @@ namespace Gokz {
         }
 
         updateTickHash(): void {
-            if (this.replay == null) return;
+            if (this.replay == null || !this.saveTickInHash) return;
             this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         }
 
@@ -131,11 +139,12 @@ namespace Gokz {
 
         protected onHashChange(hash: string | Object): void {
             if (typeof hash === "string") return;
+            if (!this.saveTickInHash) return;
 
             const data = hash as IHashData;
 
             if (data.t !== undefined && this.tick !== data.t) {
-                this.tick = data.t;
+                this.tick = data.t - 1;
                 this.isPlaying = false;
             }
         }
