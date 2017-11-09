@@ -178,10 +178,11 @@ var Gokz;
 var Gokz;
 (function (Gokz) {
     var KeyDisplay = (function () {
-        function KeyDisplay(viewer) {
+        function KeyDisplay(viewer, container) {
             var _this = this;
             this.buttonMap = {};
-            var container = viewer.container;
+            if (container === undefined)
+                container = viewer.container;
             this.element = document.createElement("div");
             this.element.classList.add("key-display");
             this.element.innerHTML = "\n                <div class=\"key key-w\">W</div>\n                <div class=\"key key-a\">A</div>\n                <div class=\"key key-s\">S</div>\n                <div class=\"key key-d\">D</div>\n                <div class=\"key key-walk\">Walk</div>\n                <div class=\"key key-duck\">Duck</div>\n                <div class=\"key key-jump\">Jump</div>";
@@ -223,70 +224,80 @@ var Gokz;
     var ReplayControls = (function () {
         function ReplayControls(viewer) {
             var _this = this;
+            this.playbackBarVisible = true;
+            this.mouseOverPlaybackBar = false;
             this.speedControlVisible = false;
+            this.autoHidePeriod = 2;
             this.viewer = viewer;
             this.container = viewer.container;
-            var playbackBar = document.createElement("div");
+            var playbackBar = this.playbackBarElem = document.createElement("div");
             playbackBar.classList.add("playback-bar");
             playbackBar.innerHTML = "\n                <div class=\"scrubber-container\">\n                <input class=\"scrubber\" type=\"range\" min=\"0\" max=\"1.0\" value=\"0.0\" step=\"1\" />\n                </div>";
+            playbackBar.addEventListener("mouseover", function (ev) {
+                _this.mouseOverPlaybackBar = true;
+            });
+            playbackBar.addEventListener("mouseout", function (ev) {
+                _this.mouseOverPlaybackBar = false;
+            });
             this.container.appendChild(playbackBar);
             this.scrubberElem = playbackBar.getElementsByClassName("scrubber")[0];
-            this.scrubberElem.oninput = function (ev) {
+            this.scrubberElem.addEventListener("input", function (ev) {
                 viewer.tick = _this.scrubberElem.valueAsNumber;
-            };
-            this.scrubberElem.onmousedown = function (ev) {
+            });
+            this.scrubberElem.addEventListener("mousedown", function (ev) {
                 _this.viewer.isScrubbing = true;
-            };
-            this.scrubberElem.onmouseup = function (ev) {
+            });
+            this.scrubberElem.addEventListener("mouseup", function (ev) {
                 _this.viewer.updateTickHash();
                 _this.viewer.isScrubbing = false;
-            };
+            });
             this.timeElem = document.createElement("div");
             this.timeElem.classList.add("time");
             playbackBar.appendChild(this.timeElem);
             this.speedElem = document.createElement("div");
             this.speedElem.classList.add("speed");
-            this.speedElem.onclick = function (ev) {
+            this.speedElem.addEventListener("click", function (ev) {
                 if (_this.speedControlVisible)
                     _this.hideSpeedControl();
                 else
                     _this.showSpeedControl();
-            };
+            });
             playbackBar.appendChild(this.speedElem);
             this.pauseElem = document.createElement("div");
             this.pauseElem.classList.add("pause");
             this.pauseElem.classList.add("control");
-            this.pauseElem.onclick = function (ev) { return _this.viewer.isPlaying = false; };
+            this.pauseElem.addEventListener("click", function (ev) { return _this.viewer.isPlaying = false; });
             playbackBar.appendChild(this.pauseElem);
             this.resumeElem = document.createElement("div");
             this.resumeElem.classList.add("play");
             this.resumeElem.classList.add("control");
-            this.resumeElem.onclick = function (ev) { return _this.viewer.isPlaying = true; };
+            this.resumeElem.addEventListener("click", function (ev) { return _this.viewer.isPlaying = true; });
             playbackBar.appendChild(this.resumeElem);
             this.settingsElem = document.createElement("div");
             this.settingsElem.classList.add("settings");
             this.settingsElem.classList.add("control");
-            this.settingsElem.onclick = function (ev) { return _this.showSettings(); };
+            this.settingsElem.addEventListener("click", function (ev) { return _this.showSettings(); });
             playbackBar.appendChild(this.settingsElem);
             this.fullscreenElem = document.createElement("div");
             this.fullscreenElem.classList.add("fullscreen");
             this.fullscreenElem.classList.add("control");
-            this.fullscreenElem.onclick = function (ev) { return _this.viewer.toggleFullscreen(); };
+            this.fullscreenElem.addEventListener("click", function (ev) { return _this.viewer.toggleFullscreen(); });
             playbackBar.appendChild(this.fullscreenElem);
             this.speedControlElem = document.createElement("div");
             this.speedControlElem.classList.add("speed-control");
             this.speedControlElem.innerHTML = "<input class=\"speed-slider\" type=\"range\" min=\"0\" max=\"" + (ReplayControls.speedSliderValues.length - 1) + "\" step=\"1\">";
             this.container.appendChild(this.speedControlElem);
             this.speedSliderElem = this.speedControlElem.getElementsByClassName("speed-slider")[0];
-            this.speedSliderElem.oninput = function (ev) {
+            this.speedSliderElem.addEventListener("input", function (ev) {
                 _this.viewer.playbackRate = ReplayControls.speedSliderValues[_this.speedSliderElem.valueAsNumber];
-            };
+            });
             viewer.replayLoaded.addListener(function (replay) {
                 _this.scrubberElem.max = replay.tickCount.toString();
             });
             viewer.isPlayingChanged.addListener(function (isPlaying) {
                 _this.pauseElem.style.display = isPlaying ? "block" : "none";
                 _this.resumeElem.style.display = isPlaying ? "none" : "block";
+                _this.showPlaybackBar();
             });
             viewer.playbackRateChanged.addListener(function (playbackRate) {
                 _this.speedElem.innerText = playbackRate.toString();
@@ -302,8 +313,32 @@ var Gokz;
                     _this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
                 }
                 _this.scrubberElem.valueAsNumber = tickData.tick;
+                if (viewer.isPlaying && !_this.mouseOverPlaybackBar) {
+                    var sinceLastAction = (performance.now() - _this.lastActionTime) / 1000;
+                    if (sinceLastAction >= _this.autoHidePeriod) {
+                        _this.hidePlaybackBar();
+                    }
+                }
+            });
+            viewer.container.addEventListener("mousemove", function (ev) {
+                _this.showPlaybackBar();
             });
         }
+        ReplayControls.prototype.hidePlaybackBar = function () {
+            if (!this.playbackBarVisible)
+                return;
+            this.playbackBarVisible = false;
+            this.playbackBarElem.classList.add("hidden");
+            this.lastActionTime = undefined;
+        };
+        ReplayControls.prototype.showPlaybackBar = function () {
+            if (this.playbackBarVisible) {
+                this.lastActionTime = performance.now();
+                return;
+            }
+            this.playbackBarVisible = true;
+            this.playbackBarElem.classList.remove("hidden");
+        };
         ReplayControls.prototype.showSpeedControl = function () {
             if (this.speedControlVisible)
                 return false;
@@ -495,7 +530,7 @@ var Gokz;
             this.ignoreMouseUp = true;
             this.saveCameraPosInHash = false;
             this.controls = new Gokz.ReplayControls(this);
-            this.keyDisplay = new Gokz.KeyDisplay(this);
+            this.keyDisplay = new Gokz.KeyDisplay(this, this.controls.playbackBarElem);
             this.isPlayingChanged.addListener(function (isPlaying) {
                 if (!isPlaying && _this.saveTickInHash)
                     _this.updateTickHash();
