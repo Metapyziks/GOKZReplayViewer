@@ -3,8 +3,8 @@ namespace Gokz {
         private readonly element: HTMLElement;
         private readonly buttonMap: {[button: number]: HTMLElement} = {};
 
-        constructor(viewer: ReplayViewer) {
-            const container = viewer.container;
+        constructor(viewer: ReplayViewer, container?: HTMLElement) {
+            if (container === undefined) container = viewer.container;
 
             this.element = document.createElement("div");
             this.element.classList.add("key-display");

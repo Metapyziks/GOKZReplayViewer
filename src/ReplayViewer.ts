@@ -67,7 +67,7 @@ namespace Gokz {
             this.saveCameraPosInHash = false;
 
             this.controls = new ReplayControls(this);
-            this.keyDisplay = new KeyDisplay(this);
+            this.keyDisplay = new KeyDisplay(this, this.controls.playbackBarElem);
 
             this.isPlayingChanged.addListener(isPlaying => {
                 if (!isPlaying && this.saveTickInHash) this.updateTickHash();

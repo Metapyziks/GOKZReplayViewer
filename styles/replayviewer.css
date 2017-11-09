@@ -1,3 +1,7 @@
+.map-viewer {
+    overflow: hidden;
+}
+
 .map-viewer .playback-bar {
     position: absolute;
     left: 0;
@@ -8,6 +12,13 @@
 
     background-color: rgba(15, 15, 15, 0.825);
     font-weight: 550;
+
+    transition: bottom 0.1s ease-out;
+}
+
+.map-viewer .playback-bar.hidden {
+    bottom: -40px;
+    transition: bottom 0.2s ease-in;
 }
 
 .map-viewer .playback-bar .scrubber-container {

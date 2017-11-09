@@ -5,45 +5,59 @@ namespace Gokz {
         private readonly viewer: ReplayViewer;
         private readonly container: HTMLElement;
 
-        private readonly timeElem: HTMLElement;
-        private readonly speedElem: HTMLElement;
-        private readonly pauseElem: HTMLElement;
-        private readonly resumeElem: HTMLElement;
-        private readonly settingsElem: HTMLElement;
-        private readonly fullscreenElem: HTMLElement;
-        private readonly scrubberElem: HTMLInputElement;
+        readonly playbackBarElem: HTMLElement;
+        readonly timeElem: HTMLElement;
+        readonly speedElem: HTMLElement;
+        readonly pauseElem: HTMLElement;
+        readonly resumeElem: HTMLElement;
+        readonly settingsElem: HTMLElement;
+        readonly fullscreenElem: HTMLElement;
+        readonly scrubberElem: HTMLInputElement;
 
-        private readonly speedControlElem: HTMLElement;
-        private readonly speedSliderElem: HTMLInputElement;
+        readonly speedControlElem: HTMLElement;
+        readonly speedSliderElem: HTMLInputElement;
 
+        private playbackBarVisible = true;
+        private mouseOverPlaybackBar = false;
         private speedControlVisible = false;
+        private lastActionTime: number;
+
+        autoHidePeriod = 2;
 
         constructor(viewer: ReplayViewer) {
             this.viewer = viewer;
             this.container = viewer.container;
 
-            const playbackBar = document.createElement("div");
+            const playbackBar = this.playbackBarElem = document.createElement("div");
             playbackBar.classList.add("playback-bar");
             playbackBar.innerHTML = `
                 <div class="scrubber-container">
                 <input class="scrubber" type="range" min="0" max="1.0" value="0.0" step="1" />
                 </div>`;
 
+            playbackBar.addEventListener("mouseover", ev => {
+                this.mouseOverPlaybackBar = true;
+            });
+
+            playbackBar.addEventListener("mouseout", ev => {
+                this.mouseOverPlaybackBar = false;
+            });
+
             this.container.appendChild(playbackBar);
 
             this.scrubberElem = playbackBar.getElementsByClassName("scrubber")[0] as HTMLInputElement;
-            this.scrubberElem.oninput = ev => {
+            this.scrubberElem.addEventListener("input", ev => {
                 viewer.tick = this.scrubberElem.valueAsNumber;
-            };
+            });
 
-            this.scrubberElem.onmousedown = ev => {
+            this.scrubberElem.addEventListener("mousedown", ev => {
                 this.viewer.isScrubbing = true;
-            };
+            });
 
-            this.scrubberElem.onmouseup = ev => {
+            this.scrubberElem.addEventListener("mouseup", ev => {
                 this.viewer.updateTickHash();
                 this.viewer.isScrubbing = false;
-            };
+            });
 
             this.timeElem = document.createElement("div");
             this.timeElem.classList.add("time");
@@ -51,34 +65,34 @@ namespace Gokz {
 
             this.speedElem = document.createElement("div");
             this.speedElem.classList.add("speed");
-            this.speedElem.onclick = ev => {
+            this.speedElem.addEventListener("click", ev => {
                 if (this.speedControlVisible) this.hideSpeedControl();
                 else this.showSpeedControl();
-            }
+            });
             playbackBar.appendChild(this.speedElem);
 
             this.pauseElem = document.createElement("div");
             this.pauseElem.classList.add("pause");
             this.pauseElem.classList.add("control");
-            this.pauseElem.onclick = ev => this.viewer.isPlaying = false;
+            this.pauseElem.addEventListener("click", ev => this.viewer.isPlaying = false);
             playbackBar.appendChild(this.pauseElem);
 
             this.resumeElem = document.createElement("div");
             this.resumeElem.classList.add("play");
             this.resumeElem.classList.add("control");
-            this.resumeElem.onclick = ev => this.viewer.isPlaying = true;
+            this.resumeElem.addEventListener("click", ev => this.viewer.isPlaying = true);
             playbackBar.appendChild(this.resumeElem);
 
             this.settingsElem = document.createElement("div");
             this.settingsElem.classList.add("settings");
             this.settingsElem.classList.add("control");
-            this.settingsElem.onclick = ev => this.showSettings();
+            this.settingsElem.addEventListener("click", ev => this.showSettings());
             playbackBar.appendChild(this.settingsElem);
 
             this.fullscreenElem = document.createElement("div");
             this.fullscreenElem.classList.add("fullscreen");
             this.fullscreenElem.classList.add("control");
-            this.fullscreenElem.onclick = ev => this.viewer.toggleFullscreen();
+            this.fullscreenElem.addEventListener("click", ev => this.viewer.toggleFullscreen());
             playbackBar.appendChild(this.fullscreenElem);
 
             this.speedControlElem = document.createElement("div");
@@ -87,9 +101,9 @@ namespace Gokz {
             this.container.appendChild(this.speedControlElem);
 
             this.speedSliderElem = this.speedControlElem.getElementsByClassName("speed-slider")[0] as HTMLInputElement;
-            this.speedSliderElem.oninput = ev => {
+            this.speedSliderElem.addEventListener("input", ev => {
                 this.viewer.playbackRate = ReplayControls.speedSliderValues[this.speedSliderElem.valueAsNumber];
-            }
+            });
 
             viewer.replayLoaded.addListener(replay => {
                 this.scrubberElem.max = replay.tickCount.toString();
@@ -98,6 +112,8 @@ namespace Gokz {
             viewer.isPlayingChanged.addListener(isPlaying => {
                 this.pauseElem.style.display = isPlaying ? "block" : "none";
                 this.resumeElem.style.display = isPlaying ? "none" : "block";
+
+                this.showPlaybackBar();
             });
 
             viewer.playbackRateChanged.addListener(playbackRate => {
@@ -116,7 +132,35 @@ namespace Gokz {
                 }
 
                 this.scrubberElem.valueAsNumber = tickData.tick;
+
+                if (viewer.isPlaying && !this.mouseOverPlaybackBar) {
+                    const sinceLastAction = (performance.now() - this.lastActionTime) / 1000;
+                    if (sinceLastAction >= this.autoHidePeriod) {
+                        this.hidePlaybackBar();
+                    }
+                }
             });
+
+            viewer.container.addEventListener("mousemove", ev => {
+                this.showPlaybackBar();
+            });
+        }
+
+        hidePlaybackBar(): void {
+            if (!this.playbackBarVisible) return;
+            this.playbackBarVisible = false;
+            this.playbackBarElem.classList.add("hidden");
+            this.lastActionTime = undefined;
+        }
+
+        showPlaybackBar(): void {
+            if (this.playbackBarVisible) {
+                this.lastActionTime = performance.now();
+                return;
+            }
+
+            this.playbackBarVisible = true;
+            this.playbackBarElem.classList.remove("hidden");
         }
 
         showSpeedControl(): boolean {
