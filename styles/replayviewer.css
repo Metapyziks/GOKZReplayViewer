@@ -2,6 +2,17 @@
     overflow: hidden;
 }
 
+.map-viewer .crosshair {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    margin-left: -8px;
+    margin-right: -8px;
+    left: 50%;
+    top: 50%;
+    background-image: url(../images/crosshair.png);
+}
+
 .map-viewer .playback-bar {
     position: absolute;
     left: 0;

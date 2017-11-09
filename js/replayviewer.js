@@ -521,6 +521,7 @@ var Gokz;
             this.autoRepeat = true;
             this.isScrubbing = false;
             this.isPlaying = false;
+            this.showCrosshair = true;
             //
             // Public events
             //
@@ -528,10 +529,17 @@ var Gokz;
             this.tickChanged = new Gokz.ChangedEvent(this);
             this.playbackRateChanged = new Gokz.ChangedEvent(this);
             this.isPlayingChanged = new Gokz.ChangedEvent(this);
+            this.showCrosshairChanged = new Gokz.ChangedEvent(this);
             this.ignoreMouseUp = true;
             this.saveCameraPosInHash = false;
             this.controls = new Gokz.ReplayControls(this);
             this.keyDisplay = new Gokz.KeyDisplay(this, this.controls.playbackBarElem);
+            var crosshair = document.createElement("div");
+            crosshair.classList.add("crosshair");
+            container.appendChild(crosshair);
+            this.showCrosshairChanged.addListener(function (showCrosshair) {
+                crosshair.hidden = !showCrosshair;
+            });
             this.isPlayingChanged.addListener(function (isPlaying) {
                 if (!isPlaying && _this.saveTickInHash)
                     _this.updateTickHash();
@@ -664,11 +672,12 @@ var Gokz;
                     this.onChangeReplay(this.replay);
                 }
             }
+            this.showCrosshairChanged.update(this.showCrosshair);
+            this.playbackRateChanged.update(this.playbackRate);
             if (this.replay == null)
                 return;
             var replay = this.replay;
             var tickPeriod = 1.0 / replay.tickRate;
-            this.playbackRateChanged.update(this.playbackRate);
             this.isPlayingChanged.update(this.isPlaying);
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;

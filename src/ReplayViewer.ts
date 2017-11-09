@@ -50,6 +50,8 @@ namespace Gokz {
         isScrubbing = false;
         isPlaying = false;
 
+        showCrosshair = true;
+
         //
         // Public events
         //
@@ -58,6 +60,7 @@ namespace Gokz {
         readonly tickChanged = new ChangedEvent<number, TickData, ReplayViewer>(this);
         readonly playbackRateChanged = new ChangedEvent<number, number, ReplayViewer>(this);
         readonly isPlayingChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
+        readonly showCrosshairChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
 
         //
         // Public constructors
@@ -70,6 +73,14 @@ namespace Gokz {
 
             this.controls = new ReplayControls(this);
             this.keyDisplay = new KeyDisplay(this, this.controls.playbackBarElem);
+
+            const crosshair = document.createElement("div");
+            crosshair.classList.add("crosshair");
+            container.appendChild(crosshair);
+
+            this.showCrosshairChanged.addListener(showCrosshair => {
+                crosshair.hidden = !showCrosshair;
+            });
 
             this.isPlayingChanged.addListener(isPlaying => {
                 if (!isPlaying && this.saveTickInHash) this.updateTickHash();
@@ -231,12 +242,14 @@ namespace Gokz {
                 }
             }
 
+            this.showCrosshairChanged.update(this.showCrosshair);
+            this.playbackRateChanged.update(this.playbackRate);
+
             if (this.replay == null) return;
 
             const replay = this.replay;
             const tickPeriod = 1.0 / replay.tickRate;
 
-            this.playbackRateChanged.update(this.playbackRate);
             this.isPlayingChanged.update(this.isPlaying);
 
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
