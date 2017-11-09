@@ -50,7 +50,10 @@ namespace Gokz {
         // Public events
         //
 
-        onreplayloaded: (this: ReplayViewer, replay: ReplayFile) => void;
+        readonly replayLoaded = new Event<ReplayFile, ReplayViewer>(this);
+        readonly tickChanged = new ChangedEvent<number, TickData, ReplayViewer>(this);
+        readonly playbackRateChanged = new ChangedEvent<number, number, ReplayViewer>(this);
+        readonly isPlayingChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
 
         //
         // Public constructors
@@ -60,7 +63,7 @@ namespace Gokz {
             super(container);
 
             this.controls = new ReplayControls(this);
-            this.keyDisplay = new KeyDisplay(container);
+            this.keyDisplay = new KeyDisplay(this);
         }
 
         //
@@ -182,9 +185,7 @@ namespace Gokz {
             this.tick = this.tick === -1 ? 0 : this.tick;
             this.spareTime = 0;
 
-            if (this.onreplayloaded != null) {
-                this.onreplayloaded(this.replay);
-            }
+            this.replayLoaded.dispatch(this.replay);
 
             if (this.currentMapName !== replay.mapName) {
                 if (this.currentMapName != null) {
@@ -213,6 +214,9 @@ namespace Gokz {
 
             const replay = this.replay;
             const tickPeriod = 1.0 / replay.tickRate;
+
+            this.playbackRateChanged.update(this.playbackRate);
+            this.isPlayingChanged.update(this.isPlaying);
 
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
@@ -245,6 +249,8 @@ namespace Gokz {
             replay.getTickData(replay.clampTick(this.tick), this.tickData);
             let eyeHeight = this.tickData.getEyeHeight();
 
+            this.tickChanged.update(this.tick, this.tickData);
+
             if (this.spareTime >= 0 && this.spareTime <= tickPeriod) {
                 const t = this.spareTime / tickPeriod;
 
@@ -262,9 +268,6 @@ namespace Gokz {
                     d0.getEyeHeight(), d1.getEyeHeight(),
                     d2.getEyeHeight(), d3.getEyeHeight(), t);
             }
-
-            this.controls.update();
-            this.keyDisplay.update(this.tickData.buttons);
 
             this.mainCamera.setPosition(
                 this.tickData.position.x,

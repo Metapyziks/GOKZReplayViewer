@@ -57,7 +57,7 @@
                 viewer.showDebugPanel = true;
                 viewer.mapBaseUrl = "${MAPSURL}";
 
-                viewer.onreplayloaded = function(replay) {
+                viewer.replayLoaded.addListener(function(replay) {
                     var mins = Math.floor(replay.time / 60);
                     var secs = replay.time - (mins * 60);
                     var secsString = secs.toFixed(3);
@@ -70,7 +70,7 @@
 
                     document.getElementById("title").innerText = title;
                     document.title = title;
-                };
+                });
 
                 var searchParams = new URLSearchParams(window.location.search);
                 var replayUrl = searchParams.get("replay");

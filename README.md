@@ -60,6 +60,18 @@ window.onload = function() {
     // Start downloading a replay
     viewer.loadReplay("http://www.example.com/replays/test-replay.replay");
 
+    // Attach an event handler to when a replay file is loaded
+    viewer.replayLoaded.addListener(function(replay) {
+        console.log("Replay is on map: " + replay.mapName ", ran by: " + replay.playerName);
+    });
+
+    // Attach an event handler to when the current tick changes
+    viewer.tickChanged.addListener(function(tickData) {
+        if ((tickData.buttons & Gokz.Button.Jump) !== 0) {
+            console.log("Jump is pressed on tick: " + tickData.tick);
+        }
+    });
+
     // Start the main loop
     viewer.animate();
 }

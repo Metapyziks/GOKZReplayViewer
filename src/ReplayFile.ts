@@ -75,6 +75,7 @@ namespace Gokz {
     export class TickData {
         readonly position = new Facepunch.Vector3();
         readonly angles = new Facepunch.Vector2();
+        tick = -1;
         buttons: Button = 0;
         flags: EntityFlag = 0;
 
@@ -135,6 +136,8 @@ namespace Gokz {
 
         getTickData(tick: number, data?: TickData): TickData {
             if (data === undefined) data = new TickData();
+
+            data.tick = tick;
 
             const reader = this.reader;
             reader.seek(this.firstTickOffset + this.tickSize * tick, SeekOrigin.Begin);

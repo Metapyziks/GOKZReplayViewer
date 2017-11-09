@@ -17,10 +17,6 @@ namespace Gokz {
         private readonly speedSliderElem: HTMLInputElement;
 
         private speedControlVisible = false;
-        private wasPlaying: boolean;
-        private lastTick: number;
-        private lastTickCount: number;
-        private lastPlaybackRate: number;
 
         constructor(viewer: ReplayViewer) {
             this.viewer = viewer;
@@ -94,6 +90,33 @@ namespace Gokz {
             this.speedSliderElem.oninput = ev => {
                 this.viewer.playbackRate = ReplayControls.speedSliderValues[this.speedSliderElem.valueAsNumber];
             }
+
+            viewer.replayLoaded.addListener(replay => {
+                this.scrubberElem.max = replay.tickCount.toString();
+            });
+
+            viewer.isPlayingChanged.addListener(isPlaying => {
+                this.pauseElem.style.display = isPlaying ? "block" : "none";
+                this.resumeElem.style.display = isPlaying ? "none" : "block";
+            });
+
+            viewer.playbackRateChanged.addListener(playbackRate => {
+                this.speedElem.innerText = playbackRate.toString();
+                this.speedSliderElem.valueAsNumber = ReplayControls.speedSliderValues.indexOf(playbackRate);
+            });
+
+            viewer.tickChanged.addListener(tickData => {
+                const replay = this.viewer.replay;
+                if (replay != null) {
+                    const totalSeconds = replay.clampTick(tickData.tick) / replay.tickRate;
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds - minutes * 60;
+                    const secondsString = seconds.toFixed(1);
+                    this.timeElem.innerText = `${minutes}:${secondsString.indexOf(".") === 1 ? "0" : ""}${secondsString}`;
+                }
+
+                this.scrubberElem.valueAsNumber = tickData.tick;
+            });
         }
 
         showSpeedControl(): boolean {
@@ -117,40 +140,6 @@ namespace Gokz {
         showSettings(): void {
             // TODO
             this.viewer.showDebugPanel = !this.viewer.showDebugPanel;
-        }
-
-        update(): void {
-            if (this.wasPlaying !== this.viewer.isPlaying) {
-                const isPlaying = this.wasPlaying = this.viewer.isPlaying;
-                this.pauseElem.style.display = isPlaying ? "block" : "none";
-                this.resumeElem.style.display = isPlaying ? "none" : "block";
-            }
-
-            if (this.lastTickCount !== this.viewer.replay.tickCount) {
-                const tickCount = this.lastTickCount = this.viewer.replay.tickCount;
-                this.scrubberElem.max = tickCount.toString();
-            }
-
-            if (this.lastTick !== this.viewer.tick) {
-                const tick = this.lastTick = this.viewer.tick;
-
-                const replay = this.viewer.replay;
-                if (replay != null) {
-                    const totalSeconds = replay.clampTick(tick) / replay.tickRate;
-                    const minutes = Math.floor(totalSeconds / 60);
-                    const seconds = totalSeconds - minutes * 60;
-                    const secondsString = seconds.toFixed(1);
-                    this.timeElem.innerText = `${minutes}:${secondsString.indexOf(".") === 1 ? "0" : ""}${secondsString}`;
-                }
-
-                this.scrubberElem.valueAsNumber = this.lastTick;
-            }
-
-            if (this.lastPlaybackRate !== this.viewer.playbackRate) {
-                const playbackRate = this.lastPlaybackRate = this.viewer.playbackRate;
-                this.speedElem.innerText = playbackRate.toString();
-                this.speedSliderElem.valueAsNumber = ReplayControls.speedSliderValues.indexOf(playbackRate);
-            }
         }
     }
 }

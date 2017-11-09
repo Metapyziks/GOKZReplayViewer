@@ -3,7 +3,9 @@ namespace Gokz {
         private readonly element: HTMLElement;
         private readonly buttonMap: {[button: number]: HTMLElement} = {};
 
-        constructor(container: HTMLElement) {
+        constructor(viewer: ReplayViewer) {
+            const container = viewer.container;
+
             this.element = document.createElement("div");
             this.element.classList.add("key-display");
             this.element.innerHTML = `
@@ -24,6 +26,10 @@ namespace Gokz {
             this.buttonMap[Button.Walk] = this.element.getElementsByClassName("key-walk")[0] as HTMLElement;
             this.buttonMap[Button.Duck] = this.element.getElementsByClassName("key-duck")[0] as HTMLElement;
             this.buttonMap[Button.Jump] = this.element.getElementsByClassName("key-jump")[0] as HTMLElement;
+
+            viewer.tickChanged.addListener(tickData => {
+                this.update(tickData.buttons);
+            });
         }
 
         update(keys: Button): void {
