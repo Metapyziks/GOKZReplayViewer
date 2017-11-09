@@ -124,9 +124,64 @@ var Gokz;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {
+    var Event = (function () {
+        function Event(sender) {
+            this.handlers = [];
+            this.sender = sender;
+        }
+        Event.prototype.addListener = function (handler) {
+            this.handlers.push(handler);
+        };
+        Event.prototype.removeListener = function (handler) {
+            var index = this.handlers.indexOf(handler);
+            if (index === -1)
+                return false;
+            this.handlers.splice(index, 1);
+            return true;
+        };
+        Event.prototype.clearListeners = function () {
+            this.handlers = [];
+        };
+        Event.prototype.dispatch = function (args) {
+            var count = this.handlers.length;
+            for (var i = 0; i < count; ++i) {
+                this.handlers[i](args, this.sender);
+            }
+        };
+        return Event;
+    }());
+    Gokz.Event = Event;
+    var ChangedEvent = (function (_super) {
+        __extends(ChangedEvent, _super);
+        function ChangedEvent(sender, equalityComparison) {
+            _super.call(this, sender);
+            if (equalityComparison != null) {
+                this.equalityComparison = equalityComparison;
+            }
+            else {
+                this.equalityComparison = function (a, b) { return a === b; };
+            }
+        }
+        ChangedEvent.prototype.reset = function () {
+            this.prevValue = undefined;
+        };
+        ChangedEvent.prototype.update = function (value, args) {
+            if (this.equalityComparison(this.prevValue, value))
+                return;
+            this.prevValue = value;
+            this.dispatch(args === undefined ? value : args);
+        };
+        return ChangedEvent;
+    }(Event));
+    Gokz.ChangedEvent = ChangedEvent;
+})(Gokz || (Gokz = {}));
+var Gokz;
+(function (Gokz) {
     var KeyDisplay = (function () {
-        function KeyDisplay(container) {
+        function KeyDisplay(viewer) {
+            var _this = this;
             this.buttonMap = {};
+            var container = viewer.container;
             this.element = document.createElement("div");
             this.element.classList.add("key-display");
             this.element.innerHTML = "\n                <div class=\"key key-w\">W</div>\n                <div class=\"key key-a\">A</div>\n                <div class=\"key key-s\">S</div>\n                <div class=\"key key-d\">D</div>\n                <div class=\"key key-walk\">Walk</div>\n                <div class=\"key key-duck\">Duck</div>\n                <div class=\"key key-jump\">Jump</div>";
@@ -138,6 +193,9 @@ var Gokz;
             this.buttonMap[Gokz.Button.Walk] = this.element.getElementsByClassName("key-walk")[0];
             this.buttonMap[Gokz.Button.Duck] = this.element.getElementsByClassName("key-duck")[0];
             this.buttonMap[Gokz.Button.Jump] = this.element.getElementsByClassName("key-jump")[0];
+            viewer.tickChanged.addListener(function (tickData) {
+                _this.update(tickData.buttons);
+            });
         }
         KeyDisplay.prototype.update = function (keys) {
             for (var key in this.buttonMap) {
@@ -223,6 +281,28 @@ var Gokz;
             this.speedSliderElem.oninput = function (ev) {
                 _this.viewer.playbackRate = ReplayControls.speedSliderValues[_this.speedSliderElem.valueAsNumber];
             };
+            viewer.replayLoaded.addListener(function (replay) {
+                _this.scrubberElem.max = replay.tickCount.toString();
+            });
+            viewer.isPlayingChanged.addListener(function (isPlaying) {
+                _this.pauseElem.style.display = isPlaying ? "block" : "none";
+                _this.resumeElem.style.display = isPlaying ? "none" : "block";
+            });
+            viewer.playbackRateChanged.addListener(function (playbackRate) {
+                _this.speedElem.innerText = playbackRate.toString();
+                _this.speedSliderElem.valueAsNumber = ReplayControls.speedSliderValues.indexOf(playbackRate);
+            });
+            viewer.tickChanged.addListener(function (tickData) {
+                var replay = _this.viewer.replay;
+                if (replay != null) {
+                    var totalSeconds = replay.clampTick(tickData.tick) / replay.tickRate;
+                    var minutes = Math.floor(totalSeconds / 60);
+                    var seconds = totalSeconds - minutes * 60;
+                    var secondsString = seconds.toFixed(1);
+                    _this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
+                }
+                _this.scrubberElem.valueAsNumber = tickData.tick;
+            });
         }
         ReplayControls.prototype.showSpeedControl = function () {
             if (this.speedControlVisible)
@@ -241,34 +321,6 @@ var Gokz;
         ReplayControls.prototype.showSettings = function () {
             // TODO
             this.viewer.showDebugPanel = !this.viewer.showDebugPanel;
-        };
-        ReplayControls.prototype.update = function () {
-            if (this.wasPlaying !== this.viewer.isPlaying) {
-                var isPlaying = this.wasPlaying = this.viewer.isPlaying;
-                this.pauseElem.style.display = isPlaying ? "block" : "none";
-                this.resumeElem.style.display = isPlaying ? "none" : "block";
-            }
-            if (this.lastTickCount !== this.viewer.replay.tickCount) {
-                var tickCount = this.lastTickCount = this.viewer.replay.tickCount;
-                this.scrubberElem.max = tickCount.toString();
-            }
-            if (this.lastTick !== this.viewer.tick) {
-                var tick = this.lastTick = this.viewer.tick;
-                var replay = this.viewer.replay;
-                if (replay != null) {
-                    var totalSeconds = replay.clampTick(tick) / replay.tickRate;
-                    var minutes = Math.floor(totalSeconds / 60);
-                    var seconds = totalSeconds - minutes * 60;
-                    var secondsString = seconds.toFixed(1);
-                    this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
-                }
-                this.scrubberElem.valueAsNumber = this.lastTick;
-            }
-            if (this.lastPlaybackRate !== this.viewer.playbackRate) {
-                var playbackRate = this.lastPlaybackRate = this.viewer.playbackRate;
-                this.speedElem.innerText = playbackRate.toString();
-                this.speedSliderElem.valueAsNumber = ReplayControls.speedSliderValues.indexOf(playbackRate);
-            }
         };
         ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
         return ReplayControls;
@@ -354,6 +406,7 @@ var Gokz;
         function TickData() {
             this.position = new Facepunch.Vector3();
             this.angles = new Facepunch.Vector2();
+            this.tick = -1;
             this.buttons = 0;
             this.flags = 0;
         }
@@ -390,6 +443,7 @@ var Gokz;
         ReplayFile.prototype.getTickData = function (tick, data) {
             if (data === undefined)
                 data = new TickData();
+            data.tick = tick;
             var reader = this.reader;
             reader.seek(this.firstTickOffset + this.tickSize * tick, Gokz.SeekOrigin.Begin);
             reader.readVector3(data.position);
@@ -429,9 +483,16 @@ var Gokz;
             this.autoRepeat = true;
             this.isScrubbing = false;
             this.isPlaying = false;
+            //
+            // Public events
+            //
+            this.replayLoaded = new Gokz.Event(this);
+            this.tickChanged = new Gokz.ChangedEvent(this);
+            this.playbackRateChanged = new Gokz.ChangedEvent(this);
+            this.isPlayingChanged = new Gokz.ChangedEvent(this);
             this.ignoreMouseUp = true;
             this.controls = new Gokz.ReplayControls(this);
-            this.keyDisplay = new Gokz.KeyDisplay(container);
+            this.keyDisplay = new Gokz.KeyDisplay(this);
         }
         //
         // Public Methods
@@ -530,9 +591,7 @@ var Gokz;
             this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
             this.tick = this.tick === -1 ? 0 : this.tick;
             this.spareTime = 0;
-            if (this.onreplayloaded != null) {
-                this.onreplayloaded(this.replay);
-            }
+            this.replayLoaded.dispatch(this.replay);
             if (this.currentMapName !== replay.mapName) {
                 if (this.currentMapName != null) {
                     this.map.unload();
@@ -554,6 +613,8 @@ var Gokz;
                 return;
             var replay = this.replay;
             var tickPeriod = 1.0 / replay.tickRate;
+            this.playbackRateChanged.update(this.playbackRate);
+            this.isPlayingChanged.update(this.isPlaying);
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
                 var oldTick = this.tick;
@@ -579,6 +640,7 @@ var Gokz;
             }
             replay.getTickData(replay.clampTick(this.tick), this.tickData);
             var eyeHeight = this.tickData.getEyeHeight();
+            this.tickChanged.update(this.tick, this.tickData);
             if (this.spareTime >= 0 && this.spareTime <= tickPeriod) {
                 var t = this.spareTime / tickPeriod;
                 var d0 = replay.getTickData(replay.clampTick(this.tick - 1), this.tempTickData0);
@@ -589,8 +651,6 @@ var Gokz;
                 Gokz.Utils.hermiteAngles(d0.angles, d1.angles, d2.angles, d3.angles, t, this.tickData.angles);
                 eyeHeight = Gokz.Utils.hermiteValue(d0.getEyeHeight(), d1.getEyeHeight(), d2.getEyeHeight(), d3.getEyeHeight(), t);
             }
-            this.controls.update();
-            this.keyDisplay.update(this.tickData.buttons);
             this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
             this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
         };
