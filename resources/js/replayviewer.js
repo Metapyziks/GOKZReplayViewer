@@ -206,6 +206,13 @@ var Gokz;
             this.buttonMap[Gokz.Button.Jump] = this.element.getElementsByClassName("key-jump")[0];
             this.syncValueElem = this.element.getElementsByClassName("sync-value")[0];
             this.speedValueElem = this.element.getElementsByClassName("speed-value")[0];
+            viewer.playbackSkipped.addListener(function (oldTick) {
+                _this.syncIndex = 0;
+                _this.syncSampleCount = 0;
+                _this.lastTick = viewer.replay.clampTick(viewer.playbackRate > 0
+                    ? viewer.tick - 32
+                    : viewer.tick + 32);
+            });
             viewer.tickChanged.addListener(function (tickData) {
                 _this.updateButtons(tickData);
                 _this.updateSpeed();
@@ -231,13 +238,6 @@ var Gokz;
             var syncBuffer = this.syncBuffer;
             if (syncBuffer.length < maxSamples) {
                 syncBuffer = this.syncBuffer = new Array(maxSamples);
-                this.syncIndex = 0;
-                this.syncSampleCount = 0;
-            }
-            if (Math.abs(this.viewer.tick - this.lastTick) > 32) {
-                this.lastTick = replay.clampTick(this.viewer.playbackRate > 0
-                    ? this.viewer.tick - 32
-                    : this.viewer.tick + 32);
                 this.syncIndex = 0;
                 this.syncSampleCount = 0;
             }
@@ -588,6 +588,7 @@ var Gokz;
             var _this = _super.call(this, container) || this;
             _this.pauseTime = 1.0;
             _this.spareTime = 0;
+            _this.prevTick = undefined;
             _this.tickData = new Gokz.TickData();
             _this.tempTickData0 = new Gokz.TickData();
             _this.tempTickData1 = new Gokz.TickData();
@@ -602,10 +603,17 @@ var Gokz;
             //
             // Public events
             //
+            // (replay: ReplayFile, sender: ReplayViewer)
             _this.replayLoaded = new Gokz.Event(_this);
+            // (tickData: TickData, sender: ReplayViewer)
             _this.tickChanged = new Gokz.ChangedEvent(_this);
+            // (oldTick: number, sender: ReplayViewer)
+            _this.playbackSkipped = new Gokz.Event(_this);
+            // (playbackRate: number, sender: ReplayViewer)
             _this.playbackRateChanged = new Gokz.ChangedEvent(_this);
+            // (isPlaying: boolean, sender: ReplayViewer)
             _this.isPlayingChanged = new Gokz.ChangedEvent(_this);
+            // (showCrosshair: boolean, sender: ReplayViewer)
             _this.showCrosshairChanged = new Gokz.ChangedEvent(_this);
             _this.ignoreMouseUp = true;
             _this.saveCameraPosInHash = false;
@@ -732,6 +740,7 @@ var Gokz;
             this.pauseTicks = Math.round(replay.tickRate * this.pauseTime);
             this.tick = this.tick === -1 ? 0 : this.tick;
             this.spareTime = 0;
+            this.prevTick = undefined;
             this.replayLoaded.dispatch(this.replay);
             if (this.currentMapName !== replay.mapName) {
                 if (this.currentMapName != null) {
@@ -757,6 +766,9 @@ var Gokz;
             var replay = this.replay;
             var tickPeriod = 1.0 / replay.tickRate;
             this.isPlayingChanged.update(this.isPlaying);
+            if (this.prevTick !== undefined && this.tick !== this.prevTick) {
+                this.playbackSkipped.dispatch(this.prevTick);
+            }
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
                 var oldTick = this.tick;
@@ -780,6 +792,7 @@ var Gokz;
             else {
                 this.spareTime = 0;
             }
+            this.prevTick = this.tick;
             replay.getTickData(replay.clampTick(this.tick), this.tickData);
             var eyeHeight = this.tickData.getEyeHeight();
             this.tickChanged.update(this.tick, this.tickData);
