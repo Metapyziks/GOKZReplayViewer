@@ -5,9 +5,11 @@ namespace Gokz {
         private readonly element: HTMLElement;
         private readonly buttonMap: {[button: number]: HTMLElement} = {};
 
+        private readonly syncValueElem: HTMLElement;
         private readonly speedValueElem: HTMLElement;
 
-        speedSampleRange = 8;
+        syncSampleRange = 4;
+        speedSampleRange = 1 / 8;
 
         constructor(viewer: ReplayViewer, container?: HTMLElement) {
             this.viewer = viewer;
@@ -37,36 +39,95 @@ namespace Gokz {
             this.buttonMap[Button.Duck] = this.element.getElementsByClassName("key-duck")[0] as HTMLElement;
             this.buttonMap[Button.Jump] = this.element.getElementsByClassName("key-jump")[0] as HTMLElement;
 
+            this.syncValueElem = this.element.getElementsByClassName("sync-value")[0] as HTMLElement;
             this.speedValueElem = this.element.getElementsByClassName("speed-value")[0] as HTMLElement;
 
             viewer.tickChanged.addListener(tickData => {
-                for (let key in this.buttonMap) {
-                    const pressed = (tickData.buttons & (parseInt(key) as Button)) !== 0;
-    
-                    if (pressed) {
-                        this.buttonMap[key].classList.add("pressed");
-                    } else {
-                        this.buttonMap[key].classList.remove("pressed");
-                    }
-                }
-
+                this.updateButtons(tickData);
                 this.updateSpeed();
+                this.updateSync();
             });
         }
 
-        private readonly tempTickData = new Gokz.TickData();
+        private updateButtons(tickData: TickData): void {
+            for (let key in this.buttonMap) {
+                const pressed = (tickData.buttons & (parseInt(key) as Button)) !== 0;
+
+                if (pressed) {
+                    this.buttonMap[key].classList.add("pressed");
+                } else {
+                    this.buttonMap[key].classList.remove("pressed");
+                }
+            }
+        }
+
+        private readonly tempTickData = new TickData();
         private readonly tempPosition = new Facepunch.Vector3();
 
-        private updateSpeed(): void {
-            // TODO: cache
+        private syncBuffer: boolean[] = [];
+        private syncIndex = 0;
+        private syncSampleCount = 0;
 
-            const firstTick = this.viewer.replay.clampTick(this.viewer.tick - Math.floor(this.speedSampleRange / 2));
-            const lastTick = this.viewer.replay.clampTick(firstTick + this.speedSampleRange);
-            const tickRange = lastTick - firstTick;
+        private lastTick = 0;
+
+        private updateSync(): void {
+            if (this.lastTick === this.viewer.tick) return;
+
+            const replay = this.viewer.replay;
+            const maxSamples = Math.ceil(this.syncSampleRange * replay.tickRate);
+            let syncBuffer = this.syncBuffer;
+
+            if (syncBuffer.length < maxSamples) {
+                syncBuffer = this.syncBuffer = new Array<boolean>(maxSamples);
+                this.syncIndex = 0;
+                this.syncSampleCount = 0;
+            }
+
+            if (Math.abs(this.viewer.tick - this.lastTick) > 32) {
+                this.lastTick = replay.clampTick(this.viewer.playbackRate > 0
+                    ? this.viewer.tick - 32
+                    : this.viewer.tick + 32);
+
+                this.syncIndex = 0;
+                this.syncSampleCount = 0;
+            }
+
+            const min = replay.clampTick(Math.min(this.lastTick, this.viewer.tick) - 1);
+            const max = replay.clampTick(Math.max(this.lastTick, this.viewer.tick));
+
+            let prevSpeed = this.getSpeedAtTick(min, 1);
+            for (let i = min + 1; i <= max; ++i) {
+                const nextSpeed = this.getSpeedAtTick(i, 1);
+
+                // A bit gross
+                if ((this.tempTickData.flags & (EntityFlag.OnGround | EntityFlag.PartialGround)) === 0) {
+                    syncBuffer[this.syncIndex] = nextSpeed > prevSpeed;
+                    this.syncIndex = this.syncIndex >= maxSamples - 1 ? 0 : this.syncIndex + 1;
+                    this.syncSampleCount = Math.min(this.syncSampleCount + 1, maxSamples);
+                }
+
+                prevSpeed = nextSpeed;
+            }
+
+            this.lastTick = this.viewer.tick;
+
+            let syncFraction = 0.0;
+            for (let i = 0; i < this.syncSampleCount; ++i) {
+                if (syncBuffer[i]) ++syncFraction;
+            }
+
+            syncFraction /= Math.max(this.syncSampleCount, 1);
+            this.syncValueElem.innerText = (syncFraction * 100).toFixed(1);
+        }
+
+        private getSpeedAtTick(tick: number, tickRange: number): number {
+            const replay = this.viewer.replay;
+            const firstTick = replay.clampTick(tick - Math.ceil(tickRange / 2));
+            const lastTick = replay.clampTick(firstTick + tickRange);
+            tickRange = lastTick - firstTick;
 
             const tickData = this.tempTickData;
             const position = this.tempPosition;
-            const replay = this.viewer.replay;
 
             replay.getTickData(lastTick, tickData);
             position.copy(tickData.position);
@@ -77,8 +138,16 @@ namespace Gokz {
             // Ignore vertical speed
             position.z = 0;
 
-            const period = Math.max(1, lastTick - firstTick) / replay.tickRate;
-            let speedString = Math.round(position.length() / period).toString();
+            return position.length() * replay.tickRate / Math.max(1, lastTick - firstTick);
+        }
+
+        private updateSpeed(): void {
+            // TODO: cache
+
+            const replay = this.viewer.replay;
+            const maxTickRange = Math.ceil(this.speedSampleRange * replay.tickRate);
+
+            let speedString = Math.round(this.getSpeedAtTick(this.viewer.tick, maxTickRange)).toString();
 
             for (; speedString.length < 3; speedString = "0" + speedString);
 
