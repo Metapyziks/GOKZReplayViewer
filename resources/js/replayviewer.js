@@ -471,6 +471,7 @@ var Gokz;
         // Public constructors
         //
         function ReplayViewer(container) {
+            var _this = this;
             _super.call(this, container);
             this.pauseTime = 1.0;
             this.spareTime = 0;
@@ -478,6 +479,7 @@ var Gokz;
             this.tempTickData0 = new Gokz.TickData();
             this.tempTickData1 = new Gokz.TickData();
             this.tempTickData2 = new Gokz.TickData();
+            this.saveTickInHash = true;
             this.tick = -1;
             this.playbackRate = 1.0;
             this.autoRepeat = true;
@@ -491,8 +493,13 @@ var Gokz;
             this.playbackRateChanged = new Gokz.ChangedEvent(this);
             this.isPlayingChanged = new Gokz.ChangedEvent(this);
             this.ignoreMouseUp = true;
+            this.saveCameraPosInHash = false;
             this.controls = new Gokz.ReplayControls(this);
             this.keyDisplay = new Gokz.KeyDisplay(this);
+            this.isPlayingChanged.addListener(function (isPlaying) {
+                if (!isPlaying && _this.saveTickInHash)
+                    _this.updateTickHash();
+            });
         }
         //
         // Public Methods
@@ -529,7 +536,7 @@ var Gokz;
             req.send(null);
         };
         ReplayViewer.prototype.updateTickHash = function () {
-            if (this.replay == null)
+            if (this.replay == null || !this.saveTickInHash)
                 return;
             this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         };
@@ -550,9 +557,11 @@ var Gokz;
         ReplayViewer.prototype.onHashChange = function (hash) {
             if (typeof hash === "string")
                 return;
+            if (!this.saveTickInHash)
+                return;
             var data = hash;
             if (data.t !== undefined && this.tick !== data.t) {
-                this.tick = data.t;
+                this.tick = data.t - 1;
                 this.isPlaying = false;
             }
         };
