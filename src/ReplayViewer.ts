@@ -4,15 +4,150 @@
 import WebGame = Facepunch.WebGame;
 
 namespace Gokz {
+    /**
+     * Address hash format for the ReplayViewer.
+     */
     export interface IHashData {
+        /** Tick number, starting from 1 for the first tick. */
         t?: number;
     }
 
+    /**
+     * Creates a GOKZ replay viewer applet.
+     */
     export class ReplayViewer extends SourceUtils.MapViewer {
+        /**
+         * Handles a key input display overlay that also shows some stats like
+         * speed and sync.
+         */
+        readonly keyDisplay: KeyDisplay;
 
-        //
-        // Private properties
-        //
+        /**
+         * Handles replay controls such as a playback bar.
+         */
+        readonly controls: ReplayControls;
+
+        /**
+         * The URL to look for exported maps at. The directory at the URL
+         * should contain sub-folders for each map, inside each of which is the
+         * index.json for that map.
+         * @example `viewer.mapBaseUrl = "http://my-website.com/maps";`
+         */
+        mapBaseUrl: string;
+
+        /**
+         * The currently loaded replay. Will be automatically set after a
+         * replay is loaded with `loadReplay(url)`. You can also set this
+         * manually to switch between replays.
+         */
+        replay: ReplayFile;
+
+        /**
+         * If true, the current tick will be stored in the address hash when
+         * playback is paused or the viewer uses the playback bar to skip
+         * around.
+         * @default `true`
+         */
+        saveTickInHash = true;
+
+        /**
+         * The current tick being shown during playback, starting with 0 for
+         * the first tick. Will automatically be increased while playing,
+         * although some ticks might be skipped depending on playback speed and
+         * frame rate. Can be set to skip to a particular tick.
+         */
+        tick = -1;
+
+        /**
+         * Current playback rate, measured in seconds per second. Can support
+         * negative values for rewinding.
+         * @default `1.0`
+         */
+        playbackRate = 1.0;
+
+        /**
+         * If true, the replay will automatically loop back to the first tick
+         * when it reaches the end.
+         * @default `true`
+         */
+        autoRepeat = true;
+
+        /**
+         * Used internally to temporarily pause playback while the user is
+         * dragging the scrubber in the playback bar.
+         */
+        isScrubbing = false;
+
+        /**
+         * If true, the currently displayed tick will advance based on the
+         * value of `playbackRate`.
+         * @default `false`
+         */
+        isPlaying = false;
+
+        /**
+         * If true, a crosshair graphic will be displayed in the middle of the
+         * viewer.
+         * @default `true`
+         */
+        showCrosshair = true;
+
+        /**
+         * Event invoked when a new replay is loaded. Will be invoked before
+         * the map for the replay is loaded (if required).
+         * 
+         * **Available event arguments**:
+         * * `replay: Gokz.ReplayFile` - The newly loaded ReplayFile
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly replayLoaded = new Event<ReplayFile, ReplayViewer>(this);
+
+        /**
+         * Event invoked when the current tick has changed.
+         * 
+         * **Available event arguments**:
+         * * `tickData: Gokz.TickData` - Recorded data for the current tick
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly tickChanged = new ChangedEvent<number, TickData, ReplayViewer>(this);
+
+        /**
+         * Event invoked when playback has skipped to a different tick, for
+         * example when the user uses the scrubber.
+         * 
+         * **Available event arguments**:
+         * * `oldTick: number` - The previous value of `tick` before skipping
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly playbackSkipped = new Event<number, ReplayViewer>(this);
+
+        /**
+         * Event invoked when `playbackRate` changes.
+         * 
+         * **Available event arguments**:
+         * * `playbackRate: number` - The new playback rate
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly playbackRateChanged = new ChangedEvent<number, number, ReplayViewer>(this);
+
+        /**
+         * Event invoked when `isPlaying` changes, for example when the user
+         * pauses or resumes playback.
+         * 
+         * **Available event arguments**:
+         * * `isPlaying: boolean` - True if currently playing
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly isPlayingChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
+        
+        /**
+         * Event invoked when `showCrosshair` changes.
+         * 
+         * **Available event arguments**:
+         * * `showCrosshair: boolean` - True if crosshair is now visible
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly showCrosshairChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
 
         private messageElem: HTMLElement;
 
@@ -33,52 +168,10 @@ namespace Gokz {
         private tempTickData1 = new TickData();
         private tempTickData2 = new TickData();
 
-        //
-        // Public properties
-        //
-
-        readonly keyDisplay: KeyDisplay;
-        readonly controls: ReplayControls;
-
-        mapBaseUrl: string;
-        replay: ReplayFile;
-
-        saveTickInHash = true;
-
-        tick = -1;
-        playbackRate = 1.0;
-        autoRepeat = true;
-        isScrubbing = false;
-        isPlaying = false;
-
-        showCrosshair = true;
-
-        //
-        // Public events
-        //
-
-        // (replay: ReplayFile, sender: ReplayViewer)
-        readonly replayLoaded = new Event<ReplayFile, ReplayViewer>(this);
-
-        // (tickData: TickData, sender: ReplayViewer)
-        readonly tickChanged = new ChangedEvent<number, TickData, ReplayViewer>(this);
-        
-        // (oldTick: number, sender: ReplayViewer)
-        readonly playbackSkipped = new Event<number, ReplayViewer>(this);
-        
-        // (playbackRate: number, sender: ReplayViewer)
-        readonly playbackRateChanged = new ChangedEvent<number, number, ReplayViewer>(this);
-        
-        // (isPlaying: boolean, sender: ReplayViewer)
-        readonly isPlayingChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
-        
-        // (showCrosshair: boolean, sender: ReplayViewer)
-        readonly showCrosshairChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
-
-        //
-        // Public constructors
-        //
-
+        /**
+         * Creates a new ReplayViewer inside the given `container` element.
+         * @param container Element that should contain the viewer.
+         */
         constructor(container: HTMLElement) {
             super(container);
 
@@ -110,10 +203,10 @@ namespace Gokz {
             });
         }
 
-        //
-        // Public Methods
-        //
-
+        /**
+         * Used to display an error message in the middle of the viewer.
+         * @param message Message to display
+         */
         showMessage(message: string): void {
             if (this.messageElem === undefined) {
                 this.messageElem = this.onCreateMessagePanel();
@@ -124,6 +217,11 @@ namespace Gokz {
             this.messageElem.innerText = message;
         }
 
+        /**
+         * Attempt to load a GOKZ replay from the given URL. When loaded, the
+         * replay will be stored in the `replay` property in this viewer.
+         * @param url Url of the replay to download.
+         */
         loadReplay(url: string): void {
             console.log(`Downloading: ${url}`);
 
@@ -148,14 +246,14 @@ namespace Gokz {
             req.send(null);
         }
 
+        /**
+         * If `saveTickInHash` is true, will set the address hash to include
+         * the current tick number.
+         */
         updateTickHash(): void {
             if (this.replay == null || !this.saveTickInHash) return;
             this.setHash({ t: this.replay.clampTick(this.tick) + 1 });
         }
-
-        //
-        // Overrides
-        //
 
         protected onCreateMessagePanel(): HTMLElement {
             const elem = document.createElement("div");
@@ -236,6 +334,10 @@ namespace Gokz {
             if (this.currentMapName !== replay.mapName) {
                 if (this.currentMapName != null) {
                     this.map.unload();
+                }
+
+                if (this.mapBaseUrl == null) {
+                    throw "Cannot load a map when mapBaseUrl is unspecified.";
                 }
 
                 const version = new Date().getTime().toString(16);

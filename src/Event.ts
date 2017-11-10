@@ -1,5 +1,5 @@
 namespace Gokz {
-    type Handler<TEventArgs, TSender> = (args: TEventArgs, sender: TSender) => void;
+    export type Handler<TEventArgs, TSender> = (args: TEventArgs, sender: TSender) => void;
     export class Event<TEventArgs, TSender> {
         private readonly sender: TSender;
         private handlers: Handler<TEventArgs, TSender>[] = [];
