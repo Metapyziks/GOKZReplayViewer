@@ -16,9 +16,9 @@ namespace Gokz {
 
             if (container === undefined) container = viewer.container;
 
-            this.element = document.createElement("div");
-            this.element.classList.add("key-display");
-            this.element.innerHTML = `
+            const element = this.element = document.createElement("div");
+            element.classList.add("key-display");
+            element.innerHTML = `
                 <div class="stat sync-outer">Sync: <span class="value sync-value">0.0</span> %</div>
                 <div class="stat speed-outer">Speed: <span class="value speed-value">000</span> u/s</div>
                 <div class="key key-w">W</div>
@@ -29,18 +29,23 @@ namespace Gokz {
                 <div class="key key-duck">Duck</div>
                 <div class="key key-jump">Jump</div>`;
 
-            container.appendChild(this.element);
+            container.appendChild(element);
 
-            this.buttonMap[Button.Forward] = this.element.getElementsByClassName("key-w")[0] as HTMLElement;
-            this.buttonMap[Button.MoveLeft] = this.element.getElementsByClassName("key-a")[0] as HTMLElement;
-            this.buttonMap[Button.Back] = this.element.getElementsByClassName("key-s")[0] as HTMLElement;
-            this.buttonMap[Button.MoveRight] = this.element.getElementsByClassName("key-d")[0] as HTMLElement;
-            this.buttonMap[Button.Walk] = this.element.getElementsByClassName("key-walk")[0] as HTMLElement;
-            this.buttonMap[Button.Duck] = this.element.getElementsByClassName("key-duck")[0] as HTMLElement;
-            this.buttonMap[Button.Jump] = this.element.getElementsByClassName("key-jump")[0] as HTMLElement;
+            this.buttonMap[Button.Forward] = element.getElementsByClassName("key-w")[0] as HTMLElement;
+            this.buttonMap[Button.MoveLeft] = element.getElementsByClassName("key-a")[0] as HTMLElement;
+            this.buttonMap[Button.Back] = element.getElementsByClassName("key-s")[0] as HTMLElement;
+            this.buttonMap[Button.MoveRight] = element.getElementsByClassName("key-d")[0] as HTMLElement;
+            this.buttonMap[Button.Walk] = element.getElementsByClassName("key-walk")[0] as HTMLElement;
+            this.buttonMap[Button.Duck] = element.getElementsByClassName("key-duck")[0] as HTMLElement;
+            this.buttonMap[Button.Jump] = element.getElementsByClassName("key-jump")[0] as HTMLElement;
 
-            this.syncValueElem = this.element.getElementsByClassName("sync-value")[0] as HTMLElement;
-            this.speedValueElem = this.element.getElementsByClassName("speed-value")[0] as HTMLElement;
+            this.syncValueElem = element.getElementsByClassName("sync-value")[0] as HTMLElement;
+            this.speedValueElem = element.getElementsByClassName("speed-value")[0] as HTMLElement;
+
+            viewer.showKeyDisplayChanged.addListener(showKeyDisplay => {
+                if (showKeyDisplay) this.show();
+                else this.hide();
+            });
 
             viewer.playbackSkipped.addListener(oldTick => {
                 this.syncIndex = 0;

@@ -28,6 +28,11 @@ namespace Gokz {
         readonly controls: ReplayControls;
 
         /**
+         * Handles options menu.
+         */
+        readonly options: OptionsMenu;
+
+        /**
          * The URL to look for exported maps at. The directory at the URL
          * should contain sub-folders for each map, inside each of which is the
          * index.json for that map.
@@ -93,6 +98,18 @@ namespace Gokz {
         showCrosshair = true;
 
         /**
+         * If true, makes the key press display visible.
+         * @default `true`
+         */
+        showKeyDisplay = true;
+
+        /**
+         * If true, makes the options menu visible.
+         * @default `false`
+         */
+        showOptions = false;
+
+        /**
          * Event invoked when a new replay is loaded. Will be invoked before
          * the map for the replay is loaded (if required).
          * 
@@ -101,6 +118,15 @@ namespace Gokz {
          * * `sender: Gokz.ReplayViewer` - This ReplayViewer
          */
         readonly replayLoaded = new Event<ReplayFile, ReplayViewer>(this);
+
+        /**
+         * Event invoked after each update.
+         * 
+         * **Available event arguments**:
+         * * `dt: number` - Time since the last update
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly updated = new Event<number, ReplayViewer>(this);
 
         /**
          * Event invoked when the current tick has changed.
@@ -139,7 +165,7 @@ namespace Gokz {
          * * `sender: Gokz.ReplayViewer` - This ReplayViewer
          */
         readonly isPlayingChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
-        
+
         /**
          * Event invoked when `showCrosshair` changes.
          * 
@@ -148,6 +174,33 @@ namespace Gokz {
          * * `sender: Gokz.ReplayViewer` - This ReplayViewer
          */
         readonly showCrosshairChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
+
+        /**
+         * Event invoked when `showKeyDisplay` changes.
+         * 
+         * **Available event arguments**:
+         * * `showKeyDisplay: boolean` - True if keyDisplay is now visible
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly showKeyDisplayChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
+
+        /**
+         * Event invoked when `showOptions` changes.
+         * 
+         * **Available event arguments**:
+         * * `showOptions: boolean` - True if options menu is now visible
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly showOptionsChanged = new ChangedEvent<boolean, boolean, ReplayViewer>(this);
+
+        /**
+         * Event invoked when `cameraMode` changes.
+         * 
+         * **Available event arguments**:
+         * * `cameraMode: SourceUtils.CameraMode` - Camera mode value
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly cameraModeChanged = new ChangedEvent<SourceUtils.CameraMode, SourceUtils.CameraMode, ReplayViewer>(this);
 
         private messageElem: HTMLElement;
 
@@ -179,6 +232,7 @@ namespace Gokz {
 
             this.controls = new ReplayControls(this);
             this.keyDisplay = new KeyDisplay(this, this.controls.playbackBarElem);
+            this.options = new OptionsMenu(this, this.controls.playbackBarElem);
 
             const crosshair = document.createElement("div");
             crosshair.classList.add("crosshair");
@@ -196,9 +250,22 @@ namespace Gokz {
                     if (this.wakeLock != null) {
                         this.wakeLock.request("display");
                     }
+
+                    this.cameraMode = SourceUtils.CameraMode.Fixed;
                 } else if (this.wakeLock != null) {
                     this.wakeLock.release("display");
                     this.wakeLock = null;
+                }
+            });
+
+            this.cameraModeChanged.addListener(mode => {
+                if (mode === SourceUtils.CameraMode.FreeCam) {
+                    this.isPlaying = false;
+                }
+
+                this.canLockPointer = mode === SourceUtils.CameraMode.FreeCam;
+                if (!this.canLockPointer && this.isPointerLocked()) {
+                    document.exitPointerLock();
                 }
             });
         }
@@ -287,20 +354,28 @@ namespace Gokz {
 
         protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
             this.ignoreMouseUp = event.target !== this.canvas;
-            return super.onMouseDown(button, screenPos);
+            if (super.onMouseDown(button, screenPos)) {
+                this.showOptions = false;
+                return true;
+            }
+
+            return false;
         }
 
         protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
             const ignored = this.ignoreMouseUp || event.target !== this.canvas;
             this.ignoreMouseUp = true;
 
-            if (super.onMouseUp(button, screenPos)) return true;
+            if (ignored) return false;
 
-            if (!ignored && this.controls.hideSpeedControl()) {
+            if (this.controls.hideSpeedControl() || this.showOptions) {
+                this.showOptions = false;
                 return true;
             }
 
-            if (!ignored && button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
+            if (super.onMouseUp(button, screenPos)) return true;
+
+            if (button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
                 this.isPlaying = !this.isPlaying;
                 return true;
             }
@@ -359,9 +434,15 @@ namespace Gokz {
             }
 
             this.showCrosshairChanged.update(this.showCrosshair);
+            this.showKeyDisplayChanged.update(this.showKeyDisplay);
+            this.showOptionsChanged.update(this.showOptions);
             this.playbackRateChanged.update(this.playbackRate);
+            this.cameraModeChanged.update(this.cameraMode);
 
-            if (this.replay == null) return;
+            if (this.replay == null) {
+                this.updated.dispatch(dt);
+                return;
+            }
 
             const replay = this.replay;
             const tickPeriod = 1.0 / replay.tickRate;
@@ -417,7 +498,7 @@ namespace Gokz {
 
                 Utils.hermitePosition(d0.position, d1.position,
                     d2.position, d3.position, t, this.tickData.position);
-                    Utils.hermiteAngles(d0.angles, d1.angles,
+                Utils.hermiteAngles(d0.angles, d1.angles,
                     d2.angles, d3.angles, t, this.tickData.angles);
 
                 eyeHeight = Utils.hermiteValue(
@@ -425,14 +506,18 @@ namespace Gokz {
                     d2.getEyeHeight(), d3.getEyeHeight(), t);
             }
 
-            this.mainCamera.setPosition(
-                this.tickData.position.x,
-                this.tickData.position.y,
-                this.tickData.position.z + eyeHeight);
+            if (this.cameraMode === SourceUtils.CameraMode.Fixed) {
+                this.mainCamera.setPosition(
+                    this.tickData.position.x,
+                    this.tickData.position.y,
+                    this.tickData.position.z + eyeHeight);
 
-            this.setCameraAngles(
-                (this.tickData.angles.y - 90) * Math.PI / 180,
-                -this.tickData.angles.x * Math.PI / 180);
+                this.setCameraAngles(
+                    (this.tickData.angles.y - 90) * Math.PI / 180,
+                    -this.tickData.angles.x * Math.PI / 180);
+            }
+
+            this.updated.dispatch(dt);
         }
     }
 }

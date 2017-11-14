@@ -86,7 +86,7 @@ namespace Gokz {
             this.settingsElem = document.createElement("div");
             this.settingsElem.classList.add("settings");
             this.settingsElem.classList.add("control");
-            this.settingsElem.addEventListener("click", ev => this.showSettings());
+            this.settingsElem.addEventListener("click", ev => viewer.showOptions = !viewer.showOptions);
             playbackBar.appendChild(this.settingsElem);
 
             this.fullscreenElem = document.createElement("div");
@@ -132,17 +132,22 @@ namespace Gokz {
                 }
 
                 this.scrubberElem.valueAsNumber = tickData.tick;
+            });
 
-                if (viewer.isPlaying && !this.mouseOverPlaybackBar) {
+            viewer.updated.addListener(dt => {
+                if ((viewer.isPlaying && !this.mouseOverPlaybackBar) || viewer.isPointerLocked()) {
                     const sinceLastAction = (performance.now() - this.lastActionTime) / 1000;
-                    if (sinceLastAction >= this.autoHidePeriod) {
+                    const hidePeriod = viewer.isPointerLocked() ? 0 : this.autoHidePeriod;
+                    if (sinceLastAction >= hidePeriod) {
                         this.hidePlaybackBar();
                     }
                 }
             });
 
             viewer.container.addEventListener("mousemove", ev => {
-                this.showPlaybackBar();
+                if (!viewer.isPointerLocked()) {
+                    this.showPlaybackBar();
+                }
             });
         }
 
