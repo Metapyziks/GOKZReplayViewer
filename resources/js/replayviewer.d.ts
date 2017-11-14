@@ -67,6 +67,21 @@ declare namespace Gokz {
     }
 }
 declare namespace Gokz {
+    class OptionsMenu {
+        private readonly viewer;
+        readonly element: HTMLElement;
+        readonly titleElem: HTMLSpanElement;
+        readonly optionContainer: HTMLElement;
+        constructor(viewer: ReplayViewer, container?: HTMLElement);
+        show(): void;
+        hide(): void;
+        private clear();
+        private showMainPage();
+        private setTitle(title);
+        private addToggleOption<TArgs, TSender>(label, getter, setter, changed?);
+    }
+}
+declare namespace Gokz {
     class ReplayControls {
         private static readonly speedSliderValues;
         private readonly viewer;
@@ -218,6 +233,10 @@ declare namespace Gokz {
          */
         readonly controls: ReplayControls;
         /**
+         * Handles options menu.
+         */
+        readonly options: OptionsMenu;
+        /**
          * The URL to look for exported maps at. The directory at the URL
          * should contain sub-folders for each map, inside each of which is the
          * index.json for that map.
@@ -274,6 +293,16 @@ declare namespace Gokz {
          */
         showCrosshair: boolean;
         /**
+         * If true, makes the key press display visible.
+         * @default `true`
+         */
+        showKeyDisplay: boolean;
+        /**
+         * If true, makes the options menu visible.
+         * @default `false`
+         */
+        showOptions: boolean;
+        /**
          * Event invoked when a new replay is loaded. Will be invoked before
          * the map for the replay is loaded (if required).
          *
@@ -282,6 +311,14 @@ declare namespace Gokz {
          * * `sender: Gokz.ReplayViewer` - This ReplayViewer
          */
         readonly replayLoaded: Event<ReplayFile, ReplayViewer>;
+        /**
+         * Event invoked after each update.
+         *
+         * **Available event arguments**:
+         * * `dt: number` - Time since the last update
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly updated: Event<number, ReplayViewer>;
         /**
          * Event invoked when the current tick has changed.
          *
@@ -324,6 +361,30 @@ declare namespace Gokz {
          * * `sender: Gokz.ReplayViewer` - This ReplayViewer
          */
         readonly showCrosshairChanged: ChangedEvent<boolean, boolean, ReplayViewer>;
+        /**
+         * Event invoked when `showKeyDisplay` changes.
+         *
+         * **Available event arguments**:
+         * * `showKeyDisplay: boolean` - True if keyDisplay is now visible
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly showKeyDisplayChanged: ChangedEvent<boolean, boolean, ReplayViewer>;
+        /**
+         * Event invoked when `showOptions` changes.
+         *
+         * **Available event arguments**:
+         * * `showOptions: boolean` - True if options menu is now visible
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly showOptionsChanged: ChangedEvent<boolean, boolean, ReplayViewer>;
+        /**
+         * Event invoked when `cameraMode` changes.
+         *
+         * **Available event arguments**:
+         * * `cameraMode: SourceUtils.CameraMode` - Camera mode value
+         * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+         */
+        readonly cameraModeChanged: ChangedEvent<SourceUtils.CameraMode, SourceUtils.CameraMode, ReplayViewer>;
         private messageElem;
         private lastReplay;
         private currentMapName;

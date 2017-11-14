@@ -192,19 +192,25 @@ var Gokz;
             this.viewer = viewer;
             if (container === undefined)
                 container = viewer.container;
-            this.element = document.createElement("div");
-            this.element.classList.add("key-display");
-            this.element.innerHTML = "\n                <div class=\"stat sync-outer\">Sync: <span class=\"value sync-value\">0.0</span> %</div>\n                <div class=\"stat speed-outer\">Speed: <span class=\"value speed-value\">000</span> u/s</div>\n                <div class=\"key key-w\">W</div>\n                <div class=\"key key-a\">A</div>\n                <div class=\"key key-s\">S</div>\n                <div class=\"key key-d\">D</div>\n                <div class=\"key key-walk\">Walk</div>\n                <div class=\"key key-duck\">Duck</div>\n                <div class=\"key key-jump\">Jump</div>";
-            container.appendChild(this.element);
-            this.buttonMap[Gokz.Button.Forward] = this.element.getElementsByClassName("key-w")[0];
-            this.buttonMap[Gokz.Button.MoveLeft] = this.element.getElementsByClassName("key-a")[0];
-            this.buttonMap[Gokz.Button.Back] = this.element.getElementsByClassName("key-s")[0];
-            this.buttonMap[Gokz.Button.MoveRight] = this.element.getElementsByClassName("key-d")[0];
-            this.buttonMap[Gokz.Button.Walk] = this.element.getElementsByClassName("key-walk")[0];
-            this.buttonMap[Gokz.Button.Duck] = this.element.getElementsByClassName("key-duck")[0];
-            this.buttonMap[Gokz.Button.Jump] = this.element.getElementsByClassName("key-jump")[0];
-            this.syncValueElem = this.element.getElementsByClassName("sync-value")[0];
-            this.speedValueElem = this.element.getElementsByClassName("speed-value")[0];
+            var element = this.element = document.createElement("div");
+            element.classList.add("key-display");
+            element.innerHTML = "\n                <div class=\"stat sync-outer\">Sync: <span class=\"value sync-value\">0.0</span> %</div>\n                <div class=\"stat speed-outer\">Speed: <span class=\"value speed-value\">000</span> u/s</div>\n                <div class=\"key key-w\">W</div>\n                <div class=\"key key-a\">A</div>\n                <div class=\"key key-s\">S</div>\n                <div class=\"key key-d\">D</div>\n                <div class=\"key key-walk\">Walk</div>\n                <div class=\"key key-duck\">Duck</div>\n                <div class=\"key key-jump\">Jump</div>";
+            container.appendChild(element);
+            this.buttonMap[Gokz.Button.Forward] = element.getElementsByClassName("key-w")[0];
+            this.buttonMap[Gokz.Button.MoveLeft] = element.getElementsByClassName("key-a")[0];
+            this.buttonMap[Gokz.Button.Back] = element.getElementsByClassName("key-s")[0];
+            this.buttonMap[Gokz.Button.MoveRight] = element.getElementsByClassName("key-d")[0];
+            this.buttonMap[Gokz.Button.Walk] = element.getElementsByClassName("key-walk")[0];
+            this.buttonMap[Gokz.Button.Duck] = element.getElementsByClassName("key-duck")[0];
+            this.buttonMap[Gokz.Button.Jump] = element.getElementsByClassName("key-jump")[0];
+            this.syncValueElem = element.getElementsByClassName("sync-value")[0];
+            this.speedValueElem = element.getElementsByClassName("speed-value")[0];
+            viewer.showKeyDisplayChanged.addListener(function (showKeyDisplay) {
+                if (showKeyDisplay)
+                    _this.show();
+                else
+                    _this.hide();
+            });
             viewer.playbackSkipped.addListener(function (oldTick) {
                 _this.syncIndex = 0;
                 _this.syncSampleCount = 0;
@@ -298,6 +304,82 @@ var Gokz;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {
+    var OptionsMenu = (function () {
+        function OptionsMenu(viewer, container) {
+            var _this = this;
+            this.viewer = viewer;
+            if (container === undefined) {
+                container = this.viewer.container;
+            }
+            var element = this.element = document.createElement("div");
+            element.classList.add("options-menu");
+            element.innerHTML = "<div class=\"options-title\"></div><div class=\"options-list\"></div>";
+            container.appendChild(element);
+            this.titleElem = element.getElementsByClassName("options-title")[0];
+            this.optionContainer = element.getElementsByClassName("options-list")[0];
+            viewer.showOptionsChanged.addListener(function (showOptions) {
+                if (showOptions)
+                    _this.show();
+                else
+                    _this.hide();
+            });
+        }
+        OptionsMenu.prototype.show = function () {
+            this.element.style.display = "block";
+            this.showMainPage();
+        };
+        OptionsMenu.prototype.hide = function () {
+            this.element.style.display = "none";
+            this.clear();
+        };
+        OptionsMenu.prototype.clear = function () {
+            this.optionContainer.innerHTML = "";
+        };
+        OptionsMenu.prototype.showMainPage = function () {
+            var viewer = this.viewer;
+            this.clear();
+            this.setTitle("Options");
+            this.addToggleOption("Show Crosshair", function () { return viewer.showCrosshair; }, function (value) { return viewer.showCrosshair = value; }, viewer.showCrosshairChanged);
+            this.addToggleOption("Show Framerate", function () { return viewer.showDebugPanel; }, function (value) { return viewer.showDebugPanel = value; });
+            this.addToggleOption("Show Key Presses", function () { return viewer.showKeyDisplay; }, function (value) { return viewer.showKeyDisplay = value; }, viewer.showKeyDisplayChanged);
+            this.addToggleOption("Free Camera", function () { return viewer.cameraMode === SourceUtils.CameraMode.FreeCam; }, function (value) { return viewer.cameraMode = value
+                ? SourceUtils.CameraMode.FreeCam
+                : SourceUtils.CameraMode.Fixed; }, viewer.cameraModeChanged);
+        };
+        OptionsMenu.prototype.setTitle = function (title) {
+            this.titleElem.innerText = title;
+        };
+        OptionsMenu.prototype.addToggleOption = function (label, getter, setter, changed) {
+            var option = document.createElement("div");
+            option.classList.add("option");
+            option.innerHTML = label + "<div class=\"toggle\"><div class=\"knob\"></div></div>";
+            this.optionContainer.appendChild(option);
+            var toggle = option.getElementsByClassName("toggle")[0];
+            var updateOption = function () {
+                if (getter()) {
+                    toggle.classList.add("on");
+                }
+                else {
+                    toggle.classList.remove("on");
+                }
+            };
+            option.addEventListener("click", function (ev) {
+                setter(!getter());
+                if (changed == null) {
+                    updateOption();
+                }
+            });
+            if (changed != null) {
+                changed.addListener(function () { return updateOption(); });
+            }
+            updateOption();
+        };
+        return OptionsMenu;
+    }());
+    Gokz.OptionsMenu = OptionsMenu;
+})(Gokz || (Gokz = {}));
+var Gokz;
+(function (Gokz) {
     var ReplayControls = (function () {
         function ReplayControls(viewer) {
             var _this = this;
@@ -353,7 +435,7 @@ var Gokz;
             this.settingsElem = document.createElement("div");
             this.settingsElem.classList.add("settings");
             this.settingsElem.classList.add("control");
-            this.settingsElem.addEventListener("click", function (ev) { return _this.showSettings(); });
+            this.settingsElem.addEventListener("click", function (ev) { return viewer.showOptions = !viewer.showOptions; });
             playbackBar.appendChild(this.settingsElem);
             this.fullscreenElem = document.createElement("div");
             this.fullscreenElem.classList.add("fullscreen");
@@ -390,15 +472,20 @@ var Gokz;
                     _this.timeElem.innerText = minutes + ":" + (secondsString.indexOf(".") === 1 ? "0" : "") + secondsString;
                 }
                 _this.scrubberElem.valueAsNumber = tickData.tick;
-                if (viewer.isPlaying && !_this.mouseOverPlaybackBar) {
+            });
+            viewer.updated.addListener(function (dt) {
+                if ((viewer.isPlaying && !_this.mouseOverPlaybackBar) || viewer.isPointerLocked()) {
                     var sinceLastAction = (performance.now() - _this.lastActionTime) / 1000;
-                    if (sinceLastAction >= _this.autoHidePeriod) {
+                    var hidePeriod = viewer.isPointerLocked() ? 0 : _this.autoHidePeriod;
+                    if (sinceLastAction >= hidePeriod) {
                         _this.hidePlaybackBar();
                     }
                 }
             });
             viewer.container.addEventListener("mousemove", function (ev) {
-                _this.showPlaybackBar();
+                if (!viewer.isPointerLocked()) {
+                    _this.showPlaybackBar();
+                }
             });
         }
         ReplayControls.prototype.showPlaybackBar = function () {
@@ -634,6 +721,16 @@ var Gokz;
              */
             this.showCrosshair = true;
             /**
+             * If true, makes the key press display visible.
+             * @default `true`
+             */
+            this.showKeyDisplay = true;
+            /**
+             * If true, makes the options menu visible.
+             * @default `false`
+             */
+            this.showOptions = false;
+            /**
              * Event invoked when a new replay is loaded. Will be invoked before
              * the map for the replay is loaded (if required).
              *
@@ -642,6 +739,14 @@ var Gokz;
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
             this.replayLoaded = new Gokz.Event(this);
+            /**
+             * Event invoked after each update.
+             *
+             * **Available event arguments**:
+             * * `dt: number` - Time since the last update
+             * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+             */
+            this.updated = new Gokz.Event(this);
             /**
              * Event invoked when the current tick has changed.
              *
@@ -684,6 +789,30 @@ var Gokz;
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
             this.showCrosshairChanged = new Gokz.ChangedEvent(this);
+            /**
+             * Event invoked when `showKeyDisplay` changes.
+             *
+             * **Available event arguments**:
+             * * `showKeyDisplay: boolean` - True if keyDisplay is now visible
+             * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+             */
+            this.showKeyDisplayChanged = new Gokz.ChangedEvent(this);
+            /**
+             * Event invoked when `showOptions` changes.
+             *
+             * **Available event arguments**:
+             * * `showOptions: boolean` - True if options menu is now visible
+             * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+             */
+            this.showOptionsChanged = new Gokz.ChangedEvent(this);
+            /**
+             * Event invoked when `cameraMode` changes.
+             *
+             * **Available event arguments**:
+             * * `cameraMode: SourceUtils.CameraMode` - Camera mode value
+             * * `sender: Gokz.ReplayViewer` - This ReplayViewer
+             */
+            this.cameraModeChanged = new Gokz.ChangedEvent(this);
             this.pauseTime = 1.0;
             this.spareTime = 0;
             this.prevTick = undefined;
@@ -695,6 +824,7 @@ var Gokz;
             this.saveCameraPosInHash = false;
             this.controls = new Gokz.ReplayControls(this);
             this.keyDisplay = new Gokz.KeyDisplay(this, this.controls.playbackBarElem);
+            this.options = new Gokz.OptionsMenu(this, this.controls.playbackBarElem);
             var crosshair = document.createElement("div");
             crosshair.classList.add("crosshair");
             container.appendChild(crosshair);
@@ -709,10 +839,20 @@ var Gokz;
                     if (_this.wakeLock != null) {
                         _this.wakeLock.request("display");
                     }
+                    _this.cameraMode = SourceUtils.CameraMode.Fixed;
                 }
                 else if (_this.wakeLock != null) {
                     _this.wakeLock.release("display");
                     _this.wakeLock = null;
+                }
+            });
+            this.cameraModeChanged.addListener(function (mode) {
+                if (mode === SourceUtils.CameraMode.FreeCam) {
+                    _this.isPlaying = false;
+                }
+                _this.canLockPointer = mode === SourceUtils.CameraMode.FreeCam;
+                if (!_this.canLockPointer && _this.isPointerLocked()) {
+                    document.exitPointerLock();
                 }
             });
         }
@@ -789,17 +929,24 @@ var Gokz;
         };
         ReplayViewer.prototype.onMouseDown = function (button, screenPos) {
             this.ignoreMouseUp = event.target !== this.canvas;
-            return _super.prototype.onMouseDown.call(this, button, screenPos);
+            if (_super.prototype.onMouseDown.call(this, button, screenPos)) {
+                this.showOptions = false;
+                return true;
+            }
+            return false;
         };
         ReplayViewer.prototype.onMouseUp = function (button, screenPos) {
             var ignored = this.ignoreMouseUp || event.target !== this.canvas;
             this.ignoreMouseUp = true;
-            if (_super.prototype.onMouseUp.call(this, button, screenPos))
-                return true;
-            if (!ignored && this.controls.hideSpeedControl()) {
+            if (ignored)
+                return false;
+            if (this.controls.hideSpeedControl() || this.showOptions) {
+                this.showOptions = false;
                 return true;
             }
-            if (!ignored && button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
+            if (_super.prototype.onMouseUp.call(this, button, screenPos))
+                return true;
+            if (button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
                 this.isPlaying = !this.isPlaying;
                 return true;
             }
@@ -845,9 +992,14 @@ var Gokz;
                 }
             }
             this.showCrosshairChanged.update(this.showCrosshair);
+            this.showKeyDisplayChanged.update(this.showKeyDisplay);
+            this.showOptionsChanged.update(this.showOptions);
             this.playbackRateChanged.update(this.playbackRate);
-            if (this.replay == null)
+            this.cameraModeChanged.update(this.cameraMode);
+            if (this.replay == null) {
+                this.updated.dispatch(dt);
                 return;
+            }
             var replay = this.replay;
             var tickPeriod = 1.0 / replay.tickRate;
             this.isPlayingChanged.update(this.isPlaying);
@@ -891,8 +1043,11 @@ var Gokz;
                 Gokz.Utils.hermiteAngles(d0.angles, d1.angles, d2.angles, d3.angles, t, this.tickData.angles);
                 eyeHeight = Gokz.Utils.hermiteValue(d0.getEyeHeight(), d1.getEyeHeight(), d2.getEyeHeight(), d3.getEyeHeight(), t);
             }
-            this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
-            this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
+            if (this.cameraMode === SourceUtils.CameraMode.Fixed) {
+                this.mainCamera.setPosition(this.tickData.position.x, this.tickData.position.y, this.tickData.position.z + eyeHeight);
+                this.setCameraAngles((this.tickData.angles.y - 90) * Math.PI / 180, -this.tickData.angles.x * Math.PI / 180);
+            }
+            this.updated.dispatch(dt);
         };
         return ReplayViewer;
     }(SourceUtils.MapViewer));

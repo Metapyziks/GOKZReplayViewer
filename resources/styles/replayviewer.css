@@ -228,3 +228,67 @@
     width: 280px;
     bottom: 8px;
 }
+
+.map-viewer .options-menu {
+    position: absolute;
+    width: 256px;
+    right: 8px;
+    bottom: 48px;
+    background-color: rgba(0, 0, 0, 0.25);
+    line-height: 24px;
+}
+
+.map-viewer .options-title {
+    margin: 8px;
+    text-align: center;
+    color: #999;
+}
+
+.map-viewer .options-list {
+    margin: 8px;
+}
+
+.map-viewer .options-list .option {
+    user-select: none;
+    padding: 4px 4px 4px 8px;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #ccc;
+    cursor: pointer;
+}
+
+.map-viewer .options-list .option:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.map-viewer .options-list .option .value {
+    float: right;
+    text-align: center;
+    width: 80px;
+    color: #fff;
+}
+
+.map-viewer .options-list .option .toggle {
+    position: relative;
+    float: right;
+    margin: 2px;
+    width: 48px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #333;
+}
+
+.map-viewer .options-list .option .toggle .knob {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 12px;
+    border-radius: 6px;
+    background-color: #666;
+    transition: all 0.06667s ease-in-out;
+}
+
+.map-viewer .options-list .option .toggle.on .knob {
+    left: 28px;
+    background-color: #ccc;
+}
