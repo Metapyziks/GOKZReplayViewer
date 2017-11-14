@@ -327,6 +327,9 @@ var Gokz;
         OptionsMenu.prototype.show = function () {
             this.element.style.display = "block";
             this.showMainPage();
+            if (this.viewer.controls != null) {
+                this.viewer.controls.hideSpeedControl();
+            }
         };
         OptionsMenu.prototype.hide = function () {
             this.element.style.display = "none";
@@ -509,6 +512,7 @@ var Gokz;
                 return false;
             this.speedControlVisible = true;
             this.speedControlElem.style.display = "block";
+            this.viewer.showOptions = false;
             return true;
         };
         ReplayControls.prototype.hideSpeedControl = function () {
