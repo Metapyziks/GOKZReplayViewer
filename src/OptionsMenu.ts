@@ -31,6 +31,10 @@ namespace Gokz {
         show(): void {
             this.element.style.display = "block";
             this.showMainPage();
+
+            if (this.viewer.controls != null) {
+                this.viewer.controls.hideSpeedControl();
+            }
         }
 
         hide(): void {

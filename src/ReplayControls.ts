@@ -176,6 +176,8 @@ namespace Gokz {
             this.speedControlVisible = true;
             this.speedControlElem.style.display = "block";
 
+            this.viewer.showOptions = false;
+
             return true;
         }
 
