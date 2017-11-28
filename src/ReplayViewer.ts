@@ -352,9 +352,9 @@ namespace Gokz {
 
         private ignoreMouseUp = true;
 
-        protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
+        protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2, target: EventTarget): boolean {
             this.ignoreMouseUp = event.target !== this.canvas;
-            if (super.onMouseDown(button, screenPos)) {
+            if (super.onMouseDown(button, screenPos, target)) {
                 this.showOptions = false;
                 return true;
             }
@@ -362,7 +362,7 @@ namespace Gokz {
             return false;
         }
 
-        protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean {
+        protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2, target: EventTarget): boolean {
             const ignored = this.ignoreMouseUp || event.target !== this.canvas;
             this.ignoreMouseUp = true;
 
@@ -373,7 +373,7 @@ namespace Gokz {
                 return true;
             }
 
-            if (super.onMouseUp(button, screenPos)) return true;
+            if (super.onMouseUp(button, screenPos, target)) return true;
 
             if (button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
                 this.isPlaying = !this.isPlaying;

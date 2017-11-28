@@ -422,8 +422,8 @@ declare namespace Gokz {
         protected onInitialize(): void;
         protected onHashChange(hash: string | Object): void;
         private ignoreMouseUp;
-        protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean;
-        protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean;
+        protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2, target: EventTarget): boolean;
+        protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2, target: EventTarget): boolean;
         protected onKeyDown(key: WebGame.Key): boolean;
         protected onChangeReplay(replay: ReplayFile): void;
         protected onUpdateFrame(dt: number): void;
