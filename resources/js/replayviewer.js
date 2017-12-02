@@ -5,12 +5,12 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Gokz;
 (function (Gokz) {
+    var SeekOrigin;
     (function (SeekOrigin) {
         SeekOrigin[SeekOrigin["Begin"] = 0] = "Begin";
         SeekOrigin[SeekOrigin["Current"] = 1] = "Current";
         SeekOrigin[SeekOrigin["End"] = 2] = "End";
-    })(Gokz.SeekOrigin || (Gokz.SeekOrigin = {}));
-    var SeekOrigin = Gokz.SeekOrigin;
+    })(SeekOrigin = Gokz.SeekOrigin || (Gokz.SeekOrigin = {}));
     var BinaryReader = (function () {
         function BinaryReader(buffer) {
             this.buffer = buffer;
@@ -154,13 +154,14 @@ var Gokz;
     var ChangedEvent = (function (_super) {
         __extends(ChangedEvent, _super);
         function ChangedEvent(sender, equalityComparison) {
-            _super.call(this, sender);
+            var _this = _super.call(this, sender) || this;
             if (equalityComparison != null) {
-                this.equalityComparison = equalityComparison;
+                _this.equalityComparison = equalityComparison;
             }
             else {
-                this.equalityComparison = function (a, b) { return a === b; };
+                _this.equalityComparison = function (a, b) { return a === b; };
             }
+            return _this;
         }
         ChangedEvent.prototype.reset = function () {
             this.prevValue = undefined;
@@ -526,23 +527,24 @@ var Gokz;
             // TODO
             this.viewer.showDebugPanel = !this.viewer.showDebugPanel;
         };
-        ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
         return ReplayControls;
     }());
+    ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
     Gokz.ReplayControls = ReplayControls;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {
+    var GlobalMode;
     (function (GlobalMode) {
         GlobalMode[GlobalMode["Vanilla"] = 0] = "Vanilla";
         GlobalMode[GlobalMode["KzSimple"] = 1] = "KzSimple";
         GlobalMode[GlobalMode["KzTimer"] = 2] = "KzTimer";
-    })(Gokz.GlobalMode || (Gokz.GlobalMode = {}));
-    var GlobalMode = Gokz.GlobalMode;
+    })(GlobalMode = Gokz.GlobalMode || (Gokz.GlobalMode = {}));
+    var GlobalStyle;
     (function (GlobalStyle) {
         GlobalStyle[GlobalStyle["Normal"] = 0] = "Normal";
-    })(Gokz.GlobalStyle || (Gokz.GlobalStyle = {}));
-    var GlobalStyle = Gokz.GlobalStyle;
+    })(GlobalStyle = Gokz.GlobalStyle || (Gokz.GlobalStyle = {}));
+    var Button;
     (function (Button) {
         Button[Button["Attack"] = 1] = "Attack";
         Button[Button["Jump"] = 2] = "Jump";
@@ -569,8 +571,8 @@ var Gokz;
         Button[Button["BullRush"] = 4194304] = "BullRush";
         Button[Button["Grenade1"] = 8388608] = "Grenade1";
         Button[Button["Grenade2"] = 16777216] = "Grenade2";
-    })(Gokz.Button || (Gokz.Button = {}));
-    var Button = Gokz.Button;
+    })(Button = Gokz.Button || (Gokz.Button = {}));
+    var EntityFlag;
     (function (EntityFlag) {
         EntityFlag[EntityFlag["OnGround"] = 1] = "OnGround";
         EntityFlag[EntityFlag["Ducking"] = 2] = "Ducking";
@@ -604,8 +606,7 @@ var Gokz;
         EntityFlag[EntityFlag["TransRagdoll"] = 536870912] = "TransRagdoll";
         EntityFlag[EntityFlag["UnblockableByPlayer"] = 1073741824] = "UnblockableByPlayer";
         EntityFlag[EntityFlag["Freezing"] = -2147483648] = "Freezing";
-    })(Gokz.EntityFlag || (Gokz.EntityFlag = {}));
-    var EntityFlag = Gokz.EntityFlag;
+    })(EntityFlag = Gokz.EntityFlag || (Gokz.EntityFlag = {}));
     var TickData = (function () {
         function TickData() {
             this.position = new Facepunch.Vector3();
@@ -659,9 +660,9 @@ var Gokz;
         ReplayFile.prototype.clampTick = function (tick) {
             return tick < 0 ? 0 : tick >= this.tickCount ? this.tickCount - 1 : tick;
         };
-        ReplayFile.MAGIC = 0x676F6B7A;
         return ReplayFile;
     }());
+    ReplayFile.MAGIC = 0x676F6B7A;
     Gokz.ReplayFile = ReplayFile;
 })(Gokz || (Gokz = {}));
 ///<reference path="../js/facepunch.webgame.d.ts"/>
@@ -679,61 +680,60 @@ var Gokz;
          * @param container Element that should contain the viewer.
          */
         function ReplayViewer(container) {
-            var _this = this;
-            _super.call(this, container);
+            var _this = _super.call(this, container) || this;
             /**
              * If true, the current tick will be stored in the address hash when
              * playback is paused or the viewer uses the playback bar to skip
              * around.
              * @default `true`
              */
-            this.saveTickInHash = true;
+            _this.saveTickInHash = true;
             /**
              * The current tick being shown during playback, starting with 0 for
              * the first tick. Will automatically be increased while playing,
              * although some ticks might be skipped depending on playback speed and
              * frame rate. Can be set to skip to a particular tick.
              */
-            this.tick = -1;
+            _this.tick = -1;
             /**
              * Current playback rate, measured in seconds per second. Can support
              * negative values for rewinding.
              * @default `1.0`
              */
-            this.playbackRate = 1.0;
+            _this.playbackRate = 1.0;
             /**
              * If true, the replay will automatically loop back to the first tick
              * when it reaches the end.
              * @default `true`
              */
-            this.autoRepeat = true;
+            _this.autoRepeat = true;
             /**
              * Used internally to temporarily pause playback while the user is
              * dragging the scrubber in the playback bar.
              */
-            this.isScrubbing = false;
+            _this.isScrubbing = false;
             /**
              * If true, the currently displayed tick will advance based on the
              * value of `playbackRate`.
              * @default `false`
              */
-            this.isPlaying = false;
+            _this.isPlaying = false;
             /**
              * If true, a crosshair graphic will be displayed in the middle of the
              * viewer.
              * @default `true`
              */
-            this.showCrosshair = true;
+            _this.showCrosshair = true;
             /**
              * If true, makes the key press display visible.
              * @default `true`
              */
-            this.showKeyDisplay = true;
+            _this.showKeyDisplay = true;
             /**
              * If true, makes the options menu visible.
              * @default `false`
              */
-            this.showOptions = false;
+            _this.showOptions = false;
             /**
              * Event invoked when a new replay is loaded. Will be invoked before
              * the map for the replay is loaded (if required).
@@ -742,7 +742,7 @@ var Gokz;
              * * `replay: Gokz.ReplayFile` - The newly loaded ReplayFile
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.replayLoaded = new Gokz.Event(this);
+            _this.replayLoaded = new Gokz.Event(_this);
             /**
              * Event invoked after each update.
              *
@@ -750,7 +750,7 @@ var Gokz;
              * * `dt: number` - Time since the last update
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.updated = new Gokz.Event(this);
+            _this.updated = new Gokz.Event(_this);
             /**
              * Event invoked when the current tick has changed.
              *
@@ -758,7 +758,7 @@ var Gokz;
              * * `tickData: Gokz.TickData` - Recorded data for the current tick
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.tickChanged = new Gokz.ChangedEvent(this);
+            _this.tickChanged = new Gokz.ChangedEvent(_this);
             /**
              * Event invoked when playback has skipped to a different tick, for
              * example when the user uses the scrubber.
@@ -767,7 +767,7 @@ var Gokz;
              * * `oldTick: number` - The previous value of `tick` before skipping
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.playbackSkipped = new Gokz.Event(this);
+            _this.playbackSkipped = new Gokz.Event(_this);
             /**
              * Event invoked when `playbackRate` changes.
              *
@@ -775,7 +775,7 @@ var Gokz;
              * * `playbackRate: number` - The new playback rate
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.playbackRateChanged = new Gokz.ChangedEvent(this);
+            _this.playbackRateChanged = new Gokz.ChangedEvent(_this);
             /**
              * Event invoked when `isPlaying` changes, for example when the user
              * pauses or resumes playback.
@@ -784,7 +784,7 @@ var Gokz;
              * * `isPlaying: boolean` - True if currently playing
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.isPlayingChanged = new Gokz.ChangedEvent(this);
+            _this.isPlayingChanged = new Gokz.ChangedEvent(_this);
             /**
              * Event invoked when `showCrosshair` changes.
              *
@@ -792,7 +792,7 @@ var Gokz;
              * * `showCrosshair: boolean` - True if crosshair is now visible
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.showCrosshairChanged = new Gokz.ChangedEvent(this);
+            _this.showCrosshairChanged = new Gokz.ChangedEvent(_this);
             /**
              * Event invoked when `showKeyDisplay` changes.
              *
@@ -800,7 +800,7 @@ var Gokz;
              * * `showKeyDisplay: boolean` - True if keyDisplay is now visible
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.showKeyDisplayChanged = new Gokz.ChangedEvent(this);
+            _this.showKeyDisplayChanged = new Gokz.ChangedEvent(_this);
             /**
              * Event invoked when `showOptions` changes.
              *
@@ -808,7 +808,7 @@ var Gokz;
              * * `showOptions: boolean` - True if options menu is now visible
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.showOptionsChanged = new Gokz.ChangedEvent(this);
+            _this.showOptionsChanged = new Gokz.ChangedEvent(_this);
             /**
              * Event invoked when `cameraMode` changes.
              *
@@ -816,26 +816,26 @@ var Gokz;
              * * `cameraMode: SourceUtils.CameraMode` - Camera mode value
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            this.cameraModeChanged = new Gokz.ChangedEvent(this);
-            this.pauseTime = 1.0;
-            this.spareTime = 0;
-            this.prevTick = undefined;
-            this.tickData = new Gokz.TickData();
-            this.tempTickData0 = new Gokz.TickData();
-            this.tempTickData1 = new Gokz.TickData();
-            this.tempTickData2 = new Gokz.TickData();
-            this.ignoreMouseUp = true;
-            this.saveCameraPosInHash = false;
-            this.controls = new Gokz.ReplayControls(this);
-            this.keyDisplay = new Gokz.KeyDisplay(this, this.controls.playbackBarElem);
-            this.options = new Gokz.OptionsMenu(this, this.controls.playbackBarElem);
+            _this.cameraModeChanged = new Gokz.ChangedEvent(_this);
+            _this.pauseTime = 1.0;
+            _this.spareTime = 0;
+            _this.prevTick = undefined;
+            _this.tickData = new Gokz.TickData();
+            _this.tempTickData0 = new Gokz.TickData();
+            _this.tempTickData1 = new Gokz.TickData();
+            _this.tempTickData2 = new Gokz.TickData();
+            _this.ignoreMouseUp = true;
+            _this.saveCameraPosInHash = false;
+            _this.controls = new Gokz.ReplayControls(_this);
+            _this.keyDisplay = new Gokz.KeyDisplay(_this, _this.controls.playbackBarElem);
+            _this.options = new Gokz.OptionsMenu(_this, _this.controls.playbackBarElem);
             var crosshair = document.createElement("div");
             crosshair.classList.add("crosshair");
             container.appendChild(crosshair);
-            this.showCrosshairChanged.addListener(function (showCrosshair) {
+            _this.showCrosshairChanged.addListener(function (showCrosshair) {
                 crosshair.hidden = !showCrosshair;
             });
-            this.isPlayingChanged.addListener(function (isPlaying) {
+            _this.isPlayingChanged.addListener(function (isPlaying) {
                 if (!isPlaying && _this.saveTickInHash)
                     _this.updateTickHash();
                 if (isPlaying) {
@@ -850,15 +850,19 @@ var Gokz;
                     _this.wakeLock = null;
                 }
             });
-            this.cameraModeChanged.addListener(function (mode) {
+            _this.cameraModeChanged.addListener(function (mode) {
                 if (mode === SourceUtils.CameraMode.FreeCam) {
                     _this.isPlaying = false;
+                }
+                if (_this.routeLine != null) {
+                    _this.routeLine.visible = mode === SourceUtils.CameraMode.FreeCam;
                 }
                 _this.canLockPointer = mode === SourceUtils.CameraMode.FreeCam;
                 if (!_this.canLockPointer && _this.isPointerLocked()) {
                     document.exitPointerLock();
                 }
             });
+            return _this;
         }
         /**
          * Used to display an error message in the middle of the viewer.
@@ -890,6 +894,10 @@ var Gokz;
                 }
                 var arrayBuffer = req.response;
                 if (arrayBuffer) {
+                    if (_this.routeLine != null) {
+                        _this.routeLine.dispose();
+                        _this.routeLine = null;
+                    }
                     try {
                         _this.replay = new Gokz.ReplayFile(arrayBuffer);
                     }
@@ -931,15 +939,15 @@ var Gokz;
                 this.isPlaying = false;
             }
         };
-        ReplayViewer.prototype.onMouseDown = function (button, screenPos) {
+        ReplayViewer.prototype.onMouseDown = function (button, screenPos, target) {
             this.ignoreMouseUp = event.target !== this.canvas;
-            if (_super.prototype.onMouseDown.call(this, button, screenPos)) {
+            if (_super.prototype.onMouseDown.call(this, button, screenPos, target)) {
                 this.showOptions = false;
                 return true;
             }
             return false;
         };
-        ReplayViewer.prototype.onMouseUp = function (button, screenPos) {
+        ReplayViewer.prototype.onMouseUp = function (button, screenPos, target) {
             var ignored = this.ignoreMouseUp || event.target !== this.canvas;
             this.ignoreMouseUp = true;
             if (ignored)
@@ -948,7 +956,7 @@ var Gokz;
                 this.showOptions = false;
                 return true;
             }
-            if (_super.prototype.onMouseUp.call(this, button, screenPos))
+            if (_super.prototype.onMouseUp.call(this, button, screenPos, target))
                 return true;
             if (button === WebGame.MouseButton.Left && this.replay != null && this.map.isReady()) {
                 this.isPlaying = !this.isPlaying;
@@ -958,6 +966,13 @@ var Gokz;
         };
         ReplayViewer.prototype.onKeyDown = function (key) {
             switch (key) {
+                case WebGame.Key.X:
+                    this.cameraMode = this.cameraMode === SourceUtils.CameraMode.FreeCam
+                        ? SourceUtils.CameraMode.Fixed : SourceUtils.CameraMode.FreeCam;
+                    if (this.cameraMode === SourceUtils.CameraMode.FreeCam) {
+                        this.container.requestPointerLock();
+                    }
+                    return true;
                 case WebGame.Key.F:
                     this.toggleFullscreen();
                     return true;
@@ -1010,6 +1025,9 @@ var Gokz;
             if (this.prevTick !== undefined && this.tick !== this.prevTick) {
                 this.playbackSkipped.dispatch(this.prevTick);
             }
+            if (this.routeLine == null && this.map.isReady()) {
+                this.routeLine = new Gokz.RouteLine(this.map, this.replay);
+            }
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
                 var oldTick = this.tick;
@@ -1056,6 +1074,101 @@ var Gokz;
         return ReplayViewer;
     }(SourceUtils.MapViewer));
     Gokz.ReplayViewer = ReplayViewer;
+})(Gokz || (Gokz = {}));
+var Gokz;
+(function (Gokz) {
+    var RouteLine = (function (_super) {
+        __extends(RouteLine, _super);
+        function RouteLine(map, replay) {
+            var _this = _super.call(this, map, { classname: "route_line", clusters: null }) || this;
+            _this.isVisible = false;
+            _this.segments = new Array(Math.ceil(replay.tickCount / RouteLine.segmentTicks));
+            var tickData = new Gokz.TickData();
+            var progressScale = 16 / replay.tickRate;
+            var lastPos = new Facepunch.Vector3();
+            var currPos = new Facepunch.Vector3();
+            for (var i = 0; i < _this.segments.length; ++i) {
+                var firstTick = i * RouteLine.segmentTicks;
+                var lastTick = Math.min((i + 1) * RouteLine.segmentTicks, replay.tickCount - 1);
+                var segment = _this.segments[i] = {
+                    debugLine: new WebGame.DebugLine(map.viewer),
+                    clusters: {}
+                };
+                var debugLine = segment.debugLine;
+                var clusters = segment.clusters;
+                debugLine.setColor({ x: 0.125, y: 0.75, z: 0.125 }, { x: 0.0, y: 0.25, z: 0.0 });
+                debugLine.frequency = 4.0;
+                var lineStartTick = firstTick;
+                for (var t = firstTick; t <= lastTick; ++t) {
+                    replay.getTickData(t, tickData);
+                    currPos.copy(tickData.position);
+                    currPos.z += 16;
+                    var leaf = map.getLeafAt(currPos);
+                    if (leaf != null && leaf.cluster !== -1) {
+                        clusters[leaf.cluster] = true;
+                    }
+                    // Start new line if first in segment or player teleported
+                    if (t === firstTick || lastPos.sub(currPos).lengthSq() > 1024.0) {
+                        debugLine.moveTo(currPos);
+                        lineStartTick = t;
+                    }
+                    else {
+                        debugLine.lineTo(currPos, (t - lineStartTick) * progressScale);
+                    }
+                    lastPos.copy(currPos);
+                }
+                debugLine.update();
+            }
+            return _this;
+        }
+        Object.defineProperty(RouteLine.prototype, "visible", {
+            get: function () {
+                return this.isVisible;
+            },
+            set: function (value) {
+                if (this.isVisible === value)
+                    return;
+                this.isVisible = value;
+                if (value) {
+                    this.map.addPvsEntity(this);
+                }
+                else {
+                    this.map.removePvsEntity(this);
+                }
+                this.map.viewer.forceDrawListInvalidation(true);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        RouteLine.prototype.onPopulateDrawList = function (drawList, clusters) {
+            for (var _i = 0, _a = this.segments; _i < _a.length; _i++) {
+                var segment = _a[_i];
+                if (clusters == null) {
+                    drawList.addItem(segment.debugLine);
+                    continue;
+                }
+                var segmentClusters = segment.clusters;
+                for (var _b = 0, clusters_1 = clusters; _b < clusters_1.length; _b++) {
+                    var cluster = clusters_1[_b];
+                    if (segmentClusters[cluster]) {
+                        drawList.addItem(segment.debugLine);
+                        break;
+                    }
+                }
+            }
+        };
+        RouteLine.prototype.dispose = function () {
+            this.visible = false;
+            for (var _i = 0, _a = this.segments; _i < _a.length; _i++) {
+                var segment = _a[_i];
+                segment.debugLine.dispose();
+            }
+            this.segments.splice(0, this.segments.length);
+        };
+        return RouteLine;
+    }(SourceUtils.Entities.PvsEntity));
+    RouteLine.segmentTicks = 60 * 128;
+    Gokz.RouteLine = RouteLine;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {

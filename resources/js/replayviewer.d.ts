@@ -397,6 +397,7 @@ declare namespace Gokz {
         private tempTickData0;
         private tempTickData1;
         private tempTickData2;
+        private routeLine;
         /**
          * Creates a new ReplayViewer inside the given `container` element.
          * @param container Element that should contain the viewer.
@@ -422,11 +423,22 @@ declare namespace Gokz {
         protected onInitialize(): void;
         protected onHashChange(hash: string | Object): void;
         private ignoreMouseUp;
-        protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean;
-        protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2): boolean;
+        protected onMouseDown(button: WebGame.MouseButton, screenPos: Facepunch.Vector2, target: EventTarget): boolean;
+        protected onMouseUp(button: WebGame.MouseButton, screenPos: Facepunch.Vector2, target: EventTarget): boolean;
         protected onKeyDown(key: WebGame.Key): boolean;
         protected onChangeReplay(replay: ReplayFile): void;
         protected onUpdateFrame(dt: number): void;
+    }
+}
+declare namespace Gokz {
+    class RouteLine extends SourceUtils.Entities.PvsEntity {
+        private static readonly segmentTicks;
+        private readonly segments;
+        private isVisible;
+        visible: boolean;
+        constructor(map: SourceUtils.Map, replay: ReplayFile);
+        protected onPopulateDrawList(drawList: WebGame.DrawList, clusters: number[]): void;
+        dispose(): void;
     }
 }
 declare namespace Gokz {
