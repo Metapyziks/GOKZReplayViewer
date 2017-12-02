@@ -213,13 +213,15 @@ namespace Gokz {
         private wakeLock: any;
 
         private spareTime = 0;
-        private prevTick = undefined;
+        private prevTick: number = undefined;
 
         private tickData = new TickData();
 
         private tempTickData0 = new TickData();
         private tempTickData1 = new TickData();
         private tempTickData2 = new TickData();
+
+        private routeLine: RouteLine;
 
         /**
          * Creates a new ReplayViewer inside the given `container` element.
@@ -263,6 +265,10 @@ namespace Gokz {
                     this.isPlaying = false;
                 }
 
+                if (this.routeLine != null) {
+                    this.routeLine.visible = mode === SourceUtils.CameraMode.FreeCam;
+                }
+
                 this.canLockPointer = mode === SourceUtils.CameraMode.FreeCam;
                 if (!this.canLockPointer && this.isPointerLocked()) {
                     document.exitPointerLock();
@@ -303,6 +309,12 @@ namespace Gokz {
 
                 const arrayBuffer = req.response;
                 if (arrayBuffer) {
+
+                    if (this.routeLine != null) {
+                        this.routeLine.dispose();
+                        this.routeLine = null;
+                    }
+
                     try {
                         this.replay = new ReplayFile(arrayBuffer);
                     } catch (e) {
@@ -385,6 +397,14 @@ namespace Gokz {
 
         protected onKeyDown(key: WebGame.Key): boolean {
             switch (key) {
+                case WebGame.Key.X:
+                    this.cameraMode = this.cameraMode === SourceUtils.CameraMode.FreeCam
+                        ? SourceUtils.CameraMode.Fixed : SourceUtils.CameraMode.FreeCam;
+                    
+                    if (this.cameraMode === SourceUtils.CameraMode.FreeCam) {
+                        this.container.requestPointerLock();
+                    }
+                    return true;
                 case WebGame.Key.F:
                     this.toggleFullscreen();
                     return true;
@@ -451,6 +471,10 @@ namespace Gokz {
 
             if (this.prevTick !== undefined && this.tick !== this.prevTick) {
                 this.playbackSkipped.dispatch(this.prevTick);
+            }
+
+            if (this.routeLine == null && this.map.isReady()) {
+                this.routeLine = new RouteLine(this.map, this.replay);
             }
 
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {

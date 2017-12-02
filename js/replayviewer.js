@@ -854,6 +854,9 @@ var Gokz;
                 if (mode === SourceUtils.CameraMode.FreeCam) {
                     _this.isPlaying = false;
                 }
+                if (_this.routeLine != null) {
+                    _this.routeLine.visible = mode === SourceUtils.CameraMode.FreeCam;
+                }
                 _this.canLockPointer = mode === SourceUtils.CameraMode.FreeCam;
                 if (!_this.canLockPointer && _this.isPointerLocked()) {
                     document.exitPointerLock();
@@ -891,6 +894,10 @@ var Gokz;
                 }
                 var arrayBuffer = req.response;
                 if (arrayBuffer) {
+                    if (_this.routeLine != null) {
+                        _this.routeLine.dispose();
+                        _this.routeLine = null;
+                    }
                     try {
                         _this.replay = new Gokz.ReplayFile(arrayBuffer);
                     }
@@ -959,6 +966,13 @@ var Gokz;
         };
         ReplayViewer.prototype.onKeyDown = function (key) {
             switch (key) {
+                case WebGame.Key.X:
+                    this.cameraMode = this.cameraMode === SourceUtils.CameraMode.FreeCam
+                        ? SourceUtils.CameraMode.Fixed : SourceUtils.CameraMode.FreeCam;
+                    if (this.cameraMode === SourceUtils.CameraMode.FreeCam) {
+                        this.container.requestPointerLock();
+                    }
+                    return true;
                 case WebGame.Key.F:
                     this.toggleFullscreen();
                     return true;
@@ -1011,6 +1025,9 @@ var Gokz;
             if (this.prevTick !== undefined && this.tick !== this.prevTick) {
                 this.playbackSkipped.dispatch(this.prevTick);
             }
+            if (this.routeLine == null && this.map.isReady()) {
+                this.routeLine = new Gokz.RouteLine(this.map, this.replay);
+            }
             if (this.map.isReady() && this.isPlaying && !this.isScrubbing) {
                 this.spareTime += dt * this.playbackRate;
                 var oldTick = this.tick;
@@ -1057,6 +1074,101 @@ var Gokz;
         return ReplayViewer;
     }(SourceUtils.MapViewer));
     Gokz.ReplayViewer = ReplayViewer;
+})(Gokz || (Gokz = {}));
+var Gokz;
+(function (Gokz) {
+    var RouteLine = (function (_super) {
+        __extends(RouteLine, _super);
+        function RouteLine(map, replay) {
+            var _this = _super.call(this, map, { classname: "route_line", clusters: null }) || this;
+            _this.isVisible = false;
+            _this.segments = new Array(Math.ceil(replay.tickCount / RouteLine.segmentTicks));
+            var tickData = new Gokz.TickData();
+            var progressScale = 16 / replay.tickRate;
+            var lastPos = new Facepunch.Vector3();
+            var currPos = new Facepunch.Vector3();
+            for (var i = 0; i < _this.segments.length; ++i) {
+                var firstTick = i * RouteLine.segmentTicks;
+                var lastTick = Math.min((i + 1) * RouteLine.segmentTicks, replay.tickCount - 1);
+                var segment = _this.segments[i] = {
+                    debugLine: new WebGame.DebugLine(map.viewer),
+                    clusters: {}
+                };
+                var debugLine = segment.debugLine;
+                var clusters = segment.clusters;
+                debugLine.setColor({ x: 0.125, y: 0.75, z: 0.125 }, { x: 0.0, y: 0.25, z: 0.0 });
+                debugLine.frequency = 4.0;
+                var lineStartTick = firstTick;
+                for (var t = firstTick; t <= lastTick; ++t) {
+                    replay.getTickData(t, tickData);
+                    currPos.copy(tickData.position);
+                    currPos.z += 16;
+                    var leaf = map.getLeafAt(currPos);
+                    if (leaf != null && leaf.cluster !== -1) {
+                        clusters[leaf.cluster] = true;
+                    }
+                    // Start new line if first in segment or player teleported
+                    if (t === firstTick || lastPos.sub(currPos).lengthSq() > 1024.0) {
+                        debugLine.moveTo(currPos);
+                        lineStartTick = t;
+                    }
+                    else {
+                        debugLine.lineTo(currPos, (t - lineStartTick) * progressScale);
+                    }
+                    lastPos.copy(currPos);
+                }
+                debugLine.update();
+            }
+            return _this;
+        }
+        Object.defineProperty(RouteLine.prototype, "visible", {
+            get: function () {
+                return this.isVisible;
+            },
+            set: function (value) {
+                if (this.isVisible === value)
+                    return;
+                this.isVisible = value;
+                if (value) {
+                    this.map.addPvsEntity(this);
+                }
+                else {
+                    this.map.removePvsEntity(this);
+                }
+                this.map.viewer.forceDrawListInvalidation(true);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        RouteLine.prototype.onPopulateDrawList = function (drawList, clusters) {
+            for (var _i = 0, _a = this.segments; _i < _a.length; _i++) {
+                var segment = _a[_i];
+                if (clusters == null) {
+                    drawList.addItem(segment.debugLine);
+                    continue;
+                }
+                var segmentClusters = segment.clusters;
+                for (var _b = 0, clusters_1 = clusters; _b < clusters_1.length; _b++) {
+                    var cluster = clusters_1[_b];
+                    if (segmentClusters[cluster]) {
+                        drawList.addItem(segment.debugLine);
+                        break;
+                    }
+                }
+            }
+        };
+        RouteLine.prototype.dispose = function () {
+            this.visible = false;
+            for (var _i = 0, _a = this.segments; _i < _a.length; _i++) {
+                var segment = _a[_i];
+                segment.debugLine.dispose();
+            }
+            this.segments.splice(0, this.segments.length);
+        };
+        return RouteLine;
+    }(SourceUtils.Entities.PvsEntity));
+    RouteLine.segmentTicks = 60 * 128;
+    Gokz.RouteLine = RouteLine;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {
