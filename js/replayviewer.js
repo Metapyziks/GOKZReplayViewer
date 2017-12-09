@@ -207,7 +207,13 @@ var Gokz;
             this.syncValueElem = element.getElementsByClassName("sync-value")[0];
             this.speedValueElem = element.getElementsByClassName("speed-value")[0];
             viewer.showKeyDisplayChanged.addListener(function (showKeyDisplay) {
-                if (showKeyDisplay)
+                if (showKeyDisplay && viewer.cameraMode === SourceUtils.CameraMode.Fixed)
+                    _this.show();
+                else
+                    _this.hide();
+            });
+            viewer.cameraModeChanged.addListener(function (cameraMode) {
+                if (viewer.showKeyDisplay && cameraMode === SourceUtils.CameraMode.Fixed)
                     _this.show();
                 else
                     _this.hide();

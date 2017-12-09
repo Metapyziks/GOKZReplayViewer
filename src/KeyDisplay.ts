@@ -43,7 +43,12 @@ namespace Gokz {
             this.speedValueElem = element.getElementsByClassName("speed-value")[0] as HTMLElement;
 
             viewer.showKeyDisplayChanged.addListener(showKeyDisplay => {
-                if (showKeyDisplay) this.show();
+                if (showKeyDisplay && viewer.cameraMode === SourceUtils.CameraMode.Fixed) this.show();
+                else this.hide();
+            });
+
+            viewer.cameraModeChanged.addListener(cameraMode => {
+                if (viewer.showKeyDisplay && cameraMode === SourceUtils.CameraMode.Fixed) this.show();
                 else this.hide();
             });
 
