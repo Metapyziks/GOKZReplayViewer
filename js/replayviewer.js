@@ -5,12 +5,12 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Gokz;
 (function (Gokz) {
-    var SeekOrigin;
     (function (SeekOrigin) {
         SeekOrigin[SeekOrigin["Begin"] = 0] = "Begin";
         SeekOrigin[SeekOrigin["Current"] = 1] = "Current";
         SeekOrigin[SeekOrigin["End"] = 2] = "End";
-    })(SeekOrigin = Gokz.SeekOrigin || (Gokz.SeekOrigin = {}));
+    })(Gokz.SeekOrigin || (Gokz.SeekOrigin = {}));
+    var SeekOrigin = Gokz.SeekOrigin;
     var BinaryReader = (function () {
         function BinaryReader(buffer) {
             this.buffer = buffer;
@@ -154,14 +154,13 @@ var Gokz;
     var ChangedEvent = (function (_super) {
         __extends(ChangedEvent, _super);
         function ChangedEvent(sender, equalityComparison) {
-            var _this = _super.call(this, sender) || this;
+            _super.call(this, sender);
             if (equalityComparison != null) {
-                _this.equalityComparison = equalityComparison;
+                this.equalityComparison = equalityComparison;
             }
             else {
-                _this.equalityComparison = function (a, b) { return a === b; };
+                this.equalityComparison = function (a, b) { return a === b; };
             }
-            return _this;
         }
         ChangedEvent.prototype.reset = function () {
             this.prevValue = undefined;
@@ -533,24 +532,23 @@ var Gokz;
             // TODO
             this.viewer.showDebugPanel = !this.viewer.showDebugPanel;
         };
+        ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
         return ReplayControls;
     }());
-    ReplayControls.speedSliderValues = [-5, -1, 0.1, 0.25, 1, 2, 5, 10];
     Gokz.ReplayControls = ReplayControls;
 })(Gokz || (Gokz = {}));
 var Gokz;
 (function (Gokz) {
-    var GlobalMode;
     (function (GlobalMode) {
         GlobalMode[GlobalMode["Vanilla"] = 0] = "Vanilla";
         GlobalMode[GlobalMode["KzSimple"] = 1] = "KzSimple";
         GlobalMode[GlobalMode["KzTimer"] = 2] = "KzTimer";
-    })(GlobalMode = Gokz.GlobalMode || (Gokz.GlobalMode = {}));
-    var GlobalStyle;
+    })(Gokz.GlobalMode || (Gokz.GlobalMode = {}));
+    var GlobalMode = Gokz.GlobalMode;
     (function (GlobalStyle) {
         GlobalStyle[GlobalStyle["Normal"] = 0] = "Normal";
-    })(GlobalStyle = Gokz.GlobalStyle || (Gokz.GlobalStyle = {}));
-    var Button;
+    })(Gokz.GlobalStyle || (Gokz.GlobalStyle = {}));
+    var GlobalStyle = Gokz.GlobalStyle;
     (function (Button) {
         Button[Button["Attack"] = 1] = "Attack";
         Button[Button["Jump"] = 2] = "Jump";
@@ -577,8 +575,8 @@ var Gokz;
         Button[Button["BullRush"] = 4194304] = "BullRush";
         Button[Button["Grenade1"] = 8388608] = "Grenade1";
         Button[Button["Grenade2"] = 16777216] = "Grenade2";
-    })(Button = Gokz.Button || (Gokz.Button = {}));
-    var EntityFlag;
+    })(Gokz.Button || (Gokz.Button = {}));
+    var Button = Gokz.Button;
     (function (EntityFlag) {
         EntityFlag[EntityFlag["OnGround"] = 1] = "OnGround";
         EntityFlag[EntityFlag["Ducking"] = 2] = "Ducking";
@@ -612,7 +610,8 @@ var Gokz;
         EntityFlag[EntityFlag["TransRagdoll"] = 536870912] = "TransRagdoll";
         EntityFlag[EntityFlag["UnblockableByPlayer"] = 1073741824] = "UnblockableByPlayer";
         EntityFlag[EntityFlag["Freezing"] = -2147483648] = "Freezing";
-    })(EntityFlag = Gokz.EntityFlag || (Gokz.EntityFlag = {}));
+    })(Gokz.EntityFlag || (Gokz.EntityFlag = {}));
+    var EntityFlag = Gokz.EntityFlag;
     var TickData = (function () {
         function TickData() {
             this.position = new Facepunch.Vector3();
@@ -666,9 +665,9 @@ var Gokz;
         ReplayFile.prototype.clampTick = function (tick) {
             return tick < 0 ? 0 : tick >= this.tickCount ? this.tickCount - 1 : tick;
         };
+        ReplayFile.MAGIC = 0x676F6B7A;
         return ReplayFile;
     }());
-    ReplayFile.MAGIC = 0x676F6B7A;
     Gokz.ReplayFile = ReplayFile;
 })(Gokz || (Gokz = {}));
 ///<reference path="../js/facepunch.webgame.d.ts"/>
@@ -686,60 +685,61 @@ var Gokz;
          * @param container Element that should contain the viewer.
          */
         function ReplayViewer(container) {
-            var _this = _super.call(this, container) || this;
+            var _this = this;
+            _super.call(this, container);
             /**
              * If true, the current tick will be stored in the address hash when
              * playback is paused or the viewer uses the playback bar to skip
              * around.
              * @default `true`
              */
-            _this.saveTickInHash = true;
+            this.saveTickInHash = true;
             /**
              * The current tick being shown during playback, starting with 0 for
              * the first tick. Will automatically be increased while playing,
              * although some ticks might be skipped depending on playback speed and
              * frame rate. Can be set to skip to a particular tick.
              */
-            _this.tick = -1;
+            this.tick = -1;
             /**
              * Current playback rate, measured in seconds per second. Can support
              * negative values for rewinding.
              * @default `1.0`
              */
-            _this.playbackRate = 1.0;
+            this.playbackRate = 1.0;
             /**
              * If true, the replay will automatically loop back to the first tick
              * when it reaches the end.
              * @default `true`
              */
-            _this.autoRepeat = true;
+            this.autoRepeat = true;
             /**
              * Used internally to temporarily pause playback while the user is
              * dragging the scrubber in the playback bar.
              */
-            _this.isScrubbing = false;
+            this.isScrubbing = false;
             /**
              * If true, the currently displayed tick will advance based on the
              * value of `playbackRate`.
              * @default `false`
              */
-            _this.isPlaying = false;
+            this.isPlaying = false;
             /**
              * If true, a crosshair graphic will be displayed in the middle of the
              * viewer.
              * @default `true`
              */
-            _this.showCrosshair = true;
+            this.showCrosshair = true;
             /**
              * If true, makes the key press display visible.
              * @default `true`
              */
-            _this.showKeyDisplay = true;
+            this.showKeyDisplay = true;
             /**
              * If true, makes the options menu visible.
              * @default `false`
              */
-            _this.showOptions = false;
+            this.showOptions = false;
             /**
              * Event invoked when a new replay is loaded. Will be invoked before
              * the map for the replay is loaded (if required).
@@ -748,7 +748,7 @@ var Gokz;
              * * `replay: Gokz.ReplayFile` - The newly loaded ReplayFile
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.replayLoaded = new Gokz.Event(_this);
+            this.replayLoaded = new Gokz.Event(this);
             /**
              * Event invoked after each update.
              *
@@ -756,7 +756,7 @@ var Gokz;
              * * `dt: number` - Time since the last update
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.updated = new Gokz.Event(_this);
+            this.updated = new Gokz.Event(this);
             /**
              * Event invoked when the current tick has changed.
              *
@@ -764,7 +764,7 @@ var Gokz;
              * * `tickData: Gokz.TickData` - Recorded data for the current tick
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.tickChanged = new Gokz.ChangedEvent(_this);
+            this.tickChanged = new Gokz.ChangedEvent(this);
             /**
              * Event invoked when playback has skipped to a different tick, for
              * example when the user uses the scrubber.
@@ -773,7 +773,7 @@ var Gokz;
              * * `oldTick: number` - The previous value of `tick` before skipping
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.playbackSkipped = new Gokz.Event(_this);
+            this.playbackSkipped = new Gokz.Event(this);
             /**
              * Event invoked when `playbackRate` changes.
              *
@@ -781,7 +781,7 @@ var Gokz;
              * * `playbackRate: number` - The new playback rate
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.playbackRateChanged = new Gokz.ChangedEvent(_this);
+            this.playbackRateChanged = new Gokz.ChangedEvent(this);
             /**
              * Event invoked when `isPlaying` changes, for example when the user
              * pauses or resumes playback.
@@ -790,7 +790,7 @@ var Gokz;
              * * `isPlaying: boolean` - True if currently playing
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.isPlayingChanged = new Gokz.ChangedEvent(_this);
+            this.isPlayingChanged = new Gokz.ChangedEvent(this);
             /**
              * Event invoked when `showCrosshair` changes.
              *
@@ -798,7 +798,7 @@ var Gokz;
              * * `showCrosshair: boolean` - True if crosshair is now visible
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.showCrosshairChanged = new Gokz.ChangedEvent(_this);
+            this.showCrosshairChanged = new Gokz.ChangedEvent(this);
             /**
              * Event invoked when `showKeyDisplay` changes.
              *
@@ -806,7 +806,7 @@ var Gokz;
              * * `showKeyDisplay: boolean` - True if keyDisplay is now visible
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.showKeyDisplayChanged = new Gokz.ChangedEvent(_this);
+            this.showKeyDisplayChanged = new Gokz.ChangedEvent(this);
             /**
              * Event invoked when `showOptions` changes.
              *
@@ -814,7 +814,7 @@ var Gokz;
              * * `showOptions: boolean` - True if options menu is now visible
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.showOptionsChanged = new Gokz.ChangedEvent(_this);
+            this.showOptionsChanged = new Gokz.ChangedEvent(this);
             /**
              * Event invoked when `cameraMode` changes.
              *
@@ -822,26 +822,26 @@ var Gokz;
              * * `cameraMode: SourceUtils.CameraMode` - Camera mode value
              * * `sender: Gokz.ReplayViewer` - This ReplayViewer
              */
-            _this.cameraModeChanged = new Gokz.ChangedEvent(_this);
-            _this.pauseTime = 1.0;
-            _this.spareTime = 0;
-            _this.prevTick = undefined;
-            _this.tickData = new Gokz.TickData();
-            _this.tempTickData0 = new Gokz.TickData();
-            _this.tempTickData1 = new Gokz.TickData();
-            _this.tempTickData2 = new Gokz.TickData();
-            _this.ignoreMouseUp = true;
-            _this.saveCameraPosInHash = false;
-            _this.controls = new Gokz.ReplayControls(_this);
-            _this.keyDisplay = new Gokz.KeyDisplay(_this, _this.controls.playbackBarElem);
-            _this.options = new Gokz.OptionsMenu(_this, _this.controls.playbackBarElem);
+            this.cameraModeChanged = new Gokz.ChangedEvent(this);
+            this.pauseTime = 1.0;
+            this.spareTime = 0;
+            this.prevTick = undefined;
+            this.tickData = new Gokz.TickData();
+            this.tempTickData0 = new Gokz.TickData();
+            this.tempTickData1 = new Gokz.TickData();
+            this.tempTickData2 = new Gokz.TickData();
+            this.ignoreMouseUp = true;
+            this.saveCameraPosInHash = false;
+            this.controls = new Gokz.ReplayControls(this);
+            this.keyDisplay = new Gokz.KeyDisplay(this, this.controls.playbackBarElem);
+            this.options = new Gokz.OptionsMenu(this, this.controls.playbackBarElem);
             var crosshair = document.createElement("div");
             crosshair.classList.add("crosshair");
             container.appendChild(crosshair);
-            _this.showCrosshairChanged.addListener(function (showCrosshair) {
+            this.showCrosshairChanged.addListener(function (showCrosshair) {
                 crosshair.hidden = !showCrosshair;
             });
-            _this.isPlayingChanged.addListener(function (isPlaying) {
+            this.isPlayingChanged.addListener(function (isPlaying) {
                 if (!isPlaying && _this.saveTickInHash)
                     _this.updateTickHash();
                 if (isPlaying) {
@@ -856,7 +856,7 @@ var Gokz;
                     _this.wakeLock = null;
                 }
             });
-            _this.cameraModeChanged.addListener(function (mode) {
+            this.cameraModeChanged.addListener(function (mode) {
                 if (mode === SourceUtils.CameraMode.FreeCam) {
                     _this.isPlaying = false;
                 }
@@ -868,7 +868,6 @@ var Gokz;
                     document.exitPointerLock();
                 }
             });
-            return _this;
         }
         /**
          * Used to display an error message in the middle of the viewer.
@@ -1086,17 +1085,17 @@ var Gokz;
     var RouteLine = (function (_super) {
         __extends(RouteLine, _super);
         function RouteLine(map, replay) {
-            var _this = _super.call(this, map, { classname: "route_line", clusters: null }) || this;
-            _this.isVisible = false;
-            _this.segments = new Array(Math.ceil(replay.tickCount / RouteLine.segmentTicks));
+            _super.call(this, map, { classname: "route_line", clusters: null });
+            this.isVisible = false;
+            this.segments = new Array(Math.ceil(replay.tickCount / RouteLine.segmentTicks));
             var tickData = new Gokz.TickData();
             var progressScale = 16 / replay.tickRate;
             var lastPos = new Facepunch.Vector3();
             var currPos = new Facepunch.Vector3();
-            for (var i = 0; i < _this.segments.length; ++i) {
+            for (var i = 0; i < this.segments.length; ++i) {
                 var firstTick = i * RouteLine.segmentTicks;
                 var lastTick = Math.min((i + 1) * RouteLine.segmentTicks, replay.tickCount - 1);
-                var segment = _this.segments[i] = {
+                var segment = this.segments[i] = {
                     debugLine: new WebGame.DebugLine(map.viewer),
                     clusters: {}
                 };
@@ -1125,7 +1124,6 @@ var Gokz;
                 }
                 debugLine.update();
             }
-            return _this;
         }
         Object.defineProperty(RouteLine.prototype, "visible", {
             get: function () {
@@ -1171,9 +1169,9 @@ var Gokz;
             }
             this.segments.splice(0, this.segments.length);
         };
+        RouteLine.segmentTicks = 60 * 128;
         return RouteLine;
     }(SourceUtils.Entities.PvsEntity));
-    RouteLine.segmentTicks = 60 * 128;
     Gokz.RouteLine = RouteLine;
 })(Gokz || (Gokz = {}));
 var Gokz;
