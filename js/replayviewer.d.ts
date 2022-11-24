@@ -4,7 +4,7 @@ declare namespace Gokz {
     enum SeekOrigin {
         Begin = 0,
         Current = 1,
-        End = 2,
+        End = 2
     }
     class BinaryReader {
         private readonly buffer;
@@ -52,16 +52,16 @@ declare namespace Gokz {
         syncSampleRange: number;
         speedSampleRange: number;
         constructor(viewer: ReplayViewer, container?: HTMLElement);
-        private updateButtons(tickData);
+        private updateButtons;
         private readonly tempTickData;
         private readonly tempPosition;
         private syncBuffer;
         private syncIndex;
         private syncSampleCount;
         private lastTick;
-        private updateSync();
-        private getSpeedAtTick(tick, tickRange);
-        private updateSpeed();
+        private updateSync;
+        private getSpeedAtTick;
+        private updateSpeed;
         show(): void;
         hide(): void;
     }
@@ -75,10 +75,10 @@ declare namespace Gokz {
         constructor(viewer: ReplayViewer, container?: HTMLElement);
         show(): void;
         hide(): void;
-        private clear();
-        private showMainPage();
-        private setTitle(title);
-        private addToggleOption<TArgs, TSender>(label, getter, setter, changed?);
+        private clear;
+        private showMainPage;
+        private setTitle;
+        private addToggleOption;
     }
 }
 declare namespace Gokz {
@@ -113,10 +113,10 @@ declare namespace Gokz {
     enum GlobalMode {
         Vanilla = 0,
         KzSimple = 1,
-        KzTimer = 2,
+        KzTimer = 2
     }
     enum GlobalStyle {
-        Normal = 0,
+        Normal = 0
     }
     enum Button {
         Attack = 1,
@@ -143,7 +143,7 @@ declare namespace Gokz {
         Weapon2 = 2097152,
         BullRush = 4194304,
         Grenade1 = 8388608,
-        Grenade2 = 16777216,
+        Grenade2 = 16777216
     }
     enum EntityFlag {
         OnGround = 1,
@@ -177,7 +177,65 @@ declare namespace Gokz {
         Dissolving = 268435456,
         TransRagdoll = 536870912,
         UnblockableByPlayer = 1073741824,
-        Freezing = -2147483648,
+        Freezing = -2147483648
+    }
+    enum ReplayV2Flag {
+        MovetypeMask = 15,
+        Attack = 16,
+        Attack2 = 32,
+        Jump = 64,
+        Duck = 128,
+        Forward = 256,
+        Back = 512,
+        Left = 1024,
+        Right = 2048,
+        Moveleft = 4096,
+        Moveright = 8192,
+        Reload = 16384,
+        Speed = 32768,
+        Use = 65536,
+        Bullrush = 131072,
+        Onground = 262144,
+        Ducking = 524288,
+        Swim = 1048576,
+        UnderWater = 2097152,
+        TeleportTick = 4194304,
+        TakeoffTick = 8388608,
+        HitPerf = 16777216,
+        SecondaryEquipped = 33554432
+    }
+    enum ButtonOffset {
+        Attack = 0,
+        Jump = 1,
+        Duck = 2,
+        Forward = 3,
+        Back = 4,
+        Use = 5,
+        Cancel = 6,
+        Left = 7,
+        Right = 8,
+        Moveleft = 9,
+        Moveright = 10,
+        Attack2 = 11,
+        Run = 12,
+        Reload = 13,
+        Alt1 = 14,
+        Alt2 = 15,
+        Score = 16,
+        Speed = 17,
+        Walk = 18,
+        Zoom = 19,
+        Weapon1 = 20,
+        Weapon2 = 21,
+        Bullrush = 22,
+        Grenade1 = 23,
+        Grenade2 = 24,
+        Attack3 = 25
+    }
+    enum ReplayType {
+        Run = 0,
+        Cheater = 1,
+        Jump = 2
     }
     class TickData {
         readonly position: Facepunch.Vector3;
@@ -188,7 +246,7 @@ declare namespace Gokz {
         getEyeHeight(): number;
     }
     class ReplayFile {
-        static readonly MAGIC: number;
+        static readonly MAGIC = 1735355258;
         private readonly reader;
         private readonly firstTickOffset;
         private readonly tickSize;
@@ -205,6 +263,7 @@ declare namespace Gokz {
         readonly playerName: string;
         readonly tickCount: number;
         readonly tickRate: number;
+        readonly tickDataArray: Array<TickData>;
         constructor(data: ArrayBuffer);
         getTickData(tick: number, data?: TickData): TickData;
         clampTick(tick: number): number;
@@ -435,7 +494,8 @@ declare namespace Gokz {
         private static readonly segmentTicks;
         private readonly segments;
         private isVisible;
-        visible: boolean;
+        get visible(): boolean;
+        set visible(value: boolean);
         constructor(map: SourceUtils.Map, replay: ReplayFile);
         protected onPopulateDrawList(drawList: WebGame.DrawList, clusters: number[]): void;
         dispose(): void;
