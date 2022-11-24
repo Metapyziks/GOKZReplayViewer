@@ -312,8 +312,16 @@ namespace Gokz {
         
         getTickData(tick: number, data?: TickData): TickData {
             if (data === undefined) data = new TickData();
-            // data.tick = tick;
-            data = this.tickDataArray[tick];
+            
+            data.tick = tick;
+            data.position.x = this.tickDataArray[tick].position.x;
+            data.position.y = this.tickDataArray[tick].position.y;
+            data.position.z = this.tickDataArray[tick].position.z;
+            data.angles.x = this.tickDataArray[tick].angles.x;
+            data.angles.y = this.tickDataArray[tick].angles.y;
+            data.buttons = this.tickDataArray[tick].buttons;
+            data.flags = this.tickDataArray[tick].flags;
+            
             return data;
         }
 
